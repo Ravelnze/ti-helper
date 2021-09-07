@@ -1,5 +1,5 @@
 // #region imports
-import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch } from "react-router-dom";
+import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import StrategyPhase from "./StrategyPhase";
 import ActionPhase from "./ActionPhase";
 import StatusPhase from "./StatusPhase";

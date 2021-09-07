@@ -1,39 +1,51 @@
-import { SetTech, UpdateTech } from '../lib/Tech';
-import * as Types from './Types';
+import { SetTech, UpdateTech } from "../lib/Tech";
+import applyMiddleware from "./Middleware";
+import * as Types from "./Types";
 
-const initialState = {
+export const initialState = {
     faction: null,
-    technologies: []
+    technologies: [],
 };
 
-const reducer = (state, action) => {
-    switch (action.type) {
-        case Types.SETFACTION:
-            localStorage.setItem("faction", JSON.stringify(action.payload));
+// good guide on why the store is laid out this way
+// https://dev.to/vanderleisilva/middlewares-with-react-context-and-hooks-2gm1
 
-            return {
-                ...state,
-                faction: action.payload,
-            };
-        case Types.SETTECH:
-            const setTech = action.payload != null ? SetTech(action.payload) : initialState.technologies;
-            localStorage.setItem("tech", JSON.stringify(setTech));
+function setFaction(state, { payload }) {
+    return {
+        ...state,
+        faction: payload,
+    };
+}
 
-            return {
-                ...state,
-                technologies: setTech
-            };
-        case Types.UPDATETECH:
-            const updateTech = UpdateTech(state.technologies, action.payload);
-            localStorage.setItem("tech", JSON.stringify(updateTech));
+function setTech(state, { payload }) {
+    return {
+        ...state,
+        technologies:
+            payload != null ? SetTech(payload) : [],
+    };
+}
 
-            return {
-                ...state,
-                technologies: updateTech,
-            };
-        default:
-            return state;
+function updateTech(state, { payload }) {
+    return {
+        ...state,
+        technologies: UpdateTech(state.technologies, payload),
+    };
+}
+
+const createReducer = (handlers) => (state, action) => {
+    if (!handlers.hasOwnProperty(action.type)) {
+        return state;
     }
+
+    return applyMiddleware({
+        state,
+        action,
+        handler: handlers[action.type],
+    });
 };
 
-export {reducer, initialState};
+export const reducer = createReducer({
+    [Types.SETFACTION]: setFaction,
+    [Types.SETTECH]: setTech,
+    [Types.UPDATETECH]: updateTech,
+});

@@ -1,21 +1,20 @@
 //#region imports
-import { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-import { Context } from "../App";
 import FactionList from "./FactionList";
 import DividerText from "./DividerText";
 import TechnologyCardGroup from "./TechnologyCardGroup";
 import UnitList from "./UnitList";
 import ValueLabel from "./ValueLabel";
+import { useStore } from "../store/Store";
 //#endregion
 
 function NewGame() {
-    const { state } = useContext(Context);
+    const [state, dispatch] = useStore();
 
     return (
         <Container className="mb-5">
