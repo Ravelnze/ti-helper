@@ -58,7 +58,7 @@ function GameContainer({ props }) {
     let match = useRouteMatch();
 
     return (
-        <Router>
+        <>
             <Switch>
                 <Route path={`${match.path}/strategy`}>
                     <StrategyPhase />
@@ -106,7 +106,7 @@ function GameContainer({ props }) {
                     </div>
                 </Nav>
             </Navbar>
-        </Router>
+        </>
     );
 }
 

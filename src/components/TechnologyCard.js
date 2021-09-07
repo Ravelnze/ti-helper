@@ -2,7 +2,7 @@ import Card from "react-bootstrap/Card";
 
 function TechnologyCard(props) {
     let variant = [];
-    console.log(props);
+
     switch (props.tech.cat.toLowerCase()) {
         case "cybernetic":
             variant = ["warning", "dark"]; // Yellow
