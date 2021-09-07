@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "title": "Neural Motivator",
+        "cat": "Biotic",
+        "desc": "During the status phase, draw 2 action cards instead of 1.",
+        "req": null
+    },
+    {
+        "id": 2,
+        "title": "Magen Defense Grid",
+        "cat": "Warfare",
+        "desc": "You may exhaust this card at the start of a round of ground combat on a planet that contains 1 or more of your units that have Planetary Shield; your opponent cannot make combat rolls this combat round.",
+        "req": 
+        {
+            "warfare": 1
+        }
+    },
+    {
+        "id": 3,
+        "title": "Antimass Deflectors",
+        "cat": "Propulsion",
+        "desc": "Your ships can move into and through asteroid fields\r\nWhen other players’ units use SPACE CANNON against your units, apply -1 to the result of each die roll",
+        "req": null
+    },
+    {
+        "id": 4,
+        "title": "Sarween Tools",
+        "cat": "Cybernetic",
+        "desc": "When 1 or more of your units use Production, reduce the combined cost of the produced units by 1",
+        "req": null
+    },
+    {
+        "id": 5,
+        "title": "Dark Energy Tap",
+        "cat": "Propulsion",
+        "desc": "After you perform a tactical action in a system that contains a frontier token, if you have 1 or more ships in that system, explore that token\r\nYour ships can retreat into adjacent systems that do not contain other players' units, even if you do not have units or control planets in that system.",
+        "req": null
+    },
+    {
+        "id": 6,
+        "title": "Plasma Scoring ",
+        "cat": "Warfare",
+        "desc": "When 1 or more of your units use Bombardment or Space Cannon, 1 of those units may roll 1 additional die",
+        "req": null
+    }
+]

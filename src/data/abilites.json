@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "title": "Anti-Fighter Barrage"
+    },
+    {
+        "id": 2,
+        "title": "Bombardment"
+    },
+    {
+        "id": 3,
+        "title": "Planetary Shield"
+    },
+    {
+        "id": 4,
+        "title": "Production"
+    },
+    {
+        "id": 5,
+        "title": "Space Cannon"
+    },
+    { 
+        "id": 6,
+        "title": "Sustain Damage"
+    },
+    {
+        "id": 7,
+        "title": "Deploy"
+    }
+]

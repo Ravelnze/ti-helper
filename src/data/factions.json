@@ -1,0 +1,126 @@
+[
+    {
+        "id": 1,
+        "title": "The Emirates of Hacan",
+        "tech": [3, 4],
+        "units": [
+            {
+                "id": 1,
+                "count": 2
+            },
+            {
+                "id": 2,
+                "count": 1
+            },
+            {
+                "id": 5,
+                "count": 2
+            },
+            {
+                "id": 8,
+                "count": 4
+            },
+            {
+                "id": 10,
+                "count": 1
+            }
+        ],
+        "commodities": 6,
+        "special": []
+    },
+    {
+        "id": 2,
+        "title": "The Empyrean",
+        "tech": [5],
+        "units": [
+            {
+                "id": 1,
+                "count": 2
+            },
+            {
+                "id": 3,
+                "count": 1
+            },
+            {
+                "id": 5,
+                "count": 2
+            },
+            {
+                "id": 8,
+                "count": 4
+            },
+            {
+                "id": 10,
+                "count": 1
+            }
+        ],
+        "commodities": 4,
+        "special": []
+    },
+    {
+        "id": 3,
+        "title": "The Arborec",
+        "tech": [2],
+        "units": [
+            {
+                "id": 1,
+                "count": 1
+            },
+            {
+                "id": 2,
+                "count": 1
+            },
+            {
+                "id": 5,
+                "count": 2
+            },
+            {
+                "id": 8,
+                "count": 4
+            },
+            {
+                "id": 10,
+                "count": 1
+            },
+            {
+                "id": 11,
+                "count": 1
+            }
+        ],
+        "commodities": 3,
+        "special": []
+    },
+    {
+        "id": 3,
+        "title": "The Universities of Jol-Nar ",
+        "tech": [1,3,4,6],
+        "units": [
+            {
+                "id": 1,
+                "count": 2
+            },
+            {
+                "id": 4,
+                "count": 1
+            },
+            {
+                "id": 5,
+                "count": 1
+            },
+            {
+                "id": 8,
+                "count": 2
+            },
+            {
+                "id": 10,
+                "count": 1
+            },
+            {
+                "id": 11,
+                "count": 2
+            }
+        ],
+        "commodities": 4,
+        "special": []
+    }
+]
