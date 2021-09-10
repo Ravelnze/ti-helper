@@ -11,10 +11,7 @@
         "title": "Magen Defense Grid",
         "cat": "Warfare",
         "desc": "You may exhaust this card at the start of a round of ground combat on a planet that contains 1 or more of your units that have Planetary Shield; your opponent cannot make combat rolls this combat round.",
-        "req": 
-        {
-            "warfare": 1
-        }
+        "req": ["warfare"]
     },
     {
         "id": 3,
@@ -39,9 +36,71 @@
     },
     {
         "id": 6,
-        "title": "Plasma Scoring ",
+        "title": "Plasma Scoring",
         "cat": "Warfare",
-        "desc": "When 1 or more of your units use Bombardment or Space Cannon, 1 of those units may roll 1 additional die",
-        "req": null
+        "desc": "When 1 or more of your units use Bombardment or Space Cannon, 1 of those units may roll 1 additional die"
+    },
+    {
+        "id": 7,
+        "title": "Destroyer II",
+        "subTitle": "Automated Defense Turrets",
+        "cat": "Upgrade",
+        "cost": 1,
+        "combat": 8,
+        "move": 2,
+        "abilities": [
+            {
+                "id": 1,
+                "value": 6,
+                "rolls": 3
+            }
+        ],
+        "req": ["warfare", "warfare"]
+    },
+    {
+        "id": 8,
+        "title": "Dreadnought II",
+        "subTitle": "Type IV Drive",
+        "cat": "Upgrade",
+        "desc": "This unit cannot be destroyed by \"Direct Hit\" action cards.",
+        "cost": 4,
+        "combat": 5,
+        "move": 2,
+        "capacity": 1,
+        "abilities": [
+            {
+                "id": 6
+            },
+            {
+                "id": 2,
+                "value": 5
+            }
+        ],
+        "req": ["propulsion", "propulsion", "cybernetic"]
+    },
+    {
+        "id": 9,
+        "title": "PDS II",
+        "subTitle": "Deep Space Cannon",
+        "cat": "Upgrade",
+        "desc": "You may use this unit's SPACE CANNON against ships that are adjacent to this unit's system.",
+        "abilities": [
+            {
+                "id": 3
+            },
+            {
+                "id": 5,
+                "value": 5
+            }
+        ],
+        "req": ["cybernetic", "warfare"]
+    },
+    {
+        "id": 10,
+        "title": " Bioplasmosis",
+        "cat": "Biotic",
+        "desc": "At the end of the status phase, you may remove any number of infantry from planets you control and place them on 1 or more planets you control in the same or adjacent systems",
+        "req": ["biotic", "biotic"],
+        "factionId": 3
     }
 ]

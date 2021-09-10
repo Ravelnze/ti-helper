@@ -1,14 +1,12 @@
-import { useState } from "react";
 import Form from "react-bootstrap/Form";
 
 // Data
 import Factions from "../data/factions.json";
-import { setFaction,setTech } from "../store/Actions";
+import { setFaction, setTech } from "../store/Actions";
 import { useStore } from "../store/Store";
 
 function FactionList() {
-    const [state,dispatch] = useStore();
-    const [faction, setFactionState] = useState(null);
+    const [state, dispatch] = useStore();
 
     const factionOptions = [];
     for (var i = 0; i < Factions.length; i++) {
@@ -25,8 +23,7 @@ function FactionList() {
 
     const handleOnChange = (e) => {
         const f =
-            e.target.selectedIndex == 0 ? null : JSON.parse(e.target.value);
-        setFactionState(f);
+            e.target.selectedIndex === 0 ? null : JSON.parse(e.target.value);
         dispatch(setFaction(f));
         dispatch(setTech(f?.tech));
     };

@@ -1,0 +1,8 @@
+.accordion-item {
+    background-color: rgba(0,0,0,0)!important;
+}
+
+.accordion-body {
+    overflow: scroll;
+    padding-bottom: 0;
+}

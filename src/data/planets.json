@@ -1,0 +1,134 @@
+[
+    {
+        "id": 1,
+        "title": "Jol",
+        "resource": 1,
+        "influence": 2,
+        "homeFactionId": 4,
+        "legendaryAbility": null,
+        "trait": null,
+        "techSpecialty": null,
+        "desc": "Covered by cold oceans and a few inhospitable islands. The seat of the Headmaster, the Hylar ruler, dwells in the deep underwater city of Wun-Escha."
+    },
+    {
+        "id": 2,
+        "title": "Nar",
+        "resource": 2,
+        "influence": 3,
+        "homeFactionId": 4,
+        "legendaryAbility": null,
+        "trait": null,
+        "techSpecialty": null,
+        "desc": "Covered by mild oceans and a small archipelago called The Reef by off-worlders. The Circle of Regents makes its home in the underwater city-school of Nuun-Dascha."
+    },
+    {
+        "id": 3,
+        "title": "Hercant",
+        "resource": 1,
+        "influence": 1,
+        "homeFactionId": 1,
+        "legendaryAbility": null,
+        "trait": null,
+        "techSpecialty": null,
+        "desc": "Also called the \"Fire Sand.\" Seat of the Quieron, the Hacan council, and the Sword Fleet. Harbors the greatest of the famous Hacan moving cities."
+    },
+    {
+        "id": 4,
+        "title": "Arretze",
+        "resource": 2,
+        "influence": 0,
+        "homeFactionId": 1,
+        "legendaryAbility": null,
+        "trait": null,
+        "techSpecialty": null,
+        "desc": "Also called the \"Moving Sand.\" The desert home of the Hacan Mowshir trade families and the great orbital trading ports of Haal, Shimax, and Dry Wind."
+    },
+    {
+        "id": 5,
+        "title": "Kamdorn",
+        "resource": 0,
+        "influence": 1,
+        "homeFactionId": 1,
+        "legendaryAbility": null,
+        "trait": null,
+        "techSpecialty": null,
+        "desc": "Also called the \"Dream Sand.\" The least populated of the Hacan planets, but the center of Hacan mythology and religion. The only known source of starflowers."
+    },
+    {
+        "id": 6,
+        "title": "The Dark",
+        "resource": 3,
+        "influence": 4,
+        "homeFactionId": 2,
+        "legendaryAbility": null,
+        "trait": null,
+        "techSpecialty": null,
+        "desc": "A massive nebula dominating the skies of many core worlds. Thick clouds of dust obscure its heart, a lightless refuge where Empyrean ships have congregated for millennia"
+    },
+    {
+        "id": 7,
+        "title": "Nestphar",
+        "resource": 3,
+        "influence": 2,
+        "homeFactionId": 3,
+        "legendaryAbility": null,
+        "trait": null,
+        "techSpecialty": null,
+        "desc": "The fungal world of Nestphar is home to the symbiotic Arborec. Nestphar's orbit is filled with Flaah spores that extend its Symphony."
+    },
+    {
+        "id": 8,
+        "title": "Abyz",
+        "resource": 3,
+        "influence": 0,
+        "homeFactionId": null,
+        "legendaryAbility": null,
+        "trait": "Hazardous",
+        "techSpecialty": null,
+        "desc": "Its thick, complex atmosphere is inhospitable to most races, but Abyz is known for its seemingly endless natural reserves of rare minerals and precious metals."
+    },
+    {
+        "id": 9,
+        "title": "Meer",
+        "resource": 0,
+        "influence": 4,
+        "homeFactionId": null,
+        "legendaryAbility": null,
+        "trait": "Hazardous",
+        "techSpecialty": "Warfare",
+        "desc": "Hellish world immolated in the inferno of its nearby sun. Famed for the fiery majesty of its surface when viewed from the safety of its many orbital stations."
+    },
+    {
+        "id": 10,
+        "title": "Arinam",
+        "resource": 1,
+        "influence": 2,
+        "homeFactionId": null,
+        "legendaryAbility": null,
+        "trait": "Industrial",
+        "techSpecialty": null,
+        "desc": "Isolated planet poor in resources but rich in natural beauty. Boasts many exotic resorts frequented by the rich and famous of the galaxy."
+    },
+    {
+        "id": 11,
+        "title": "Centauri",
+        "resource": 1,
+        "influence": 3,
+        "homeFactionId": null,
+        "legendaryAbility": null,
+        "trait": "Cultural",
+        "techSpecialty": null,
+        "desc": "Venerable world with few resources but a rich history. Site of important treaties between several races during the Twilight Wars."
+    },
+    {
+        "id": 12,
+        "title": "Primor",
+        "resource": 2,
+        "influence": 1,
+        "homeFactionId": null,
+        "legendaryAbility": 1,
+        "trait": "Cultural",
+        "techSpecialty": "Cybernetic",
+        "desc": "Large temperate world. Site of several pitched battles during the Twilight Wars due to valuable osmium deposits and a well-educated populace."
+    }
+]

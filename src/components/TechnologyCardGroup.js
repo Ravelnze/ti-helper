@@ -1,6 +1,5 @@
 import CardGroup from "react-bootstrap/CardGroup";
 import TechnologyCard from "./TechnologyCard";
-import DividerText from "./DividerText";
 
 function TechnologyCardGroup(props) {
     return (

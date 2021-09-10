@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "title": "Sabotage",
+        "timing": "When another player plays an action card other than \"Sabotage\"",
+        "effect": "Cancel that action card."
+    },
+    {
+        "id": 2,
+        "title": "Cripple Defenses",
+        "timing": "Action: Choose 1 planet.",
+        "componentAction": true,
+        "effect": "Destroy each PDS on that planet.",
+        "phase": "Action"
+    },
+    {
+        "id": 3,
+        "title": "Ancient Burial Sites",
+        "timing": "At the start of the agenda phase",
+        "effect": "Choose 1 player. Exhaust each cultural planet owned by that player.",
+        "phase": "Agenda"
+    },
+    {
+        "id": 4,
+        "title": "Imperial Rider",
+        "timing": "After an agenda is revealed",
+        "effect": "You cannot vote on this agenda. Predict aloud an outcome of this agenda. If your prediction is correct, gain 1 victory point.",
+        "phase": "Agenda"
+    },
+    {
+        "id": 5,
+        "title": "Fire Team",
+        "timing": "After your ground forces make combat rolls during a round of ground combat",
+        "effect": "Reroll any number of your dice.",
+        "phase": "GroundCombat"
+    },
+    {
+        "id": 6,
+        "title": "Courageous to the End",
+        "timing": "After 1 of your ships is destroyed during a space combat",
+        "effect": "Roll 2 dice. For each result equal to or greater than that ship's combat value, your opponent must choose and destroy 1 of their ships.",
+        "phase": "SpaceCombat"
+    },
+    {
+        "id": 7,
+        "title": "Political Stability",
+        "timing": "When you would return your strategy card(s) during the status phase",
+        "effect": "Do not return your strategy card(s). You do not choose strategy cards during the next strategy phase.",
+        "phase": "Status"
+    },
+    {
+        "id": 8,
+        "title": "Public Disgrace",
+        "timing": "When another player chooses a strategy card during the strategy phase",
+        "effect": "That player must choose a different strategy card instead, if able.",
+        "phase": "Strategy"
+    }
+]

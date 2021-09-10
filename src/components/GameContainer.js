@@ -1,111 +1,160 @@
-// #region imports
+import { useState } from "react";
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
-import StrategyPhase from "./StrategyPhase";
-import ActionPhase from "./ActionPhase";
-import StatusPhase from "./StatusPhase";
-import AgendaPhase from "./AgendaPhase";
-import SpaceCombat from "./SpaceCombat";
-import GroundCombat from "./GroundCombat";
 import Overview from "./Overview";
 import Nav from "react-bootstrap/Nav";
 import NavItem from "react-bootstrap/NavItem";
 import Navbar from "react-bootstrap/Navbar";
+import Image from "react-bootstrap/Image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faGavel,
     faSatelliteDish,
     faChess,
-    faRedo,
     faRocket,
-    faFlag,
 } from "@fortawesome/free-solid-svg-icons";
-// #endregion
 
-function GameContainer({ props }) {
-    const tabs = [
-        {
-            route: "/strategy",
-            icon: faChess,
-            label: "Strategy",
-        },
-        {
-            route: "/action",
-            icon: faSatelliteDish,
-            label: "Action",
-        },
-        {
-            route: "/status",
-            icon: faRedo,
-            label: "Status",
-        },
-        {
-            route: "/agenda",
-            icon: faGavel,
-            label: "Agenda",
-        },
-        {
-            route: "/space",
-            icon: faRocket,
-            label: "Space",
-        },
-        {
-            route: "/ground",
-            icon: faFlag,
-            label: "Ground",
-        }
-    ];
+import PhaseContainer from "./PhaseContainer";
+import CombatContainer from "./CombatContainer";
+import PlannerContainer from "./PlannerContainer";
+import EditModal from "./EditModal";
+import { useStore } from "../store/Store";
+import getLogoByKey from "../lib/Logos";
 
+function GameContainer() {
+    const [state, dispatch] = useStore();
     let match = useRouteMatch();
+
+    const [show, setShow] = useState(false);
+
+    const showModal = () => {
+        setShow(true);
+    };
+    const hideModal = () => {
+        setShow(false);
+    };
 
     return (
         <>
             <Switch>
-                <Route path={`${match.path}/strategy`}>
-                    <StrategyPhase />
+                <Route path={`${match.path}/phases`}>
+                    <PhaseContainer showEditModal={() => showModal()} />
                 </Route>
-                <Route path={`${match.path}/action`}>
-                    <ActionPhase />
+                <Route path={`${match.path}/combat`}>
+                    <CombatContainer showEditModal={() => showModal()} />
                 </Route>
-                <Route path={`${match.path}/status`}>
-                    <StatusPhase />
+                <Route path={`${match.path}/planners`}>
+                    <PlannerContainer showEditModal={() => showModal()} />
                 </Route>
-                <Route path={`${match.path}/agenda`}>
+                {/* <Route path={`${match.path}/something`}>
                     <AgendaPhase />
-                </Route>
-                <Route path={`${match.path}/space`}>
-                    <SpaceCombat />
-                </Route>
-                <Route path={`${match.path}/ground`}>
-                    <GroundCombat />
-                </Route>
+                </Route> */}
                 <Route path={`${match.path}`}>
-                    <Overview />
+                    <Overview showEditModal={() => showModal()} />
                 </Route>
             </Switch>
 
             <Navbar bg="dark" variant="dark" fixed="bottom">
                 <Nav className="w-100">
                     <div className="d-flex flex-row justify-content-around w-100">
-                        {tabs.map((tab, index) => (
-                            <NavItem key={index}>
-                                <Link
-                                    className="nav-link"
-                                    to={`${match.url}${tab.route}`}
-                                >
-                                    <div className="d-flex flex-column justify-content-center align-items-center">
-                                        <FontAwesomeIcon
-                                            size="sm"
-                                            icon={tab.icon}
-                                            color='rgba(255, 255, 255, 0.85)'
-                                        />
-                                        <p style={{color: 'rgba(255, 255, 255, 0.85)', fontSize: "0.8rem"}}>{tab.label}</p>
-                                    </div>
-                                </Link>
-                            </NavItem>
-                        ))}
+                        <NavItem>
+                            <Link
+                                className="nav-link"
+                                to={`${match.url}/phases`}
+                            >
+                                <div className="d-flex flex-column justify-content-center align-items-center">
+                                    <FontAwesomeIcon
+                                        size="sm"
+                                        icon={faSatelliteDish}
+                                        color="rgba(255, 255, 255, 0.85)"
+                                    />
+                                    <p
+                                        style={{
+                                            color: "rgba(255, 255, 255, 0.85)",
+                                            fontSize: "0.8rem",
+                                        }}
+                                    >
+                                        Phases
+                                    </p>
+                                </div>
+                            </Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link
+                                className="nav-link"
+                                to={`${match.url}/combat`}
+                            >
+                                <div className="d-flex flex-column justify-content-center align-items-center">
+                                    <FontAwesomeIcon
+                                        size="sm"
+                                        icon={faRocket}
+                                        color="rgba(255, 255, 255, 0.85)"
+                                    />
+                                    <p
+                                        style={{
+                                            color: "rgba(255, 255, 255, 0.85)",
+                                            fontSize: "0.8rem",
+                                        }}
+                                    >
+                                        Combat
+                                    </p>
+                                </div>
+                            </Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link className="nav-link" to={`${match.url}`}>
+                                <div className="d-flex flex-column justify-content-center align-items-center">
+                                    <Image
+                                        src={getLogoByKey(state.faction.logo)}
+                                        width="50px"
+                                    />
+                                </div>
+                            </Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link
+                                className="nav-link"
+                                to={`${match.url}/planners`}
+                            >
+                                <div className="d-flex flex-column justify-content-center align-items-center">
+                                    <FontAwesomeIcon
+                                        size="sm"
+                                        icon={faChess}
+                                        color="rgba(255, 255, 255, 0.85)"
+                                    />
+                                    <p
+                                        style={{
+                                            color: "rgba(255, 255, 255, 0.85)",
+                                            fontSize: "0.8rem",
+                                        }}
+                                    >
+                                        Planners
+                                    </p>
+                                </div>
+                            </Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link className="nav-link" to={`${match.url}`}>
+                                <div className="d-flex flex-column justify-content-center align-items-center">
+                                    <FontAwesomeIcon
+                                        size="sm"
+                                        icon={faChess}
+                                        color="rgba(255, 255, 255, 0.85)"
+                                    />
+                                    <p
+                                        style={{
+                                            color: "rgba(255, 255, 255, 0.85)",
+                                            fontSize: "0.8rem",
+                                        }}
+                                    >
+                                        Empty
+                                    </p>
+                                </div>
+                            </Link>
+                        </NavItem>
                     </div>
                 </Nav>
             </Navbar>
+
+            <EditModal show={show} hide={hideModal} />
         </>
     );
 }

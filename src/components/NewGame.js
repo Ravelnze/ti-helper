@@ -38,8 +38,8 @@ function NewGame() {
                 <Col>
                     {state.faction != null ? (
                         <>
-                        <DividerText title="Starting Units" />
-                        <UnitList units={state.faction.units} />
+                            <DividerText title="Starting Units" />
+                            <UnitList units={state.faction.units} />
                         </>
                     ) : null}
                 </Col>
