@@ -23,11 +23,9 @@ import Technology from "../data/technologies.json";
 import Objectives from "../data/objectives.json";
 import ActionCards from "../data/actionCards.json";
 import ActionCardCard from "./ActionCardCard";
-import { useRef } from "react";
 
 function EditModal(props) {
     const [state, dispatch] = useStore();
-    const hiddenInput = useRef(null);
 
     return (
         <Modal
@@ -173,7 +171,6 @@ function EditModal(props) {
                                                     )
                                                 }
                                             />
-                                            {/* <input ref={hiddenInput} /> */}
                                         </Col>
                                     </Row>
                                 </Accordion.Body>
@@ -182,7 +179,6 @@ function EditModal(props) {
                                         {state.actionCards.map((ac, i) => (
                                             <Col key={i}>
                                                 <ActionCardCard
-                                                    hiddenInput={hiddenInput}
                                                     card={ac}
                                                 />
                                             </Col>
