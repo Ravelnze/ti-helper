@@ -1,0 +1,70 @@
+[
+    {
+        "id": 1,
+        "title": "Anti-Intellectual Revolution",
+        "for": "After a player researches a technology, they must destroy 1 of their non-fighter ships.",
+        "against": "At the start of the next strategy phase, each player chooses and exhausts 1 planet for each technology they own.",
+        "phase": "Action"
+    },
+    {
+        "id": 2,
+        "title": "Classified Document Leaks",
+        "electTitle": "Scored Secret Objective",
+        "electPrimary": "Objective",
+        "electSecondary": "Secret",
+        "condition": "When this agenda is revealed, if there are no scored secret objectives, discard this card and reveal another agenda from the top of the deck.",
+        "desc": "The elected secret objective becomes a public objective; place it near the other public objectives in the common play area."
+    },
+    {
+        "id": 3,
+        "title": "The Crown of Emphidia",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "gain": [{ "cat": "Victory Point", "value": 1 }],
+        "desc": "The elected player gains this card and 1 Victory Point.\r\nA player gains this card and 1 Victory Point after they gain control of a planet in the home system of this card's owner. Then, the previous owner of this card loses 1 Victory Point.",
+        "phase": "Action",
+        "pok": false
+    },
+    {
+        "id": 4,
+        "title": "Terraforming Initiative",
+        "electTitle": "Hazardous Planet",
+        "electPrimary": "Planet",
+        "electSecondary": "Hazardous",
+        "gain": [{"cat": "Attach"}, {"cat": "Resources", "value": 1}, {"cat": "Influence", "value": 1}],
+        "desc": "Attach this card to the elected planet's card.\r\nThe resource and influence values of this planet are increased by 1.",
+        "pok": false
+    },
+    {
+        "id": 5,
+        "title": "Research Team: Biotic",
+        "electTitle": "Industrial Planet",
+        "electPrimary": "Planet",
+        "electSecondary": "Industrial",
+        "gain": [{"cat": "Attach"}, {"cat": "Ignore Prerequisite", "value": "Biotic"}],
+        "desc": "Attach this card to the elected planet's card.\r\nWhen the owner of this planet researches technology, they may exhaust this card to ignore 1 green prerequisite.",
+        "phase": "Action",
+        "pok": false
+    },
+    {
+        "id": 6,
+        "title": "Holy Planet of Ixth",
+        "electTitle": "Cultural Planet",
+        "electPrimary": "Planet",
+        "electSecondary": "Cultural",
+        "gain": [{"cat": "Attach"}, {"cat": "Victory Point", "value": "1"}, {"cat": "Use Production", "value": false}],
+        "desc": "Attach this card to the elected planet's card. The planet's owner gains 1Victory Point . Units on this planet cannot use PRODUCTION. When a player gains control of this planet, they gain 1 Victory Point . When a player loses control of this planet, they lose 1 Victory Point",
+        "phase": "Action",
+        "pok": false
+    },
+    {
+        "id": 7,
+        "title": "Political Censure",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "gain": [{"cat": "Victory Point", "value": "1"}, {"cat": "Use Action Cards", "value": false}],
+        "desc": "The elected player gains this card and 1 Victory Point.\r\nThe elected player cannot play action cards.\r\nIf the owner of this card loses this card, they lose 1 Victory Point",
+        "phase": "Action",
+        "pok": true
+    }
+]

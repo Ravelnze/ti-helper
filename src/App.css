@@ -1,38 +1,54 @@
-.App {
-  text-align: center;
+h1,
+h2,
+h3,
+h4,
+h5,
+label {
+    color: rgba(255, 255, 255, 0.85);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.light-text,
+.modal-title,
+.modal-body {
+    color: rgba(255, 255, 255, 0.85);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dark-text {
+    color: #212529;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.modal-header,
+.modal-body,
+.modal-footer {
+    background-color: #040735;
 }
 
-.App-link {
-  color: #61dafb;
+.modal-footer {
+    border-top: 1px solid rgb(2, 0, 19) !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.modal-header {
+    border-bottom: 1px solid rgb(2, 0, 19) !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+.pointer {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.accordion-header,
+.accordion-button {
+    background-color: #18005c !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+.accordion-button::after {
+    content: none !important;
+}
+
+.container {
+    padding-bottom: 100px;
 }

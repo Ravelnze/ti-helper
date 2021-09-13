@@ -17,6 +17,7 @@ export function SetFaction(state, faction) {
         planets: planets,
         faction: faction,
         objectives: [],
-        actionCards: [],
+        actionCards: {},
+        agendas: [],
     };
 }

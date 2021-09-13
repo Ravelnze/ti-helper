@@ -1,5 +1,12 @@
 import * as Types from "./Types";
 
+export function setPok(usingPok) {
+    return {
+        type: Types.SETPOK,
+        payload: usingPok,
+    };
+}
+
 export function setFaction(faction) {
     return {
         type: Types.SETFACTION,
@@ -81,5 +88,26 @@ export function removeActionCard(actionCard) {
     return {
         type: Types.REMOVEACTIONCARD,
         payload: actionCard,
+    };
+}
+
+export function addAgenda(agenda) {
+    return {
+        type: Types.ADDAGENDA,
+        payload: agenda,
+    };
+}
+
+export function removeAgenda(agenda) {
+    return {
+        type: Types.REMOVEAGENDA,
+        payload: agenda,
+    };
+}
+
+export function electOutcome(agenda, outcome) {
+    return {
+        type: Types.ELECTOUTCOME,
+        payload: { agenda, outcome },
     };
 }

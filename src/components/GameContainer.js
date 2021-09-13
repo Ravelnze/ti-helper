@@ -5,6 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import NavItem from "react-bootstrap/NavItem";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";
+import Container from "react-bootstrap/Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faSatelliteDish,
@@ -34,23 +35,25 @@ function GameContainer() {
 
     return (
         <>
-            <Switch>
-                <Route path={`${match.path}/phases`}>
-                    <PhaseContainer showEditModal={() => showModal()} />
-                </Route>
-                <Route path={`${match.path}/combat`}>
-                    <CombatContainer showEditModal={() => showModal()} />
-                </Route>
-                <Route path={`${match.path}/planners`}>
-                    <PlannerContainer showEditModal={() => showModal()} />
-                </Route>
-                {/* <Route path={`${match.path}/something`}>
+            <Container>
+                <Switch>
+                    <Route path={`${match.path}/phases`}>
+                        <PhaseContainer showEditModal={() => showModal()} />
+                    </Route>
+                    <Route path={`${match.path}/combat`}>
+                        <CombatContainer showEditModal={() => showModal()} />
+                    </Route>
+                    <Route path={`${match.path}/planners`}>
+                        <PlannerContainer showEditModal={() => showModal()} />
+                    </Route>
+                    {/* <Route path={`${match.path}/something`}>
                     <AgendaPhase />
                 </Route> */}
-                <Route path={`${match.path}`}>
-                    <Overview showEditModal={() => showModal()} />
-                </Route>
-            </Switch>
+                    <Route path={`${match.path}`}>
+                        <Overview showEditModal={() => showModal()} />
+                    </Route>
+                </Switch>
+            </Container>
 
             <Navbar bg="dark" variant="dark" fixed="bottom">
                 <Nav className="w-100">

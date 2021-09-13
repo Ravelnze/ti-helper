@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 
 import FactionList from "./FactionList";
@@ -11,6 +12,7 @@ import TechnologyCardGroup from "./TechnologyCardGroup";
 import UnitList from "./UnitList";
 import ValueLabel from "./ValueLabel";
 import { useStore } from "../store/Store";
+import { setPok } from "../store/Actions";
 //#endregion
 
 function NewGame() {
@@ -21,6 +23,17 @@ function NewGame() {
             <Row>
                 <Col>
                     <DividerText title="New Game" />
+                </Col>
+            </Row>
+            <Row>
+                <Col className="mb-2">
+                    <Form.Check
+                        type="checkbox"
+                        style={{fontSize: "1.2rem"}}
+                        label="Prophecy of kings"
+                        checked={state.pok}
+                        onChange={() => dispatch(setPok(!state.pok))}
+                    />
                 </Col>
             </Row>
             <Row>

@@ -1,7 +1,8 @@
 const Stage1 = "Stage 1";
 const Stage2 = "Stage 2";
-const Secret = "Secret";
+export const Secret = "Secret";
 
+export const publicCategories = [Stage1, Stage2];
 export const categories = [Stage1, Stage2, Secret];
 
 export function GetObjectiveVariantColour(cat) {

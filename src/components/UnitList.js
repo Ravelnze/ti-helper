@@ -10,7 +10,9 @@ function UnitList(props) {
                 return (
                     <Form.Check
                         key={i}
+                        inline
                         type="checkbox"
+                        style={{fontSize: "1.2rem"}}
                         label={`${unit.title} - ${u.count}`}
                     />
                 );

@@ -1,3 +1,5 @@
+export const SETPOK = "SETPOK";
+
 export const SETFACTION = "SETFACTION";
 
 export const SETTECH = "SETTECH";
@@ -14,3 +16,7 @@ export const REMOVEOBJECTIVE = "REMOVEOBJECTIVE";
 
 export const ADDACTIONCARD = "ADDACTIONCARD";
 export const REMOVEACTIONCARD = "REMOVEACTIONCARD";
+
+export const ADDAGENDA = "ADDAGENDA";
+export const REMOVEAGENDA = "REMOVEAGENDA";
+export const ELECTOUTCOME = "ELECTOUTCOME";

@@ -2,7 +2,6 @@ import { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CloseButton from "react-bootstrap/CloseButton";
-import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
@@ -23,6 +22,8 @@ import {
     GetTotalPublicObjectives,
     GetTotalSecretObjectives,
 } from "../lib/Objective";
+import { GetTotalActionCardCount } from "../lib/ActionCard";
+import { GetVictoryPointsFromAgendas } from "../lib/Agenda";
 
 function Overview(props) {
     const [state, dispatch] = useStore();
@@ -44,7 +45,7 @@ function Overview(props) {
     };
 
     return (
-        <Container>
+        <>
             <Row>
                 <Col>
                     <CloseButton
@@ -69,6 +70,8 @@ function Overview(props) {
                     </a>
                 </Col>
             </Row>
+
+            {/* Technology */}
             <Row>
                 <Col>
                     <DividerText title="Technology" />
@@ -92,6 +95,8 @@ function Overview(props) {
                     })}
                 </Col>
             </Row>
+
+            {/* Planets */}
             <Row>
                 <Col>
                     <DividerText title="Planets" />
@@ -130,30 +135,62 @@ function Overview(props) {
                 bg="info"
                 value={`${state.availableInfluence}/${state.totalInfluence}`}
             />
+
+            {/* Action Cards */}
+            <Row>
+                <Col>
+                    <DividerText title="Action Cards" />
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <ValueLabel
+                        label="Total"
+                        value={GetTotalActionCardCount(state.actionCards)}
+                    />
+                    <ValueLabel
+                        label="Sabotage"
+                        value={state.actionCards[1]?.length ?? 0}
+                        hidden
+                    />
+                </Col>
+            </Row>
+
+            {/* Objectives */}
             <Row>
                 <Col>
                     <DividerText title="Objectives" />
                 </Col>
             </Row>
-            <ValueLabel
-                label="Points Scored"
-                value={GetCompletedObjectivesPoints(state.objectives)}
-            />
-            <ValueLabel
-                label="Public"
-                bg="primary"
-                value={`${
-                    GetCompletedPublicObjectives(state.objectives).length
-                }/${GetTotalPublicObjectives(state.objectives).length}`}
-            />
-            <ValueLabel
-                label="Secret"
-                bg="danger"
-                value={`${
-                    GetCompletedSecretObjectives(state.objectives).length
-                }/${GetTotalSecretObjectives(state.objectives).length}`}
-            />
-            {/* Total Action Cards */}
+            <Row>
+                <Col>
+                    <ValueLabel
+                        label="Victory Points"
+                        value={
+                            Number(
+                                GetCompletedObjectivesPoints(state.objectives)
+                            ) +
+                            Number(GetVictoryPointsFromAgendas(state.agendas))
+                        }
+                    />
+                    <ValueLabel
+                        label="Public"
+                        bg="primary"
+                        value={`${
+                            GetCompletedPublicObjectives(state.objectives)
+                                .length
+                        }/${GetTotalPublicObjectives(state.objectives).length}`}
+                    />
+                    <ValueLabel
+                        label="Secret"
+                        bg="danger"
+                        value={`${
+                            GetCompletedSecretObjectives(state.objectives)
+                                .length
+                        }/${GetTotalSecretObjectives(state.objectives).length}`}
+                    />
+                </Col>
+            </Row>
 
             {/* Exit Game Modal */}
             <Modal show={showExit} onHide={hideExitModal}>
@@ -174,7 +211,7 @@ function Overview(props) {
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </Container>
+        </>
     );
 }
 

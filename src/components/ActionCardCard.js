@@ -13,7 +13,7 @@ function ActionCardCard(props) {
                 }}
             />
             <Card.Header className="text-center">
-                <span className="float-start">x{props.card.count}</span>
+                <span className="float-start">x{props.count}</span>
                 {props.card.title}
             </Card.Header>
             <Card.Body style={{ minWidth: "200px", minHeight: "80px" }}>

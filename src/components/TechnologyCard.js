@@ -109,6 +109,7 @@ function TechnologyCard(props) {
                         <Card.Footer className="bg-dark">
                             {props.tech.req.map((r, i) => (
                                 <Image
+                                    key={i}
                                     className="prereq"
                                     width="15px"
                                     src={GetLogoByKey(r)}

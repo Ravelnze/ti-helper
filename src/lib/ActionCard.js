@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 const Action = "Action";
 const Strategy = "Strategy";
 const Agenda = "Agenda";
@@ -15,28 +17,38 @@ export const categories = [
 ];
 
 export function AddActionCard(actionCards, actionCard) {
-    const index = actionCards.findIndex((ac) => ac.id === actionCard.id);
+    actionCard.instanceId = uuidv4();
 
-    if (index === -1) {
-        // add the new card and set initial count
-        actionCard.count = 1;
-        return [...actionCards, actionCard];
+    if (actionCards[actionCard.id]) {
+        actionCards[actionCard.id].push(actionCard);
+    } else {
+        actionCards[actionCard.id] = [actionCard];
     }
 
-    actionCards[index].count++;
     return actionCards;
 }
 
 export function RemoveActionCard(actionCards, actionCard) {
-    if (actionCard.count > 1) {
-        const index = actionCards.findIndex((ac) => ac.id === actionCard.id);
-        let count = actionCard.count;
-        count--;
-        console.log(actionCards[0]);
-        actionCards[index].count = count;
-        console.log(actionCards[0]);
+    if (!actionCards[actionCard.id]) {
         return actionCards;
     }
 
-    return actionCards.filter((ac) => ac.id !== actionCard.id);
+    actionCards[actionCard.id] = actionCards[actionCard.id].filter(
+        (ac) => ac.instanceId !== actionCard.instanceId
+    );
+
+    if (actionCards[actionCard.id].length === 0) {
+        delete actionCards[actionCard.id];
+    }
+
+    return actionCards;
+}
+
+export function GetTotalActionCardCount(actionCards) {
+    let count = 0;
+    for (let key of Object.keys(actionCards)) {
+        count += actionCards[key].length;
+    }
+
+    return count;
 }

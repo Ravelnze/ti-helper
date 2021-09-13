@@ -33,9 +33,16 @@ function AutoSuggestionInput(props) {
     const onSuggestionsClearRequested = () => setSuggestions([]);
 
     const inputProps = {
-        placeholder: "Start typing",
+        placeholder: props.placeholder ?? "Start typing",
         value,
-        onChange: (event, { newValue, method }) => setValue(newValue),
+        onChange: (event, { newValue, method }) => {
+            setValue(newValue);
+        },
+        onKeyPress: (event) => {
+            if (event.key === "Enter" && suggestions.length > 0) {
+                setValue(getSuggestionValue(suggestions[0]));
+            }
+        },
     };
 
     return (

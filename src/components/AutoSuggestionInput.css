@@ -30,8 +30,8 @@
     background-color: #fff;
 }
 .react-autosuggest__suggestions-container {
-    position: fixed;
-    width: 300px;
+    position: absolute;
+    width: 80%;
     border-radius: 0.25rem;
     box-sizing: border-box;
     background-color: #fff;

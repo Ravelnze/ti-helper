@@ -9,13 +9,16 @@ import {
     RemoveObjective,
 } from "../lib/Objective";
 import { AddActionCard, RemoveActionCard } from "../lib/ActionCard";
+import { AddAgenda, ElectOutcome, RemoveAgenda } from "../lib/Agenda";
 
 export const initialState = {
+    pok: true,
     faction: null,
     technologies: [],
     planets: [],
     objectives: [],
-    actionCards: [],
+    actionCards: {},
+    agendas: [],
     availableResources: 0,
     totalResources: 0,
     availableInfluence: 0,
@@ -26,6 +29,13 @@ export const initialState = {
 // https://dev.to/vanderleisilva/middlewares-with-react-context-and-hooks-2gm1
 
 // #region handlers
+function setPok(state, { payload }) {
+    return {
+        ...state,
+        pok: payload,
+    };
+}
+
 function setFaction(state, { payload }) {
     return SetFaction(state, payload);
 }
@@ -96,10 +106,30 @@ function addActionCard(state, { payload }) {
 }
 
 function removeActionCard(state, { payload }) {
-    console.log("remove")
     return {
         ...state,
         actionCards: RemoveActionCard(state.actionCards, payload),
+    };
+}
+
+function addAgenda(state, { payload }) {
+    return {
+        ...state,
+        agendas: AddAgenda(state.agendas, payload),
+    };
+}
+
+function removeAgenda(state, { payload }) {
+    return {
+        ...state,
+        agendas: RemoveAgenda(state.agendas, payload),
+    };
+}
+
+function electOutcome(state, { payload }) {
+    return {
+        ...state,
+        agendas: ElectOutcome(state.agendas, payload.agenda, payload.outcome),
     };
 }
 
@@ -118,6 +148,7 @@ const createReducer = (handlers) => (state, action) => {
 };
 
 export const reducer = createReducer({
+    [Types.SETPOK]: setPok,
     [Types.SETFACTION]: setFaction,
     [Types.SETTECH]: setTech,
     [Types.ADDTECH]: addTech,
@@ -130,4 +161,7 @@ export const reducer = createReducer({
     [Types.REMOVEOBJECTIVE]: removeObjective,
     [Types.ADDACTIONCARD]: addActionCard,
     [Types.REMOVEACTIONCARD]: removeActionCard,
+    [Types.ADDAGENDA]: addAgenda,
+    [Types.REMOVEAGENDA]: removeAgenda,
+    [Types.ELECTOUTCOME]: electOutcome,
 });
