@@ -91,13 +91,12 @@ export function ElectOutcome(agendas, agenda, outcome) {
 }
 
 export function GetVictoryPointsFromAgendas(agendas, faction) {
-    // Need to filter this for elected faction == current faction
-    return agendas.length > 0
-        ? agendas
-              ?.map((a) => a.gain)
-              ?.reduce((g) => g)
-              ?.filter((g) => g.cat === VP)
-              ?.map((g) => g.value)
-              ?.reduce((a, b) => a + b) ?? 0
-        : 0;
+    const filteredAgendas = agendas.filter(a => a.elected && a.electPrimary === Player && a.elected.id === faction.id);
+
+    return filteredAgendas.length > 0 ? filteredAgendas
+        ?.map((a) => a.gain)
+        ?.reduce((g) => g)
+        ?.filter((g) => g.cat === VP)
+        ?.map((g) => g.value)
+        ?.reduce((a, b) => a + b) ?? 0 : 0;
 }

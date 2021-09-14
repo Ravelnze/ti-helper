@@ -170,7 +170,7 @@ function Overview(props) {
                             Number(
                                 GetCompletedObjectivesPoints(state.objectives)
                             ) +
-                            Number(GetVictoryPointsFromAgendas(state.agendas))
+                            Number(GetVictoryPointsFromAgendas(state.agendas, state.faction))
                         }
                     />
                     <ValueLabel
