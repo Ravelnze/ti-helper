@@ -43,7 +43,7 @@ function EditModal(props) {
                         <Accordion>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>Planets</Accordion.Header>
-                                <Accordion.Body className="py-2">
+                                <Accordion.Body className="py-2 px-0">
                                     <Row className="px-3">
                                         <Col className="p-0">
                                             <AutoSuggestionInput
@@ -75,7 +75,7 @@ function EditModal(props) {
                                     </Row>
                                 </Accordion.Body>
                                 {state.planets.length > 0 ? (
-                                    <Accordion.Body>
+                                    <Accordion.Body className="p-0">
                                         <ScrollableCardList
                                             cardList={state.planets}
                                             cardType={CardType.Planet}
@@ -87,7 +87,7 @@ function EditModal(props) {
 
                             <Accordion.Item eventKey="1">
                                 <Accordion.Header>Technology</Accordion.Header>
-                                <Accordion.Body className="py-2">
+                                <Accordion.Body className="py-2 px-0">
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
@@ -103,7 +103,7 @@ function EditModal(props) {
                                     </Row>
                                 </Accordion.Body>
                                 {state.technologies.length > 0 ? (
-                                    <Accordion.Body>
+                                    <Accordion.Body className="p-0">
                                         <ScrollableCardList
                                             cardList={state.technologies}
                                             cardType={CardType.Technology}
@@ -115,7 +115,7 @@ function EditModal(props) {
 
                             <Accordion.Item eventKey="2">
                                 <Accordion.Header>Objectives</Accordion.Header>
-                                <Accordion.Body className="py-2">
+                                <Accordion.Body className="py-2 px-0">
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
@@ -133,7 +133,7 @@ function EditModal(props) {
                                     </Row>
                                 </Accordion.Body>
                                 {state.objectives.length > 0 ? (
-                                    <Accordion.Body>
+                                    <Accordion.Body className="p-0">
                                         <ScrollableCardList
                                             cardList={state.objectives}
                                             cardType={CardType.Objective}
@@ -147,7 +147,7 @@ function EditModal(props) {
                                 <Accordion.Header>
                                     Action Cards
                                 </Accordion.Header>
-                                <Accordion.Body className="py-2">
+                                <Accordion.Body className="py-2 px-0">
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
@@ -166,7 +166,7 @@ function EditModal(props) {
                                 </Accordion.Body>
                                 {Object.keys(state.actionCards).length >
                                 0 ? (
-                                    <Accordion.Body>
+                                    <Accordion.Body className="p-0">
                                         <ScrollableCardList
                                             cardList={Object.entries(
                                                 state.actionCards
@@ -180,7 +180,7 @@ function EditModal(props) {
 
                             <Accordion.Item eventKey="6">
                                 <Accordion.Header>Agendas</Accordion.Header>
-                                <Accordion.Body className="py-2">
+                                <Accordion.Body className="py-2 px-0">
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
@@ -199,7 +199,7 @@ function EditModal(props) {
                                     </Row>
                                 </Accordion.Body>
                                 {state.agendas.length > 0 ? (
-                                    <Accordion.Body>
+                                    <Accordion.Body className="p-0">
                                         <ScrollableCardList
                                             cardList={state.agendas}
                                             cardType={CardType.Agenda}
