@@ -43,13 +43,9 @@ function EditModal(props) {
                         <Accordion>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>Planets</Accordion.Header>
-                                <Accordion.Body
-                                    className={
-                                        state.planets.length > 0 ? "pb-1" : ""
-                                    }
-                                >
-                                    <Row>
-                                        <Col>
+                                <Accordion.Body className="py-2">
+                                    <Row className="px-3">
+                                        <Col className="p-0">
                                             <AutoSuggestionInput
                                                 items={Planets.exclude(
                                                     state.planets
@@ -91,13 +87,7 @@ function EditModal(props) {
 
                             <Accordion.Item eventKey="1">
                                 <Accordion.Header>Technology</Accordion.Header>
-                                <Accordion.Body
-                                    className={
-                                        state.technologies.length > 0
-                                            ? "pb-1"
-                                            : ""
-                                    }
-                                >
+                                <Accordion.Body className="py-2">
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
@@ -125,13 +115,7 @@ function EditModal(props) {
 
                             <Accordion.Item eventKey="2">
                                 <Accordion.Header>Objectives</Accordion.Header>
-                                <Accordion.Body
-                                    className={
-                                        state.objectives.length > 0
-                                            ? "pb-1"
-                                            : ""
-                                    }
-                                >
+                                <Accordion.Body className="py-2">
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
@@ -163,13 +147,7 @@ function EditModal(props) {
                                 <Accordion.Header>
                                     Action Cards
                                 </Accordion.Header>
-                                <Accordion.Body
-                                    className={
-                                        state.actionCards.length > 0
-                                            ? "pb-1"
-                                            : ""
-                                    }
-                                >
+                                <Accordion.Body className="py-2">
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
@@ -202,11 +180,7 @@ function EditModal(props) {
 
                             <Accordion.Item eventKey="6">
                                 <Accordion.Header>Agendas</Accordion.Header>
-                                <Accordion.Body
-                                    className={
-                                        state.agendas.length > 0 ? "pb-1" : ""
-                                    }
-                                >
+                                <Accordion.Body className="py-2">
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput

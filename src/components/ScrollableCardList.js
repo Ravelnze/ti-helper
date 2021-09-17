@@ -21,9 +21,9 @@ function ScrollableCardList(props) {
         return `${i === 0 ? "ms-2" : ""} ${
             i === 0 &&
             props.cardList.length === 1 &&
-            props.removeButton
+            props.interactable
                 ? "me-3"
-                : "me-2"
+                : ""
         }`
     }
 
@@ -98,7 +98,7 @@ function ScrollableCardList(props) {
     }
 
     return (
-        <Container className="pt-3 pb-2 px-0 m-0 scrollable">
+        <Container className="pt-3 pb-2 px-1 m-0 scrollable">
             <Row className="d-flex flex-row flex-nowrap">
                 {renderCardList()}
             </Row>

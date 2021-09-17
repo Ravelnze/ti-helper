@@ -5,7 +5,3 @@
 .accordion-body {
     padding: 0 !important;
 }
-
-.accordion-collapse.collapse.show:first-of-type {
-    padding-top: 1rem;
-}
