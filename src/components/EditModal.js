@@ -3,10 +3,8 @@ import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
-import PlanetCard from "./PlanetCard";
 import { useStore } from "../store/Store";
 import "./EditModal.css";
-import TechnologyCard from "./TechnologyCard";
 import AutoSuggestionInput from "./AutoSuggestionInput";
 import {
     addPlanet,
@@ -16,8 +14,8 @@ import {
     addActionCard,
     addAgenda,
 } from "../store/Actions";
-import ObjectiveCard from "./ObjectiveCard";
-import ActionCardCard from "./ActionCardCard";
+import ScrollableCardList, { CardType } from "./ScrollableCardList";
+import "../lib/ArrayExtensions";
 
 // data
 import Planets from "../data/planets.json";
@@ -25,9 +23,6 @@ import Technology from "../data/technologies.json";
 import Objectives from "../data/objectives.json";
 import ActionCards from "../data/actionCards.json";
 import Agendas from "../data/agendas.json";
-
-import "../lib/ArrayExtensions";
-import AgendaCard from "./AgendaCard";
 
 function EditModal(props) {
     const [state, dispatch] = useStore();
@@ -85,15 +80,11 @@ function EditModal(props) {
                                 </Accordion.Body>
                                 {state.planets.length > 0 ? (
                                     <Accordion.Body>
-                                        <Row className="d-flex flex-row flex-nowrap">
-                                            {state.planets.map((planet, i) => (
-                                                <Col key={i}>
-                                                    <PlanetCard
-                                                        planet={planet}
-                                                    />
-                                                </Col>
-                                            ))}
-                                        </Row>
+                                        <ScrollableCardList
+                                            cardList={state.planets}
+                                            cardType={CardType.Planet}
+                                            interactable
+                                        />
                                     </Accordion.Body>
                                 ) : null}
                             </Accordion.Item>
@@ -123,18 +114,11 @@ function EditModal(props) {
                                 </Accordion.Body>
                                 {state.technologies.length > 0 ? (
                                     <Accordion.Body>
-                                        <Row className="d-flex flex-row flex-nowrap">
-                                            {state.technologies.map(
-                                                (tech, i) => (
-                                                    <Col key={i}>
-                                                        <TechnologyCard
-                                                            tech={tech}
-                                                            displayBody={true}
-                                                        />
-                                                    </Col>
-                                                )
-                                            )}
-                                        </Row>
+                                        <ScrollableCardList
+                                            cardList={state.technologies}
+                                            cardType={CardType.Technology}
+                                            interactable
+                                        />
                                     </Accordion.Body>
                                 ) : null}
                             </Accordion.Item>
@@ -166,15 +150,11 @@ function EditModal(props) {
                                 </Accordion.Body>
                                 {state.objectives.length > 0 ? (
                                     <Accordion.Body>
-                                        <Row className="d-flex flex-row flex-nowrap">
-                                            {state.objectives.map((obj, i) => (
-                                                <Col key={i}>
-                                                    <ObjectiveCard
-                                                        objective={obj}
-                                                    />
-                                                </Col>
-                                            ))}
-                                        </Row>
+                                        <ScrollableCardList
+                                            cardList={state.objectives}
+                                            cardType={CardType.Objective}
+                                            interactable
+                                        />
                                     </Accordion.Body>
                                 ) : null}
                             </Accordion.Item>
@@ -206,21 +186,16 @@ function EditModal(props) {
                                         </Col>
                                     </Row>
                                 </Accordion.Body>
-                                {Object.entries(state.actionCards).length >
+                                {Object.keys(state.actionCards).length >
                                 0 ? (
                                     <Accordion.Body>
-                                        <Row className="d-flex flex-row flex-nowrap">
-                                            {Object.entries(
+                                        <ScrollableCardList
+                                            cardList={Object.entries(
                                                 state.actionCards
-                                            ).map(([key, value]) => (
-                                                <Col key={key}>
-                                                    <ActionCardCard
-                                                        card={value[0]}
-                                                        count={value.length}
-                                                    />
-                                                </Col>
-                                            ))}
-                                        </Row>
+                                            )}
+                                            cardType={CardType.Action}
+                                            interactable
+                                        />
                                     </Accordion.Body>
                                 ) : null}
                             </Accordion.Item>
@@ -251,13 +226,11 @@ function EditModal(props) {
                                 </Accordion.Body>
                                 {state.agendas.length > 0 ? (
                                     <Accordion.Body>
-                                        <Row className="d-flex flex-row flex-nowrap">
-                                            {state.agendas.map((obj, i) => (
-                                                <Col key={i}>
-                                                    <AgendaCard agenda={obj} />
-                                                </Col>
-                                            ))}
-                                        </Row>
+                                        <ScrollableCardList
+                                            cardList={state.agendas}
+                                            cardType={CardType.Agenda}
+                                            interactable
+                                        />
                                     </Accordion.Body>
                                 ) : null}
                             </Accordion.Item>

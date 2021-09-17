@@ -2,7 +2,7 @@ const Cultural = "Cultural";
 const Hazardous = "Hazardous";
 const Industrial = "Industrial";
 
-export const categories = [Cultural, Hazardous, Industrial];
+export const Categories = { Cultural, Hazardous, Industrial };
 
 export function GetPlanetVariantColour(trait) {
     let variant = {};

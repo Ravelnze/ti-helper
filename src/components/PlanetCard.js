@@ -16,20 +16,27 @@ function PlanetCard(props) {
 
     return (
         <Card
-            style={{ cursor: "pointer" }}
+            className={props.interactable ? "pointer" : ""}
             bg={props.planet.isExhausted ? "light" : variant.colour}
             text={props.planet.isExhausted ? "dark" : variant.text}
             onClick={() => {
-                dispatch(
-                    exhaustPlanets([props.planet], !props.planet.isExhausted)
-                );
+                if (props.interactable) {
+                    dispatch(
+                        exhaustPlanets(
+                            [props.planet],
+                            !props.planet.isExhausted
+                        )
+                    );
+                }
             }}
         >
-            <RemoveButton
-                onClick={() => {
-                    dispatch(removePlanet(props.planet));
-                }}
-            />
+            {props.interactable ? (
+                <RemoveButton
+                    onClick={() => {
+                        dispatch(removePlanet(props.planet));
+                    }}
+                />
+            ) : null}
             <Card.Header>
                 <Row>
                     <Col className="pe-0">
@@ -44,10 +51,7 @@ function PlanetCard(props) {
                         </Badge>
                     </Col>
                     <Col className="px-0 text-center">
-                        <p
-                            className="mb-0"
-                            style={{ display: "inline-block" }}
-                        >
+                        <p className="mb-0" style={{ display: "inline-block" }}>
                             {props.planet.title}
                         </p>
                         {props.planet.techSpecialty != null ? (

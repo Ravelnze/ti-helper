@@ -4,20 +4,23 @@
         "title": "Corner the Market",
         "condition": "Control 4 planets that each have the same planet trait.",
         "points": 1,
-        "cat": "Stage 1"
+        "cat": "Stage 1",
+        "phase": ["Action"]
     },
     {
         "id": 2,
         "title": "Centralize Galactic Trade",
         "condition": "Spend 10 trade goods.",
         "points": 2,
-        "cat": "Stage 2"
+        "cat": "Stage 2",
+        "phase": ["Action", "Status"]
     },
     {
         "id": 3,
         "title": "Destroy Their Greatest Ship",
         "condition": "Destroy another player's war sun or flagship.",
         "points": 1,
-        "cat": "Secret"
+        "cat": "Secret",
+        "phase": ["Action"]
     }
 ]

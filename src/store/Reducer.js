@@ -1,4 +1,4 @@
-import { AddTech, RemoveTech, SetTech } from "../lib/Tech";
+import { AddTech, RemoveTech, SetTech } from "../lib/Technology";
 import { SetFaction } from "../lib/Faction";
 import applyMiddleware from "./Middleware";
 import * as Types from "./Types";
@@ -11,7 +11,7 @@ import {
 import { AddActionCard, RemoveActionCard } from "../lib/ActionCard";
 import { AddAgenda, ElectOutcome, RemoveAgenda } from "../lib/Agenda";
 
-export const initialState = {
+export const initialState = () => ({
     pok: true,
     faction: null,
     technologies: [],
@@ -23,12 +23,18 @@ export const initialState = {
     totalResources: 0,
     availableInfluence: 0,
     totalInfluence: 0,
-};
+    phaseTab: null,
+    combatTab: null,
+});
 
 // good guide on why the store is laid out this way
 // https://dev.to/vanderleisilva/middlewares-with-react-context-and-hooks-2gm1
 
 // #region handlers
+function resetGame() {
+    return initialState();
+}
+
 function setPok(state, { payload }) {
     return {
         ...state,
@@ -133,6 +139,20 @@ function electOutcome(state, { payload }) {
     };
 }
 
+function setPhaseTab(state, { payload }) {
+    return {
+        ...state,
+        phaseTab: payload,
+    };
+}
+
+function setCombatTab(state, { payload }) {
+    return {
+        ...state,
+        combatTab: payload,
+    };
+}
+
 // #endregion
 
 const createReducer = (handlers) => (state, action) => {
@@ -164,4 +184,7 @@ export const reducer = createReducer({
     [Types.ADDAGENDA]: addAgenda,
     [Types.REMOVEAGENDA]: removeAgenda,
     [Types.ELECTOUTCOME]: electOutcome,
+    [Types.SETPHASETAB]: setPhaseTab,
+    [Types.SETCOMBATTAB]: setCombatTab,
+    [Types.RESETGAME]: resetGame,
 });

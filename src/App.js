@@ -11,7 +11,7 @@ import "./App.css";
 function App() {
     return (
         <StoreProvider
-            initialState={merge(state, get(state))}
+            initialState={merge(state(), get(state()))}
             reducer={reducer}
         >
             <Router>

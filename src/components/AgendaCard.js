@@ -15,35 +15,37 @@ function AgendaCard(props) {
 
     return (
         <Card bg="primary">
-            <RemoveButton
-                onClick={() => {
-                    dispatch(removeAgenda(props.agenda));
-                }}
-            />
-            <Card.Header className="text-center">
+            {props.interactable ? (
+                <RemoveButton
+                    onClick={() => dispatch(removeAgenda(props.agenda))}
+                />
+            ) : null}
+            <Card.Header className="text-center text-light">
                 {props.agenda.title}
             </Card.Header>
-            <Card.Body style={{ minWidth: "200px", minHeight: "80px" }}>
-                <Card.Text style={{ fontSize: "0.8rem" }}>
+            <Card.Body className="pt-1" style={{ minWidth: "200px", minHeight: "80px" }}>
+                <Card.Text
+                    className="text-light"
+                    style={{ fontSize: "0.8rem" }}
+                >
                     {props.agenda.for ?? props.agenda.desc}
                 </Card.Text>
             </Card.Body>
             {props.agenda.electPrimary ? (
                 <Card.Footer className="text-center">
                     <a
-                        className="pointer text-light"
+                        className={`text-light ${
+                            props.interactable ? "pointer" : ""
+                        }`}
                         onClick={() => {
-                            if (electList.length === 0) {
+                            if (props.interactable && electList.length === 0) {
                                 dispatch(electOutcome(props.agenda, null));
                                 setElectList(DetermineElectType(props.agenda));
                             }
                         }}
                     >
                         {props.agenda.elected ? (
-                            <Badge
-                                bg="primary"
-                                style={{fontSize: "0.8rem" }}
-                            >
+                            <Badge bg="primary" style={{ fontSize: "0.8rem" }}>
                                 {props.agenda.elected.title}
                             </Badge>
                         ) : electList.length > 0 ? (

@@ -1,0 +1,8 @@
+.card-body {
+    min-width: 200px;
+    min-height: 110px;
+}
+
+.card-text {
+    font-size: 0.8rem;
+}

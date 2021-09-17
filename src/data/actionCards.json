@@ -3,7 +3,8 @@
         "id": 1,
         "title": "Sabotage",
         "timing": "When another player plays an action card other than \"Sabotage\"",
-        "effect": "Cancel that action card."
+        "effect": "Cancel that action card.",
+        "phase": "Any"
     },
     {
         "id": 2,

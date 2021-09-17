@@ -22,14 +22,14 @@ function NewGame() {
         <Container className="mb-5">
             <Row>
                 <Col>
-                    <DividerText title="New Game" />
+                    <DividerText title="New Game" lg />
                 </Col>
             </Row>
             <Row>
                 <Col className="mb-2">
                     <Form.Check
                         type="checkbox"
-                        style={{fontSize: "1.2rem"}}
+                        style={{ fontSize: "1.2rem" }}
                         label="Prophecy of kings"
                         checked={state.pok}
                         onChange={() => dispatch(setPok(!state.pok))}
@@ -44,7 +44,7 @@ function NewGame() {
             {state.faction != null ? (
                 <ValueLabel
                     label="Commodities"
-                    value={state.faction.commodities}
+                    value={state.faction?.commodities}
                 />
             ) : null}
             <Row>
@@ -59,7 +59,7 @@ function NewGame() {
             </Row>
             <Row>
                 <Col>
-                    {state.technologies.length > 0 ? (
+                    {state.technologies?.length > 0 ? (
                         <>
                             <DividerText title="Starting Tech" />
                             <TechnologyCardGroup

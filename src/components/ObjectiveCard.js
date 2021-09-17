@@ -15,25 +15,29 @@ function ObjectiveCard(props) {
 
     return (
         <Card
-            style={{ cursor: "pointer" }}
+            className={props.interactable ? "pointer" : ""}
             bg={variant.colour}
             text={variant.text}
-            onClick={() =>
-                dispatch(
-                    completeObjective(
-                        props.objective,
-                        !props.objective.isComplete
-                    )
-                )
-            }
+            onClick={() => {
+                if (props.interactable) {
+                    dispatch(
+                        completeObjective(
+                            props.objective,
+                            !props.objective.isComplete
+                        )
+                    );
+                }
+            }}
         >
-            <RemoveButton
-                onClick={() => dispatch(removeObjective(props.objective))}
-            />
+            {props.interactable ? (
+                <RemoveButton
+                    onClick={() => dispatch(removeObjective(props.objective))}
+                />
+            ) : null}
             <Card.Header className="text-center">
                 {props.objective.title}
             </Card.Header>
-            <Card.Body style={{ minWidth: "250px", minHeight: "80px" }}>
+            <Card.Body className="pt-1" style={{ minWidth: "250px", minHeight: "80px" }}>
                 <Card.Text style={{ fontSize: "0.8rem" }}>
                     {props.objective.condition}
                 </Card.Text>

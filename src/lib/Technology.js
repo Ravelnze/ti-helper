@@ -1,27 +1,27 @@
 import Technologies from "../data/technologies.json";
 
-export const Cybernetic = "Cybernetic";
-export const Propulsion = "Propulsion";
-export const Biotic = "Biotic";
-export const Warfare = "Warfare";
-export const Upgrade = "Upgrade";
-
-export const categories = [Cybernetic, Propulsion, Biotic, Warfare, Upgrade];
+export const Categories = {
+    Cybernetic: "Cybernetic",
+    Propulsion: "Propulsion",
+    Biotic: "Biotic",
+    Warfare: "Warfare",
+    Upgrade: "Upgrade",
+};
 
 export function GetTechVariantColour(category) {
     let variant = {};
 
     switch (category) {
-        case Cybernetic:
+        case Categories.Cybernetic:
             variant = { colour: "warning", text: "dark" }; // Yellow
             break;
-        case Biotic:
+        case Categories.Biotic:
             variant = { colour: "success", text: "white" }; // Green
             break;
-        case Warfare:
+        case Categories.Warfare:
             variant = { colour: "danger", text: "white" }; // Red
             break;
-        case Propulsion:
+        case Categories.Propulsion:
             variant = { colour: "primary", text: "white" }; // Blue
             break;
         default:
@@ -42,5 +42,11 @@ export function AddTech(currentTech, newTech) {
 }
 
 export function RemoveTech(currentTech, tech) {
-    return currentTech.filter(t => t.id !== tech.id);
+    return currentTech.filter((t) => t.id !== tech.id);
+}
+
+export function GetTechnologiesForPhase(technologies, phase) {
+    return technologies.filter((t) =>
+        t.phase.some((p) => ["Any", phase].includes(p))
+    );
 }

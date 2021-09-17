@@ -6,19 +6,21 @@ import NavItem from "react-bootstrap/NavItem";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faSatelliteDish,
     faChess,
     faRocket,
 } from "@fortawesome/free-solid-svg-icons";
 
-import PhaseContainer from "./PhaseContainer";
-import CombatContainer from "./CombatContainer";
+import PhaseTabs from "./PhaseTabs";
 import PlannerContainer from "./PlannerContainer";
 import EditModal from "./EditModal";
 import { useStore } from "../store/Store";
 import getLogoByKey from "../lib/Logos";
+import SimulateContainer from "./SimulateContainer";
+import NavIcon from "./NavIcon";
+import Phase from "../lib/Phase";
+import { setCombatTab, setPhaseTab } from "../store/Actions";
 
 function GameContainer() {
     const [state, dispatch] = useStore();
@@ -33,22 +35,50 @@ function GameContainer() {
         setShow(false);
     };
 
+    const phaseTabs = [
+        { title: Phase.Strategy, phase: Phase.Strategy },
+        { title: Phase.Action, phase: Phase.Action },
+        { title: Phase.Status, phase: Phase.Status },
+        { title: Phase.Agenda, phase: Phase.Agenda },
+    ];
+
+    const combatTabs = [
+        { title: Phase.SpaceCombat.split("C")[0], phase: Phase.SpaceCombat },
+        { title: Phase.GroundCombat.split("C")[0], phase: Phase.GroundCombat },
+    ];
+
     return (
         <>
             <Container>
                 <Switch>
-                    <Route path={`${match.path}/phases`}>
-                        <PhaseContainer showEditModal={() => showModal()} />
+                    <Route path={`${match.path}/phase`}>
+                        <PhaseTabs
+                            key="phase-tab"
+                            tabs={phaseTabs}
+                            id="phase-tab"
+                            title="Phases"
+                            setKey={(key) => dispatch(setPhaseTab(key))}
+                            showEditModal={() => showModal()}
+                            activeKey={state.phaseTab}
+                        />
                     </Route>
                     <Route path={`${match.path}/combat`}>
-                        <CombatContainer showEditModal={() => showModal()} />
+                        <PhaseTabs
+                            key="combat-tab"
+                            tabs={combatTabs}
+                            id="combat-tab"
+                            title="Combat"
+                            setKey={(key) => dispatch(setCombatTab(key))}
+                            showEditModal={() => showModal()}
+                            activeKey={state.combatTab}
+                        />
                     </Route>
-                    <Route path={`${match.path}/planners`}>
+                    <Route path={`${match.path}/plan`}>
                         <PlannerContainer showEditModal={() => showModal()} />
                     </Route>
-                    {/* <Route path={`${match.path}/something`}>
-                    <AgendaPhase />
-                </Route> */}
+                    <Route path={`${match.path}/simulate`}>
+                        <SimulateContainer showEditModal={() => showModal()} />
+                    </Route>
                     <Route path={`${match.path}`}>
                         <Overview showEditModal={() => showModal()} />
                     </Route>
@@ -61,23 +91,9 @@ function GameContainer() {
                         <NavItem>
                             <Link
                                 className="nav-link"
-                                to={`${match.url}/phases`}
+                                to={`${match.url}/phase`}
                             >
-                                <div className="d-flex flex-column justify-content-center align-items-center">
-                                    <FontAwesomeIcon
-                                        size="sm"
-                                        icon={faSatelliteDish}
-                                        color="rgba(255, 255, 255, 0.85)"
-                                    />
-                                    <p
-                                        style={{
-                                            color: "rgba(255, 255, 255, 0.85)",
-                                            fontSize: "0.8rem",
-                                        }}
-                                    >
-                                        Phases
-                                    </p>
-                                </div>
+                                <NavIcon title="Phase" icon={faSatelliteDish} />
                             </Link>
                         </NavItem>
                         <NavItem>
@@ -85,21 +101,7 @@ function GameContainer() {
                                 className="nav-link"
                                 to={`${match.url}/combat`}
                             >
-                                <div className="d-flex flex-column justify-content-center align-items-center">
-                                    <FontAwesomeIcon
-                                        size="sm"
-                                        icon={faRocket}
-                                        color="rgba(255, 255, 255, 0.85)"
-                                    />
-                                    <p
-                                        style={{
-                                            color: "rgba(255, 255, 255, 0.85)",
-                                            fontSize: "0.8rem",
-                                        }}
-                                    >
-                                        Combat
-                                    </p>
-                                </div>
+                                <NavIcon title="Combat" icon={faRocket} />
                             </Link>
                         </NavItem>
                         <NavItem>
@@ -113,44 +115,16 @@ function GameContainer() {
                             </Link>
                         </NavItem>
                         <NavItem>
-                            <Link
-                                className="nav-link"
-                                to={`${match.url}/planners`}
-                            >
-                                <div className="d-flex flex-column justify-content-center align-items-center">
-                                    <FontAwesomeIcon
-                                        size="sm"
-                                        icon={faChess}
-                                        color="rgba(255, 255, 255, 0.85)"
-                                    />
-                                    <p
-                                        style={{
-                                            color: "rgba(255, 255, 255, 0.85)",
-                                            fontSize: "0.8rem",
-                                        }}
-                                    >
-                                        Planners
-                                    </p>
-                                </div>
+                            <Link className="nav-link" to={`${match.url}/plan`}>
+                                <NavIcon title="Plan" icon={faChess} />
                             </Link>
                         </NavItem>
                         <NavItem>
-                            <Link className="nav-link" to={`${match.url}`}>
-                                <div className="d-flex flex-column justify-content-center align-items-center">
-                                    <FontAwesomeIcon
-                                        size="sm"
-                                        icon={faChess}
-                                        color="rgba(255, 255, 255, 0.85)"
-                                    />
-                                    <p
-                                        style={{
-                                            color: "rgba(255, 255, 255, 0.85)",
-                                            fontSize: "0.8rem",
-                                        }}
-                                    >
-                                        Empty
-                                    </p>
-                                </div>
+                            <Link
+                                className="nav-link"
+                                to={`${match.url}/simulate`}
+                            >
+                                <NavIcon title="Simulate" icon={faChess} />
                             </Link>
                         </NavItem>
                     </div>

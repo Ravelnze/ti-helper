@@ -1,3 +1,5 @@
+export const RESETGAME = "RESETGAME";
+
 export const SETPOK = "SETPOK";
 
 export const SETFACTION = "SETFACTION";
@@ -20,3 +22,6 @@ export const REMOVEACTIONCARD = "REMOVEACTIONCARD";
 export const ADDAGENDA = "ADDAGENDA";
 export const REMOVEAGENDA = "REMOVEAGENDA";
 export const ELECTOUTCOME = "ELECTOUTCOME";
+
+export const SETPHASETAB = "SETPHASETAB";
+export const SETCOMBATTAB = "SETCOMBATTAB";

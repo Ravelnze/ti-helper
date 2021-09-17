@@ -4,41 +4,47 @@
         "title": "Neural Motivator",
         "cat": "Biotic",
         "desc": "During the status phase, draw 2 action cards instead of 1.",
-        "req": null
+        "req": null,
+        "phase": ["Status"]
     },
     {
         "id": 2,
         "title": "Magen Defense Grid",
         "cat": "Warfare",
         "desc": "You may exhaust this card at the start of a round of ground combat on a planet that contains 1 or more of your units that have Planetary Shield; your opponent cannot make combat rolls this combat round.",
-        "req": ["warfare"]
+        "req": ["warfare"],
+        "phase": ["GroundCombat"]
     },
     {
         "id": 3,
         "title": "Antimass Deflectors",
         "cat": "Propulsion",
         "desc": "Your ships can move into and through asteroid fields\r\nWhen other players’ units use SPACE CANNON against your units, apply -1 to the result of each die roll",
-        "req": null
+        "req": null,
+        "phase": ["Action"]
     },
     {
         "id": 4,
         "title": "Sarween Tools",
         "cat": "Cybernetic",
         "desc": "When 1 or more of your units use Production, reduce the combined cost of the produced units by 1",
-        "req": null
+        "req": null,
+        "phase": ["Action"]
     },
     {
         "id": 5,
         "title": "Dark Energy Tap",
         "cat": "Propulsion",
         "desc": "After you perform a tactical action in a system that contains a frontier token, if you have 1 or more ships in that system, explore that token\r\nYour ships can retreat into adjacent systems that do not contain other players' units, even if you do not have units or control planets in that system.",
-        "req": null
+        "req": null,
+        "phase": ["Action"]
     },
     {
         "id": 6,
         "title": "Plasma Scoring",
         "cat": "Warfare",
-        "desc": "When 1 or more of your units use Bombardment or Space Cannon, 1 of those units may roll 1 additional die"
+        "desc": "When 1 or more of your units use Bombardment or Space Cannon, 1 of those units may roll 1 additional die",
+        "phase": ["Action", "GroundCombat"]
     },
     {
         "id": 7,
@@ -55,7 +61,8 @@
                 "rolls": 3
             }
         ],
-        "req": ["warfare", "warfare"]
+        "req": ["warfare", "warfare"],
+        "phase": ["SpaceCombat"]
     },
     {
         "id": 8,
@@ -76,7 +83,8 @@
                 "value": 5
             }
         ],
-        "req": ["propulsion", "propulsion", "cybernetic"]
+        "req": ["propulsion", "propulsion", "cybernetic"],
+        "phase": ["SpaceCombat"]
     },
     {
         "id": 9,
@@ -93,7 +101,8 @@
                 "value": 5
             }
         ],
-        "req": ["cybernetic", "warfare"]
+        "req": ["cybernetic", "warfare"],
+        "phase": ["Action"]
     },
     {
         "id": 10,
@@ -101,6 +110,7 @@
         "cat": "Biotic",
         "desc": "At the end of the status phase, you may remove any number of infantry from planets you control and place them on 1 or more planets you control in the same or adjacent systems",
         "req": ["biotic", "biotic"],
+        "phase": ["Status"],
         "factionId": 3
     }
 ]

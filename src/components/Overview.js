@@ -7,13 +7,11 @@ import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 import { useHistory } from "react-router-dom";
 
-import { categories, GetTechVariantColour } from "../lib/Tech";
+import { Categories, GetTechVariantColour } from "../lib/Technology";
 import { useStore } from "../store/Store";
-import { setFaction, setTech } from "../store/Actions";
+import { resetGame } from "../store/Actions";
 import ValueLabel from "./ValueLabel";
 import DividerText from "./DividerText";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { GetPlanetVariantColour } from "../lib/Planet";
 import {
     GetCompletedObjectivesPoints,
@@ -24,6 +22,7 @@ import {
 } from "../lib/Objective";
 import { GetTotalActionCardCount } from "../lib/ActionCard";
 import { GetVictoryPointsFromAgendas } from "../lib/Agenda";
+import Header from "./Header";
 
 function Overview(props) {
     const [state, dispatch] = useStore();
@@ -39,37 +38,23 @@ function Overview(props) {
     };
 
     const exitGame = () => {
-        dispatch(setFaction(null));
-        dispatch(setTech(null));
+        dispatch(resetGame());
         history.replace(".");
     };
 
     return (
         <>
-            <Row>
-                <Col>
+            <Header
+                title="Overview"
+                showEditModal={props.showEditModal}
+                left={
                     <CloseButton
                         variant="white"
                         onClick={showExitModal}
                         className="mt-3"
                     />
-                </Col>
-                <Col>
-                    <DividerText title="Overview" />
-                </Col>
-                <Col>
-                    <a
-                        className="float-end mt-3 pointer"
-                        onClick={props.showEditModal}
-                    >
-                        <FontAwesomeIcon
-                            size="lg"
-                            icon={faEdit}
-                            color="rgba(255, 255, 255, 0.8)"
-                        />
-                    </a>
-                </Col>
-            </Row>
+                }
+            />
 
             {/* Technology */}
             <Row>
@@ -79,7 +64,7 @@ function Overview(props) {
             </Row>
             <Row>
                 <Col className="text-center">
-                    {categories.map((cat, i) => {
+                    {Object.entries(Categories).map(([key, cat], i) => {
                         const variant = GetTechVariantColour(cat);
                         return (
                             <Badge
@@ -170,7 +155,12 @@ function Overview(props) {
                             Number(
                                 GetCompletedObjectivesPoints(state.objectives)
                             ) +
-                            Number(GetVictoryPointsFromAgendas(state.agendas, state.faction))
+                            Number(
+                                GetVictoryPointsFromAgendas(
+                                    state.agendas,
+                                    state.faction
+                                )
+                            )
                         }
                     />
                     <ValueLabel

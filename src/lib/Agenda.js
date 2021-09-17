@@ -4,36 +4,35 @@ import Objectives from "../data/objectives.json";
 import Planets from "../data/planets.json";
 
 import {
-    publicCategories,
-    Secret as SecretObjectiveCategory,
+    PublicCategories,
+    Categories as ObjectiveCategories,
 } from "./Objective";
-import { categories as PlanetCategories } from "./Planet";
+import { Categories as PlanetCategories } from "./Planet";
 
-// Elect
-const Objective = "Objective";
-const Secret = "Secret";
-const Public = "Public";
-const Player = "Player";
-const Planet = "Planet";
-const Hazardous = "Hazardous";
-const Cultural = "Cultural";
-const Industrial = "Industrial";
-const Agenda = "Agenda";
-
-// Gain
-const VP = "Victory Point";
-const Attach = "Attach";
-const Resource = "Resource";
-const Influence = "Influence";
-const IgnorePrerequisite = "Ignore Prerequisite";
-const UseProduction = "Use Production";
-const UseActionCards = "Use Action Cards";
-
-export const Primary = [Player, Agenda, Objective, Planet];
+export const Primary = {
+    Player: "Player",
+    Agenda: "Agenda",
+    Objective: "Objective",
+    Planet: "Planet",
+};
 
 export const Secondary = {
-    Objective: [Secret, Public],
-    Planet: [Hazardous, Cultural, Industrial],
+    Objective: { Secret: "Secret", Public: "Public" },
+    Planet: {
+        Hazardous: "Hazardous",
+        Cultural: "Cultural",
+        Industrial: "Industrial",
+    },
+};
+
+export const Gain = {
+    VP: "Victory Point",
+    Attach: "Attach",
+    Resource: "Resource",
+    Influence: "Influence",
+    IgnorePrerequisite: "Ignore Prerequisite",
+    UseProduction: "Use Production",
+    UseActionCards: "Use Action Cards",
 };
 
 export function AddAgenda(agendas, agenda) {
@@ -46,19 +45,19 @@ export function RemoveAgenda(agendas, agenda) {
 
 export function DetermineElectType(agenda) {
     switch (agenda.electPrimary) {
-        case Player:
+        case Primary.Player:
             return Factions;
-        case Agenda:
+        case Primary.Agenda:
             return Agendas;
-        case Objective:
+        case Primary.Objective:
             switch (agenda.electSecondary) {
-                case Secret:
+                case Secondary.Objective.Secret:
                     return Objectives.filter(
-                        (o) => o.cat === SecretObjectiveCategory
+                        (o) => o.cat === ObjectiveCategories.Secret
                     );
-                case Public:
+                case Secondary.Objective.Public:
                     return Objectives.filter((o) =>
-                        publicCategories.includes(o.cat)
+                        PublicCategories.includes(o.cat)
                     );
                 default:
                     console.error(
@@ -66,7 +65,7 @@ export function DetermineElectType(agenda) {
                     );
                     return [];
             }
-        case Planet:
+        case Primary.Planet:
             if (!PlanetCategories.includes(agenda.electSecondary)) {
                 console.error(
                     `Unknown secondary elect for Planet type "${agenda.electSecondary}"`
@@ -91,12 +90,23 @@ export function ElectOutcome(agendas, agenda, outcome) {
 }
 
 export function GetVictoryPointsFromAgendas(agendas, faction) {
-    const filteredAgendas = agendas.filter(a => a.elected && a.electPrimary === Player && a.elected.id === faction.id);
+    const filteredAgendas = agendas.filter(
+        (a) =>
+            a.elected &&
+            a.electPrimary === Primary.Player &&
+            a.elected.id === faction.id
+    );
 
-    return filteredAgendas.length > 0 ? filteredAgendas
-        ?.map((a) => a.gain)
-        ?.reduce((g) => g)
-        ?.filter((g) => g.cat === VP)
-        ?.map((g) => g.value)
-        ?.reduce((a, b) => a + b) ?? 0 : 0;
+    return filteredAgendas.length > 0
+        ? filteredAgendas
+              ?.map((a) => a.gain)
+              ?.reduce((g) => g)
+              ?.filter((g) => g.cat === Gain.VP)
+              ?.map((g) => g.value)
+              ?.reduce((a, b) => a + b) ?? 0
+        : 0;
+}
+
+export function GetAgendasForPhase(agendas, phase) {
+    return agendas.filter((a) => ["Any", phase].includes(a.phase));
 }

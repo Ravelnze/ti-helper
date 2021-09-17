@@ -1,5 +1,9 @@
 import * as Types from "./Types";
 
+export function resetGame() {
+    return { type: Types.RESETGAME };
+}
+
 export function setPok(usingPok) {
     return {
         type: Types.SETPOK,
@@ -109,5 +113,19 @@ export function electOutcome(agenda, outcome) {
     return {
         type: Types.ELECTOUTCOME,
         payload: { agenda, outcome },
+    };
+}
+
+export function setPhaseTab(tab) {
+    return {
+        type: Types.SETPHASETAB,
+        payload: tab,
+    };
+}
+
+export function setCombatTab(tab) {
+    return {
+        type: Types.SETCOMBATTAB,
+        payload: tab,
     };
 }

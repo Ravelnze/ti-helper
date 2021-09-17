@@ -1,21 +1,24 @@
-const Stage1 = "Stage 1";
-const Stage2 = "Stage 2";
-export const Secret = "Secret";
-
-export const publicCategories = [Stage1, Stage2];
-export const categories = [Stage1, Stage2, Secret];
+export const Categories = {
+    Stage1: "Stage 1",
+    Stage2: "Stage 2",
+    Secret: "Secret",
+};
+export const PublicCategories = {
+    Stage1: Categories.Stage1,
+    Stage2: Categories.Stage2,
+};
 
 export function GetObjectiveVariantColour(cat) {
     let variant = {};
 
     switch (cat) {
-        case Stage1:
+        case Categories.Stage1:
             variant = { colour: "warning", text: "dark" }; // Yellow
             break;
-        case Secret:
+        case Categories.Secret:
             variant = { colour: "danger", text: "white" }; // Red
             break;
-        case Stage2:
+        case Categories.Stage2:
             variant = { colour: "primary", text: "white" }; // Blue
             break;
         default:
@@ -27,21 +30,27 @@ export function GetObjectiveVariantColour(cat) {
 }
 
 export function GetTotalPublicObjectives(objectives) {
-    return objectives.filter((o) => [Stage1, Stage2].includes(o.cat));
+    return objectives.filter((o) =>
+        [Categories.Stage1, Categories.Stage2].includes(o.cat)
+    );
 }
 
 export function GetCompletedPublicObjectives(objectives) {
     return objectives.filter(
-        (o) => [Stage1, Stage2].includes(o.cat) && o.isComplete
+        (o) =>
+            [Categories.Stage1, Categories.Stage2].includes(o.cat) &&
+            o.isComplete
     );
 }
 
 export function GetTotalSecretObjectives(objectives) {
-    return objectives.filter((o) => o.cat === Secret);
+    return objectives.filter((o) => o.cat === Categories.Secret);
 }
 
 export function GetCompletedSecretObjectives(objectives) {
-    return objectives.filter((o) => o.cat === Secret && o.isComplete);
+    return objectives.filter(
+        (o) => o.cat === Categories.Secret && o.isComplete
+    );
 }
 
 export function GetCompletedObjectivesPoints(objectives) {
@@ -65,5 +74,11 @@ export function CompleteObjective(objectives, objective, completed) {
 }
 
 export function RemoveObjective(objectives, objective) {
-    return [...objectives].filter((o) => o.id !== objective.id);
+    return objectives.filter((o) => o.id !== objective.id);
+}
+
+export function GetObjectivesForPhase(objectives, phase) {
+    return objectives.filter((o) =>
+        o.phase.some((p) => ["Any", phase].includes(p))
+    );
 }

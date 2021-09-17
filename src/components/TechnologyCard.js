@@ -1,6 +1,6 @@
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
-import { GetTechVariantColour, Upgrade } from "../lib/Tech";
+import { GetTechVariantColour, Categories } from "../lib/Technology";
 import GetLogoByKey from "../lib/Logos";
 import "./TechnologyCard.css";
 import ValueLabel from "./ValueLabel";
@@ -16,12 +16,12 @@ function TechnologyCard(props) {
 
     return (
         <Card bg={variant.colour} text={variant.text} border="dark">
-            {props.displayBody ? (
+            {props.interactable ? (
                 <RemoveButton
                     onClick={() => dispatch(removeTech(props.tech))}
                 />
             ) : null}
-            <Card.Header style={{ fontSize: "0.95rem" }}>
+            <Card.Header className="text-center technology-card-header">
                 {props.tech.title}
                 {props.tech.factionId ? (
                     <span className="float-end">
@@ -43,11 +43,8 @@ function TechnologyCard(props) {
             </Card.Header>
             {props.displayBody ? (
                 <>
-                    <Card.Body
-                        className="pt-1"
-                        style={{ minWidth: "250px", minHeight: "200px" }}
-                    >
-                        {props.tech.cat === Upgrade ? (
+                    <Card.Body className="pt-1 technology-card-body">
+                        {props.tech.cat === Categories.Upgrade ? (
                             <>
                                 {props.tech.cost ? (
                                     <ValueLabel
@@ -82,20 +79,17 @@ function TechnologyCard(props) {
                         {props.tech.desc ? (
                             <Card.Text
                                 className={
-                                    props.tech.cat === Upgrade ? "mt-3" : ""
+                                    props.tech.cat === Categories.Upgrade
+                                        ? "mt-3"
+                                        : ""
                                 }
                             >
                                 {props.tech.desc}
                             </Card.Text>
                         ) : null}
-                        {props.tech.abilities?.map((a) => {
+                        {props.tech.abilities?.map((a, i) => {
                             return (
-                                <li
-                                    style={{
-                                        fontSize: "0.8rem",
-                                        marginLeft: "10px",
-                                    }}
-                                >
+                                <li key={i} className="abilities">
                                     {
                                         Abilites.find((ab) => ab.id === a.id)
                                             .title
