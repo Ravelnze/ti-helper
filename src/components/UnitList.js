@@ -1,23 +1,40 @@
-import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import Units from "../data/units.json";
+import UnitCard from "./UnitCard";
+import { v4 as uuidv4 } from "uuid";
 
 function UnitList(props) {
     return (
-        <Form className="mb-2">
+        <Row>
             {props.units.map((u, i) => {
                 const unit = Units.find((ua) => ua.id === u.id);
                 return (
-                    <Form.Check
-                        key={i}
-                        inline
-                        type="checkbox"
-                        style={{fontSize: "1.2rem"}}
-                        label={`${unit.title} - ${u.count}`}
-                    />
+                    <Col className="d-flex justify-content-left p-0" key={uuidv4()}>
+                        <UnitCard
+                            title={unit.title}
+                            count={u.count}
+                            logo={unit.logo}
+                        />
+                    </Col>
                 );
             })}
-        </Form>
+            {/* padding columns */}
+            {props.units.length === 1 ||
+            props.units.length === 4 ||
+            props.units.length === 7 ? (
+                <Col className="p-0" />
+            ) : null}
+            {props.units.length === 1 ||
+            props.units.length === 2 ||
+            props.units.length === 4 ||
+            props.units.length === 5 ||
+            props.units.length === 7 ||
+            props.units.length === 8 ? (
+                <Col className="p-0" />
+            ) : null}
+        </Row>
     );
 }
 

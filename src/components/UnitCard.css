@@ -1,0 +1,15 @@
+.image-button {
+    border-color: rgba(0, 0, 0, 0);
+    border: 0 !important;
+    padding: 0 !important;
+    height: 120px;
+    width: 120px;
+    background-repeat: no-repeat;
+    background-position: 50% 75%;
+}
+
+.unit-badge {
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    width: 100%;
+}

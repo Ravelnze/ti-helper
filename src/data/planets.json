@@ -130,5 +130,27 @@
         "trait": "Cultural",
         "techSpecialty": "Cybernetic",
         "desc": "Large temperate world. Site of several pitched battles during the Twilight Wars due to valuable osmium deposits and a well-educated populace."
+    },
+    {
+        "id": 13,
+        "title": "Muaat",
+        "resource": 4,
+        "influence": 1,
+        "homeFactionId": 5,
+        "legendaryAbility": null,
+        "trait": null,
+        "techSpecialty": null,
+        "desc": "The fiery surface of Muaat is uninhabitable to most races. It is home to the Gashlai, and only here can they live outside of their cumbersome ember suits."
+    },
+    {
+        "id": 14,
+        "title": "Arcturus",
+        "resource": 4,
+        "influence": 4,
+        "homeFactionId": 6,
+        "legendaryAbility": null,
+        "trait": null,
+        "techSpecialty": null,
+        "desc": "Cold and still, with a surface buried beneath kilometers of ice. A few smuggler bases dot the surface, but Sumerian Station circles the planet, making it a vital trading destination."
     }
 ]

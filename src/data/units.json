@@ -2,61 +2,72 @@
     {
         "id": 1,
         "title": "Carrier",
-        "cat": "ship"
+        "cat": "ship",
+        "logo": "carrier"
     },
     {
         "id": 2,
         "title": "Cruiser",
-        "cat": "ship"
+        "cat": "ship",
+        "logo": "cruiser"
     },
     {
         "id": 3,
         "title": "Destroyer",
         "cat": "ship",
+        "logo": "destroyer",
         "abilities": [1]
     },
     {
         "id": 4,
         "title": "Dreadnought",
         "cat": "ship",
+        "logo": "dreadnought",
         "abilities": [2, 6]
     },
     {
         "id": 5,
         "title": "Fighter",
-        "cat": "ship"
+        "cat": "ship",
+        "logo": "fighter"
     },
     {
         "id": 6,
         "title": "Flagship",
-        "cat": "ship"
+        "cat": "ship",
+        "logo": "flagship"
     },
     {
         "id": 7,
         "title": "War Sun",
         "cat": "ship",
+        "logo": "warSun",
         "abilities": [2, 6]
     },
     {
         "id": 8,
         "title": "Infantry",
-        "cat": "groundforce"
+        "cat": "groundforce",
+        "logo": "infantry"
     },
     {
         "id": 9,
         "title": "Mech",
-        "cat": "groundforce"
+        "cat": "groundforce",
+        "logo": "mech"
     },
     {
         "id": 10,
         "title": "Space Dock",
         "cat": "structure",
+        "logo": "spaceDock",
         "abilities": [4]
     },
     {
         "id": 11,
         "title": "PDS",
         "cat": "structure",
+        "logo": "pds",
         "abilities": [3]
     }
 ]

@@ -112,5 +112,13 @@
         "req": ["biotic", "biotic"],
         "phase": ["Status"],
         "factionId": 3
+    },
+    {
+        "id": 11,
+        "title": " Sling Relay",
+        "cat": "Propulsion",
+        "desc": "ACTION: Exhaust this card to produce 1 ship in any system that contains one of your space docks",
+        "req": ["propulsion"],
+        "phase": ["Action"]
     }
 ]

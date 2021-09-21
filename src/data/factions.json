@@ -98,7 +98,7 @@
     },
     {
         "id": 4,
-        "title": "The Universities of Jol-Nar ",
+        "title": "The Universities of Jol-Nar",
         "tech": [1, 3, 4, 6],
         "planets": [1, 2],
         "units": [
@@ -129,6 +129,41 @@
         ],
         "commodities": 4,
         "logo": "jolnar",
+        "special": []
+    },
+    {
+        "id": 6,
+        "title": "The Nomad",
+        "tech": [11],
+        "planets": [14],
+        "units": [
+            {
+                "id": 6,
+                "count": 1
+            },
+            {
+                "id": 1,
+                "count": 1
+            },
+            {
+                "id": 3,
+                "count": 1
+            },
+            {
+                "id": 5,
+                "count": 3
+            },
+            {
+                "id": 8,
+                "count": 4
+            },
+            {
+                "id": 10,
+                "count": 1
+            }
+        ],
+        "commodities": 4,
+        "logo": "nomad",
         "special": []
     }
 ]
