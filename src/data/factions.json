@@ -132,6 +132,33 @@
         "special": []
     },
     {
+        "id": 5,
+        "title": "The Embers of Muaat",
+        "tech": [6],
+        "planets": [13],
+        "units": [
+            {
+                "id": 7,
+                "count": 1
+            },
+            {
+                "id": 5,
+                "count": 2
+            },
+            {
+                "id": 8,
+                "count": 4
+            },
+            {
+                "id": 10,
+                "count": 1
+            }
+        ],
+        "commodities": 4,
+        "logo": "muaat",
+        "special": []
+    },
+    {
         "id": 6,
         "title": "The Nomad",
         "tech": [11],
