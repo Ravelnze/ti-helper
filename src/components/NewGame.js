@@ -52,7 +52,7 @@ function NewGame() {
             <Row>
                 <Col className="ps-4">
                     {abilities.length > 0
-                        ? abilities.map((a) => (<li className="text-light">{a.description}</li>))
+                        ? abilities.map((a, i) => (<li key={i} className="text-light">{a.description}</li>))
                         : null}
                 </Col>
             </Row>

@@ -49,8 +49,8 @@ function PhaseContainer(props) {
 
     return (
         <Container>
-            {abilities.map((ability) => (
-                <div className="mt-3">
+            {abilities.map((ability, i) => (
+                <div key={i} className="mt-3">
                     <span className="light-text">
                         <strong>{ability.title}</strong> - {ability.description}
                     </span>
