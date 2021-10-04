@@ -11,12 +11,11 @@ function UnitList(props) {
             {props.units.map((u, i) => {
                 const unit = Units.find((ua) => ua.id === u.id);
                 return (
-                    <Col className="d-flex justify-content-left p-0" key={uuidv4()}>
-                        <UnitCard
-                            title={unit.title}
-                            count={u.count}
-                            logo={unit.logo}
-                        />
+                    <Col
+                        className="d-flex justify-content-left p-0"
+                        key={uuidv4()}
+                    >
+                        <UnitCard unit={unit} count={u.count} />
                     </Col>
                 );
             })}

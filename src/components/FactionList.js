@@ -1,22 +1,34 @@
 import Form from "react-bootstrap/Form";
-
-// Data
-import Factions from "../data/factions.json";
 import { setFaction, setTech } from "../store/Actions";
 import { useStore } from "../store/Store";
+import Factions from "../data/factions.json";
 
 function FactionList() {
     const [state, dispatch] = useStore();
 
+    const factionList = state.pok
+        ? Factions
+        : Factions.filter((f) => f.pok !== true);
+
+    factionList.sort((a, b) => {
+        const aTitleParts = a.title.split("The ");
+        const aTitle = aTitleParts.length > 1 ? aTitleParts[1] : a.title;
+
+        const bTitleParts = b.title.split("The ");
+        const bTitle = bTitleParts.length > 1 ? bTitleParts[1] : b.title;
+
+        return aTitle > bTitle;
+    });
+
     const factionOptions = [];
-    for (var i = 0; i < Factions.length; i++) {
+    for (var i = 0; i < factionList.length; i++) {
         factionOptions.push(
             <option
                 key={i}
-                id={Factions[i].id}
-                value={JSON.stringify(Factions[i])}
+                id={factionList[i].id}
+                value={JSON.stringify(factionList[i])}
             >
-                {Factions[i].title}
+                {factionList[i].title}
             </option>
         );
     }

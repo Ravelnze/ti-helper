@@ -13,6 +13,7 @@ import {
     addObjective,
     addActionCard,
     addAgenda,
+    addPromissory,
 } from "../store/Actions";
 import ScrollableCardList, { CardType } from "./ScrollableCardList";
 import "../lib/ArrayExtensions";
@@ -23,9 +24,17 @@ import Technology from "../data/technologies.json";
 import Objectives from "../data/objectives.json";
 import ActionCards from "../data/actionCards.json";
 import Agendas from "../data/agendas.json";
+import PromissoryNotes from "../data/promissoryNotes.json";
+import { GetSpecialUnitsAndLeaders } from "../lib/Faction";
 
 function EditModal(props) {
     const [state, dispatch] = useStore();
+
+    function pokFilter(items) {
+        return state.pok
+            ? items.filter((a) => a.pok !== false)
+            : items.filter((a) => a.pok !== true);
+    }
 
     return (
         <Modal
@@ -42,14 +51,29 @@ function EditModal(props) {
                     <Col>
                         <Accordion>
                             <Accordion.Item eventKey="0">
+                                <Accordion.Header>Units</Accordion.Header>
+
+                                <Accordion.Body className="p-0">
+                                    <ScrollableCardList
+                                        cardList={GetSpecialUnitsAndLeaders(
+                                            state.faction,
+                                            state.pok
+                                        )}
+                                        cardType={CardType.Unit}
+                                        interactable
+                                    />
+                                </Accordion.Body>
+                            </Accordion.Item>
+
+                            <Accordion.Item eventKey="1">
                                 <Accordion.Header>Planets</Accordion.Header>
                                 <Accordion.Body className="py-2 px-0">
                                     <Row className="px-3">
                                         <Col className="p-0">
                                             <AutoSuggestionInput
-                                                items={Planets.exclude(
-                                                    state.planets
-                                                )}
+                                                items={pokFilter(
+                                                    Planets
+                                                ).exclude(state.planets)}
                                                 setValue={(planet) =>
                                                     dispatch(addPlanet(planet))
                                                 }
@@ -85,15 +109,15 @@ function EditModal(props) {
                                 ) : null}
                             </Accordion.Item>
 
-                            <Accordion.Item eventKey="1">
+                            <Accordion.Item eventKey="2">
                                 <Accordion.Header>Technology</Accordion.Header>
                                 <Accordion.Body className="py-2 px-0">
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
-                                                items={Technology.exclude(
-                                                    state.technologies
-                                                )}
+                                                items={pokFilter(
+                                                    Technology
+                                                ).exclude(state.technologies)}
                                                 setValue={(tech) =>
                                                     dispatch(addTech(tech))
                                                 }
@@ -113,15 +137,15 @@ function EditModal(props) {
                                 ) : null}
                             </Accordion.Item>
 
-                            <Accordion.Item eventKey="2">
+                            <Accordion.Item eventKey="3">
                                 <Accordion.Header>Objectives</Accordion.Header>
                                 <Accordion.Body className="py-2 px-0">
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
-                                                items={Objectives.exclude(
-                                                    state.objectives
-                                                )}
+                                                items={pokFilter(
+                                                    Objectives
+                                                ).exclude(state.objectives)}
                                                 setValue={(objective) =>
                                                     dispatch(
                                                         addObjective(objective)
@@ -143,7 +167,7 @@ function EditModal(props) {
                                 ) : null}
                             </Accordion.Item>
 
-                            <Accordion.Item eventKey="3">
+                            <Accordion.Item eventKey="4">
                                 <Accordion.Header>
                                     Action Cards
                                 </Accordion.Header>
@@ -151,7 +175,7 @@ function EditModal(props) {
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
-                                                items={ActionCards}
+                                                items={pokFilter(ActionCards)}
                                                 setValue={(actionCard) =>
                                                     dispatch(
                                                         addActionCard(
@@ -164,8 +188,7 @@ function EditModal(props) {
                                         </Col>
                                     </Row>
                                 </Accordion.Body>
-                                {Object.keys(state.actionCards).length >
-                                0 ? (
+                                {Object.keys(state.actionCards).length > 0 ? (
                                     <Accordion.Body className="p-0">
                                         <ScrollableCardList
                                             cardList={Object.entries(
@@ -178,17 +201,14 @@ function EditModal(props) {
                                 ) : null}
                             </Accordion.Item>
 
-                            <Accordion.Item eventKey="6">
+                            <Accordion.Item eventKey="5">
                                 <Accordion.Header>Agendas</Accordion.Header>
                                 <Accordion.Body className="py-2 px-0">
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
-                                                items={(state.pok
-                                                    ? Agendas.filter(
-                                                          (a) => a.pok !== false
-                                                      )
-                                                    : Agendas
+                                                items={pokFilter(
+                                                    Agendas
                                                 ).exclude(state.agendas)}
                                                 setValue={(agenda) =>
                                                     dispatch(addAgenda(agenda))
@@ -203,6 +223,38 @@ function EditModal(props) {
                                         <ScrollableCardList
                                             cardList={state.agendas}
                                             cardType={CardType.Agenda}
+                                            interactable
+                                        />
+                                    </Accordion.Body>
+                                ) : null}
+                            </Accordion.Item>
+
+                            <Accordion.Item eventKey="6">
+                                <Accordion.Header>
+                                    Promissory Notes
+                                </Accordion.Header>
+                                <Accordion.Body className="py-2 px-0">
+                                    <Row>
+                                        <Col>
+                                            <AutoSuggestionInput
+                                                items={pokFilter(
+                                                    PromissoryNotes
+                                                )}
+                                                setValue={(note) =>
+                                                    dispatch(
+                                                        addPromissory(note)
+                                                    )
+                                                }
+                                                placeholder="Search for a promissory note"
+                                            />
+                                        </Col>
+                                    </Row>
+                                </Accordion.Body>
+                                {state.promissoryNotes.length > 0 ? (
+                                    <Accordion.Body className="p-0">
+                                        <ScrollableCardList
+                                            cardList={state.promissoryNotes}
+                                            cardType={CardType.PromissoryNote}
                                             interactable
                                         />
                                     </Accordion.Body>

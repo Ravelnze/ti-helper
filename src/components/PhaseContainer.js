@@ -6,19 +6,59 @@ import { GetAgendasForPhase } from "../lib/Agenda";
 import { GetActionCardsForPhase } from "../lib/ActionCard";
 import { GetTechnologiesForPhase } from "../lib/Technology";
 import { GetObjectivesForPhase } from "../lib/Objective";
+import {
+    GetAbilitiesForPhase,
+    GetSpecialUnitsAndLeadersForPhase,
+} from "../lib/Faction";
+import { GetPromissoryNotesForPhase } from "../lib/PromissoryNote";
 
 function PhaseContainer(props) {
     const [state, dispatch] = useStore();
-    const agendas = GetAgendasForPhase(state.agendas, props.phase).filter(a => a.elected);
+
+    const agendas = GetAgendasForPhase(state.agendas, props.phase).filter(
+        (a) => a.elected
+    );
+
     const actionCards = GetActionCardsForPhase(state.actionCards, props.phase);
+
     const technologies = GetTechnologiesForPhase(
         state.technologies,
         props.phase
     );
-    const objectives = GetObjectivesForPhase(state.objectives, props.phase).filter(o => !o.isComplete);
+
+    const objectives = GetObjectivesForPhase(
+        state.objectives,
+        props.phase
+    ).filter((o) => !o.isComplete);
+
+    const abilities = GetAbilitiesForPhase(
+        state.faction.abilities,
+        props.phase
+    );
+
+    const promissoryNotes = GetPromissoryNotesForPhase(
+        state.promissoryNotes,
+        props.phase
+    ).filter((p) => p.colour || p.factionId);
+
+    const units = GetSpecialUnitsAndLeadersForPhase(
+        state.faction,
+        props.phase,
+        state.pok
+    ).filter((u) => u.available);
 
     return (
         <Container>
+            {abilities.map((ability) => (
+                <div className="mt-3">
+                    <span className="light-text">
+                        <strong>{ability.title}</strong> - {ability.description}
+                    </span>
+                </div>
+            ))}
+
+            <ScrollableCardList cardList={units} cardType={CardType.Unit} />
+
             {Object.keys(actionCards).length > 0 ? (
                 <>
                     <DividerText title="Action Cards" />
@@ -52,9 +92,19 @@ function PhaseContainer(props) {
             {objectives.length > 0 ? (
                 <>
                     <DividerText title="Objectives" />
-                    <ScrollableCardList 
+                    <ScrollableCardList
                         cardList={objectives}
                         cardType={CardType.Objective}
+                    />
+                </>
+            ) : null}
+
+            {promissoryNotes.length > 0 ? (
+                <>
+                    <DividerText title="Promissory Notes" />
+                    <ScrollableCardList
+                        cardList={promissoryNotes}
+                        cardType={CardType.PromissoryNote}
                     />
                 </>
             ) : null}

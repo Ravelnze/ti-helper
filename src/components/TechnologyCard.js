@@ -4,7 +4,7 @@ import { GetTechVariantColour, Categories } from "../lib/Technology";
 import GetLogoByKey from "../lib/Logos";
 import "./TechnologyCard.css";
 import ValueLabel from "./ValueLabel";
-import Abilites from "../data/abilites.json";
+import Abilities from "../data/abilities.json";
 import RemoveButton from "./RemoveButton";
 import { useStore } from "../store/Store";
 import { removeTech } from "../store/Actions";
@@ -91,7 +91,7 @@ function TechnologyCard(props) {
                             return (
                                 <li key={i} className="abilities">
                                     {
-                                        Abilites.find((ab) => ab.id === a.id)
+                                        Abilities.find((ab) => ab.id === a.id)
                                             .title
                                     }{" "}
                                     {a.value} {a.rolls ? `(x${a.rolls})` : null}

@@ -55,5 +55,13 @@
         "timing": "When another player chooses a strategy card during the strategy phase",
         "effect": "That player must choose a different strategy card instead, if able.",
         "phase": "Strategy"
+    },
+    {
+        "id": 9,
+        "title": "Archaeological Expedition",
+        "timing": "As an Action",
+        "effect": "Reveal the top 3 cards of an exploration deck that matches a planet you control; gain any relic fragments that you revealed and discard the rest.",
+        "phase": "Action",
+        "pok": true
     }
 ]

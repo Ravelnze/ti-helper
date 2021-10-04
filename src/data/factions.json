@@ -28,11 +28,90 @@
         ],
         "commodities": 6,
         "logo": "hacan",
-        "special": []
+        "abilities": [
+            {
+                "title": "MASTERS OF TRADE",
+                "description": "You do not have to spend a command token to resolve the secondary ability of the \"Trade\" strategy card.",
+                "phase": ["Action"]
+            },
+            {
+                "title": "GUILD SHIPS",
+                "description": "You can negotiate transactions with players who are not your neighbor.",
+                "phase": ["Action"]
+            },
+            {
+                "title": "ARBITERS",
+                "description": "When you are negotiating a transaction, action cards can be exchanged as part of that transaction.",
+                "phase": ["Action"]
+            }
+        ],
+        "flagship": {
+            "title": "Wrath of Kenara",
+            "cost": 8,
+            "combat": 7,
+            "rolls": 2,
+            "move": 1,
+            "capacity": 3,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "After you roll a die during a space combat in this system, you may spend 1 trade good to apply +1 to the result.",
+                "phase": ["Action"]
+            },
+            "logo": "flagship",
+            "available": false
+        },
+        "mech": {
+            "title": "Pride of Kenara",
+            "cost": 2,
+            "combat": 6,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "This planet's card may be traded as part of a transaction; if you do, move all of your units from this planet to another planet you control.",
+                "phase": ["Action", "Agenda"]
+            },
+            "logo": "mech",
+            "available": false
+        },
+        "leaders": [
+            {
+                "type": "Agent",
+                "title": "Carth of Golden Sands",
+                "unlock": "At Game Start",
+                "specialAbility": {
+                    "desc": "During the action phase: \r\nYou may exhaust this card to gain 2 commodities or replenish another player's commodities.",
+                    "phase": ["Action"]
+                },
+                "logo": "hacanAgent",
+                "available": true
+            },
+            {
+                "type": "Commander",
+                "title": "Gila the Silvertongue",
+                "unlock": "Have 10 Trade Goods",
+                "specialAbility": {
+                    "desc": "When you cast votes: \r\nYou may spend any number of trade goods; cast 2 additional votes for each trade good spent.",
+                    "phase": ["Agenda"]
+                },
+                "logo": "hacanCommander",
+                "available": false
+            },
+            {
+                "type": "Hero",
+                "title": "Harrugh Gefhara",
+                "unlock": "Have 3 Scored Objectives",
+                "specialAbility": {
+                    "desc": "When 1 or more of your units use PRODUCTION: \r\nYou may reduce the cost of each of your units to 0 during this use of PRODUCTION. If you do, purge this card.",
+                    "phase": ["Action"]
+                },
+                "logo": "hacanHero",
+                "available": false
+            }
+        ]
     },
     {
         "id": 2,
         "title": "The Empyrean",
+        "pok": true,
         "tech": [5],
         "planets": [6],
         "units": [
@@ -59,7 +138,85 @@
         ],
         "commodities": 4,
         "logo": "empyrean",
-        "special": []
+        "abilities": [
+            {
+                "title": "VOIDBORN",
+                "description": "Nebulae do not affect your ships' movement.",
+                "phase": ["Action"]
+            },
+            {
+                "title": "AETHERPASSAGE",
+                "description": "After a player activates a system, you may allow that player to move their ships through systems that contain your ships.",
+                "phase": ["Action"]
+            },
+            {
+                "title": "DARK WHISPERS",
+                "description": "During setup, take the additional Empyrean faction promissory note; you have 2 faction promissory notes.",
+                "phase": ["Setup"]
+            }
+        ],
+        "flagship": {
+            "title": "Dynamo",
+            "cost": 8,
+            "combat": 5,
+            "rolls": 2,
+            "move": 1,
+            "capacity": 3,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "After any player's unit in this system or an adjacent system uses SUSTAIN DAMAGE, you may spend 2 influence to repair that unit.",
+                "phase": ["Action"]
+            },
+            "logo": "flagship",
+            "available": false
+        },
+        "mech": {
+            "title": "Watcher",
+            "cost": 2,
+            "combat": 6,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "You may remove this unit from a system that contains or is adjacent to another player's units to cancel an action card played by that player.",
+                "phase": ["Any"]
+            },
+            "logo": "mech",
+            "available": false
+        },
+        "leaders": [
+            {
+                "type": "Agent",
+                "title": "Acamar",
+                "unlock": "At Game Start",
+                "specialAbility": {
+                    "desc": "After a player moves ships into a system that does not contain any planets: \r\nYou may exhaust this card; that player gains 1 command token.",
+                    "phase": ["Action"]
+                },
+                "logo": "empyreanAgent",
+                "available": true
+            },
+            {
+                "type": "Commander",
+                "title": "Xuange",
+                "unlock": "Be neighbors with all other players",
+                "specialAbility": {
+                    "desc": "After another player moves ships into a system that contains 1 of your command tokens: \r\nYou may return that token to your reinforcements.",
+                    "phase": ["Action"]
+                },
+                "logo": "empyreanCommander",
+                "available": false
+            },
+            {
+                "type": "Hero",
+                "title": "Conservator Procyon",
+                "unlock": "Have 3 Scored Objectives",
+                "specialAbility": {
+                    "desc": "ACTION: Place 1 frontier token in each system that does not contain any planets and does not already have a frontier token. Then, explore each frontier token that is in a system that contains 1 or more of your ships. Then, purge this card.",
+                    "phase": ["Action"]
+                },
+                "logo": "empyreanHero",
+                "available": false
+            }
+        ]
     },
     {
         "id": 3,
@@ -94,7 +251,75 @@
         ],
         "commodities": 3,
         "logo": "arborec",
-        "special": []
+        "abilities": [
+            {
+                "title": "MITOSIS",
+                "description": "Your space docks cannot produce infantry.  At the start of the status phase , place 1 infantry from your reinforcements on any planet you control.",
+                "phase": ["Action", "Status"]
+            }
+        ],
+        "flagship": {
+            "title": "Duha Menaimon",
+            "cost": 8,
+            "combat": 7,
+            "rolls": 2,
+            "move": 1,
+            "capacity": 5,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "After you activate this system, you may produce up to 5 units in this system.",
+                "phase": ["Action"]
+            },
+            "logo": "flagship",
+            "available": false
+        },
+        "mech": {
+            "title": "Letani Behemoth",
+            "cost": 2,
+            "combat": 6,
+            "abilities": [{ "id": 3 }, { "id": 4, "value": 2 }, { "id": 6 }],
+            "specialAbility": {
+                "desc": "DEPLOY: When you would use your MITOSIS faction ability you may replace 1 of your infantry with 1 mech from your reinforcements instead.",
+                "phase": ["Action"]
+            },
+            "logo": "mech",
+            "available": false
+        },
+        "leaders": [
+            {
+                "type": "Agent",
+                "title": "Letani Ospha",
+                "unlock": "At Game Start",
+                "specialAbility": {
+                    "desc": "ACTION: Exhaust this card and choose a player's non-fighter ship; that player may replace that ship with one from their reinforcements that costs up to 2 more than the replaced ship.",
+                    "phase": ["Action"]
+                },
+                "logo": "arborecAgent",
+                "available": true
+            },
+            {
+                "type": "Commander",
+                "title": "Drzuga Rophal",
+                "unlock": "Have 12 Ground Forces on Planets you control.",
+                "specialAbility": {
+                    "desc": "After another player activates a system that contains 1 or more of your units that have PRODUCTION: You may produce 1 unit in that system.",
+                    "phase": ["Action"]
+                },
+                "logo": "arborecCommander",
+                "available": false
+            },
+            {
+                "type": "Hero",
+                "title": "Letani Miasmiala",
+                "unlock": "Have 3 Scored Objectives",
+                "specialAbility": {
+                    "desc": "ACTION: Produce any number of units in any number of systems that contain 1 or more of your ground forces. Then, purge this card.",
+                    "phase": ["Action"]
+                },
+                "logo": "arborecHero",
+                "available": false
+            }
+        ]
     },
     {
         "id": 4,
@@ -129,7 +354,85 @@
         ],
         "commodities": 4,
         "logo": "jolnar",
-        "special": []
+        "abilities": [
+            {
+                "title": "FRAGILE",
+                "description": "Apply -1 to the result of each of your unit's combat rolls.",
+                "phase": ["Action"]
+            },
+            {
+                "title": "BRILLIANT",
+                "description": "When you spend a command token to resolve the secondary ability of the \"Technology\" strategy card, you may resolve the primary ability instead.",
+                "phase": ["Action"]
+            },
+            {
+                "title": "ANALYTICAL",
+                "description": "When you research a technology that is not a unit upgrade technology, you may ignore 1 prerequisite.",
+                "phase": ["Action", "Agenda"]
+            }
+        ],
+        "flagship": {
+            "title": "J.N.S. Hylarim",
+            "cost": 8,
+            "combat": 6,
+            "rolls": 2,
+            "move": 1,
+            "capacity": 3,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "When making a combat roll for this ship, each result of 9 or 10, before applying modifiers, produces 2 additional hits.",
+                "phase": ["Action"]
+            },
+            "logo": "flagship",
+            "available": false
+        },
+        "mech": {
+            "title": "Shield Paling",
+            "cost": 2,
+            "combat": 6,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "Your infantry on this planet are not affected by your FRAGILE faction ability.",
+                "phase": ["GroundCombat"]
+            },
+            "logo": "mech",
+            "available": false
+        },
+        "leaders": [
+            {
+                "type": "Agent",
+                "title": "Doctor Sucaban",
+                "unlock": "At Game Start",
+                "specialAbility": {
+                    "desc": "When a player spends resources to research: You may exhaust this card to allow that player to remove any number of their infantry from the game board. For each unit removed, reduce the resources spent by 1.",
+                    "phase": ["Action", "Agenda"]
+                },
+                "logo": "jolnarAgent",
+                "available": true
+            },
+            {
+                "type": "Commander",
+                "title": "Ta Zern",
+                "unlock": "Own 8 technologies",
+                "specialAbility": {
+                    "desc": "After you roll dice for a unit ability: \r\nYou may reroll any of those dice.",
+                    "phase": ["Action"]
+                },
+                "logo": "jolnarCommander",
+                "available": false
+            },
+            {
+                "type": "Hero",
+                "title": "Rin, The Master's Legacy",
+                "unlock": "Have 3 Scored Objectives",
+                "specialAbility": {
+                    "desc": "ACTION: For each non-unit upgrade technology you own, you may replace that technology with any technology of the same color from the deck. Then, purge this card.",
+                    "phase": ["Action"]
+                },
+                "logo": "jolnarHero",
+                "available": false
+            }
+        ]
     },
     {
         "id": 5,
@@ -156,11 +459,85 @@
         ],
         "commodities": 4,
         "logo": "muaat",
-        "special": []
+        "abilities": [
+            {
+                "title": "STAR FORGE",
+                "description": "ACTION: Spend 1 token from your strategy pool to place either 2 fighters or 1 destroyer from your reinforcements in a system that contains 1 or more of your war suns.",
+                "phase": ["Action"]
+            },
+            {
+                "title": "GASHLAI PHYSIOLOGY",
+                "description": "Your ships can move through supernovas.",
+                "phase": ["Action"]
+            }
+        ],
+        "flagship": {
+            "title": "The Inferno",
+            "cost": 8,
+            "combat": 5,
+            "rolls": 2,
+            "move": 1,
+            "capacity": 3,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "ACTION: Spend 1 token from your strategy pool to place 1 cruiser in this unit's system.",
+                "phase": ["Action"]
+            },
+            "logo": "flagship",
+            "available": false
+        },
+        "mech": {
+            "title": "Ember Colossus",
+            "cost": 2,
+            "combat": 6,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "When you use your STAR FORGE faction ability in this system or an adjacent system, you may place 1 infantry from your reinforcements with this unit.",
+                "phase": ["Action"]
+            },
+            "logo": "mech",
+            "available": false
+        },
+        "leaders": [
+            {
+                "type": "Agent",
+                "title": "Umbat",
+                "unlock": "At Game Start",
+                "specialAbility": {
+                    "desc": "ACTION: Exhaust this card to choose a player; that player may produce up to 2 units that each have a cost of 4 or less in a system that contains one of their war suns or their flagship.",
+                    "phase": ["Action"]
+                },
+                "logo": "muaatAgent",
+                "available": true
+            },
+            {
+                "type": "Commander",
+                "title": "Magmus",
+                "unlock": "Produce a War Sun",
+                "specialAbility": {
+                    "desc": "After you spend a token from your strategy pool: You may gain 1 trade good.",
+                    "phase": ["Action", "Status"]
+                },
+                "logo": "muaatCommander",
+                "available": false
+            },
+            {
+                "type": "Hero",
+                "title": "Adjudicator Ba'al",
+                "unlock": "Have 3 Scored Objectives",
+                "specialAbility": {
+                    "desc": "After you move a war sun into a non-home system other than Mecatol Rex: \r\nYou may destroy all other players' units in that system and replace that system tile with the Muaat supernova tile. If you do, purge this card and each planet card that corresponds to the replaced system tile.",
+                    "phase": ["Action"]
+                },
+                "logo": "muaatHero",
+                "available": false
+            }
+        ]
     },
     {
         "id": 6,
         "title": "The Nomad",
+        "pok": true,
         "tech": [11],
         "planets": [14],
         "units": [
@@ -191,6 +568,200 @@
         ],
         "commodities": 4,
         "logo": "nomad",
-        "special": []
+        "abilities": [
+            {
+                "title": "THE COMPANY",
+                "description": "During setup, take the 2 additional Nomad faction agents and place them next to your faction sheet; you have 3 agents.",
+                "phase": ["Setup"]
+            },
+            {
+                "title": "FUTURE SIGHT",
+                "description": "During the Agenda phase, after an outcome that you voted for or predicted is resolved, gain 1 trade good.",
+                "phase": ["Agenda"]
+            }
+        ],
+        "flagship": {
+            "title": "Memoria",
+            "cost": 8,
+            "combat": 7,
+            "rolls": 2,
+            "move": 1,
+            "capacity": 3,
+            "abilities": [{ "id": 6 }, {"id": 1, "value": 8, "rolls": 3}],
+            "specialAbility": {
+                "desc": "You may treat this unit as if it were adjacent to systems that contain one or more of your mechs.",
+                "phase": ["Action"]
+            },
+            "logo": "flagship",
+            "available": true
+        },
+        "mech": {
+            "title": "Quantum Manipulator",
+            "cost": 2,
+            "combat": 6,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "While this unit is in a space area during combat, you may use its SUSTAIN DAMAGE ability to cancel a hit that is produced against your ships in this system.",
+                "phase": ["SpaceCombat"]
+            },
+            "logo": "mech",
+            "available": false
+        },
+        "leaders": [
+            {
+                "type": "Agent",
+                "title": "Artuno the Betrayer",
+                "unlock": "At Game Start",
+                "specialAbility": {
+                    "desc": "When you gain trade goods from the supply: You may exhaust this card to place an equal number of trade goods on this card. When this card readies, gain the trade goods on this card.",
+                    "phase": ["Action", "Agenda"]
+                },
+                "logo": "nomadAgent1",
+                "available": true
+            },
+            {
+                "type": "Agent",
+                "title": "Field Marshall Mercer",
+                "unlock": "At Game Start",
+                "specialAbility": {
+                    "desc": "At the end of a player's turn: You may exhaust this card to allow that player to remove up to 2 of their ground forces from the game board and place them on planets they control in the active system.",
+                    "phase": ["Action"]
+                },
+                "logo": "nomadAgent2",
+                "available": true
+            },
+            {
+                "type": "Agent",
+                "title": "The Thundarian",
+                "unlock": "At Game Start",
+                "specialAbility": {
+                    "desc": "After the \"Roll Dice\" step of combat: \r\nYou may exhaust this card. If you do, hits are not assigned to either players' units. Return to the start of this combat round's \"Roll Dice\" step.",
+                    "phase": ["SpaceCombat", "GroundCombat"]
+                },
+                "logo": "nomadAgent3",
+                "available": true
+            },
+            {
+                "type": "Commander",
+                "title": "Navarch Feng",
+                "unlock": "Have 1 scored secret objective",
+                "specialAbility": {
+                    "desc": "You can produce your flagship without spending resources",
+                    "phase": ["Action"]
+                },
+                "logo": "nomadCommander",
+                "available": false
+            },
+            {
+                "type": "Hero",
+                "title": "Ahk-Syl Siven",
+                "unlock": "Have 3 Scored Objectives",
+                "specialAbility": {
+                    "desc": "ACTION: Place this card near the game board; your flagship and units it transports can move out of systems that contain your command tokens during this game round. At the end of that game round, purge this card.",
+                    "phase": ["Action"]
+                },
+                "logo": "nomadHero",
+                "available": false
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Sardakk N'orr",
+        "tech": [],
+        "planets": [15, 16],
+        "units": [
+            {
+                "id": 1,
+                "count": 2
+            },
+            {
+                "id": 2,
+                "count": 1
+            },
+            {
+                "id": 8,
+                "count": 5
+            },
+            {
+                "id": 10,
+                "count": 1
+            },
+            {
+                "id": 11,
+                "count": 1
+            }
+        ],
+        "commodities": 3,
+        "logo": "sardakk",
+        "abilities": [
+            {
+                "title": "UNRELENTING",
+                "description": "Apply +1 to the result of each of your unit's combat rolls.",
+                "phase": ["Action"]
+            }
+        ],
+        "flagship": {
+            "title": "C'Morran N'orr",
+            "cost": 8,
+            "combat": 6,
+            "rolls": 2,
+            "move": 1,
+            "capacity": 3,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "Apply +1 to the result of each of your other ship's combat rolls in this system.",
+                "phase": ["SpaceCombat"]
+            },
+            "logo": "flagship",
+            "available": false
+        },
+        "mech": {
+            "title": "Valkyrie Exoskeleton",
+            "cost": 2,
+            "combat": 6,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "After this unit uses its SUSTAIN DAMAGE ability during Ground Combat, it produces 1 hit against your opponent's ground forces on this planet.",
+                "phase": ["GroundCombat"]
+            },
+            "logo": "mech",
+            "available": false
+        },
+        "leaders": [
+            {
+                "type": "Agent",
+                "title": "T'ro",
+                "unlock": "At Game Start",
+                "specialAbility": {
+                    "desc": "At the end of a player's tactical action: \r\nYou may exhaust this card; if you do, that player may place 2 infantry from their reinforcements on a planet they control in the active system.",
+                    "phase": ["Action"]
+                },
+                "logo": "sardakkAgent",
+                "available": true
+            },
+            {
+                "type": "Commander",
+                "title": "G'hom Sek'kus",
+                "unlock": "Control 5 planets in non-home systems",
+                "specialAbility": {
+                    "desc": "During the \"Commit Ground Forces\" step: \r\nYou can commit up to 1 ground force from each planet in the active system and each planet in adjacent systems that do not contain 1 of your command tokens.",
+                    "phase": ["GroundCombat"]
+                },
+                "logo": "sardakkCommander",
+                "available": false
+            },
+            {
+                "type": "Hero",
+                "title": "Sh'val, Harbinger",
+                "unlock": "Have 3 Scored Objectives",
+                "specialAbility": {
+                    "desc": "After you move ships into the active system: \r\nYou may skip directly to the \"Commit Ground Forces\" step. If you do, after you commit ground forces to land on planets, purge this card and return each of your ships in the active system to your reinforcements.",
+                    "phase": ["Action"]
+                },
+                "logo": "sardakkHero",
+                "available": false
+            }
+        ]
     }
 ]

@@ -5,6 +5,7 @@ function PlannerContainer(props) {
     return (
         <Container>
             <Header title="Planners" />
+            <h3 className="text-center">Coming Soon</h3>
         </Container>
     );
 }

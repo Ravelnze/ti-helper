@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import Overview from "./Overview";
 import Nav from "react-bootstrap/Nav";
@@ -20,17 +20,22 @@ import getLogoByKey from "../lib/Logos";
 import SimulateContainer from "./SimulateContainer";
 import NavIcon from "./NavIcon";
 import Phase from "../lib/Phase";
-import { setCombatTab, setPhaseTab } from "../store/Actions";
+import { setCombatTab, setGameStarted, setPhaseTab } from "../store/Actions";
 
 function GameContainer() {
     const [state, dispatch] = useStore();
     let match = useRouteMatch();
+
+    useEffect(() => {
+        dispatch(setGameStarted(true));
+    }, []);
 
     const [show, setShow] = useState(false);
 
     const showModal = () => {
         setShow(true);
     };
+
     const hideModal = () => {
         setShow(false);
     };

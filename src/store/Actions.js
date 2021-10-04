@@ -11,10 +11,24 @@ export function setPok(usingPok) {
     };
 }
 
+export function setGameStarted(gameStarted) {
+    return {
+        type: Types.SETGAMESTARTED,
+        payload: gameStarted,
+    };
+}
+
 export function setFaction(faction) {
     return {
         type: Types.SETFACTION,
         payload: faction,
+    };
+}
+
+export function setUnitAvailable(unit, available) {
+    return {
+        type: Types.SETUNITAVAILABLE,
+        payload: { unit, available },
     };
 }
 
@@ -127,5 +141,26 @@ export function setCombatTab(tab) {
     return {
         type: Types.SETCOMBATTAB,
         payload: tab,
+    };
+}
+
+export function addPromissory(note) {
+    return {
+        type: Types.ADDPROMISSORY,
+        payload: note,
+    };
+}
+
+export function removePromissory(note) {
+    return {
+        type: Types.REMOVEPROMISSORY,
+        payload: note,
+    };
+}
+
+export function setPromissoryColour(note, colour) {
+    return {
+        type: Types.SETPROMISSORYCOLOUR,
+        payload: { note, colour },
     };
 }

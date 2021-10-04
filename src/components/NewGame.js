@@ -1,11 +1,9 @@
-//#region imports
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
-
 import FactionList from "./FactionList";
 import DividerText from "./DividerText";
 import TechnologyCardGroup from "./TechnologyCardGroup";
@@ -13,10 +11,20 @@ import UnitList from "./UnitList";
 import ValueLabel from "./ValueLabel";
 import { useStore } from "../store/Store";
 import { setPok } from "../store/Actions";
-//#endregion
+import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import { GetAbilitiesForPhase } from "../lib/Faction";
 
 function NewGame() {
     const [state, dispatch] = useStore();
+    const history = useHistory();
+    const abilities = GetAbilitiesForPhase(state.faction?.abilities, "Setup");
+
+    useEffect(() => {
+        if (state.gameStarted) {
+            history.push("/game");
+        }
+    }, []);
 
     return (
         <Container className="mb-5">
@@ -30,7 +38,7 @@ function NewGame() {
                     <Form.Check
                         type="checkbox"
                         style={{ fontSize: "1.2rem" }}
-                        label="Prophecy of kings"
+                        label="Prophecy of Kings"
                         checked={state.pok}
                         onChange={() => dispatch(setPok(!state.pok))}
                     />
@@ -41,15 +49,16 @@ function NewGame() {
                     <FactionList />
                 </Col>
             </Row>
-            {state.faction != null ? (
-                <ValueLabel
-                    label="Commodities"
-                    value={state.faction?.commodities}
-                />
-            ) : null}
             <Row>
+                <Col className="ps-4">
+                    {abilities.length > 0
+                        ? abilities.map((a) => (<li className="text-light">{a.description}</li>))
+                        : null}
+                </Col>
+            </Row>
+            <Row style={{ paddingLeft: "4px" }}>
                 <Col>
-                    {state.faction != null ? (
+                    {state.faction ? (
                         <>
                             <DividerText title="Starting Units" />
                             <UnitList units={state.faction.units} />
@@ -69,9 +78,15 @@ function NewGame() {
                     ) : null}
                 </Col>
             </Row>
-            <Row>
+            {state.faction ? (
+                <ValueLabel
+                    label="Commodities"
+                    value={state.faction?.commodities}
+                />
+            ) : null}
+            <Row className="mt-2">
                 <Col>
-                    {state.faction != null ? (
+                    {state.faction ? (
                         <Link to="/game" className="float-end">
                             <Button variant="light">Start Game</Button>
                         </Link>

@@ -1,5 +1,5 @@
 import { AddTech, RemoveTech, SetTech } from "../lib/Technology";
-import { SetFaction } from "../lib/Faction";
+import { SetFaction, SetUnitAvailable } from "../lib/Faction";
 import applyMiddleware from "./Middleware";
 import * as Types from "./Types";
 import { AddPlanet, ExhaustPlanets, RemovePlanet } from "../lib/Planet";
@@ -10,15 +10,22 @@ import {
 } from "../lib/Objective";
 import { AddActionCard, RemoveActionCard } from "../lib/ActionCard";
 import { AddAgenda, ElectOutcome, RemoveAgenda } from "../lib/Agenda";
+import {
+    AddPromissory,
+    RemovePromissory,
+    SetPromissoryColour,
+} from "../lib/PromissoryNote";
 
 export const initialState = () => ({
     pok: true,
+    gameStarted: false,
     faction: null,
     technologies: [],
     planets: [],
     objectives: [],
     actionCards: {},
     agendas: [],
+    promissoryNotes: [],
     availableResources: 0,
     totalResources: 0,
     availableInfluence: 0,
@@ -42,8 +49,26 @@ function setPok(state, { payload }) {
     };
 }
 
+function setGameStarted(state, { payload }) {
+    return {
+        ...state,
+        gameStarted: payload,
+    };
+}
+
 function setFaction(state, { payload }) {
     return SetFaction(state, payload);
+}
+
+function setUnitAvailable(state, { payload }) {
+    return {
+        ...state,
+        faction: SetUnitAvailable(
+            state.faction,
+            payload.unit,
+            payload.available
+        ),
+    };
 }
 
 function setTech(state, { payload }) {
@@ -153,6 +178,31 @@ function setCombatTab(state, { payload }) {
     };
 }
 
+function addPromissory(state, { payload }) {
+    return {
+        ...state,
+        promissoryNotes: AddPromissory(state.promissoryNotes, payload),
+    };
+}
+
+function removePromissory(state, { payload }) {
+    return {
+        ...state,
+        promissoryNotes: RemovePromissory(state.promissoryNotes, payload),
+    };
+}
+
+function setPromissoryColour(state, { payload }) {
+    return {
+        ...state,
+        promissoryNotes: SetPromissoryColour(
+            state.promissoryNotes,
+            payload.note,
+            payload.colour
+        ),
+    };
+}
+
 // #endregion
 
 const createReducer = (handlers) => (state, action) => {
@@ -169,7 +219,9 @@ const createReducer = (handlers) => (state, action) => {
 
 export const reducer = createReducer({
     [Types.SETPOK]: setPok,
+    [Types.SETGAMESTARTED]: setGameStarted,
     [Types.SETFACTION]: setFaction,
+    [Types.SETUNITAVAILABLE]: setUnitAvailable,
     [Types.SETTECH]: setTech,
     [Types.ADDTECH]: addTech,
     [Types.REMOVETECH]: removeTech,
@@ -187,4 +239,7 @@ export const reducer = createReducer({
     [Types.SETPHASETAB]: setPhaseTab,
     [Types.SETCOMBATTAB]: setCombatTab,
     [Types.RESETGAME]: resetGame,
+    [Types.ADDPROMISSORY]: addPromissory,
+    [Types.REMOVEPROMISSORY]: removePromissory,
+    [Types.SETPROMISSORYCOLOUR]: setPromissoryColour,
 });

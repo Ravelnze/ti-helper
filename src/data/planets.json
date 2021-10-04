@@ -152,5 +152,27 @@
         "trait": null,
         "techSpecialty": null,
         "desc": "Cold and still, with a surface buried beneath kilometers of ice. A few smuggler bases dot the surface, but Sumerian Station circles the planet, making it a vital trading destination."
+    },
+    {
+        "id": 15,
+        "title": "Tren'Lak",
+        "resource": 1,
+        "influence": 0,
+        "homeFactionId": 7,
+        "legendaryAbility": null,
+        "trait": null,
+        "techSpecialty": null,
+        "desc": "Icy and desolate. Other than the ferocious snow dracs and the rare icemoon flowers, life is restricted to the N'orr boomtowers and ice mines."
+    },
+    {
+        "id": 16,
+        "title": "Quinarra",
+        "resource": 3,
+        "influence": 1,
+        "homeFactionId": 7,
+        "legendaryAbility": null,
+        "trait": null,
+        "techSpecialty": null,
+        "desc": "Enormous and oceanless. Not only the largest planet supporting sentient life, but also the one with the least moisture. Home to the Sardakk N'orr hive-cities."
     }
 ]

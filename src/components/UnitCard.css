@@ -2,14 +2,34 @@
     border-color: rgba(0, 0, 0, 0);
     border: 0 !important;
     padding: 0 !important;
-    height: 120px;
+    margin-top: -1px !important;
+    height: 140px;
     width: 120px;
     background-repeat: no-repeat;
     background-position: 50% 75%;
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    background-color: transparent !important;
 }
 
 .unit-badge {
     border-bottom-right-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
-    width: 100%;
+    width: 120px;
+}
+
+.popover {
+    background-color: #212529 !important;
+}
+
+.popover-header:before {
+    border-bottom: 0 !important;
+}
+
+.popover-arrow {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.popover-arrow:after {
+    border-color: rgba(0, 0, 0, 0) !important;
 }
