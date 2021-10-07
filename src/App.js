@@ -7,7 +7,6 @@ import { reducer, initialState as state } from "./store/Reducer";
 import { get } from "./store/middlewares/LocalStorage";
 import merge from "lodash.merge";
 import "./App.css";
-
 function App() {
     return (
         <StoreProvider

@@ -5,7 +5,7 @@ function SimulateContainer(props) {
     return (
         <Container>
             <Header title="Simulate" lg showEditModal={props.showEditModal} />
-            <h3 className="text-center">Coming Soon</h3>
+            <h4 className="text-center">Coming Soon</h4>
         </Container>
     );
 }

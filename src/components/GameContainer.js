@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
+import { Route, Link, useRouteMatch } from "react-router-dom";
+import { AnimatedSwitch as Switch } from "react-router-transition";
 import Overview from "./Overview";
 import Nav from "react-bootstrap/Nav";
 import NavItem from "react-bootstrap/NavItem";
@@ -55,7 +56,12 @@ function GameContainer() {
     return (
         <>
             <Container>
-                <Switch>
+                <Switch
+                    atEnter={{ opacity: 0 }}
+                    atLeave={{ opacity: 0 }}
+                    atActive={{ opacity: 1 }}
+                    className="switch-wrapper"
+                >
                     <Route path={`${match.path}/phase`}>
                         <PhaseTabs
                             key="phase-tab"

@@ -54,12 +54,21 @@ label {
 }
 
 div.tab-pane.active > div.container {
-    padding: 0!important;
+    padding: 0 !important;
 }
 
 ul.nav-pills > li.nav-item > button.nav-link.active {
-    background-color: #212529!important;
+    background-color: #212529 !important;
 }
 ul.nav-pills > li.nav-item > button.nav-link {
-    color: #fff!important;
+    color: #fff !important;
+}
+
+.switch-wrapper {
+    position: relative;
+}
+
+.switch-wrapper > div {
+    position: absolute;
+    width: 100%
 }
