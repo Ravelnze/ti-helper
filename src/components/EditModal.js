@@ -276,67 +276,77 @@ function EditModal(props) {
                                 ) : null}
                             </Accordion.Item>
 
-                            <Accordion.Item eventKey="7">
-                                <Accordion.Header>
-                                    Exploration Cards
-                                </Accordion.Header>
-                                <Accordion.Body className="py-2 px-0">
-                                    <Row>
-                                        <Col>
-                                            <AutoSuggestionInput
-                                                items={Exploration}
-                                                setValue={(card) =>
-                                                    dispatch(
-                                                        addExplorationCard(card)
-                                                    )
-                                                }
-                                                placeholder="Search for an exploration card"
-                                            />
-                                        </Col>
-                                    </Row>
-                                </Accordion.Body>
-                                {state.explorationCards.length > 0 ? (
-                                    <Accordion.Body className="p-0">
-                                        <ScrollableCardList
-                                            cardList={state.explorationCards}
-                                            cardType={CardType.Exploration}
-                                            interactable
-                                        />
+                            {state.pok ? (
+                                <Accordion.Item eventKey="7">
+                                    <Accordion.Header>
+                                        Exploration Cards
+                                    </Accordion.Header>
+                                    <Accordion.Body className="py-2 px-0">
+                                        <Row>
+                                            <Col>
+                                                <AutoSuggestionInput
+                                                    items={Exploration}
+                                                    setValue={(card) =>
+                                                        dispatch(
+                                                            addExplorationCard(
+                                                                card
+                                                            )
+                                                        )
+                                                    }
+                                                    placeholder="Search for an exploration card"
+                                                />
+                                            </Col>
+                                        </Row>
                                     </Accordion.Body>
-                                ) : null}
-                            </Accordion.Item>
+                                    {state.explorationCards.length > 0 ? (
+                                        <Accordion.Body className="p-0">
+                                            <ScrollableCardList
+                                                cardList={
+                                                    state.explorationCards
+                                                }
+                                                cardType={CardType.Exploration}
+                                                interactable
+                                            />
+                                        </Accordion.Body>
+                                    ) : null}
+                                </Accordion.Item>
+                            ) : null}
 
-                            <Accordion.Item eventKey="8">
-                                <Accordion.Header>
-                                    {"Relics & Fragments"}
-                                </Accordion.Header>
-                                <Accordion.Body className="py-2 px-0">
-                                    <Row>
-                                        <Col>
-                                            <AutoSuggestionInput
-                                                items={Relics.excludeSingle(
-                                                    Object.entries(state.relics)
-                                                )}
-                                                setValue={(card) =>
-                                                    dispatch(addRelic(card))
-                                                }
-                                                placeholder="Search for a relic"
-                                            />
-                                        </Col>
-                                    </Row>
-                                </Accordion.Body>
-                                {Object.keys(state.relics).length > 0 ? (
-                                    <Accordion.Body className="p-0">
-                                        <ScrollableCardList
-                                            cardList={Object.entries(
-                                                state.relics
-                                            )}
-                                            cardType={CardType.Relic}
-                                            interactable
-                                        />
+                            {state.pok ? (
+                                <Accordion.Item eventKey="8">
+                                    <Accordion.Header>
+                                        {"Relics & Fragments"}
+                                    </Accordion.Header>
+                                    <Accordion.Body className="py-2 px-0">
+                                        <Row>
+                                            <Col>
+                                                <AutoSuggestionInput
+                                                    items={Relics.excludeSingle(
+                                                        Object.entries(
+                                                            state.relics
+                                                        )
+                                                    )}
+                                                    setValue={(card) =>
+                                                        dispatch(addRelic(card))
+                                                    }
+                                                    placeholder="Search for a relic"
+                                                />
+                                            </Col>
+                                        </Row>
                                     </Accordion.Body>
-                                ) : null}
-                            </Accordion.Item>
+                                    {Object.keys(state.relics).length > 0 ? (
+                                        <Accordion.Body className="p-0">
+                                            <ScrollableCardList
+                                                cardList={Object.entries(
+                                                    state.relics
+                                                )}
+                                                cardType={CardType.Relic}
+                                                interactable
+                                            />
+                                        </Accordion.Body>
+                                    ) : null}
+                                </Accordion.Item>
+                            ) : null}
                         </Accordion>
                     </Col>
                 </Row>
