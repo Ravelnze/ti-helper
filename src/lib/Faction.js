@@ -25,15 +25,15 @@ export function SetFaction(state, faction) {
     const planets = Planets.filter((planet) =>
         faction?.planets.includes(planet.id)
     );
-    const resources = UpdateResources(planets);
-    const influence = UpdateInfluence(planets);
+    planets.forEach((planet) => {
+        planet.extraIcons = [];
+        planet.attachments = [];
+    });
 
     return {
         ...state,
-        availableResources: resources,
-        totalResources: resources,
-        availableInfluence: influence,
-        totalInfluence: influence,
+        ...UpdateResources(planets),
+        ...UpdateInfluence(planets),
         planets: planets,
         faction: faction,
     };

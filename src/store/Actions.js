@@ -74,6 +74,20 @@ export function removePlanet(planet) {
     };
 }
 
+export function exhaustLegendary(ability, exhaust) {
+    return {
+        type: Types.EXHAUSTLEGENDARY,
+        payload: { ability, exhaust },
+    };
+}
+
+export function setPlanet(planet) {
+    return {
+        type: Types.SETPLANET,
+        payload: planet,
+    };
+}
+
 export function addObjective(objective) {
     return {
         type: Types.ADDOBJECTIVE,
@@ -162,5 +176,26 @@ export function setPromissoryColour(note, colour) {
     return {
         type: Types.SETPROMISSORYCOLOUR,
         payload: { note, colour },
+    };
+}
+
+export function addExplorationCard(card) {
+    return {
+        type: Types.ADDEXPLORATIONCARD,
+        payload: card,
+    };
+}
+
+export function removeExplorationCard(card) {
+    return {
+        type: Types.REMOVEEXPLORATIONCARD,
+        payload: card,
+    };
+}
+
+export function setAttachedPlanet(card, planet) {
+    return {
+        type: Types.SETATTACHEDPLANET,
+        payload: { card, planet },
     };
 }

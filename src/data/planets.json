@@ -5,9 +5,6 @@
         "resource": 1,
         "influence": 2,
         "homeFactionId": 4,
-        "legendaryAbility": null,
-        "trait": null,
-        "techSpecialty": null,
         "desc": "Covered by cold oceans and a few inhospitable islands. The seat of the Headmaster, the Hylar ruler, dwells in the deep underwater city of Wun-Escha."
     },
     {
@@ -16,9 +13,6 @@
         "resource": 2,
         "influence": 3,
         "homeFactionId": 4,
-        "legendaryAbility": null,
-        "trait": null,
-        "techSpecialty": null,
         "desc": "Covered by mild oceans and a small archipelago called The Reef by off-worlders. The Circle of Regents makes its home in the underwater city-school of Nuun-Dascha."
     },
     {
@@ -27,9 +21,6 @@
         "resource": 1,
         "influence": 1,
         "homeFactionId": 1,
-        "legendaryAbility": null,
-        "trait": null,
-        "techSpecialty": null,
         "desc": "Also called the \"Fire Sand.\" Seat of the Quieron, the Hacan council, and the Sword Fleet. Harbors the greatest of the famous Hacan moving cities."
     },
     {
@@ -38,9 +29,6 @@
         "resource": 2,
         "influence": 0,
         "homeFactionId": 1,
-        "legendaryAbility": null,
-        "trait": null,
-        "techSpecialty": null,
         "desc": "Also called the \"Moving Sand.\" The desert home of the Hacan Mowshir trade families and the great orbital trading ports of Haal, Shimax, and Dry Wind."
     },
     {
@@ -49,9 +37,6 @@
         "resource": 0,
         "influence": 1,
         "homeFactionId": 1,
-        "legendaryAbility": null,
-        "trait": null,
-        "techSpecialty": null,
         "desc": "Also called the \"Dream Sand.\" The least populated of the Hacan planets, but the center of Hacan mythology and religion. The only known source of starflowers."
     },
     {
@@ -60,9 +45,6 @@
         "resource": 3,
         "influence": 4,
         "homeFactionId": 2,
-        "legendaryAbility": null,
-        "trait": null,
-        "techSpecialty": null,
         "desc": "A massive nebula dominating the skies of many core worlds. Thick clouds of dust obscure its heart, a lightless refuge where Empyrean ships have congregated for millennia"
     },
     {
@@ -71,9 +53,6 @@
         "resource": 3,
         "influence": 2,
         "homeFactionId": 3,
-        "legendaryAbility": null,
-        "trait": null,
-        "techSpecialty": null,
         "desc": "The fungal world of Nestphar is home to the symbiotic Arborec. Nestphar's orbit is filled with Flaah spores that extend its Symphony."
     },
     {
@@ -81,10 +60,7 @@
         "title": "Abyz",
         "resource": 3,
         "influence": 0,
-        "homeFactionId": null,
-        "legendaryAbility": null,
         "trait": "Hazardous",
-        "techSpecialty": null,
         "desc": "Its thick, complex atmosphere is inhospitable to most races, but Abyz is known for its seemingly endless natural reserves of rare minerals and precious metals."
     },
     {
@@ -92,8 +68,6 @@
         "title": "Meer",
         "resource": 0,
         "influence": 4,
-        "homeFactionId": null,
-        "legendaryAbility": null,
         "trait": "Hazardous",
         "techSpecialty": "Warfare",
         "desc": "Hellish world immolated in the inferno of its nearby sun. Famed for the fiery majesty of its surface when viewed from the safety of its many orbital stations."
@@ -103,10 +77,7 @@
         "title": "Arinam",
         "resource": 1,
         "influence": 2,
-        "homeFactionId": null,
-        "legendaryAbility": null,
         "trait": "Industrial",
-        "techSpecialty": null,
         "desc": "Isolated planet poor in resources but rich in natural beauty. Boasts many exotic resorts frequented by the rich and famous of the galaxy."
     },
     {
@@ -114,10 +85,7 @@
         "title": "Centauri",
         "resource": 1,
         "influence": 3,
-        "homeFactionId": null,
-        "legendaryAbility": null,
         "trait": "Cultural",
-        "techSpecialty": null,
         "desc": "Venerable world with few resources but a rich history. Site of important treaties between several races during the Twilight Wars."
     },
     {
@@ -125,8 +93,11 @@
         "title": "Primor",
         "resource": 2,
         "influence": 1,
-        "homeFactionId": null,
-        "legendaryAbility": 1,
+        "legendaryAbility": {
+            "title": "The Atrament",
+            "description": "You may exhaust this card at the end of your turn to place up to 2 infantry from your reinforcements on any planet you control",
+            "phase": ["Action"]
+        },
         "trait": "Cultural",
         "techSpecialty": "Cybernetic",
         "desc": "Large temperate world. Site of several pitched battles during the Twilight Wars due to valuable osmium deposits and a well-educated populace."
@@ -137,9 +108,6 @@
         "resource": 4,
         "influence": 1,
         "homeFactionId": 5,
-        "legendaryAbility": null,
-        "trait": null,
-        "techSpecialty": null,
         "desc": "The fiery surface of Muaat is uninhabitable to most races. It is home to the Gashlai, and only here can they live outside of their cumbersome ember suits."
     },
     {
@@ -148,9 +116,6 @@
         "resource": 4,
         "influence": 4,
         "homeFactionId": 6,
-        "legendaryAbility": null,
-        "trait": null,
-        "techSpecialty": null,
         "desc": "Cold and still, with a surface buried beneath kilometers of ice. A few smuggler bases dot the surface, but Sumerian Station circles the planet, making it a vital trading destination."
     },
     {
@@ -159,9 +124,6 @@
         "resource": 1,
         "influence": 0,
         "homeFactionId": 7,
-        "legendaryAbility": null,
-        "trait": null,
-        "techSpecialty": null,
         "desc": "Icy and desolate. Other than the ferocious snow dracs and the rare icemoon flowers, life is restricted to the N'orr boomtowers and ice mines."
     },
     {
@@ -170,9 +132,6 @@
         "resource": 3,
         "influence": 1,
         "homeFactionId": 7,
-        "legendaryAbility": null,
-        "trait": null,
-        "techSpecialty": null,
         "desc": "Enormous and oceanless. Not only the largest planet supporting sentient life, but also the one with the least moisture. Home to the Sardakk N'orr hive-cities."
     }
 ]

@@ -7,7 +7,7 @@ import {
     PublicCategories,
     Categories as ObjectiveCategories,
 } from "./Objective";
-import { Categories as PlanetCategories } from "./Planet";
+import { Category as PlanetCategories } from "./Planet";
 
 export const Primary = {
     Player: "Player",

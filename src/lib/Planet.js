@@ -1,20 +1,29 @@
-const Cultural = "Cultural";
-const Hazardous = "Hazardous";
-const Industrial = "Industrial";
+export const Category = {
+    Cultural: "Cultural",
+    Hazardous: "Hazardous",
+    Industrial: "Industrial",
+};
 
-export const Categories = { Cultural, Hazardous, Industrial };
+const AttachType = {
+    dmz: "dmz",
+    tradeable: "tradeable",
+    resource: "resource",
+    influence: "influence",
+    vp: "vp",
+    techSpecialty: "techSpecialty",
+};
 
 export function GetPlanetVariantColour(trait) {
     let variant = {};
 
     switch (trait) {
-        case Industrial:
+        case Category.Industrial:
             variant = { colour: "success", text: "white" }; // Green
             break;
-        case Hazardous:
+        case Category.Hazardous:
             variant = { colour: "danger", text: "white" }; // Red
             break;
-        case Cultural:
+        case Category.Cultural:
             variant = { colour: "primary", text: "white" }; // Blue
             break;
         default:
@@ -26,34 +35,60 @@ export function GetPlanetVariantColour(trait) {
 }
 
 export function UpdateResources(planets) {
-    return planets.length > 0
-        ? planets.map((p) => p.resource).reduce((a, b) => a + b, 0)
-        : 0;
+    return {
+        availableResources:
+            planets.length > 0
+                ? planets
+                      .filter((p) => !p.isExhausted)
+                      .map((p) => p.resource)
+                      .reduce((a, b) => a + b, 0)
+                : 0,
+        totalResources:
+            planets.length > 0
+                ? planets.map((p) => p.resource).reduce((a, b) => a + b, 0)
+                : 0,
+    };
 }
 
 export function UpdateInfluence(planets) {
-    return planets.length > 0
-        ? planets.map((p) => p.influence).reduce((a, b) => a + b, 0)
-        : 0;
+    return {
+        availableInfluence:
+            planets.length > 0
+                ? planets
+                      .filter((p) => !p.isExhausted)
+                      .map((p) => p.influence)
+                      .reduce((a, b) => a + b, 0)
+                : 0,
+        totalInfluence:
+            planets.length > 0
+                ? planets.map((p) => p.influence).reduce((a, b) => a + b, 0)
+                : 0,
+    };
 }
 
 export function AddPlanet(state, planet) {
+    planet.attachments = [];
+    planet.extraIcons = [];
     const planets = [...state.planets, planet];
-    const resources = UpdateResources(planets);
-    const influence = UpdateInfluence(planets);
+    const legendaryAbilities = [...state.legendaryPlanetAbilities];
+    if (planet.legendaryAbility) {
+        const ability = planet.legendaryAbility;
+        ability.planetTitle = planet.title;
+        ability.isExhausted = false;
+        legendaryAbilities.push(planet.legendaryAbility);
+    }
 
     return {
         ...state,
-        availableResources: resources,
-        totalResources: resources,
-        availableInfluence: influence,
-        totalInfluence: influence,
         planets: planets,
+        legendaryPlanetAbilities: legendaryAbilities,
+        ...UpdateResources(planets),
+        ...UpdateInfluence(planets),
     };
 }
 
 export function ExhaustPlanets(state, { planets, exhaust }) {
-    const existingPlanets = state.planets;
+    const existingPlanets = [...state.planets];
 
     planets.forEach((planet) => {
         const index = state.planets.findIndex((p) => p.id === planet.id);
@@ -61,26 +96,143 @@ export function ExhaustPlanets(state, { planets, exhaust }) {
         existingPlanets[index].isExhausted = exhaust;
     });
 
-    const available = existingPlanets.filter((p) => !p.isExhausted);
-
     return {
         ...state,
         planets: existingPlanets,
-        availableResources: UpdateResources(available),
-        availableInfluence: UpdateInfluence(available),
+        ...UpdateResources(existingPlanets),
+        ...UpdateInfluence(existingPlanets),
     };
 }
 
 export function RemovePlanet(state, planet) {
     const planets = state.planets.filter((p) => p.id !== planet.id);
-    const readyPlanets = planets.filter((p) => !p.isExhausted);
+    const legendaryAbilities = state.legendaryPlanetAbilities.filter(
+        (la) => la.title !== planet?.legendaryAbility?.title
+    );
+    const explorationCards = state.explorationCards.filter(
+        (ec) => !planet.attachments.includes(ec.id)
+    );
 
     return {
         ...state,
         planets: planets,
-        availableResources: UpdateResources(readyPlanets),
-        totalResources: UpdateResources(planets),
-        availableInfluence: UpdateInfluence(readyPlanets),
-        totalInfluence: UpdateInfluence(planets),
+        legendaryPlanetAbilities: legendaryAbilities,
+        explorationCards: explorationCards,
+        ...UpdateResources(planets),
+        ...UpdateInfluence(planets),
     };
+}
+
+export function GetLegendaryAbilitiesForPhase(planets, phase) {
+    return planets
+        .filter(
+            (pl) =>
+                pl.legendaryAbility &&
+                pl.legendaryAbility.phase.some((p) =>
+                    ["Any", phase].includes(p)
+                )
+        )
+        .map((planet) => planet.legendaryAbility);
+}
+
+export function ExhaustLegendaryAbility(state, { ability, exhaust }) {
+    const abilities = [...state.legendaryPlanetAbilities];
+
+    const index = state.legendaryPlanetAbilities.findIndex(
+        (lpa) => lpa.title === ability.title
+    );
+    if (index === -1) return; // This ability doesn't exist in the list
+    abilities[index].isExhausted = exhaust;
+
+    return {
+        ...state,
+        legendaryPlanetAbilities: abilities,
+    };
+}
+
+export function SetPlanet(state, planet) {
+    const index = state.planets.findIndex((p) => p.id === planet?.id);
+    if (index === -1) return state.planets; // Planet does not exist
+
+    const planets = [...state.planets];
+    planets[index] = planet;
+
+    return {
+        ...state,
+        planets: planets,
+        ...UpdateResources(planets),
+        ...UpdateInfluence(planets),
+    };
+}
+
+export function AugmentPlanet(explorationCard, planet, attaching) {
+    if (!planet) return;
+
+    explorationCard.effects.forEach((attachment) => {
+        switch (attachment.type) {
+            case AttachType.resource:
+                if (attaching) {
+                    planet.attachments.push(explorationCard.id);
+                    planet.resource += attachment.value;
+                } else {
+                    planet.attachments = planet.attachments.filter(
+                        (a) => a !== explorationCard.id
+                    );
+                    planet.resource -= attachment.value;
+                }
+                break;
+            case AttachType.influence:
+                if (attaching) {
+                    planet.attachments.push(explorationCard.id);
+                    planet.influence += attachment.value;
+                } else {
+                    planet.attachments = planet.attachments.filter(
+                        (a) => a !== explorationCard.id
+                    );
+                    planet.influence -= attachment.value;
+                }
+                break;
+            case AttachType.techSpecialty:
+                if (attaching) {
+                    planet.attachments.push(explorationCard.id);
+                    if (planet.techSpecialty) {
+                        planet.resource += 1;
+                        planet.influence += 1;
+                    } else {
+                        planet.techSpecialty = attachment.value;
+                        planet.addedAttachedSpecialty = attachment.value;
+                    }
+                } else {
+                    planet.attachments = planet.attachments.filter(
+                        (a) => a !== explorationCard.id
+                    );
+                    if (planet.addedAttachedSpecialty === attachment.value) {
+                        planet.techSpecialty = null;
+                    } else {
+                        planet.resource -= 1;
+                        planet.influence -= 1;
+                    }
+                }
+                break;
+            case AttachType.vp:
+            case AttachType.dmz:
+                if (attaching) {
+                    planet.attachments.push(explorationCard.id);
+                    planet.extraIcons.push(attachment.image);
+                } else {
+                    planet.attachments = planet.attachments.filter(
+                        (a) => a !== explorationCard.id
+                    );
+                    planet.extraIcons = planet.extraIcons.filter(
+                        (ei) => ei !== attachment.image
+                    );
+                }
+                break;
+            default:
+                console.warn(`Unknown attach type ${attachment.type}.`);
+                break;
+        }
+    });
+
+    return planet;
 }

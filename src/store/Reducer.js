@@ -2,7 +2,14 @@ import { AddTech, RemoveTech, SetTech } from "../lib/Technology";
 import { SetFaction, SetUnitAvailable } from "../lib/Faction";
 import applyMiddleware from "./Middleware";
 import * as Types from "./Types";
-import { AddPlanet, ExhaustPlanets, RemovePlanet } from "../lib/Planet";
+import {
+    AddPlanet,
+    AugmentPlanetWithAttachment,
+    ExhaustLegendaryAbility,
+    ExhaustPlanets,
+    RemovePlanet,
+    SetPlanet,
+} from "../lib/Planet";
 import {
     AddObjective,
     CompleteObjective,
@@ -15,6 +22,11 @@ import {
     RemovePromissory,
     SetPromissoryColour,
 } from "../lib/PromissoryNote";
+import {
+    AddExplorationCard,
+    RemoveExplorationCard,
+    SetAttachedPlanet,
+} from "../lib/Exploration";
 
 export const initialState = () => ({
     pok: true,
@@ -22,10 +34,12 @@ export const initialState = () => ({
     faction: null,
     technologies: [],
     planets: [],
+    legendaryPlanetAbilities: [],
     objectives: [],
     actionCards: {},
     agendas: [],
     promissoryNotes: [],
+    explorationCards: [],
     availableResources: 0,
     totalResources: 0,
     availableInfluence: 0,
@@ -102,6 +116,14 @@ function exhaustPlanets(state, { payload }) {
 
 function removePlanet(state, { payload }) {
     return RemovePlanet(state, payload);
+}
+
+function exhaustLegendaryAbility(state, { payload }) {
+    return ExhaustLegendaryAbility(state, payload);
+}
+
+function setPlanet(state, { payload }) {
+    return SetPlanet(state, payload);
 }
 
 function addObjective(state, { payload }) {
@@ -203,6 +225,34 @@ function setPromissoryColour(state, { payload }) {
     };
 }
 
+function addExplorationCard(state, { payload }) {
+    return {
+        ...state,
+        explorationCards: AddExplorationCard(state.explorationCards, payload),
+    };
+}
+
+function removeExplorationCard(state, { payload }) {
+    return {
+        ...state,
+        explorationCards: RemoveExplorationCard(
+            state.explorationCards,
+            payload
+        ),
+    };
+}
+
+function setAttachedPlanet(state, { payload }) {
+    return {
+        ...state,
+        explorationCards: SetAttachedPlanet(
+            state,
+            payload.card,
+            payload.planet
+        ),
+    };
+}
+
 // #endregion
 
 const createReducer = (handlers) => (state, action) => {
@@ -228,6 +278,8 @@ export const reducer = createReducer({
     [Types.ADDPLANET]: addPlanet,
     [Types.EXHAUSTPLANET]: exhaustPlanets,
     [Types.REMOVEPLANET]: removePlanet,
+    [Types.EXHAUSTLEGENDARY]: exhaustLegendaryAbility,
+    [Types.SETPLANET]: setPlanet,
     [Types.ADDOBJECTIVE]: addObjective,
     [Types.COMPLETEOBJECTIVE]: completeObjective,
     [Types.REMOVEOBJECTIVE]: removeObjective,
@@ -242,4 +294,7 @@ export const reducer = createReducer({
     [Types.ADDPROMISSORY]: addPromissory,
     [Types.REMOVEPROMISSORY]: removePromissory,
     [Types.SETPROMISSORYCOLOUR]: setPromissoryColour,
+    [Types.ADDEXPLORATIONCARD]: addExplorationCard,
+    [Types.REMOVEEXPLORATIONCARD]: removeExplorationCard,
+    [Types.SETATTACHEDPLANET]: setAttachedPlanet,
 });

@@ -11,6 +11,8 @@ import {
     GetSpecialUnitsAndLeadersForPhase,
 } from "../lib/Faction";
 import { GetPromissoryNotesForPhase } from "../lib/PromissoryNote";
+import { GetLegendaryAbilitiesForPhase } from "../lib/Planet";
+import { GetExplorationAbilitiesForPhase } from "../lib/Exploration";
 
 function PhaseContainer(props) {
     const [state, dispatch] = useStore();
@@ -46,6 +48,16 @@ function PhaseContainer(props) {
         props.phase,
         state.pok
     ).filter((u) => u.available);
+
+    const legendaryAbilities = GetLegendaryAbilitiesForPhase(
+        state.planets,
+        props.phase
+    ).filter((a) => !a.isExhausted);
+
+    const exploration = GetExplorationAbilitiesForPhase(
+        state.explorationCards,
+        props.phase
+    );
 
     return (
         <Container>
@@ -105,6 +117,26 @@ function PhaseContainer(props) {
                     <ScrollableCardList
                         cardList={promissoryNotes}
                         cardType={CardType.PromissoryNote}
+                    />
+                </>
+            ) : null}
+
+            {legendaryAbilities.length > 0 ? (
+                <>
+                    <DividerText title="Legendary Planet Abilities" />
+                    <ScrollableCardList
+                        cardList={legendaryAbilities}
+                        cardType={CardType.LegendaryAbility}
+                    />
+                </>
+            ) : null}
+
+            {exploration.length > 0 ? (
+                <>
+                    <DividerText title="Exploration Cards" />
+                    <ScrollableCardList
+                        cardList={exploration}
+                        cardType={CardType.Exploration}
                     />
                 </>
             ) : null}

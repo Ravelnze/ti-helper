@@ -9,6 +9,8 @@ import ActionCardCard from "./ActionCardCard";
 import AgendaCard from "./AgendaCard";
 import PromissoryNoteCard from "./PromissoryNoteCard";
 import UnitCard from "./UnitCard";
+import LegendaryPlanetAbilityCard from "./LegendaryPlanetAbilityCard";
+import ExplorationCard from "./ExplorationCard";
 
 export const CardType = {
     Planet: "Planet",
@@ -18,6 +20,8 @@ export const CardType = {
     Agenda: "Agenda",
     PromissoryNote: "PromissoryNote",
     Unit: "Unit",
+    LegendaryAbility: "LegendaryAbility",
+    Exploration: "Exploration",
 };
 
 function ScrollableCardList(props) {
@@ -96,7 +100,25 @@ function ScrollableCardList(props) {
                             special
                         />
                     </Col>
-                ))
+                ));
+            case CardType.LegendaryAbility:
+                return props.cardList.map((obj, i) => (
+                    <Col key={i} className={calculateMargins(i)}>
+                        <LegendaryPlanetAbilityCard
+                            ability={obj}
+                            interactable={props.interactable}
+                        />
+                    </Col>
+                ));
+            case CardType.Exploration:
+                return props.cardList.map((obj, i) => (
+                    <Col key={i} className={calculateMargins(i)}>
+                        <ExplorationCard
+                            card={obj}
+                            interactable={props.interactable}
+                        />
+                    </Col>
+                ));
             default:
                 console.error(`Unknown card type: ${props.cardType}`);
                 break;

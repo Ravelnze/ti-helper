@@ -22,6 +22,11 @@ function PhaseTabs(props) {
                     );
                 })}
             </Tabs>
+            {!props.activeKey ? (
+                <p className="text-light text-center">
+                    Choose a tab to get started
+                </p>
+            ) : null}
         </>
     );
 }

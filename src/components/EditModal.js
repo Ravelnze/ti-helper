@@ -14,9 +14,11 @@ import {
     addActionCard,
     addAgenda,
     addPromissory,
+    addExplorationCard,
 } from "../store/Actions";
 import ScrollableCardList, { CardType } from "./ScrollableCardList";
 import "../lib/ArrayExtensions";
+import { GetSpecialUnitsAndLeaders } from "../lib/Faction";
 
 // data
 import Planets from "../data/planets.json";
@@ -25,7 +27,7 @@ import Objectives from "../data/objectives.json";
 import ActionCards from "../data/actionCards.json";
 import Agendas from "../data/agendas.json";
 import PromissoryNotes from "../data/promissoryNotes.json";
-import { GetSpecialUnitsAndLeaders } from "../lib/Faction";
+import Exploration from "../data/exploration.json";
 
 function EditModal(props) {
     const [state, dispatch] = useStore();
@@ -103,6 +105,17 @@ function EditModal(props) {
                                         <ScrollableCardList
                                             cardList={state.planets}
                                             cardType={CardType.Planet}
+                                            interactable
+                                        />
+                                    </Accordion.Body>
+                                ) : null}
+                                {state.legendaryPlanetAbilities.length > 0 ? (
+                                    <Accordion.Body className="p-0">
+                                        <ScrollableCardList
+                                            cardList={
+                                                state.legendaryPlanetAbilities
+                                            }
+                                            cardType={CardType.LegendaryAbility}
                                             interactable
                                         />
                                     </Accordion.Body>
@@ -255,6 +268,36 @@ function EditModal(props) {
                                         <ScrollableCardList
                                             cardList={state.promissoryNotes}
                                             cardType={CardType.PromissoryNote}
+                                            interactable
+                                        />
+                                    </Accordion.Body>
+                                ) : null}
+                            </Accordion.Item>
+
+                            <Accordion.Item eventKey="7">
+                                <Accordion.Header>
+                                    Exploration Cards
+                                </Accordion.Header>
+                                <Accordion.Body className="py-2 px-0">
+                                    <Row>
+                                        <Col>
+                                            <AutoSuggestionInput
+                                                items={Exploration}
+                                                setValue={(card) =>
+                                                    dispatch(
+                                                        addExplorationCard(card)
+                                                    )
+                                                }
+                                                placeholder="Search for an exploration card"
+                                            />
+                                        </Col>
+                                    </Row>
+                                </Accordion.Body>
+                                {state.explorationCards.length > 0 ? (
+                                    <Accordion.Body className="p-0">
+                                        <ScrollableCardList
+                                            cardList={state.explorationCards}
+                                            cardType={CardType.Exploration}
                                             interactable
                                         />
                                     </Accordion.Body>

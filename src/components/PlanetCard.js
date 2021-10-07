@@ -19,6 +19,7 @@ function PlanetCard(props) {
             className={props.interactable ? "pointer" : ""}
             bg={props.planet.isExhausted ? "light" : variant.colour}
             text={props.planet.isExhausted ? "dark" : variant.text}
+            border="dark"
             onClick={() => {
                 if (props.interactable) {
                     dispatch(
@@ -37,7 +38,13 @@ function PlanetCard(props) {
                     }}
                 />
             ) : null}
-            <Card.Header>
+            <Card.Header
+                className={
+                    props.planet.isExhausted
+                        ? "bg-light text-dark"
+                        : "bg-dark text-light"
+                }
+            >
                 <Row>
                     <Col className="pe-0">
                         <Badge pill bg="secondary">
@@ -54,10 +61,11 @@ function PlanetCard(props) {
                         <p className="mb-0" style={{ display: "inline-block" }}>
                             {props.planet.title}
                         </p>
-                        {props.planet.techSpecialty != null ? (
+                        {props.planet.techSpecialty ? (
                             <span>
                                 {" "}
                                 <Image
+                                    className="align-text-bottom"
                                     width="15px"
                                     src={GetLogoByKey(
                                         props.planet.techSpecialty.toLowerCase()
@@ -69,7 +77,7 @@ function PlanetCard(props) {
                     <Col className="ps-0">
                         {props.planet.homeFactionId ? (
                             <Image
-                                className="float-end mt-1"
+                                className="float-end"
                                 width="20px"
                                 src={GetLogoByKey(
                                     Factions.find(
@@ -80,9 +88,9 @@ function PlanetCard(props) {
                                 )}
                             />
                         ) : null}
-                        {props.planet.legendaryAbility != null ? (
+                        {props.planet.legendaryAbility ? (
                             <Image
-                                className="float-end mt-1"
+                                className="float-end"
                                 width="20px"
                                 src={GetLogoByKey("legendary")}
                             />
@@ -94,6 +102,16 @@ function PlanetCard(props) {
                 <Card.Text style={{ fontSize: "0.8rem" }}>
                     {props.planet.desc}
                 </Card.Text>
+                <div className="text-center">
+                    {props.planet.extraIcons?.map((ei, i) => (
+                        <Image
+                            key={i}
+                            width="25px"
+                            className="me-1"
+                            src={GetLogoByKey(ei)}
+                        />
+                    ))}
+                </div>
             </Card.Body>
         </Card>
     );

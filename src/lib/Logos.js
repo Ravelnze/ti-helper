@@ -52,6 +52,10 @@ import sardakkAgent from "../assets/images/logos/SardakkAgentP.webp";
 import sardakkCommander from "../assets/images/logos/SardakkCommanderP.webp";
 import sardakkHero from "../assets/images/logos/SardakkHeroP.webp";
 
+// exploration
+import crown from "../assets/images/logos/CrownSymbol.webp";
+import dmz from "../assets/images/logos/dmz.png";
+
 export const logos = {
     legendary,
     biotic,
@@ -99,6 +103,8 @@ export const logos = {
     sardakkAgent,
     sardakkCommander,
     sardakkHero,
+    crown,
+    dmz,
 };
 
 function GetLogoByKey(key) {
