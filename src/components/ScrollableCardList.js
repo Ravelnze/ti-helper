@@ -11,6 +11,7 @@ import PromissoryNoteCard from "./PromissoryNoteCard";
 import UnitCard from "./UnitCard";
 import LegendaryPlanetAbilityCard from "./LegendaryPlanetAbilityCard";
 import ExplorationCard from "./ExplorationCard";
+import RelicCard from "./RelicCard";
 
 export const CardType = {
     Planet: "Planet",
@@ -22,6 +23,7 @@ export const CardType = {
     Unit: "Unit",
     LegendaryAbility: "LegendaryAbility",
     Exploration: "Exploration",
+    Relic: "Relic",
 };
 
 function ScrollableCardList(props) {
@@ -115,6 +117,16 @@ function ScrollableCardList(props) {
                     <Col key={i} className={calculateMargins(i)}>
                         <ExplorationCard
                             card={obj}
+                            interactable={props.interactable}
+                        />
+                    </Col>
+                ));
+            case CardType.Relic:
+                return props.cardList.map(([key, value], i) => (
+                    <Col key={key} className={calculateMargins(i)}>
+                        <RelicCard
+                            relic={value[0]}
+                            count={value.length}
                             interactable={props.interactable}
                         />
                     </Col>

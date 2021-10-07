@@ -7,10 +7,8 @@ import { useState } from "react";
 import AutoSuggestionInput from "./AutoSuggestionInput";
 import { Badge } from "react-bootstrap";
 
-import Planets from "../data/planets.json";
 import { AugmentPlanet, GetPlanetVariantColour } from "../lib/Planet";
 import {
-    augmentPlanet,
     removeExplorationCard,
     setAttachedPlanet,
     setPlanet,
@@ -79,7 +77,7 @@ function ExplorationCard(props) {
                                     );
                                 }
                                 setPlanetList(
-                                    Planets.filter(
+                                    state.planets.filter(
                                         (p) => p.trait === props.card.trait
                                     )
                                 );

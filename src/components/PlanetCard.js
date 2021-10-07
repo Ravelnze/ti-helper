@@ -2,9 +2,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
+import Badge from "react-bootstrap/Badge";
 import GetLogoByKey from "../lib/Logos";
 import Factions from "../data/factions.json";
-import { Badge } from "react-bootstrap";
 import { GetPlanetVariantColour } from "../lib/Planet";
 import { useStore } from "../store/Store";
 import { exhaustPlanets, removePlanet } from "../store/Actions";
@@ -104,12 +104,12 @@ function PlanetCard(props) {
                 </Card.Text>
                 <div className="text-center">
                     {props.planet.extraIcons?.map((ei, i) => (
-                        <Image
-                            key={i}
-                            width="25px"
-                            className="me-1"
-                            src={GetLogoByKey(ei)}
-                        />
+                        <Badge key={i} bg="dark" pill className="p-1 me-1">
+                            <Image
+                                width="25px"
+                                src={GetLogoByKey(ei)}
+                            />
+                        </Badge>
                     ))}
                 </div>
             </Card.Body>

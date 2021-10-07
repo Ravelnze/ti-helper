@@ -15,6 +15,7 @@ import {
     addAgenda,
     addPromissory,
     addExplorationCard,
+    addRelic,
 } from "../store/Actions";
 import ScrollableCardList, { CardType } from "./ScrollableCardList";
 import "../lib/ArrayExtensions";
@@ -28,6 +29,7 @@ import ActionCards from "../data/actionCards.json";
 import Agendas from "../data/agendas.json";
 import PromissoryNotes from "../data/promissoryNotes.json";
 import Exploration from "../data/exploration.json";
+import Relics from "../data/relics.json";
 
 function EditModal(props) {
     const [state, dispatch] = useStore();
@@ -298,6 +300,38 @@ function EditModal(props) {
                                         <ScrollableCardList
                                             cardList={state.explorationCards}
                                             cardType={CardType.Exploration}
+                                            interactable
+                                        />
+                                    </Accordion.Body>
+                                ) : null}
+                            </Accordion.Item>
+
+                            <Accordion.Item eventKey="8">
+                                <Accordion.Header>
+                                    {"Relics & Fragments"}
+                                </Accordion.Header>
+                                <Accordion.Body className="py-2 px-0">
+                                    <Row>
+                                        <Col>
+                                            <AutoSuggestionInput
+                                                items={Relics.excludeSingle(
+                                                    Object.entries(state.relics)
+                                                )}
+                                                setValue={(card) =>
+                                                    dispatch(addRelic(card))
+                                                }
+                                                placeholder="Search for a relic"
+                                            />
+                                        </Col>
+                                    </Row>
+                                </Accordion.Body>
+                                {Object.keys(state.relics).length > 0 ? (
+                                    <Accordion.Body className="p-0">
+                                        <ScrollableCardList
+                                            cardList={Object.entries(
+                                                state.relics
+                                            )}
+                                            cardType={CardType.Relic}
                                             interactable
                                         />
                                     </Accordion.Body>

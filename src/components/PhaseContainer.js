@@ -13,6 +13,7 @@ import {
 import { GetPromissoryNotesForPhase } from "../lib/PromissoryNote";
 import { GetLegendaryAbilitiesForPhase } from "../lib/Planet";
 import { GetExplorationAbilitiesForPhase } from "../lib/Exploration";
+import { GetRelicsForPhase } from "../lib/Relic";
 
 function PhaseContainer(props) {
     const [state, dispatch] = useStore();
@@ -58,6 +59,8 @@ function PhaseContainer(props) {
         state.explorationCards,
         props.phase
     );
+
+    const relics = GetRelicsForPhase(state.relics, props.phase);
 
     return (
         <Container>
@@ -137,6 +140,16 @@ function PhaseContainer(props) {
                     <ScrollableCardList
                         cardList={exploration}
                         cardType={CardType.Exploration}
+                    />
+                </>
+            ) : null}
+
+            {Object.keys(relics).length > 0 ? (
+                <>
+                    <DividerText title={"Relics & Fragments"} />
+                    <ScrollableCardList
+                        cardList={Object.entries(relics)}
+                        cardType={CardType.Relic}
                     />
                 </>
             ) : null}

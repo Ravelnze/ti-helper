@@ -1,0 +1,93 @@
+[
+    {
+        "id": 1,
+        "title": "Dominus Orb",
+        "description": "Before you move units during a tactical action, you may purge this card to move and transport units that are in systems that contain 1 of your command tokens.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 2,
+        "title": "Maw of Worlds",
+        "description": "At the start of the agenda phase, you may purge this card and exhaust all of your planets to gain any 1 technology.",
+        "phase": ["Agenda"]
+    },
+    {
+        "id": 3,
+        "title": "Scepter of Emelpar",
+        "description": "When you would spend a token from your strategy pool, you may exhaust this card to spend a token from your reinforcements instead.",
+        "phase": ["Action", "Status"]
+    },
+    {
+        "id": 4,
+        "title": "Shard of the Throne",
+        "description": "When you gain this card, gain 1 victory point. When you lose this card, lose 1 victory point.\r\n When a player gains control of a legendary planet you control, or a planet you control in your home system, that player gains this card.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 5,
+        "title": "Stellar Converter",
+        "description": "ACTION: Choose 1 non-home, non-legendary planet other than Mecatol Rex in a system that is adjacent to 1 or more of your units that have BOMBARDMENT; destroy all units on that planet and purge its attachments and its planet card. Then, place the destroyed planet token on that planet and purge this card.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 6,
+        "title": "The Codex",
+        "description": "ACTION: Purge this card to take up to 3 action cards of your choice from the action card discard pile.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 7,
+        "title": "The Crown of Emphidia",
+        "description": "After you perform a tactical action, you may exhaust this card to explore 1 planet you control. \r\nAt the end of the status phase, if you control the \"Tomb of Emphidia\", you may purge this card to gain 1 Victory Point.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 8,
+        "title": "The Crown of Thalnos",
+        "description": "During each combat round, this card's owner may reroll any number of their dice, applying +1 to the results; any units that reroll dice but do not produce at least 1 hit are destroyed.",
+        "phase": ["SpaceCombat", "GroundCombat"]
+    },
+    {
+        "id": 9,
+        "title": "The Obsidian",
+        "description": "When you gain this card, draw 1 secret objective. You can have 1 additional scored or unscored secret objective."
+    },
+    {
+        "id": 10,
+        "title": "The Prophet's Tears",
+        "description": "When you research a technology, you may exhaust this card to ignore 1 prerequisite or draw 1 action card.",
+        "phase": ["Action", "Agenda"]
+    },
+    {
+        "id": 11,
+        "title": "Cultural Relic Fragment",
+        "description": "ACTION: Purge 3 of your cultural relic fragments to gain 1 Relic.",
+        "multiple": true,
+        "category": "Cultural",
+        "phase": ["Action", "Agenda"]
+    },
+    {
+        "id": 12,
+        "title": "Hazardous Relic Fragment",
+        "description": "ACTION: Purge 3 of your hazardous relic fragments to gain 1 Relic.",
+        "multiple": true,
+        "category": "Hazardous",
+        "phase": ["Action", "Agenda"]
+    },
+    {
+        "id": 13,
+        "title": "Industrial Relic Fragment",
+        "description": "ACTION: Purge 3 of your industrial relic fragments to gain 1 Relic.",
+        "multiple": true,
+        "category": "Industrial",
+        "phase": ["Action", "Agenda"]
+    },
+    {
+        "id": 14,
+        "title": "Unknown Relic Fragment",
+        "description": "This card counts as a relic fragment of any type.",
+        "multiple": true,
+        "category": "Frontier",
+        "phase": ["Action", "Agenda"]
+    }
+]

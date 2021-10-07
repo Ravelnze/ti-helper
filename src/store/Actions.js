@@ -199,3 +199,17 @@ export function setAttachedPlanet(card, planet) {
         payload: { card, planet },
     };
 }
+
+export function addRelic(relic) {
+    return {
+        type: Types.ADDRELIC,
+        payload: relic,
+    };
+}
+
+export function removeRelic(relic) {
+    return {
+        type: Types.REMOVERELIC,
+        payload: relic,
+    };
+}

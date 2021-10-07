@@ -4,7 +4,6 @@ import applyMiddleware from "./Middleware";
 import * as Types from "./Types";
 import {
     AddPlanet,
-    AugmentPlanetWithAttachment,
     ExhaustLegendaryAbility,
     ExhaustPlanets,
     RemovePlanet,
@@ -27,6 +26,7 @@ import {
     RemoveExplorationCard,
     SetAttachedPlanet,
 } from "../lib/Exploration";
+import { AddRelic, RemoveRelic } from "../lib/Relic";
 
 export const initialState = () => ({
     pok: true,
@@ -40,6 +40,7 @@ export const initialState = () => ({
     agendas: [],
     promissoryNotes: [],
     explorationCards: [],
+    relics: {},
     availableResources: 0,
     totalResources: 0,
     availableInfluence: 0,
@@ -48,7 +49,7 @@ export const initialState = () => ({
     combatTab: null,
 });
 
-// good guide on why the store is laid out this way
+// Good guide on why the store is laid out this way
 // https://dev.to/vanderleisilva/middlewares-with-react-context-and-hooks-2gm1
 
 // #region handlers
@@ -253,6 +254,20 @@ function setAttachedPlanet(state, { payload }) {
     };
 }
 
+function addRelic(state, { payload }) {
+    return {
+        ...state,
+        relics: AddRelic(state.relics, payload),
+    };
+}
+
+function removeRelic(state, { payload }) {
+    return {
+        ...state,
+        relics: RemoveRelic(state.relics, payload),
+    };
+}
+
 // #endregion
 
 const createReducer = (handlers) => (state, action) => {
@@ -297,4 +312,6 @@ export const reducer = createReducer({
     [Types.ADDEXPLORATIONCARD]: addExplorationCard,
     [Types.REMOVEEXPLORATIONCARD]: removeExplorationCard,
     [Types.SETATTACHEDPLANET]: setAttachedPlanet,
+    [Types.ADDRELIC]: addRelic,
+    [Types.REMOVERELIC]: removeRelic,
 });
