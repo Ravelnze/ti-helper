@@ -39,14 +39,14 @@ function PlanetCard(props) {
                 />
             ) : null}
             <Card.Header
-                className={
+                className={`${
                     props.planet.isExhausted
                         ? "bg-light text-dark"
                         : "bg-dark text-light"
-                }
+                }`}
             >
-                <Row>
-                    <Col className="pe-0">
+                <div className="d-flex">
+                    <div className="pe-0">
                         <Badge pill bg="secondary">
                             <span className="text-warning mb-0">
                                 {props.planet.resource}
@@ -56,9 +56,9 @@ function PlanetCard(props) {
                                 {props.planet.influence}
                             </span>
                         </Badge>
-                    </Col>
-                    <Col className="px-0 text-center">
-                        <p className="mb-0" style={{ display: "inline-block" }}>
+                    </div>
+                    <div className="px-0 text-center flex-grow-1">
+                        <p className="mb-0 d-inline">
                             {props.planet.title}
                         </p>
                         {props.planet.techSpecialty ? (
@@ -73,8 +73,8 @@ function PlanetCard(props) {
                                 />
                             </span>
                         ) : null}
-                    </Col>
-                    <Col className="ps-0">
+                    </div>
+                    <div className="ps-0">
                         {props.planet.homeFactionId ? (
                             <Image
                                 className="float-end"
@@ -95,8 +95,8 @@ function PlanetCard(props) {
                                 src={GetLogoByKey("legendary")}
                             />
                         ) : null}
-                    </Col>
-                </Row>
+                    </div>
+                </div>
             </Card.Header>
             <Card.Body style={{ minWidth: "250px", minHeight: "170px" }}>
                 <Card.Text style={{ fontSize: "0.8rem" }}>
