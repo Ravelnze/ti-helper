@@ -32,6 +32,20 @@ export function setUnitAvailable(unit, available) {
     };
 }
 
+export function appendUnitAbilities(unit, abilities) {
+    return {
+        type: Types.APPENDUNITABILITY,
+        payload: { unit, abilities },
+    };
+}
+
+export function removeExtraAbility(updateableType, unit, instanceId) {
+    return {
+        type: Types.REMOVEEXTRAABILITY,
+        payload: { updateableType, unit, instanceId },
+    };
+}
+
 export function setTech(techIds) {
     return {
         type: Types.SETTECH,

@@ -70,5 +70,6 @@ ul.nav-pills > li.nav-item > button.nav-link {
 
 .switch-wrapper > div {
     position: absolute;
+    padding-bottom: 100px;
     width: 100%
 }

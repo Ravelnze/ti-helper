@@ -6,13 +6,19 @@ import GetLogoByKey from "../lib/Logos";
 import { useState, useRef } from "react";
 import "./UnitCard.css";
 import { useStore } from "../store/Store";
-import { setUnitAvailable } from "../store/Actions";
+import {
+    appendUnitAbilities,
+    removeExtraAbility,
+    setUnitAvailable,
+} from "../store/Actions";
 import { UnitType } from "../lib/Faction";
 import ValueLabel from "./ValueLabel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSync } from "@fortawesome/free-solid-svg-icons";
+import AutoSuggestionInput from "./AutoSuggestionInput";
 
 import Abilities from "../data/abilities.json";
+import { GetUpdateableValueList, MapValuesFromType } from "../lib/Unit";
 
 function UnitCard(props) {
     const [state, dispatch] = useStore();
@@ -21,6 +27,9 @@ function UnitCard(props) {
     const target = useRef(null);
     const [flipped, setFlipped] = useState(false);
     const unit = flipped ? props.unit.alt : props.unit;
+    const updateableValuesList = GetUpdateableValueList(
+        props.unit.specialAbility?.updateableType
+    );
 
     return (
         <div>
@@ -124,6 +133,59 @@ function UnitCard(props) {
 
                         {unit.specialAbility ? (
                             <p className="mt-2">{unit.specialAbility.desc}</p>
+                        ) : null}
+
+                        {updateableValuesList ? (
+                            <>
+                                {props.unit.extraAbilities?.length > 0 ? (
+                                    <>
+                                        <ul>
+                                            {props.unit.extraAbilities?.map(
+                                                (ea, i) => (
+                                                    <li
+                                                        key={i}
+                                                        className="pointer"
+                                                        onClick={() =>
+                                                            dispatch(
+                                                                removeExtraAbility(
+                                                                    props.unit
+                                                                        .specialAbility
+                                                                        .updateableType,
+                                                                    props.unit,
+                                                                    ea.instanceId
+                                                                )
+                                                            )
+                                                        }
+                                                    >
+                                                        {ea.faction} - {
+                                                            ea?.leader
+                                                                .specialAbility
+                                                                .desc
+                                                        }
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
+                                        <p>* Tap an ability above to remove</p>
+                                    </>
+                                ) : null}
+                                <AutoSuggestionInput
+                                    items={updateableValuesList}
+                                    setValue={(item) => {
+                                        dispatch(
+                                            appendUnitAbilities(
+                                                props.unit,
+                                                MapValuesFromType(
+                                                    props.unit.specialAbility
+                                                        ?.updateableType,
+                                                    item
+                                                )
+                                            )
+                                        );
+                                    }}
+                                    placeholder={props.unit.specialAbility?.updateText}
+                                />
+                            </>
                         ) : null}
                     </Popover.Body>
                 </Popover>

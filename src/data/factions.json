@@ -1794,7 +1794,7 @@
             "rolls": 2,
             "move": 1,
             "capacity": 3,
-            "abilities": [{ "id": 6 }, {"id": 5, "value": 5, "rolls": 3}],
+            "abilities": [{ "id": 6 }, { "id": 5, "value": 5, "rolls": 3 }],
             "specialAbility": {
                 "desc": "You may use this unit's SPACE CANNON against ships that are in adjacent systems.",
                 "phase": ["Action", "SpaceCombat"]
@@ -1806,7 +1806,7 @@
             "title": "Indomitus",
             "cost": 2,
             "combat": 6,
-            "abilities": [{ "id": 6 }, {"id": 5, "value": 8}],
+            "abilities": [{ "id": 6 }, { "id": 5, "value": 8 }],
             "specialAbility": {
                 "desc": "You may use this unit's Space Cannon ability against ships that are in adjacent systems.",
                 "phase": ["Action", "SpaceCombat"]
@@ -2038,7 +2038,9 @@
                 "unlock": "At Game Start",
                 "specialAbility": {
                     "desc": "This card has the text ability of each other player's agent, even if that agent is exhausted.",
-                    "phase": ["Any"]
+                    "phase": ["Any"],
+                    "updateableType": "Agent",
+                    "updateText": "Choose a faction"
                 },
                 "logo": "yssarilAgent",
                 "available": true
@@ -2584,7 +2586,7 @@
             "rolls": 2,
             "move": 1,
             "capacity": 3,
-            "abilities": [{ "id": 6 }, {"id": 2, "value": 5}],
+            "abilities": [{ "id": 6 }, { "id": 2, "value": 5 }],
             "specialAbility": {
                 "desc": "Capture all other non-structure units that are destroyed in this system, including your own.",
                 "phase": ["SpaceCombat", "GroundCombat"]
