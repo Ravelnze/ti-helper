@@ -1192,7 +1192,7 @@
         "id": 12,
         "title": "The L1Z1X Mindnet",
         "tech": [1, 6],
-        "planets": [22],
+        "planets": [41],
         "units": [
             {
                 "id": 4,
@@ -2367,7 +2367,18 @@
                 "phase": ["SpaceCombat"]
             },
             "logo": "mech",
-            "available": false
+            "flippable": true,
+            "available": true,
+            "alt": {
+                "title": "Z-Grav Eidolon",
+                "cost": 2,
+                "combat": 8,
+                "rolls": 2,
+                "specialAbility": {
+                    "desc": "If this unit is in the space area of the active system, it is also a ship. At the end of a space battle in the active system, flip this card.",
+                    "phase": ["SpaceCombat"]
+                }
+            }
         },
         "leaders": [
             {

@@ -183,14 +183,6 @@
         "desc": "Trapped between matter and void lies the realm of the Creuss. Made of trapped light and radioactive gas, this realm hosts the most peculiar forms of life."
     },
     {
-        "id": 22,
-        "title": "[0.0.0]",
-        "resource": 5,
-        "influence": 0,
-        "homeFactionId": 12,
-        "desc": "This elusive energy-rich planet was the desperate destination of the secret Lazax diaspora. Now, it is a technological nightmare."
-    },
-    {
         "id": 23,
         "title": "Moll Primus",
         "resource": 4,
@@ -333,5 +325,13 @@
         "influence": 0,
         "homeFactionId": 24,
         "desc": "Once a dusty, dead world concealing a portal to Ixth. Now, a gravity rift has shattered the world, creating a labyrinth of strange energies and tumbling shards of rock."
+    },
+    {
+        "id": 41,
+        "title": "[0.0.0]",
+        "resource": 5,
+        "influence": 0,
+        "homeFactionId": 12,
+        "desc": "This elusive energy-rich planet was the desperate destination of the secret Lazax diaspora. Now, it is a technological nightmare."
     }
 ]

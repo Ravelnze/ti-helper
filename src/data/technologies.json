@@ -155,8 +155,7 @@
         "cat": "Cybernetic",
         "desc": "You may exhaust this card before 1 or more of your units uses Space Cannon; hits produced by those units must be assigned to non-fighter ships if able",
         "req": ["cybernetic"],
-        "phase": ["Action", "SpaceCombat"],
-        "factionId": 15
+        "phase": ["Action", "SpaceCombat"]
     },
     {
         "id": 17,

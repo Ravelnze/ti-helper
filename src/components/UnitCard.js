@@ -9,6 +9,8 @@ import { useStore } from "../store/Store";
 import { setUnitAvailable } from "../store/Actions";
 import { UnitType } from "../lib/Faction";
 import ValueLabel from "./ValueLabel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSync } from "@fortawesome/free-solid-svg-icons";
 
 import Abilities from "../data/abilities.json";
 
@@ -17,6 +19,8 @@ function UnitCard(props) {
     const [checked, setChecked] = useState(props.unit.available ?? false);
     const [showPopover, setShowPopover] = useState(false);
     const target = useRef(null);
+    const [flipped, setFlipped] = useState(false);
+    const unit = flipped ? props.unit.alt : props.unit;
 
     return (
         <div>
@@ -55,42 +59,54 @@ function UnitCard(props) {
             >
                 <Popover id={`popover-${props.unit.type}`}>
                     <Popover.Header className="bg-dark text-center" as="h3">
-                        {props.unit.title}
+                        {unit.title}
+                        {props.flippable ? (
+                            <Button
+                                variant="dark"
+                                className="p-0 float-end"
+                                onClick={() => {
+                                    if (props.flippable) {
+                                        const flip = !flipped;
+                                        setFlipped(flip);
+                                    }
+                                }}
+                            >
+                                <FontAwesomeIcon
+                                    size="sm"
+                                    icon={faSync}
+                                    color="rgba(255, 255, 255, 0.85)"
+                                />
+                            </Button>
+                        ) : null}
                     </Popover.Header>
                     <Popover.Body className="bg-dark text-light py-2">
                         {[UnitType.Flagship, UnitType.Mech].includes(
                             props.unit.type
                         ) ? (
                             <>
-                                <ValueLabel
-                                    sm
-                                    label="Cost"
-                                    value={props.unit.cost}
-                                />
+                                <ValueLabel sm label="Cost" value={unit.cost} />
                                 <ValueLabel
                                     sm
                                     label="Combat"
-                                    value={`${props.unit.combat}${
-                                        props.unit.rolls
-                                            ? `(x${props.unit.rolls})`
-                                            : ""
+                                    value={`${unit.combat}${
+                                        unit.rolls ? `(x${unit.rolls})` : ""
                                     }`}
                                 />
-                                {props.unit.move ? (
+                                {unit.move ? (
                                     <ValueLabel
                                         sm
                                         label="Move"
-                                        value={props.unit.move}
+                                        value={unit.move}
                                     />
                                 ) : null}
-                                {props.unit.capacity ? (
+                                {unit.capacity ? (
                                     <ValueLabel
                                         sm
                                         label="Capacity"
-                                        value={props.unit.capacity}
+                                        value={unit.capacity}
                                     />
                                 ) : null}
-                                {props.unit.abilities?.map((a, i) => {
+                                {unit.abilities?.map((a, i) => {
                                     return (
                                         <li key={i} className="abilities">
                                             {
@@ -106,10 +122,8 @@ function UnitCard(props) {
                             </>
                         ) : null}
 
-                        {props.unit.specialAbility ? (
-                            <p className="mt-2">
-                                {props.unit.specialAbility.desc}
-                            </p>
+                        {unit.specialAbility ? (
+                            <p className="mt-2">{unit.specialAbility.desc}</p>
                         ) : null}
                     </Popover.Body>
                 </Popover>
