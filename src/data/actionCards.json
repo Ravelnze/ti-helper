@@ -4,64 +4,548 @@
         "title": "Sabotage",
         "timing": "When another player plays an action card other than \"Sabotage\"",
         "effect": "Cancel that action card.",
-        "phase": "Any"
+        "phase": ["Any"]
     },
     {
         "id": 2,
         "title": "Cripple Defenses",
         "timing": "Action: Choose 1 planet.",
-        "componentAction": true,
         "effect": "Destroy each PDS on that planet.",
-        "phase": "Action"
+        "phase": ["Action"]
     },
     {
         "id": 3,
         "title": "Ancient Burial Sites",
         "timing": "At the start of the agenda phase",
         "effect": "Choose 1 player. Exhaust each cultural planet owned by that player.",
-        "phase": "Agenda"
+        "phase": ["Agenda"]
     },
     {
         "id": 4,
         "title": "Imperial Rider",
         "timing": "After an agenda is revealed",
         "effect": "You cannot vote on this agenda. Predict aloud an outcome of this agenda. If your prediction is correct, gain 1 victory point.",
-        "phase": "Agenda"
+        "phase": ["Agenda"]
     },
     {
         "id": 5,
         "title": "Fire Team",
         "timing": "After your ground forces make combat rolls during a round of ground combat",
         "effect": "Reroll any number of your dice.",
-        "phase": "GroundCombat"
+        "phase": ["GroundCombat"]
     },
     {
         "id": 6,
         "title": "Courageous to the End",
         "timing": "After 1 of your ships is destroyed during a space combat",
         "effect": "Roll 2 dice. For each result equal to or greater than that ship's combat value, your opponent must choose and destroy 1 of their ships.",
-        "phase": "SpaceCombat"
+        "phase": ["SpaceCombat"]
     },
     {
         "id": 7,
         "title": "Political Stability",
         "timing": "When you would return your strategy card(s) during the status phase",
         "effect": "Do not return your strategy card(s). You do not choose strategy cards during the next strategy phase.",
-        "phase": "Status"
+        "phase": ["Status"]
     },
     {
         "id": 8,
         "title": "Public Disgrace",
         "timing": "When another player chooses a strategy card during the strategy phase",
         "effect": "That player must choose a different strategy card instead, if able.",
-        "phase": "Strategy"
+        "phase": ["Strategy"]
     },
     {
         "id": 9,
         "title": "Archaeological Expedition",
         "timing": "As an Action",
         "effect": "Reveal the top 3 cards of an exploration deck that matches a planet you control; gain any relic fragments that you revealed and discard the rest.",
-        "phase": "Action",
+        "phase": ["Action"],
+        "pok": true
+    },
+    {
+        "id": 10,
+        "title": "Assassinate Representative",
+        "timing": "After an agenda is revealed",
+        "effect": "Choose 1 player. That player cannot vote on this agenda.",
+        "phase": ["Agenda"]
+    },
+    {
+        "id": 11,
+        "title": "Bribery",
+        "timing": "After the speaker votes on an agenda",
+        "effect": "Spend any number of trade goods. For each trade good spent, cast 1 additional vote for the outcome on which you voted.",
+        "phase": ["Agenda"]
+    },
+    {
+        "id": 12,
+        "title": "Bunker",
+        "timing": "At the start of an invasion",
+        "effect": "During this invasion, apply -4 to the result of each Bombardment roll against planets you control.",
+        "phase": ["GroundCombat"]
+    },
+    {
+        "id": 13,
+        "title": "Confusing Legal Text",
+        "timing": "When you are elected as the outcome of an agenda",
+        "effect": "Choose 1 player. That player is the elected player instead.",
+        "phase": ["Agenda"]
+    },
+    {
+        "id": 14,
+        "title": "Construction Rider",
+        "timing": "After an agenda is revealed",
+        "effect": "You cannot vote on this agenda. Predict aloud an outcome of this agenda. If your prediction is correct, place 1 space dock from your reinforcements on a planet you control.",
+        "phase": ["Agenda"]
+    },
+    {
+        "id": 15,
+        "title": "Diplomacy Rider",
+        "timing": "After an agenda is revealed",
+        "effect": "You cannot vote on this agenda. Predict aloud an outcome of this agenda. If your prediction is correct, choose 1 system that contains a planet you control. Each other player places a command token from their reinforcements in that system.",
+        "phase": ["Agenda"]
+    },
+    {
+        "id": 16,
+        "title": "Direct Hit",
+        "timing": "After another player's ship uses Sustain Damage to cancel a hit produced by your units or abilities",
+        "effect": "Destroy that ship.",
+        "phase": ["Action", "SpaceCombat"]
+    },
+    {
+        "id": 17,
+        "title": "Disable",
+        "timing": "At the start of an invasion in a system that contains 1 or more of your opponents' PDS units",
+        "effect": "Your opponents' PDS units lose Planetary Shield and Space Cannon during this invasion.",
+        "phase": ["GroundCombat"]
+    },
+    {
+        "id": 18,
+        "title": "Distinguished Councilor",
+        "timing": "After you cast votes on an outcome of an agenda",
+        "effect": "Cast 5 additional votes for that outcome.",
+        "phase": ["Agenda"]
+    },
+    {
+        "id": 19,
+        "title": "Economic Initiative",
+        "timing": "As an Action",
+        "effect": "Ready each cultural planet you control.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 20,
+        "title": "Emergency Repairs",
+        "timing": "At the start or end of a combat round",
+        "effect": "Repair all of your units that have Sustain Damage in the active system",
+        "phase": ["SpaceCombat", "GroundCombat"]
+    },
+    {
+        "id": 21,
+        "title": "Experimental Battlestation",
+        "timing": "After another player moves ships into a system during a tactical action",
+        "effect": "Choose 1 of your space docks that is either in or adjacent to that system. That space dock uses Space Cannon 5 (x3) against ships in the active system.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 22,
+        "title": "Fighter Prototype",
+        "timing": "At the start of the first round of a space combat",
+        "effect": "Apply +2 to the result of each of your fighters' combat rolls during this combat round.",
+        "phase": ["SpaceCombat"]
+    },
+    {
+        "id": 23,
+        "title": "Flank Speed",
+        "timing": "After you activate a system",
+        "effect": "Apply +1 to the move value of each of your ships during this tactical action.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 24,
+        "title": "Focused Research",
+        "timing": "As an Action",
+        "effect": "Spend 4 trade goods to research 1 technology.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 25,
+        "title": "Frontline Deployment",
+        "timing": "As an Action",
+        "effect": "Place 3 infantry from your reinforcements on 1 planet you control.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 26,
+        "title": "Ghost Ship",
+        "timing": "As an Action",
+        "effect": "Place 1 destroyer from your reinforcements in a non-home system that contains a wormhole and does not contain other players' ships.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 27,
+        "title": "In The Silence Of Space",
+        "timing": "After you activate a system",
+        "effect": "Choose 1 system. During this tactical action, your ships in the chosen system can move through systems that contain other players' ships.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 28,
+        "title": "Industrial Initiative",
+        "timing": "As an Action",
+        "effect": "Gain 1 trade good for each industrial planet you control.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 29,
+        "title": "Infiltrate",
+        "timing": "When you gain control of a planet",
+        "effect": "Replace each PDS and space dock that is on that planet with a matching unit from your reinforcements.",
+        "phase": ["GroundCombat", "Action"]
+    },
+    {
+        "id": 30,
+        "title": "Insubordination",
+        "timing": "As an Action",
+        "effect": "Remove 1 token from another player's tactic pool and return it to their reinforcements.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 31,
+        "title": "Intercept",
+        "timing": "After your opponent declares a retreat during a space combat",
+        "effect": "Your opponent cannot retreat during this round of space combat.",
+        "phase": ["SpaceCombat"]
+    },
+    {
+        "id": 32,
+        "title": "Leadership Rider",
+        "timing": "After an agenda is revealed",
+        "effect": "You cannot vote on this agenda. Predict aloud an outcome of this agenda. If your prediction is correct, gain 3 command tokens.",
+        "phase": ["Agenda"]
+    },
+    {
+        "id": 33,
+        "title": "Lost Star Chart",
+        "timing": "After you activate a system",
+        "effect": "During this tactical action, systems that contain alpha and beta wormholes are adjacent to each other.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 34,
+        "title": "Lucky Shot",
+        "timing": "As an Action",
+        "effect": "Destroy 1 dreadnought, cruiser, or destroyer in a system that contains a planet you control.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 35,
+        "title": "Maneuvering Jets",
+        "timing": "Before you assign hits produced by another player's Space Cannon roll",
+        "effect": "Cancel 1 hit.",
+        "phase": ["Action", "GroundCombat"]
+    },
+    {
+        "id": 36,
+        "title": "Mining Initiative",
+        "timing": "As an Action",
+        "effect": "Gain trade goods equal to the resource value of 1 planet you control.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 37,
+        "title": "Morale Boost",
+        "timing": "At the start of a combat round",
+        "effect": "Apply +1 to the result of each of your unit's combat rolls during this combat round.",
+        "phase": ["SpaceCombat", "GroundCombat"]
+    },
+    {
+        "id": 38,
+        "title": "Parley",
+        "timing": "After another player commits units to land on a planet you control",
+        "effect": "Return the committed units to the space area.",
+        "phase": ["Action","GroundCombat"]
+    },
+    {
+        "id": 39,
+        "title": "Plague",
+        "timing": "Action: Choose 1 planet that is controlled by another player",
+        "effect": "Roll 1 die for each infantry on that planet. For each result of 6 or greater, destroy 1 of those units.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 40,
+        "title": "Politics Rider",
+        "timing": "After an agenda is revealed",
+        "effect": "You cannot vote on this agenda. Predict aloud an outcome of this agenda. If your prediction is correct, draw 3 action cards and gain the speaker token.",
+        "phase": ["Agenda"]
+    },
+    {
+        "id": 41,
+        "title": "Reactor Meltdown",
+        "timing": "As an Action",
+        "effect": "Destroy 1 space dock in a non-home system.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 42,
+        "title": "Reparations",
+        "timing": "After another player gains control of a planet you control",
+        "effect": "Exhaust 1 planet that player controls and ready 1 planet you control.",
+        "phase": ["Action", "GroundCombat"]
+    },
+    {
+        "id": 43,
+        "title": "Repeal Law",
+        "timing": "As an Action",
+        "effect": "Discard 1 law from play.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 44,
+        "title": "Rise of a Messiah",
+        "timing": "As an Action",
+        "effect": "Place 1 infantry from your reinforcements on each planet you control.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 45,
+        "title": "Salvage",
+        "timing": "After you win a space combat",
+        "effect": "Your opponent gives you all of their commodities.",
+        "phase": ["SpaceCombat"]
+    },
+    {
+        "id": 46,
+        "title": "Shields Holding",
+        "timing": "Before you assign hits to your ships during a space combat",
+        "effect": "Cancel up to 2 hits.",
+        "phase": ["SpaceCombat"]
+    },
+    {
+        "id": 47,
+        "title": "Signal Jamming",
+        "timing": "As an Action",
+        "effect": "Chose 1 non-home system that contains or is adjacent to 1 of your ships. Place a command token from another player's reinforcements in that system.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 48,
+        "title": "Skilled Retreat",
+        "timing": "At the start of a combat round",
+        "effect": "Move all of your ships from the active system into an adjacent system that does not contain another player's ships; the space combat ends in a draw. Then, place a command token from your reinforcements in that system.",
+        "phase": ["SpaceCombat"]
+    },
+    {
+        "id": 49,
+        "title": "Spy",
+        "timing": "As an Action",
+        "effect": "Choose 1 player. That player gives you 1 random action card from their hand.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 50,
+        "title": "Summit",
+        "timing": "At the start of the strategy phase",
+        "effect": "Gain 2 command tokens.",
+        "phase": ["Strategy"]
+    },
+    {
+        "id": 51,
+        "title": "Tactical Bombardment",
+        "timing": "As an Action",
+        "effect": "Choose 1 system that contains 1 or more of your units that have Bombardment. Exhaust each planet controlled by other players in that system.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 52,
+        "title": "Technology Rider",
+        "timing": "After an agenda is revealed",
+        "effect": "You cannot vote on this agenda. Predict aloud an outcome of this agenda. If your prediction is correct, research 1 technology.",
+        "phase": ["Agenda"]
+    },
+    {
+        "id": 53,
+        "title": "Trade Rider",
+        "timing": "After an agenda is revealed",
+        "effect": "You cannot vote on this agenda. Predict aloud an outcome of this agenda. If your prediction is correct, gain 5 trade goods.",
+        "phase": ["Agenda"]
+    },
+    {
+        "id": 54,
+        "title": "Unexpected Action",
+        "timing": "As an Action",
+        "effect": "Remove 1 of your command tokens from the game board and return it to your reinforcements.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 55,
+        "title": "Unstable Planet",
+        "timing": "As an Action",
+        "effect": "Choose 1 hazardous planet. Exhaust that planet and destroy up to 3 infantry on it.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 56,
+        "title": "Upgrade",
+        "timing": "After you activate a system that contains 1 or more of your ships",
+        "effect": "Replace one of your cruisers in that system with one of your dreadnoughts from your reinforcements.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 57,
+        "title": "Uprising",
+        "timing": "As an Action",
+        "effect": "Exhaust 1 non-home planet controlled by another player. Then gain trade goods equal to its resource value.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 58,
+        "title": "Veto",
+        "timing": "When an agenda is revealed",
+        "effect": "Discard that agenda and reveal 1 agenda from the top of the deck. Players vote on this agenda instead.",
+        "phase": ["Agenda"]
+    },
+    {
+        "id": 59,
+        "title": "War Effort",
+        "timing": "As an Action",
+        "effect": "Place 1 cruiser from your reinforcements in a system that contains 1 or more of your ships.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 60,
+        "title": "Warfare Rider",
+        "timing": "After an agenda is revealed",
+        "effect": "You cannot vote on this agenda. Predict aloud an outcome of this agenda. If your prediction is correct, place 1 dreadnought from your reinforcements in a system that contains 1 or more of your ships.",
+        "phase": ["Agenda"]
+    },
+    {
+        "id": 61,
+        "title": "Confounding Legal Text",
+        "timing": "When another player is elected as the result of an agenda",
+        "effect": "You are elected instead.",
+        "phase": ["Agenda"],
+        "pok": true
+    },
+    {
+        "id": 62,
+        "title": "Coup D'Etat",
+        "timing": "When another player would perform a strategic action",
+        "effect": "End that player's turn; the strategic action is not resolved and the strategy card is not exhausted.",
+        "phase": ["Action"],
+        "pok": true
+    },
+    {
+        "id": 63,
+        "title": "Deadly Plot",
+        "timing": "During the agenda phase, when an outcome would be resolved",
+        "effect": "If you voted for or predicted another outcome, discard the agenda instead; the agenda is resolved with no effect and it is not replaced.\r\n Then, exhaust all of your planets.",
+        "phase": ["Agenda"],
+        "pok": true
+    },
+    {
+        "id": 64,
+        "title": "Decoy Operation",
+        "timing": "After another player activates a system that contains 1 or more of your structures",
+        "effect": "Remove up to 2 of your ground forces from the game board and place them on a planet you control in the active system.",
+        "phase": ["Action"],
+        "pok": true
+    },
+    {
+        "id": 65,
+        "title": "Diplomatic Pressure",
+        "timing": "When an agenda is revealed",
+        "effect": "Choose another player; that player must give you 1 promissory note from their hand.",
+        "phase": ["Agenda"],
+        "pok": true
+    },
+    {
+        "id": 66,
+        "title": "Divert Funding",
+        "timing": "As an Action",
+        "effect": "Return a non-unit upgrade, non-faction technology that you own to your technology deck. Then, research another technology.",
+        "phase": ["Action"],
+        "pok": true
+    },
+    {
+        "id": 67,
+        "title": "Exploration Probe",
+        "timing": "As an Action",
+        "effect": "Explore a frontier token that is in or adjacent to a system that contains 1 or more of your ships.",
+        "phase": ["Action"],
+        "pok": true
+    },
+    {
+        "id": 68,
+        "title": "Manipulate Investments",
+        "timing": "At the start of the Strategy Phase",
+        "effect": "Place a total of 5 Trade Goods from the supply on strategy cards of your choice; you must place these tokens on at least 3 different cards.",
+        "phase": ["Strategy"],
+        "pok": true
+    },
+    {
+        "id": 69,
+        "title": "Nav Suite",
+        "timing": "After you activate a system",
+        "effect": "During the \"Movement\" step of this tactical action, ignore the effects of anomalies.",
+        "phase": ["Action"],
+        "pok": true
+    },
+    {
+        "id": 69,
+        "title": "Refit Troops",
+        "timing": "As an Action",
+        "effect": "Choose 1 or 2 of your infantry on the game board; replace each of those infantry with mechs.",
+        "phase": ["Action"],
+        "pok": true
+    },
+    {
+        "id": 70,
+        "title": "Reveal Prototype",
+        "timing": "At the start of a combat",
+        "effect": "Spend 4 resources to research a unit upgrade technology of the same type as 1 of your units that is participating in this combat.",
+        "phase": ["GroundCombat", "SpaceCombat"],
+        "pok": true
+    },
+    {
+        "id": 71,
+        "title": "Reverse Engineer",
+        "timing": "When another player discards an action card that has a component action",
+        "effect": "Take that action card from the discard pile.",
+        "phase": ["Any"],
+        "pok": true
+    },
+    {
+        "id": 72,
+        "title": "Rout",
+        "timing": "At the start of the \"Announce Retreats\" step of space combat, if you are the defender",
+        "effect": "Your opponent must announce a retreat, if able.",
+        "phase": ["SpaceCombat"],
+        "pok": true
+    },
+    {
+        "id": 73,
+        "title": "Scuttle",
+        "timing": "As an Action",
+        "effect": "Choose 1 or 2 of your non-fighter ships on the game board and return them to your reinforcements; gain trade goods equal to the combined cost of those ships.",
+        "phase": ["Action"],
+        "pok": true
+    },
+    {
+        "id": 74,
+        "title": "Seize Artifact",
+        "timing": "As an Action",
+        "effect": "Choose 1 of your neighbors that has 1 or more relic fragments. That player must give you 1 relic fragment of your choice.",
+        "phase": ["Action"],
+        "pok": true
+    },
+    {
+        "id": 75,
+        "title": "Waylay",
+        "timing": "Before you roll dice for ANTI-FIGHTER BARRAGE",
+        "effect": "Hits from this roll are produced against all ships (not just fighters).",
+        "phase": ["SpaceCombat"],
         "pok": true
     }
 ]

@@ -50,7 +50,7 @@ export function GetActionCardsForPhase(actionCards, phase) {
     const cards = {};
 
     for (let key of Object.keys(actionCards)) {
-        if (["Any", phase].includes(actionCards[key][0].phase)) {
+        if (actionCards[key][0].phase.some(p => ["Any", phase].includes(p))) {
             cards[key] = actionCards[key];
         }
     }

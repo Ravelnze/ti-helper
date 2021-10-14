@@ -43,7 +43,7 @@ export function RemoveAgenda(agendas, agenda) {
     return agendas.filter((a) => a.id !== agenda.id);
 }
 
-export function DetermineElectType(agenda) {
+export function DetermineElectType(agenda, state) {
     switch (agenda.electPrimary) {
         case Primary.Player:
             return Factions;
@@ -66,13 +66,17 @@ export function DetermineElectType(agenda) {
                     return [];
             }
         case Primary.Planet:
-            if (!PlanetCategories.includes(agenda.electSecondary)) {
+            if (
+                !Object.keys(PlanetCategories).includes(agenda.electSecondary)
+            ) {
                 console.error(
                     `Unknown secondary elect for Planet type "${agenda.electSecondary}"`
                 );
                 return [];
             }
-            return Planets.filter((p) => p.trait === agenda.electSecondary);
+            return state.planets.filter(
+                (p) => p.trait === agenda.electSecondary
+            );
         default:
             console.error(`Unknown elect type "${agenda.electPrimary}"`);
             return [];
@@ -108,5 +112,7 @@ export function GetVictoryPointsFromAgendas(agendas, faction) {
 }
 
 export function GetAgendasForPhase(agendas, phase) {
-    return agendas.filter((a) => ["Any", phase].includes(a.phase));
+    return agendas.filter((a) =>
+        a.phase.some((p) => ["Any", phase].includes(p))
+    );
 }

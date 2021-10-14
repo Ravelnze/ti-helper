@@ -4,7 +4,7 @@
         "title": "Anti-Intellectual Revolution",
         "for": "After a player researches a technology, they must destroy 1 of their non-fighter ships.",
         "against": "At the start of the next strategy phase, each player chooses and exhausts 1 planet for each technology they own.",
-        "phase": "Action"
+        "phase": ["Action"]
     },
     {
         "id": 2,
@@ -14,16 +14,16 @@
         "electSecondary": "Secret",
         "condition": "When this agenda is revealed, if there are no scored secret objectives, discard this card and reveal another agenda from the top of the deck.",
         "desc": "The elected secret objective becomes a public objective; place it near the other public objectives in the common play area.",
-        "phase": "Status"
+        "phase": ["Status"]
     },
     {
         "id": 3,
         "title": "The Crown of Emphidia",
         "electTitle": "Player",
         "electPrimary": "Player",
-        "gain": [{ "cat": "Victory Point", "value": 1 }],
-        "desc": "The elected player gains this card and 1 Victory Point.\r\nA player gains this card and 1 Victory Point after they gain control of a planet in the home system of this card's owner. Then, the previous owner of this card loses 1 Victory Point.",
-        "phase": "Action",
+        "effects": [{ "type": "vp", "value": "1" }],
+        "desc": "The elected player gains this card and 1 Victory Point.\r\n A player gains this card and 1 Victory Point after they gain control of a planet in the home system of this card's owner. Then, the previous owner of this card loses 1 Victory Point.",
+        "phase": ["Action"],
         "pok": false
     },
     {
@@ -32,7 +32,10 @@
         "electTitle": "Hazardous Planet",
         "electPrimary": "Planet",
         "electSecondary": "Hazardous",
-        "gain": [{"cat": "Attach"}, {"cat": "Resources", "value": 1}, {"cat": "Influence", "value": 1}],
+        "effects": [
+            { "type": "resource", "value": 1 },
+            { "type": "influence", "value": 1 }
+        ],
         "desc": "Attach this card to the elected planet's card.\r\nThe resource and influence values of this planet are increased by 1.",
         "pok": false
     },
@@ -42,9 +45,8 @@
         "electTitle": "Industrial Planet",
         "electPrimary": "Planet",
         "electSecondary": "Industrial",
-        "gain": [{"cat": "Attach"}, {"cat": "Ignore Prerequisite", "value": "Biotic"}],
-        "desc": "Attach this card to the elected planet's card.\r\nWhen the owner of this planet researches technology, they may exhaust this card to ignore 1 green prerequisite.",
-        "phase": "Action",
+        "desc": "Attach this card to the elected planet's card. When the owner of this planet researches technology, they may exhaust this card to ignore 1 green prerequisite.",
+        "phase": ["Action"],
         "pok": false
     },
     {
@@ -53,9 +55,9 @@
         "electTitle": "Cultural Planet",
         "electPrimary": "Planet",
         "electSecondary": "Cultural",
-        "gain": [{"cat": "Attach"}, {"cat": "Victory Point", "value": "1"}, {"cat": "Use Production", "value": false}],
-        "desc": "Attach this card to the elected planet's card. The planet's owner gains 1Victory Point . Units on this planet cannot use PRODUCTION. When a player gains control of this planet, they gain 1 Victory Point . When a player loses control of this planet, they lose 1 Victory Point",
-        "phase": "Action",
+        "effects": [{ "type": "vp", "value": "1" }],
+        "desc": "Attach this card to the elected planet's card. The planet's owner gains 1 Victory Point. Units on this planet cannot use PRODUCTION. When a player gains control of this planet, they gain 1 Victory Point. When a player loses control of this planet, they lose 1 Victory Point",
+        "phase": ["Action"],
         "pok": false
     },
     {
@@ -63,9 +65,294 @@
         "title": "Political Censure",
         "electTitle": "Player",
         "electPrimary": "Player",
-        "gain": [{"cat": "Victory Point", "value": "1"}, {"cat": "Use Action Cards", "value": false}],
+        "effects": [{ "type": "vp", "value": "1" }],
         "desc": "The elected player gains this card and 1 Victory Point.\r\nThe elected player cannot play action cards.\r\nIf the owner of this card loses this card, they lose 1 Victory Point",
-        "phase": "Action",
+        "phase": ["Action"],
+        "pok": true
+    },
+    {
+        "id": 8,
+        "title": "Committee Formation",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "desc": "The elected player gains this card.\r\n Before players vote on an agenda that requires a player to be elected, the owner of this card may discard this card to choose a player to be elected. Players do not vote on that agenda.",
+        "phase": ["Agenda"]
+    },
+    {
+        "id": 9,
+        "title": "Conventions of War",
+        "for": "Players cannot use BOMBARDMENT against units that are on cultural planets.",
+        "against": "Each player that voted \"Against\" discards all of their action cards.",
+        "phase": ["GroundCombat"]
+    },
+    {
+        "id": 10,
+        "title": "Core Mining",
+        "electTitle": "Hazardous Planet",
+        "electPrimary": "Planet",
+        "electSecondary": "Hazardous",
+        "effects": [{ "type": "resource", "value": 2 }],
+        "desc": "Attach this card to the elected planet's card. Then, destroy 1 infantry on the planet.\r\n The resource value of this planet is increased by 2.",
+        "pok": false
+    },
+    {
+        "id": 11,
+        "title": "Demilitarized Zone",
+        "electTitle": "Cultural Planet",
+        "electPrimary": "Planet",
+        "electSecondary": "Cultural",
+        "effects": [
+            {
+                "type": "dmz",
+                "image": "dmz"
+            }
+        ],
+        "desc": "Attach this card to the elected planet's card. Then, destroy all units on that planet.\r\n Player's units cannot land, be produced, or be placed on this planet",
+        "pok": false
+    },
+    {
+        "id": 12,
+        "title": "Enforced Travel Ban",
+        "for": "Alpha and beta wormholes have no effect during movement.",
+        "against": "Destroy each PDS in or adjacent to a system that contains a wormhole.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 13,
+        "title": "Executive Sanctions",
+        "for": "Each player can have a maximum of 3 action cards in their hand.",
+        "against": "Each player discards 1 random action card from their hand.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 14,
+        "title": "Fleet Regulations",
+        "for": "Each player cannot have more than 4 tokens in their fleet pool.",
+        "against": "Each player places 1 command token from their reinforcements in their fleet pool.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 15,
+        "title": "Homeland Defense Act",
+        "for": "Each player can have any number of PDS units on planets they control.",
+        "against": "Each player destroys 1 of their PDS unit.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 16,
+        "title": "Committee Formation",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "desc": "The elected player gains this card.\r\n At the end of the strategy phase, the owner of this card may discard this card to swap 1 of their strategy cards with 1 of another player's strategy cards.",
+        "phase": ["Strategy"]
+    },
+    {
+        "id": 17,
+        "title": "Minister of Commerce",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "desc": "The elected player gains this card.\r\n After the owner of this card replenishes commodities, they gain 1 trade good for each player that is their neighbor.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 18,
+        "title": "Minister of Exploration",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "desc": "The elected player gains this card.\r\n When the owner of this card gains control of a planet, they gain 1 trade good.",
+        "phase": ["Action", "GroundCombat"]
+    },
+    {
+        "id": 19,
+        "title": "Minister of Industry",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "desc": "The elected player gains this card.\r\n When the owner of this card places a space dock in a system, their units in that system may use their PRODUCTION abilities.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 20,
+        "title": "Minister of Peace",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "desc": "The elected player gains this card.\r\n After a player activates a system that contains 1 or more of a different player's units, the owner of this card may discard this card; immediately end the active player's turn.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 21,
+        "title": "Minister of Policy",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "desc": "The elected player gains this card.\r\n At the end of the status phase, the owner of this card draws 1 action card.",
+        "phase": ["Status"]
+    },
+    {
+        "id": 22,
+        "title": "Minister of Sciences",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "desc": "The elected player gains this card.\r\n When the owner of this card resolves the primary or secondary ability of the \"Technology\" strategy card, they do not need to spend resources to research technology.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 23,
+        "title": "Minister of War",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "desc": "The elected player gains this card.\r\n The owner of this card may discard this card after performing an action to remove 1 of their command counters from the game board and return it to their reinforcements; then they may perform 1 additional action.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 24,
+        "title": "Prophecy of Ixth",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "desc": "The elected player gains this card.\r\n The owner of this card applies +1 to the result of their fighter's combat rolls. When the owner of this card uses PRODUCTION, they discard this card unless they produce 2 or more fighters.",
+        "phase": ["Action", "SpaceCombat"]
+    },
+    {
+        "id": 25,
+        "title": "Publicize Weapon Schematics",
+        "for": "If any player owns a war sun technology, all players may ignore all prerequisites on war sun technologies. All war suns lose SUSTAIN DAMAGE.",
+        "against": "Each player that owns a war sun technology discards all of their action cards.",
+        "phase": ["Action", "SpaceCombat"]
+    },
+    {
+        "id": 26,
+        "title": "Regulated Conscription",
+        "for": "When a player produces units, they produce only 1 fighter and infantry for its cost instead of 2.",
+        "against": "No effect.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 27,
+        "title": "Representative Government",
+        "for": "Players cannot exhaust planets to cast votes during the agenda phase. Each player may cast 1 vote on each agenda instead.",
+        "against": "At the start of the next strategy phase, each player that voted \"Against\" exhausts all of their cultural planets.",
+        "phase": ["Agenda"],
+        "pok": false
+    },
+    {
+        "id": 28,
+        "title": "Research Team: Cybernetic",
+        "electTitle": "Industrial Planet",
+        "electPrimary": "Planet",
+        "electSecondary": "Industrial",
+        "desc": "Attach this card to the elected planet's card. When the owner of this planet researches technology, they may exhaust this card to ignore 1 yellow prerequisite.",
+        "phase": ["Action"],
+        "pok": false
+    },
+    {
+        "id": 29,
+        "title": "Research Team: Propulsion",
+        "electTitle": "Industrial Planet",
+        "electPrimary": "Planet",
+        "electSecondary": "Industrial",
+        "desc": "Attach this card to the elected planet's card. When the owner of this planet researches technology, they may exhaust this card to ignore 1 blue prerequisite.",
+        "phase": ["Action"],
+        "pok": false
+    },
+    {
+        "id": 30,
+        "title": "Research Team: Warfare",
+        "electTitle": "Hazardous Planet",
+        "electPrimary": "Planet",
+        "electSecondary": "Hazardous",
+        "desc": "Attach this card to the elected planet's card. When the owner of this planet researches technology, they may exhaust this card to ignore 1 red prerequisite.",
+        "phase": ["Action"],
+        "pok": false
+    },
+    {
+        "id": 31,
+        "title": "Senate Sanctuary",
+        "electTitle": "Cultural Planet",
+        "electPrimary": "Planet",
+        "electSecondary": "Cultural",
+        "effects": [{ "type": "influence", "value": 2 }],
+        "desc": "Attach this card to the elected planet's card.\r\n The influence value of this planet is increased by 2.",
+        "pok": false
+    },
+    {
+        "id": 32,
+        "title": "Shard of the Throne",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "desc": "The elected player gains this card and 1 Victory Point.\r\n A player gains this card and 1 Victory Point when they win a combat against the owner of this card. Then, the previous owner of this card loses 1 Victory Point.",
+        "phase": ["Action"],
+        "pok": false
+    },
+    {
+        "id": 33,
+        "title": "Shared Research",
+        "for": "Each player's units can move through nebulae.",
+        "against": "Each player places a command token from their reinforcements in their home system, if able.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 34,
+        "title": "The Crown of Thalnos",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "desc": "The elected player gains this card.\r\n During each combat round, the owner of this card may reroll any number of dice; they must destroy each of their units that did not produce a hit with its reroll.",
+        "phase": ["SpaceCombat", "GroundCombat"],
+        "pok": false
+    },
+    {
+        "id": 35,
+        "title": "Wormhole Reconstruction",
+        "for": "All systems that contain either an alpha or beta wormhole are adjacent to each other.",
+        "against": "Each player places a command token from their reinforcements in each system that contains a wormhole and 1 or more of their ships.",
+        "phase": ["Action"]
+    },
+    {
+        "id": 36,
+        "title": "Articles of War",
+        "for": "All mechs lose their printed abilities except for SUSTAIN DAMAGE",
+        "against": "Each player that voted \"For\" gains 3 trade goods",
+        "phase": ["Any"],
+        "pok": true
+    },
+    {
+        "id": 37,
+        "title": "Checks and Balances",
+        "for": "When a player chooses a strategy card during the strategy phase, they give that strategy card to another player that does not have one (or a player that does not have two in a 3 or 4 player game), if able",
+        "against": "Each player readies only 3 of their planets at the end of this agenda phase",
+        "phase": ["Strategy"],
+        "pok": true
+    },
+    {
+        "id": 38,
+        "title": "Nexus Sovereignty",
+        "for": "Alpha and Beta wormholes in the Wormhole Nexus have no effect during movement",
+        "against": "Place a Gamma Wormhole Token in the Mecatol Rex System",
+        "phase": ["Action"],
+        "pok": true
+    },
+    {
+        "id": 39,
+        "title": "Political Censure",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "effects": [{ "type": "vp", "value": "1" }],
+        "desc": "The elected player gains this card and 1 Victory Point.\r\n The elected player cannot play action cards.\r\n If the owner of this card loses this card, they lose 1 Victory Point",
+        "phase": ["Action"],
+        "pok": true
+    },
+    {
+        "id": 40,
+        "title": "Representative Government",
+        "for": "Players cannot exhaust planets to cast votes during the agenda phase; each player may cast 1 vote on each agenda instead. Players cannot cast additional votes",
+        "against": "At the start of the next strategy phase, each player that voted \"Against\" exhausts all of their cultural planets",
+        "phase": ["Agenda"],
+        "pok": true
+    },
+    {
+        "id": 41,
+        "title": "Political Censure",
+        "electTitle": "Player",
+        "electPrimary": "Player",
+        "desc": "The elected player gains this card and draws 2 Secret Objectives.\r\n The owner of this card plays with their secret objectives revealed",
+        "phase": ["Any"],
         "pok": true
     }
 ]

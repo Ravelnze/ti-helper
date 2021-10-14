@@ -1,13 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Card from "react-bootstrap/Card";
-import { electOutcome, removeAgenda } from "../store/Actions";
+import { electOutcome, removeAgenda, setPlanet } from "../store/Actions";
 import { useStore } from "../store/Store";
 import RemoveButton from "./RemoveButton";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import { DetermineElectType } from "../lib/Agenda";
+import { DetermineElectType, Primary } from "../lib/Agenda";
 import { useState } from "react";
 import AutoSuggestionInput from "./AutoSuggestionInput";
 import { Badge } from "react-bootstrap";
+import { AugmentPlanet } from "../lib/Planet";
 
 function AgendaCard(props) {
     const [state, dispatch] = useStore();
@@ -17,13 +18,34 @@ function AgendaCard(props) {
         <Card bg="primary">
             {props.interactable ? (
                 <RemoveButton
-                    onClick={() => dispatch(removeAgenda(props.agenda))}
+                    onClick={() => {
+                        dispatch(removeAgenda(props.agenda));
+                        if (
+                            props.agenda.electPrimary === Primary.Planet &&
+                            props.agenda.effects &&
+                            props.agenda.elected
+                        ) {
+                            dispatch(
+                                setPlanet(
+                                    AugmentPlanet(
+                                        null,
+                                        props.agenda,
+                                        props.agenda.elected,
+                                        false
+                                    )
+                                )
+                            );
+                        }
+                    }}
                 />
             ) : null}
             <Card.Header className="text-center text-light">
                 {props.agenda.title}
             </Card.Header>
-            <Card.Body className="pt-1" style={{ minWidth: "200px", minHeight: "80px" }}>
+            <Card.Body
+                className="pt-1"
+                style={{ minWidth: "200px", minHeight: "80px" }}
+            >
                 <Card.Text
                     className="text-light"
                     style={{ fontSize: "0.8rem" }}
@@ -39,8 +61,27 @@ function AgendaCard(props) {
                         }`}
                         onClick={() => {
                             if (props.interactable && electList.length === 0) {
+                                if (
+                                    props.agenda.electPrimary ===
+                                        Primary.Planet &&
+                                    props.agenda.effects &&
+                                    props.agenda.elected
+                                ) {
+                                    dispatch(
+                                        setPlanet(
+                                            AugmentPlanet(
+                                                null,
+                                                props.agenda,
+                                                props.agenda.elected,
+                                                false
+                                            )
+                                        )
+                                    );
+                                }
                                 dispatch(electOutcome(props.agenda, null));
-                                setElectList(DetermineElectType(props.agenda));
+                                setElectList(
+                                    DetermineElectType(props.agenda, state)
+                                );
                             }
                         }}
                     >
@@ -52,6 +93,22 @@ function AgendaCard(props) {
                             <AutoSuggestionInput
                                 items={electList}
                                 setValue={(item) => {
+                                    if (
+                                        props.agenda.electPrimary ===
+                                            Primary.Planet &&
+                                        props.agenda.effects
+                                    ) {
+                                        dispatch(
+                                            setPlanet(
+                                                AugmentPlanet(
+                                                    null,
+                                                    props.agenda,
+                                                    item,
+                                                    true
+                                                )
+                                            )
+                                        );
+                                    }
                                     dispatch(electOutcome(props.agenda, item));
                                     setElectList([]);
                                 }}

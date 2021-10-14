@@ -13,6 +13,11 @@ const AttachType = {
     techSpecialty: "techSpecialty",
 };
 
+const AttachmentCardType = {
+    Exploration: "Exploration",
+    Agenda: "Agenda",
+};
+
 export function GetPlanetVariantColour(trait) {
     let variant = {};
 
@@ -110,7 +115,18 @@ export function RemovePlanet(state, planet) {
         (la) => la.title !== planet?.legendaryAbility?.title
     );
     const explorationCards = state.explorationCards.filter(
-        (ec) => !planet.attachments.includes(ec.id)
+        (ec) =>
+            !planet.attachments
+                .filter((a) => a.type === AttachmentCardType.Exploration)
+                .map((a) => a.id)
+                .includes(ec.id)
+    );
+    const agendas = state.agendas.filter(
+        (ag) =>
+            !planet.attachments
+                .filter((a) => a.type === AttachmentCardType.Agenda)
+                .map((a) => a.id)
+                .includes(ag.id)
     );
 
     return {
@@ -118,6 +134,7 @@ export function RemovePlanet(state, planet) {
         planets: planets,
         legendaryPlanetAbilities: legendaryAbilities,
         explorationCards: explorationCards,
+        agendas: agendas,
         ...UpdateResources(planets),
         ...UpdateInfluence(planets),
     };
@@ -165,36 +182,53 @@ export function SetPlanet(state, planet) {
     };
 }
 
-export function AugmentPlanet(explorationCard, planet, attaching) {
+export function AugmentPlanet(explorationCard, agendaCard, planet, attaching) {
+    const attachmentCard = explorationCard ?? agendaCard;
+    const attachmentType = explorationCard
+        ? AttachmentCardType.Exploration
+        : AttachmentCardType.Agenda;
     if (!planet) return;
 
-    explorationCard.effects.forEach((attachment) => {
+    attachmentCard.effects.forEach((attachment) => {
         switch (attachment.type) {
             case AttachType.resource:
                 if (attaching) {
-                    planet.attachments.push(explorationCard.id);
+                    planet.attachments.push({
+                        id: attachmentCard.id,
+                        type: attachmentType,
+                    });
                     planet.resource += attachment.value;
                 } else {
                     planet.attachments = planet.attachments.filter(
-                        (a) => a !== explorationCard.id
+                        (a) =>
+                            a.id !== attachmentCard.id &&
+                            a.attachmentType === attachmentType
                     );
                     planet.resource -= attachment.value;
                 }
                 break;
             case AttachType.influence:
                 if (attaching) {
-                    planet.attachments.push(explorationCard.id);
+                    planet.attachments.push({
+                        id: attachmentCard.id,
+                        type: attachmentType,
+                    });
                     planet.influence += attachment.value;
                 } else {
                     planet.attachments = planet.attachments.filter(
-                        (a) => a !== explorationCard.id
+                        (a) =>
+                            a.id !== attachmentCard.id &&
+                            a.attachmentType === attachmentType
                     );
                     planet.influence -= attachment.value;
                 }
                 break;
             case AttachType.techSpecialty:
                 if (attaching) {
-                    planet.attachments.push(explorationCard.id);
+                    planet.attachments.push({
+                        id: attachmentCard.id,
+                        type: attachmentType,
+                    });
                     if (planet.techSpecialty) {
                         planet.resource += 1;
                         planet.influence += 1;
@@ -204,7 +238,9 @@ export function AugmentPlanet(explorationCard, planet, attaching) {
                     }
                 } else {
                     planet.attachments = planet.attachments.filter(
-                        (a) => a !== explorationCard.id
+                        (a) =>
+                            a.id !== attachmentCard.id &&
+                            a.attachmentType === attachmentType
                     );
                     if (planet.addedAttachedSpecialty === attachment.value) {
                         planet.techSpecialty = null;
@@ -217,11 +253,16 @@ export function AugmentPlanet(explorationCard, planet, attaching) {
             case AttachType.vp:
             case AttachType.dmz:
                 if (attaching) {
-                    planet.attachments.push(explorationCard.id);
+                    planet.attachments.push({
+                        id: attachmentCard.id,
+                        type: attachmentType,
+                    });
                     planet.extraIcons.push(attachment.image);
                 } else {
                     planet.attachments = planet.attachments.filter(
-                        (a) => a !== explorationCard.id
+                        (a) =>
+                            a.id !== attachmentCard.id &&
+                            a.attachmentType === attachmentType
                     );
                     planet.extraIcons = planet.extraIcons.filter(
                         (ei) => ei !== attachment.image

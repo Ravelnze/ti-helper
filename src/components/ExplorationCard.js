@@ -29,10 +29,10 @@ function ExplorationCard(props) {
                                 setPlanet(
                                     AugmentPlanet(
                                         props.card,
+                                        null,
                                         props.card.attachedPlanet,
                                         false
-                                    ),
-                                    props.card
+                                    )
                                 )
                             );
                         }
@@ -66,10 +66,10 @@ function ExplorationCard(props) {
                                         setPlanet(
                                             AugmentPlanet(
                                                 props.card,
+                                                null,
                                                 props.card.attachedPlanet,
                                                 false
-                                            ),
-                                            props.card
+                                            )
                                         )
                                     );
                                     dispatch(
@@ -105,10 +105,10 @@ function ExplorationCard(props) {
                                         setPlanet(
                                             AugmentPlanet(
                                                 props.card,
+                                                null,
                                                 planet,
                                                 true
-                                            ),
-                                            props.card
+                                            )
                                         )
                                     );
                                     setPlanetList([]);
