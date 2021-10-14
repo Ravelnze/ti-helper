@@ -16,10 +16,11 @@ import {
     addPromissory,
     addExplorationCard,
     addRelic,
+    setUnitProperties,
 } from "../store/Actions";
 import ScrollableCardList, { CardType } from "./ScrollableCardList";
 import "../lib/ArrayExtensions";
-import { GetSpecialUnitsAndLeaders } from "../lib/Faction";
+import { GetSpecialUnitsAndLeaders, UnitType } from "../lib/Faction";
 
 // data
 import Planets from "../data/planets.json";
@@ -132,10 +133,47 @@ function EditModal(props) {
                                             <AutoSuggestionInput
                                                 items={pokFilter(
                                                     Technology
-                                                ).exclude(state.technologies)}
-                                                setValue={(tech) =>
-                                                    dispatch(addTech(tech))
-                                                }
+                                                ).exclude(
+                                                    // exclude existing technologies,
+                                                    state.technologies.concat(
+                                                        Technology.filter(
+                                                            (t) =>
+                                                                // previously replaced technologies,
+                                                                state.technologies
+                                                                    .map(
+                                                                        (st) =>
+                                                                            st.id
+                                                                    )
+                                                                    .includes(
+                                                                        t.replacedBy
+                                                                    ) ||
+                                                                // techs with different upgrades
+                                                                t.excludeFactions?.includes(
+                                                                    state
+                                                                        .faction
+                                                                        .id
+                                                                ) ||
+                                                                // and techs from other factions
+                                                                (t.factionId &&
+                                                                    t.factionId !==
+                                                                        state
+                                                                            .faction
+                                                                            .id)
+                                                        )
+                                                    )
+                                                )}
+                                                setValue={(tech) => {
+                                                    dispatch(addTech(tech));
+                                                    if (tech.id === 49) {
+                                                        // Nomad flagship
+                                                        dispatch(
+                                                            setUnitProperties(
+                                                                UnitType.Flagship,
+                                                                tech
+                                                            )
+                                                        );
+                                                    }
+                                                }}
                                                 placeholder="Search for a technology"
                                             />
                                         </Col>

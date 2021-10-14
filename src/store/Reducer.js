@@ -27,7 +27,12 @@ import {
     SetAttachedPlanet,
 } from "../lib/Exploration";
 import { AddRelic, RemoveRelic } from "../lib/Relic";
-import { AppendUnitAbilities, RemoveExtraAbility } from "../lib/Unit";
+import {
+    AppendUnitAbilities,
+    RemoveExtraAbility,
+    SetUnitProperties,
+    UpdateUnitProperies,
+} from "../lib/Unit";
 
 export const initialState = () => ({
     pok: true,
@@ -98,6 +103,17 @@ function removeExtraAbility(state, { payload }) {
         payload.unit,
         payload.instanceId
     );
+}
+
+function setUnitProperties(state, { payload }) {
+    return {
+        ...state,
+        faction: UpdateUnitProperies(
+            { ...state.faction },
+            payload.unitType,
+            payload.properties
+        ),
+    };
 }
 
 function setTech(state, { payload }) {
@@ -303,6 +319,7 @@ export const reducer = createReducer({
     [Types.SETUNITAVAILABLE]: setUnitAvailable,
     [Types.APPENDUNITABILITY]: appendUnitAbilities,
     [Types.REMOVEEXTRAABILITY]: removeExtraAbility,
+    [Types.SETUNITPROPERTIES]: setUnitProperties,
     [Types.SETTECH]: setTech,
     [Types.ADDTECH]: addTech,
     [Types.REMOVETECH]: removeTech,

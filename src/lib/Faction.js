@@ -14,11 +14,8 @@ export function GetAbilitiesForPhase(abilities, phase) {
         return [];
     }
 
-    // Setup should not include in-game effects
-    const phases = phase === "Setup" ? [phase] : ["Any", phase];
-
     const ab = abilities.filter((a) =>
-        a.phase.some((p) => phases.includes(p))
+        a.phase.some((p) => ["Any", phase].includes(p))
     );
 
     return ab;

@@ -6,10 +6,13 @@ const typeLists = {
     Faction: Factions,
 };
 
-export function GetUpdateableValueList(type) {
+export function GetUpdateableValueList(type, pok) {
+    // This can be extended out with other cases if required
     switch (type) {
         case UnitType.Agent:
-            return typeLists["Faction"];
+            return pok
+                ? typeLists["Faction"]
+                : typeLists["Faction"].filter((f) => !f.pok);
         default:
             return;
     }
@@ -39,24 +42,24 @@ export function AppendUnitAbilities(state, unit, abilities) {
     let updateUnit = {};
 
     switch (unit.type) {
-        case UnitType.Mech:
-            updateUnit = state.faction.mech;
-            updateUnit.extraAbilities = updateUnit.extraAbilities
-                ? updateUnit.extraAbilities.concat(abilities)
-                : abilities;
-            return {
-                ...state,
-                faction: { ...state.faction, mech: updateUnit },
-            };
-        case UnitType.Flagship:
-            updateUnit = state.faction.flagship;
-            updateUnit.extraAbilities = updateUnit.extraAbilities
-                ? updateUnit.extraAbilities.concat(abilities)
-                : abilities;
-            return {
-                ...state,
-                faction: { ...state.faction, flagship: updateUnit },
-            };
+        // case UnitType.Mech:
+        //     updateUnit = state.faction.mech;
+        //     updateUnit.extraAbilities = updateUnit.extraAbilities
+        //         ? updateUnit.extraAbilities.concat(abilities)
+        //         : abilities;
+        //     return {
+        //         ...state,
+        //         faction: { ...state.faction, mech: updateUnit },
+        //     };
+        // case UnitType.Flagship:
+        //     updateUnit = state.faction.flagship;
+        //     updateUnit.extraAbilities = updateUnit.extraAbilities
+        //         ? updateUnit.extraAbilities.concat(abilities)
+        //         : abilities;
+        //     return {
+        //         ...state,
+        //         faction: { ...state.faction, flagship: updateUnit },
+        //     };
         case UnitType.Agent:
         case UnitType.Commander:
         case UnitType.Hero:
@@ -85,24 +88,24 @@ export function RemoveExtraAbility(state, type, unit, instanceId) {
     let updateUnit = null;
 
     switch (type) {
-        case UnitType.Mech:
-            updateUnit = state.mech;
-            updateUnit.extraAbilities = updateUnit.extraAbilities.filter(
-                (ea) => ea.instanceId !== instanceId
-            );
-            return {
-                ...state,
-                mech: updateUnit,
-            };
-        case UnitType.Flagship:
-            updateUnit = state.flagship;
-            updateUnit.extraAbilities = updateUnit.extraAbilities.filter(
-                (ea) => ea.instanceId !== instanceId
-            );
-            return {
-                ...state,
-                flagship: updateUnit,
-            };
+        // case UnitType.Mech:
+        //     updateUnit = state.mech;
+        //     updateUnit.extraAbilities = updateUnit.extraAbilities.filter(
+        //         (ea) => ea.instanceId !== instanceId
+        //     );
+        //     return {
+        //         ...state,
+        //         mech: updateUnit,
+        //     };
+        // case UnitType.Flagship:
+        //     updateUnit = state.flagship;
+        //     updateUnit.extraAbilities = updateUnit.extraAbilities.filter(
+        //         (ea) => ea.instanceId !== instanceId
+        //     );
+        //     return {
+        //         ...state,
+        //         flagship: updateUnit,
+        //     };
         case UnitType.Agent:
         case UnitType.Commander:
         case UnitType.Hero:
@@ -125,4 +128,36 @@ export function RemoveExtraAbility(state, type, unit, instanceId) {
             console.warn(`Unknown value type: ${type}`);
             return state;
     }
+}
+
+export function UpdateUnitProperies(faction, unitType, properties) {
+    switch (unitType) {
+        case UnitType.Flagship:
+            return {
+                ...faction,
+                flagship: setUnitProperties(
+                    { ...faction.flagship },
+                    properties
+                ),
+            };
+        case UnitType.Mech:
+            return {
+                ...faction,
+                mech: setUnitProperties({ ...faction.mech }, properties),
+            };
+        default:
+            return faction;
+    }
+}
+
+function setUnitProperties(updateUnit, properties) {
+    updateUnit.cost = properties.cost;
+    updateUnit.combat = properties.combat;
+    updateUnit.rolls = properties.rolls;
+    updateUnit.move = properties.move;
+    updateUnit.capacity = properties.capacity;
+    updateUnit.abilities = properties.abilities;
+    updateUnit.desc = properties.desc;
+
+    return updateUnit;
 }

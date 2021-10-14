@@ -28,7 +28,8 @@ function UnitCard(props) {
     const [flipped, setFlipped] = useState(false);
     const unit = flipped ? props.unit.alt : props.unit;
     const updateableValuesList = GetUpdateableValueList(
-        props.unit.specialAbility?.updateableType
+        props.unit.specialAbility?.updateableType,
+        state.pok
     );
 
     return (
@@ -157,7 +158,8 @@ function UnitCard(props) {
                                                             )
                                                         }
                                                     >
-                                                        {ea.faction} - {
+                                                        {ea.faction} -{" "}
+                                                        {
                                                             ea?.leader
                                                                 .specialAbility
                                                                 .desc
@@ -183,7 +185,9 @@ function UnitCard(props) {
                                             )
                                         );
                                     }}
-                                    placeholder={props.unit.specialAbility?.updateText}
+                                    placeholder={
+                                        props.unit.specialAbility?.updateText
+                                    }
                                 />
                             </>
                         ) : null}

@@ -38,7 +38,7 @@ export const SetTech = (techIds) => {
 };
 
 export function AddTech(currentTech, newTech) {
-    return [...currentTech, newTech];
+    return [...currentTech.filter((t) => t.replacedBy !== newTech.id), newTech];
 }
 
 export function RemoveTech(currentTech, tech) {

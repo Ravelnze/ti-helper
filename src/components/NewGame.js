@@ -6,19 +6,38 @@ import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import FactionList from "./FactionList";
 import DividerText from "./DividerText";
-import TechnologyCardGroup from "./TechnologyCardGroup";
 import UnitList from "./UnitList";
 import ValueLabel from "./ValueLabel";
 import { useStore } from "../store/Store";
-import { setPok } from "../store/Actions";
+import { setFaction, setPok, setTech } from "../store/Actions";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
-import { GetAbilitiesForPhase } from "../lib/Faction";
+import { GetSpecialUnitsAndLeaders } from "../lib/Faction";
+import ScrollableCardList, { CardType } from "./ScrollableCardList";
+
+import Technologies from "../data/technologies.json";
+import PromissoryNotes from "../data/promissoryNotes.json";
+import Planets from "../data/planets.json";
 
 function NewGame() {
     const [state, dispatch] = useStore();
     const history = useHistory();
-    const abilities = GetAbilitiesForPhase(state.faction?.abilities, "Setup");
+    const abilities = state.faction?.abilities;
+    const factionTech = Technologies.filter(
+        (t) => t.factionId && t.factionId === state.faction?.id
+    );
+    const specialUnits = state.faction
+        ? GetSpecialUnitsAndLeaders(state.faction, state.pok)
+        : null;
+    const promissoryNotes = PromissoryNotes.filter(
+        (p) => p.factionId && p.factionId === state.faction?.id
+    );
+    const planets = Planets.filter(
+        (p) => p.homeFactionId && p.homeFactionId === state.faction?.id
+    );
+    const startingTech = state.technologies.filter(
+        (t) => !t.replacedBy
+    )
 
     useEffect(() => {
         if (state.gameStarted) {
@@ -33,66 +52,153 @@ function NewGame() {
                     <DividerText title="New Game" lg />
                 </Col>
             </Row>
+
+            {state.faction ? null : (
+                <Row>
+                    <Col className="mb-2">
+                        <Form.Check
+                            type="checkbox"
+                            style={{ fontSize: "1.2rem" }}
+                            label="Prophecy of Kings"
+                            checked={state.pok}
+                            onChange={() => dispatch(setPok(!state.pok))}
+                        />
+                    </Col>
+                </Row>
+            )}
+
             <Row>
-                <Col className="mb-2">
-                    <Form.Check
-                        type="checkbox"
-                        style={{ fontSize: "1.2rem" }}
-                        label="Prophecy of Kings"
-                        checked={state.pok}
-                        onChange={() => dispatch(setPok(!state.pok))}
-                    />
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <FactionList />
-                </Col>
-            </Row>
-            <Row>
-                <Col className="ps-4">
-                    {abilities.length > 0
-                        ? abilities.map((a, i) => (<li key={i} className="text-light">{a.description}</li>))
-                        : null}
-                </Col>
-            </Row>
-            <Row style={{ paddingLeft: "4px" }}>
                 <Col>
                     {state.faction ? (
-                        <>
-                            <DividerText title="Starting Units" />
-                            <UnitList units={state.faction.units} />
-                        </>
-                    ) : null}
+                        <div
+                            className="text-center pointer"
+                            onClick={() => {
+                                dispatch(setFaction(null));
+                                dispatch(setTech([]));
+                            }}
+                        >
+                            <h4 className="text-center mb-0">
+                                {state.faction.title}
+                            </h4>
+                            <sub style={{ color: "gray", top: "-7px" }}>
+                                tap to change
+                            </sub>
+                        </div>
+                    ) : (
+                        <FactionList />
+                    )}
                 </Col>
             </Row>
-            <Row>
-                <Col>
-                    {state.technologies?.length > 0 ? (
-                        <>
-                            <DividerText title="Starting Tech" />
-                            <TechnologyCardGroup
-                                technologies={state.technologies}
-                            />
-                        </>
-                    ) : null}
-                </Col>
-            </Row>
+
+            {abilities?.length > 0 ? (
+                <Row>
+                    <Col className="ps-4">
+                        {abilities.map((a, i) => (
+                            <li key={i} className="text-light">
+                                {a.description}
+                            </li>
+                        ))}
+                    </Col>
+                </Row>
+            ) : null}
+
+            {specialUnits ? (
+                <Row>
+                    <Col>
+                        <ScrollableCardList
+                            cardType={CardType.Unit}
+                            cardList={specialUnits}
+                            special
+                        />
+                    </Col>
+                </Row>
+            ) : null}
+
+            {factionTech.length > 0 ? (
+                <Row>
+                    <Col>
+                        <DividerText title="Faction Technologies" />
+                        <ScrollableCardList
+                            cardType={CardType.Technology}
+                            cardList={factionTech}
+                        />
+                    </Col>
+                </Row>
+            ) : null}
+
+            {promissoryNotes.length > 0 ? (
+                <Row>
+                    <Col>
+                        <DividerText
+                            title={`Faction Promissory Note${
+                                promissoryNotes.length === 1 ? "" : "s"
+                            }`}
+                        />
+                        <ScrollableCardList
+                            cardType={CardType.PromissoryNote}
+                            cardList={promissoryNotes}
+                        />
+                    </Col>
+                </Row>
+            ) : null}
+
+            {planets.length > 0 ? (
+                <Row>
+                    <Col>
+                        <DividerText
+                            title={`Planet${planets.length === 1 ? "" : "s"}`}
+                        />
+                        <ScrollableCardList
+                            cardType={CardType.Planet}
+                            cardList={planets}
+                        />
+                    </Col>
+                </Row>
+            ) : null}
+
             {state.faction ? (
                 <ValueLabel
                     label="Commodities"
                     value={state.faction?.commodities}
                 />
             ) : null}
-            <Row className="mt-2">
-                <Col>
-                    {state.faction ? (
+
+            {state.faction ? (
+                <Row style={{ paddingLeft: "4px" }}>
+                    <Col>
+                        <DividerText title="Starting Units" />
+                        <UnitList units={state.faction.units} />
+                    </Col>
+                </Row>
+            ) : null}
+
+            {startingTech.length > 0 ? (
+                <Row>
+                    <Col>
+                        <DividerText title="Starting Tech" />
+                        <div className="text-center">
+                            <sub className="text-light">
+                                {state.faction?.chooseTechDesc}
+                            </sub>
+                        </div>
+                        <ScrollableCardList
+                            cardType={CardType.Technology}
+                            cardList={startingTech}
+                            interactable={state.faction?.chooseTech}
+                        />
+                    </Col>
+                </Row>
+            ) : null}
+
+            {state.faction ? (
+                <Row className="mt-2">
+                    <Col>
                         <Link to="/game" className="float-end">
-                            <Button variant="light">Start Game</Button>
+                            <Button variant="success">Start Game</Button>
                         </Link>
-                    ) : null}
-                </Col>
-            </Row>
+                    </Col>
+                </Row>
+            ) : null}
         </Container>
     );
 }

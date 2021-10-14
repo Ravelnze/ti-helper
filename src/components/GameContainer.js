@@ -29,6 +29,7 @@ function GameContainer() {
 
     useEffect(() => {
         dispatch(setGameStarted(true));
+        window.scrollTo(0,0);
     }, []);
 
     const [show, setShow] = useState(false);
@@ -116,13 +117,11 @@ function GameContainer() {
                             </Link>
                         </NavItem>
                         <NavItem>
-                            <Link className="nav-link" to={`${match.url}`}>
-                                <div className="d-flex flex-column justify-content-center align-items-center">
+                            <Link className="nav-link py-0" to={`${match.url}`}>
                                     <Image
                                         src={getLogoByKey(state.faction.logo)}
-                                        width="50px"
+                                        height="40px"
                                     />
-                                </div>
                             </Link>
                         </NavItem>
                         <NavItem>

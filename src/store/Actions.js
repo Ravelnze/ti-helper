@@ -46,6 +46,13 @@ export function removeExtraAbility(updateableType, unit, instanceId) {
     };
 }
 
+export function setUnitProperties(unitType, properties) {
+    return {
+        type: Types.SETUNITPROPERTIES,
+        payload: { unitType, properties },
+    };
+}
+
 export function setTech(techIds) {
     return {
         type: Types.SETTECH,

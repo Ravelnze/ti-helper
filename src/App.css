@@ -49,10 +49,6 @@ label {
     content: none !important;
 }
 
-.container {
-    padding-bottom: 100px;
-}
-
 div.tab-pane.active > div.container {
     padding: 0 !important;
 }
