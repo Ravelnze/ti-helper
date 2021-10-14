@@ -241,3 +241,10 @@ export function removeRelic(relic) {
         payload: relic,
     };
 }
+
+export function exhaustRelic(relic, exhaust) {
+    return {
+        type: Types.EXHAUSTRELIC,
+        payload: { relic, exhaust },
+    };
+}

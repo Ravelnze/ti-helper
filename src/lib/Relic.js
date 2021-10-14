@@ -9,12 +9,13 @@ const Category = {
 
 export function AddRelic(relics, relic) {
     relic.instanceId = uuidv4();
+    relic.isExhausted = false;
 
-    if (relics[relic.id]) {
-        relics[relic.id].push(relic);
-    } else {
-        relics[relic.id] = [relic];
-    }
+    if (!relics[relic.id]) {
+        relics[relic.id] = [];
+    } 
+    
+    relics[relic.id].push(relic);
 
     return relics;
 }
@@ -32,6 +33,25 @@ export function RemoveRelic(relics, relic) {
         delete relics[relic.id];
     }
 
+    return relics;
+}
+
+export function ExhaustRelic(relics, relic, exhaust) {
+    console.log(relics, relic)
+    if (!relics[relic.id]) {
+        return relics;
+    }
+    console.log('blah')
+    const index = relics[relic.id].findIndex(
+        (r) => r.instanceId === relic.instanceId
+    );
+    
+    console.log(index)
+    if (index === -1) {
+        return relics;
+    }
+
+    relics[relic.id][index].isExhausted = exhaust;
     return relics;
 }
 

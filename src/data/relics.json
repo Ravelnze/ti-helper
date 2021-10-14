@@ -9,13 +9,15 @@
         "id": 2,
         "title": "Maw of Worlds",
         "description": "At the start of the agenda phase, you may purge this card and exhaust all of your planets to gain any 1 technology.",
-        "phase": ["Agenda"]
+        "phase": ["Agenda"],
+        "canExhaust": true
     },
     {
         "id": 3,
         "title": "Scepter of Emelpar",
         "description": "When you would spend a token from your strategy pool, you may exhaust this card to spend a token from your reinforcements instead.",
-        "phase": ["Action", "Status"]
+        "phase": ["Action", "Status"],
+        "canExhaust": true
     },
     {
         "id": 4,
@@ -39,7 +41,8 @@
         "id": 7,
         "title": "The Crown of Emphidia",
         "description": "After you perform a tactical action, you may exhaust this card to explore 1 planet you control. \r\nAt the end of the status phase, if you control the \"Tomb of Emphidia\", you may purge this card to gain 1 Victory Point.",
-        "phase": ["Action"]
+        "phase": ["Action"],
+        "canExhaust": true
     },
     {
         "id": 8,
@@ -56,7 +59,8 @@
         "id": 10,
         "title": "The Prophet's Tears",
         "description": "When you research a technology, you may exhaust this card to ignore 1 prerequisite or draw 1 action card.",
-        "phase": ["Action", "Agenda"]
+        "phase": ["Action", "Agenda"],
+        "canExhaust": true
     },
     {
         "id": 11,

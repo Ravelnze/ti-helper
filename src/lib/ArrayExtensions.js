@@ -6,6 +6,6 @@ Array.prototype.exclude = function (existing) {
 
 Array.prototype.excludeSingle = function (existing) {
     return this.filter(
-        (t) => !existing.map((e) => e.id).includes(t.id) || t.multiple
+        (t) => !existing.map(([k,v]) => v[0].id).includes(t.id) || t.multiple
     );
 };

@@ -1,5 +1,5 @@
 import { useStore } from "../store/Store";
-import { removeRelic } from "../store/Actions";
+import { exhaustRelic, removeRelic } from "../store/Actions";
 import RemoveButton from "./RemoveButton";
 import Card from "react-bootstrap/Card";
 import { GetRelicVariantColour } from "../lib/Relic";
@@ -7,30 +7,39 @@ import { GetRelicVariantColour } from "../lib/Relic";
 function RelicCard(props) {
     const [state, dispatch] = useStore();
     const variant = GetRelicVariantColour(props.relic.category);
+    const textClass = props.relic.isExhausted ? "text-dark" : variant.text;
 
+    console.log(props.relic)
     return (
-        <Card bg={variant.colour}>
+        <Card bg={props.relic.isExhausted ? "light" : variant.colour}>
             {props.interactable ? (
                 <RemoveButton
                     onClick={() => dispatch(removeRelic(props.relic))}
                 />
             ) : null}
-            <Card.Header className={`text-center ${variant.text}`}>
+            <Card.Header className={`text-center ${textClass}`}>
                 {props.relic.title}
             </Card.Header>
             <Card.Body
+                onClick={() => {
+                    if (props.interactable && props.relic.canExhaust) {
+                        dispatch(
+                            exhaustRelic(props.relic, !props.relic.isExhausted)
+                        );
+                    }
+                }}
                 className="py-2 d-flex flex-column"
                 style={{ minWidth: "220px", minHeight: "120px" }}
             >
                 <Card.Text
-                    className={`${variant.text} flex-grow-1`}
+                    className={`${textClass} flex-grow-1`}
                     style={{ fontSize: "0.8rem" }}
                 >
                     {props.relic.description}
                 </Card.Text>
                 {props.count > 1 ? (
                     <Card.Text
-                        className={`${variant.text} text-center`}
+                        className={`${textClass} text-center`}
                         style={{ fontSize: "0.8rem" }}
                     >
                         x{props.count}

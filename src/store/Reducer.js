@@ -27,7 +27,7 @@ import {
     RemoveExplorationCard,
     SetAttachedPlanet,
 } from "../lib/Exploration";
-import { AddRelic, RemoveRelic } from "../lib/Relic";
+import { AddRelic, ExhaustRelic, RemoveRelic } from "../lib/Relic";
 import {
     AppendUnitAbilities,
     RemoveExtraAbility,
@@ -309,6 +309,13 @@ function removeRelic(state, { payload }) {
     };
 }
 
+function exhaustRelic(state, { payload }) {
+    return {
+        ...state,
+        relics: ExhaustRelic({...state.relics}, payload.relic, payload.exhaust),
+    };
+}
+
 // #endregion
 
 const createReducer = (handlers) => (state, action) => {
@@ -359,4 +366,5 @@ export const reducer = createReducer({
     [Types.SETATTACHEDPLANET]: setAttachedPlanet,
     [Types.ADDRELIC]: addRelic,
     [Types.REMOVERELIC]: removeRelic,
+    [Types.EXHAUSTRELIC]: exhaustRelic,
 });

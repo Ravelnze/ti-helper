@@ -60,7 +60,9 @@ function PhaseContainer(props) {
         props.phase
     );
 
-    const relics = GetRelicsForPhase(state.relics, props.phase);
+    const relics = Object.entries(
+        GetRelicsForPhase(state.relics, props.phase)
+    ).filter(([key, value]) => !value[0].isExhausted);
 
     return (
         <Container>
@@ -148,7 +150,7 @@ function PhaseContainer(props) {
                 <>
                     <DividerText title={"Relics & Fragments"} />
                     <ScrollableCardList
-                        cardList={Object.entries(relics)}
+                        cardList={relics}
                         cardType={CardType.Relic}
                     />
                 </>
