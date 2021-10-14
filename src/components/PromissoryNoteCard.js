@@ -1,10 +1,16 @@
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
 import Image from "react-bootstrap/Image";
-import { removePromissory, setPromissoryColour } from "../store/Actions";
+import {
+    removePromissory,
+    setPlanet,
+    setPromissoryAttached,
+    setPromissoryColour,
+} from "../store/Actions";
 import { useStore } from "../store/Store";
 import RemoveButton from "./RemoveButton";
 import AutoSuggestionInput from "./AutoSuggestionInput";
+import { AttachmentCardType, AugmentPlanet } from "../lib/Planet";
 
 import Colours from "../data/colours.json";
 import Factions from "../data/factions.json";
@@ -30,11 +36,27 @@ function PromissoryNoteCard(props) {
         >
             {props.interactable ? (
                 <RemoveButton
-                    onClick={() => dispatch(removePromissory(props.note))}
+                    onClick={() => {
+                        if (props.note.attached) {
+                            dispatch(
+                                setPlanet(
+                                    AugmentPlanet(
+                                        props.note,
+                                        AttachmentCardType.Promissory,
+                                        props.note.attached,
+                                        false
+                                    )
+                                )
+                            );
+                        }
+                        dispatch(removePromissory(props.note));
+                    }}
                 />
             ) : null}
             <Card.Header
-                className={`text-center text-${props.note.colour?.text ?? "light"}`}
+                className={`text-center text-${
+                    props.note.colour?.text ?? "light"
+                }`}
             >
                 {props.note.title}
             </Card.Header>
@@ -46,6 +68,7 @@ function PromissoryNoteCard(props) {
                 {props.note.colour || props.note.factionId ? (
                     props.note.factionId ? (
                         <Image
+                            className={props.note.attach ? "pb-2" : ""}
                             width="18px"
                             src={GetLogoByKey(
                                 Factions.find(
@@ -54,8 +77,8 @@ function PromissoryNoteCard(props) {
                             )}
                         />
                     ) : (
-                        <a
-                            className={`${props.interactable ? "pointer" : ""}`}
+                        <div
+                            className={props.interactable ? "pointer" : ""}
                             onClick={() => {
                                 if (props.interactable) {
                                     dispatch(
@@ -64,8 +87,10 @@ function PromissoryNoteCard(props) {
                                 }
                             }}
                         >
-                            <Badge bg="dark">{props.note.colour.title} Player</Badge>
-                        </a>
+                            <Badge bg="dark">
+                                {props.note.colour.title} Player
+                            </Badge>
+                        </div>
                     )
                 ) : (
                     <AutoSuggestionInput
@@ -76,6 +101,56 @@ function PromissoryNoteCard(props) {
                         placeholder="Choose a colour"
                     />
                 )}
+                {props.note.attach && props.interactable ? (
+                    props.note.attached ? (
+                        <div
+                            className="pointer"
+                            onClick={() => {
+                                if (props.note.attached) {
+                                    dispatch(
+                                        setPlanet(
+                                            AugmentPlanet(
+                                                props.note,
+                                                AttachmentCardType.Promissory,
+                                                props.note.attached,
+                                                false
+                                            )
+                                        )
+                                    );
+                                    dispatch(
+                                        setPromissoryAttached(props.note, null)
+                                    );
+                                }
+                            }}
+                        >
+                            <Badge bg="dark">{props.note.attached.title}</Badge>
+                        </div>
+                    ) : (
+                        <AutoSuggestionInput
+                            items={state.planets.filter(
+                                (p) =>
+                                    !p.homeFactionId &&
+                                    p.title !== "Mecatol Rex"
+                            )}
+                            setValue={(item) => {
+                                dispatch(
+                                    setPromissoryAttached(props.note, item)
+                                );
+                                dispatch(
+                                    setPlanet(
+                                        AugmentPlanet(
+                                            props.note,
+                                            AttachmentCardType.Promissory,
+                                            item,
+                                            true
+                                        )
+                                    )
+                                );
+                            }}
+                            placeholder="Choose a planet"
+                        />
+                    )
+                ) : null}
             </Card.Footer>
         </Card>
     );

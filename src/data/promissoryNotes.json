@@ -42,5 +42,212 @@
         "desc": "While this card is in your play area, the Arborec player cannot produce units in or adjacent to non-home systems that contain 1 or more of your units.\r\nIf you activate a system that contains 1 or more of the Arborec player's units, return this card to the Arborec player.",
         "phase": ["Action"],
         "factionId": 3
+    },
+    {
+        "id": 7,
+        "title": "Strike Wing Ambuscade",
+        "condition": "When 1 or more of your units make a roll for a unit ability",
+        "desc": "Choose 1 of those units to roll 1 additional die\r\n Then, return this card to the Argent player",
+        "phase": ["Action"],
+        "factionId": 20
+    },
+    {
+        "id": 8,
+        "title": "War Funding",
+        "condition": "At the start of a round of space combat",
+        "desc": "The Letnev player loses 2 trade goods. During this combat round, reroll any number of your dice.\r\n Then, return this card to the Letnev player.",
+        "phase": ["SpaceCombat"],
+        "factionId": 8
+    },
+    {
+        "id": 9,
+        "title": "Ragh's Call",
+        "condition": "After you commit 1 or more units to land on a planet",
+        "desc": "Remove all of the Saar player's ground forces from that planet and place them on a planet controlled by the Saar player.\r\n Then return this card to the Saar player.",
+        "phase": ["GroundCombat"],
+        "factionId": 9
+    },
+    {
+        "id": 10,
+        "title": "Fires of the Gashlai",
+        "condition": "ACTION: Remove 1 token from the Muaat player's fleet pool and return it to their reinforcements",
+        "desc": "Then, gain your war sun unit upgrade technology card.\r\n Then, return this card to the Muaat player.",
+        "phase": ["Action"],
+        "factionId": 5
+    },
+    {
+        "id": 11,
+        "title": "Trade Convoys",
+        "condition": "ACTION: Place this card face-up in your play area",
+        "desc": "While this card is in your play area, you may negotiate transactions with players who are not your neighbor.\r\n If you activate a system that contains 1 or more of the Hacan player's units, return this card to the Hacan player.",
+        "phase": ["Action"],
+        "factionId": 1
+    },
+    {
+        "id": 12,
+        "title": "Dark Pact",
+        "condition": "ACTION: Place this card face up in your play area",
+        "desc": "When you give a number of commodities to the Empyrean player equal to your maximum commodity value, you each gain 1 trade good.\r\n If you activate a system that contains 1 or more of the Empyrean player's units, return this card to the Empyrean player.",
+        "phase": ["Action"],
+        "factionId": 2
+    },
+    {
+        "id": 13,
+        "title": "Blood Pact",
+        "condition": "ACTION: Place this card face up in your play area",
+        "desc": "When you and the Empyrean player cast votes for the same outcome, cast 4 additional votes for that outcome.\r\n If you activate a system that contains 1 or more of the Empyrean player's units, return this card to the Empyrean player.",
+        "phase": ["Action"],
+        "factionId": 2
+    },
+    {
+        "id": 14,
+        "title": "Military Support",
+        "condition": "At the start of the Sol player's turn",
+        "desc": "Remove 1 token from the Sol player's strategy pool, if able, and return it to their reinforcements.  Then, you may place 2 infantry from your reinforcements on any planet you control.\r\n Then return this card to the Sol player.",
+        "phase": ["Action"],
+        "factionId": 10
+    },
+    {
+        "id": 15,
+        "title": "Creuss Iff",
+        "condition": "At the start of your turn during the action phase",
+        "desc": "Place or move a Creuss wormhole token into either a system that contains a planet you control or a non-home system that does not contain another player's ships.\r\n Then, return this card to the Creuss player.",
+        "phase": ["Action"],
+        "factionId": 11
+    },
+    {
+        "id": 16,
+        "title": "Cybernetic Enhancements",
+        "condition": "At the start of your turn",
+        "desc": "Remove 1 token from the L1Z1X player's strategy pool and return it to their reinforcements. Then, place 1 command token from your reinforcements in your strategy pool.\r\n Then, return this card to the L1Z1X player.",
+        "phase": ["Action"],
+        "factionId": 12
+    },
+    {
+        "id": 17,
+        "title": "Scepter of Dominion",
+        "condition": "At the start of the strategy phase",
+        "desc": "Choose 1 non-home system that contains your units; each other player who has a token on the Mahact player's command sheet places a token from their reinforcements in that system\r\n Then, return this card to the Mahact player .",
+        "phase": ["Strategy"],
+        "factionId": 21
+    },
+    {
+        "id": 18,
+        "title": "Promise of Protection",
+        "condition": "ACTION: Place this card face-up in your play area",
+        "desc": "While this card is in your play area, the Mentak player cannot use their Pillage faction ability against you.\r\n If you activate a system that contains 1 or more of the Mentak player's units, return this card to the Mentak player.",
+        "phase": ["Action"],
+        "factionId": 13
+    },
+    {
+        "id": 19,
+        "title": "Gift of Prescience",
+        "condition": "At the end of the strategy phase",
+        "desc": "Place this card face-up in your play area and place the Naalu \"0\" token on your strategy card;  you are first in the initiative order.  The Naalu player cannot use their TELEPATHIC faction ability during this game round.\r\n Return this card to the Naalu player at the end of the status phase.",
+        "phase": ["Strategy"],
+        "factionId": 14
+    },
+    {
+        "id": 20,
+        "title": "Black Market Forgery",
+        "condition": "ACTION: Purge 2 of your relic fragments of the same type to gain 1 relic",
+        "desc": "Then, return this card to the Naaz-Rokha player.",
+        "phase": ["Action"],
+        "factionId": 22
+    },
+    {
+        "id": 21,
+        "title": "Antivirus",
+        "condition": "At the start of a combat",
+        "desc": "Place this card face-up in your play area. While this card is in your play area, the Nekro player cannot use their TECHNOLOGICAL SINGULARITY faction ability against you.\r\n If you activate a system that contains 1 or more of the Nekro player's units, return this card to the Nekro player.",
+        "phase": ["SpaceCombat", "GroundCombat"],
+        "factionId": 15
+    },
+    {
+        "id": 22,
+        "title": "The Cavalry",
+        "condition": "At the start of a space combat against a player other than the Nomad",
+        "desc": "During this combat, treat 1 of your non-fighter ships as if it has the SUSTAIN DAMAGE ability, combat value, and ANTI-FIGHTER BARRAGE value of the Nomad's flagship\r\n Return this card to the Nomad player at the end of this combat.",
+        "phase": ["SpaceCombat"],
+        "factionId": 6
+    },
+    {
+        "id": 23,
+        "title": "Tekklar Legion",
+        "condition": "At the start of an invasion combat",
+        "desc": "Apply +1 to the result of each of your unit's combat rolls during this combat. If your opponent is the N'orr player, apply -1 to the result of each of their unit's combat rolls during this combat.\r\n Then, return this card to the N'orr player.",
+        "phase": ["GroundCombat"],
+        "factionId": 7
+    },
+    {
+        "id": 24,
+        "title": "Terraform",
+        "condition": "ACTION: Attach this card to a non-home planet you control other than Mecatol Rex",
+        "desc": "Its resource and influence values are each increased by 1 and it is treated as having all 3 planet traits (cultural, hazardous, and industrial).",
+        "phase": ["Action"],
+        "attach": true,
+        "effects": [
+            {
+                "type": "resource",
+                "value": 1
+            },
+            {
+                "type": "influence",
+                "value": 1
+            },
+            {
+                "type": "terraform",
+                "image": "terraform"
+            }
+        ],
+        "factionId": 23
+    },
+    {
+        "id": 25,
+        "title": "Research Agreement",
+        "condition": "After the Jol-Nar player researches a technology that is not a faction technology",
+        "desc": "Gain that technology.\r\n Then, return this card to the Jol-Nar player.",
+        "phase": ["Action", "Agenda"],
+        "factionId": 4
+    },
+    {
+        "id": 26,
+        "title": "Crucible",
+        "condition": "After you activate a system",
+        "desc": "Your ships do not roll for gravity rifts during this movement; apply an additional +1 to the move values of your ships that would move out of or through a gravity rift instead\r\n Then, return this card to the Vuil'raith player.",
+        "phase": ["Action"],
+        "factionId": 24
+    },
+    {
+        "id": 27,
+        "title": "Acquiescence",
+        "condition": "At the end of the strategy phase",
+        "desc": "Exchange 1 of your strategy cards with a strategy card that was chosen by the Winnu player.\r\n Then, return this card to the Winnu player.",
+        "phase": ["Strategy"],
+        "factionId": 16
+    },
+    {
+        "id": 28,
+        "title": "Political Favor",
+        "condition": "When an agenda is revealed",
+        "desc": "Remove 1 token from the Xxcha player's strategy pool and return it to their reinforcements. Then, discard the revealed agenda and reveal 1 agenda from the top of the deck. Players vote on this agenda instead.\r\n Then, return this card to the Xxcha player.",
+        "phase": ["Agenda"],
+        "factionId": 17
+    },
+    {
+        "id": 29,
+        "title": "Greyfire Mutagen",
+        "condition": "After a system is activated",
+        "desc": "The Yin player cannot use faction abilities or faction technology during this tactical action.\r\n Then, return this card to the Yin player.",
+        "phase": ["Action"],
+        "factionId": 18
+    },
+    {
+        "id": 30,
+        "title": "Spy Net",
+        "condition": "At the start of your turn",
+        "desc": "Look at the Yssaril player's hand of action cards.  Choose 1 of those cards and add it to your hand.\r\n Then, return this card to the Yssaril player.",
+        "phase": ["Action"],
+        "factionId": 19
     }
 ]

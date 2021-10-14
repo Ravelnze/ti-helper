@@ -7,7 +7,7 @@ import { useState } from "react";
 import AutoSuggestionInput from "./AutoSuggestionInput";
 import { Badge } from "react-bootstrap";
 
-import { AugmentPlanet, GetPlanetVariantColour } from "../lib/Planet";
+import { AttachmentCardType, AugmentPlanet, GetPlanetVariantColour } from "../lib/Planet";
 import {
     removeExplorationCard,
     setAttachedPlanet,
@@ -29,7 +29,7 @@ function ExplorationCard(props) {
                                 setPlanet(
                                     AugmentPlanet(
                                         props.card,
-                                        null,
+                                        AttachmentCardType.ExplorationCard,
                                         props.card.attachedPlanet,
                                         false
                                     )
@@ -66,7 +66,7 @@ function ExplorationCard(props) {
                                         setPlanet(
                                             AugmentPlanet(
                                                 props.card,
-                                                null,
+                                                AttachmentCardType.ExplorationCard,
                                                 props.card.attachedPlanet,
                                                 false
                                             )
@@ -105,7 +105,7 @@ function ExplorationCard(props) {
                                         setPlanet(
                                             AugmentPlanet(
                                                 props.card,
-                                                null,
+                                                AttachmentCardType.ExplorationCard,
                                                 planet,
                                                 true
                                             )

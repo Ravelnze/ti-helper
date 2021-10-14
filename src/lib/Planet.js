@@ -11,11 +11,16 @@ const AttachType = {
     influence: "influence",
     vp: "vp",
     techSpecialty: "techSpecialty",
+    terraform: "terraform",
+    geoform: "geoform",
+    ability: "ability"
 };
 
-const AttachmentCardType = {
+export const AttachmentCardType = {
     Exploration: "Exploration",
     Agenda: "Agenda",
+    Promissory: "Promissory",
+    Unit: "Unit",
 };
 
 export function GetPlanetVariantColour(trait) {
@@ -72,15 +77,16 @@ export function UpdateInfluence(planets) {
 }
 
 export function AddPlanet(state, planet) {
-    planet.attachments = [];
-    planet.extraIcons = [];
-    const planets = [...state.planets, planet];
+    const newPlanet = {...planet};
+    newPlanet.attachments = [];
+    newPlanet.extraIcons = [];
+    const planets = [...state.planets, newPlanet];
     const legendaryAbilities = [...state.legendaryPlanetAbilities];
-    if (planet.legendaryAbility) {
-        const ability = planet.legendaryAbility;
-        ability.planetTitle = planet.title;
+    if (newPlanet.legendaryAbility) {
+        const ability = newPlanet.legendaryAbility;
+        ability.planetTitle = newPlanet.title;
         ability.isExhausted = false;
-        legendaryAbilities.push(planet.legendaryAbility);
+        legendaryAbilities.push(newPlanet.legendaryAbility);
     }
 
     return {
@@ -128,6 +134,13 @@ export function RemovePlanet(state, planet) {
                 .map((a) => a.id)
                 .includes(ag.id)
     );
+    const promissoryNotes = state.promissoryNotes.filter(
+        (pn) =>
+            !planet.attachments
+                .filter((a) => a.type === AttachmentCardType.Promissory)
+                .map((a) => a.id)
+                .includes(pn.id)
+    );
 
     return {
         ...state,
@@ -135,6 +148,7 @@ export function RemovePlanet(state, planet) {
         legendaryPlanetAbilities: legendaryAbilities,
         explorationCards: explorationCards,
         agendas: agendas,
+        promissoryNotes: promissoryNotes,
         ...UpdateResources(planets),
         ...UpdateInfluence(planets),
     };
@@ -182,12 +196,15 @@ export function SetPlanet(state, planet) {
     };
 }
 
-export function AugmentPlanet(explorationCard, agendaCard, planet, attaching) {
-    const attachmentCard = explorationCard ?? agendaCard;
-    const attachmentType = explorationCard
-        ? AttachmentCardType.Exploration
-        : AttachmentCardType.Agenda;
-    if (!planet) return;
+export function AugmentPlanet(
+    attachmentCard,
+    attachmentType,
+    planet,
+    attaching
+) {
+    if (!planet) {
+        return;
+    }
 
     attachmentCard.effects.forEach((attachment) => {
         switch (attachment.type) {
@@ -250,8 +267,17 @@ export function AugmentPlanet(explorationCard, agendaCard, planet, attaching) {
                     }
                 }
                 break;
+            case AttachType.ability: // Titans hero
+                if (attaching) {
+                    planet.abilities = [attachment.value];
+                } else {
+                    planet.abilities.filter(a => a.id !== attachment.value.id);
+                }
+                break;
             case AttachType.vp:
             case AttachType.dmz:
+            case AttachType.terraform: // Titans promissory
+            case AttachType.geoform: // Titans hero
                 if (attaching) {
                     planet.attachments.push({
                         id: attachmentCard.id,

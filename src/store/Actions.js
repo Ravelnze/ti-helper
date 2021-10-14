@@ -200,6 +200,13 @@ export function setPromissoryColour(note, colour) {
     };
 }
 
+export function setPromissoryAttached(note, attachment) {
+    return {
+        type: Types.SETPROMISSORYATTACHED,
+        payload: { note, attachment },
+    };
+}
+
 export function addExplorationCard(card) {
     return {
         type: Types.ADDEXPLORATIONCARD,

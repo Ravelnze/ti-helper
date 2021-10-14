@@ -42,6 +42,8 @@ import argent from "../assets/images/logos/Argent.webp";
 import mahact from "../assets/images/logos/Mahact.webp";
 import naaz from "../assets/images/logos/NaazRokha.webp";
 import titans from "../assets/images/logos/Titans.webp";
+import terraform from "../assets/images/logos/TitansPromissoryToken.webp";
+import geoform from "../assets/images/logos/TitansHeroToken.webp";
 import cabal from "../assets/images/logos/Cabal.webp";
 
 // leaders
@@ -245,6 +247,8 @@ export const logos = {
 
     crown,
     dmz,
+    terraform,
+    geoform,
 };
 
 function GetLogoByKey(key) {

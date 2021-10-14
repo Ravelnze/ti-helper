@@ -2525,7 +2525,33 @@
                 "unlock": "Have 3 Scored Objectives",
                 "specialAbility": {
                     "desc": "ACTION: Ready Elysium and attach this card to it. Its resource and influence values are each increased by 3, and it gains the SPACE CANNON 5 (x3) ability as if it were a unit.",
-                    "phase": ["Action"]
+                    "phase": ["Action"],
+                    "attach": true,
+                    "attachment": {
+                        "id": 1,
+                        "effects": [
+                            {
+                                "type": "resource",
+                                "value": 3
+                            },
+                            {
+                                "type": "influence",
+                                "value": 3
+                            },
+                            {
+                                "type": "ability",
+                                "value": {
+                                    "id": 5,
+                                    "value": 5,
+                                    "rolls": 3
+                                }
+                            },
+                            {
+                                "type": "geoform",
+                                "image": "geoform"
+                            }
+                        ]
+                    }
                 },
                 "logo": "titansHero",
                 "available": false

@@ -19,6 +19,7 @@ import { AddAgenda, ElectOutcome, RemoveAgenda } from "../lib/Agenda";
 import {
     AddPromissory,
     RemovePromissory,
+    SetAttachment,
     SetPromissoryColour,
 } from "../lib/PromissoryNote";
 import {
@@ -30,7 +31,6 @@ import { AddRelic, RemoveRelic } from "../lib/Relic";
 import {
     AppendUnitAbilities,
     RemoveExtraAbility,
-    SetUnitProperties,
     UpdateUnitProperies,
 } from "../lib/Unit";
 
@@ -234,14 +234,14 @@ function setCombatTab(state, { payload }) {
 function addPromissory(state, { payload }) {
     return {
         ...state,
-        promissoryNotes: AddPromissory(state.promissoryNotes, payload),
+        promissoryNotes: AddPromissory([...state.promissoryNotes], payload),
     };
 }
 
 function removePromissory(state, { payload }) {
     return {
         ...state,
-        promissoryNotes: RemovePromissory(state.promissoryNotes, payload),
+        promissoryNotes: RemovePromissory([...state.promissoryNotes], payload),
     };
 }
 
@@ -249,9 +249,20 @@ function setPromissoryColour(state, { payload }) {
     return {
         ...state,
         promissoryNotes: SetPromissoryColour(
-            state.promissoryNotes,
+            [...state.promissoryNotes],
             payload.note,
             payload.colour
+        ),
+    };
+}
+
+function setPromissoryAttached(state, { payload }) {
+    return {
+        ...state,
+        promissoryNotes: SetAttachment(
+            [...state.promissoryNotes],
+            payload.note,
+            payload.attachment
         ),
     };
 }
@@ -342,6 +353,7 @@ export const reducer = createReducer({
     [Types.ADDPROMISSORY]: addPromissory,
     [Types.REMOVEPROMISSORY]: removePromissory,
     [Types.SETPROMISSORYCOLOUR]: setPromissoryColour,
+    [Types.SETPROMISSORYATTACHED]: setPromissoryAttached,
     [Types.ADDEXPLORATIONCARD]: addExplorationCard,
     [Types.REMOVEEXPLORATIONCARD]: removeExplorationCard,
     [Types.SETATTACHEDPLANET]: setAttachedPlanet,

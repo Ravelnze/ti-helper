@@ -20,5 +20,15 @@ export function SetPromissoryColour(notes, note, colour) {
 }
 
 export function GetPromissoryNotesForPhase(notes, phase) {
-    return notes.filter((n) => n.phase.some((p) => ["Any", phase].includes(p)));
+    return notes.filter((n) => !n.attached && n.phase.some((p) => ["Any", phase].includes(p)));
+}
+
+export function SetAttachment(notes, note, attachment) {
+    const index = notes.findIndex((n) => n.instanceId === note.instanceId);
+    if (index === -1) {
+        return notes;
+    }
+
+    notes[index].attached = attachment;
+    return notes;
 }

@@ -8,7 +8,7 @@ import { DetermineElectType, Primary } from "../lib/Agenda";
 import { useState } from "react";
 import AutoSuggestionInput from "./AutoSuggestionInput";
 import { Badge } from "react-bootstrap";
-import { AugmentPlanet } from "../lib/Planet";
+import { AttachmentCardType, AugmentPlanet } from "../lib/Planet";
 
 function AgendaCard(props) {
     const [state, dispatch] = useStore();
@@ -28,8 +28,8 @@ function AgendaCard(props) {
                             dispatch(
                                 setPlanet(
                                     AugmentPlanet(
-                                        null,
                                         props.agenda,
+                                        AttachmentCardType.Agenda,
                                         props.agenda.elected,
                                         false
                                     )
@@ -70,8 +70,8 @@ function AgendaCard(props) {
                                     dispatch(
                                         setPlanet(
                                             AugmentPlanet(
-                                                null,
                                                 props.agenda,
+                                                AttachmentCardType.Agenda,
                                                 props.agenda.elected,
                                                 false
                                             )
@@ -101,8 +101,8 @@ function AgendaCard(props) {
                                         dispatch(
                                             setPlanet(
                                                 AugmentPlanet(
-                                                    null,
                                                     props.agenda,
+                                                    AttachmentCardType.Agenda,
                                                     item,
                                                     true
                                                 )

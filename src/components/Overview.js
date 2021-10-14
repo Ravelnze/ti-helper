@@ -23,6 +23,11 @@ import {
 import { GetTotalActionCardCount } from "../lib/ActionCard";
 import { GetVictoryPointsFromAgendas } from "../lib/Agenda";
 import Header from "./Header";
+import { setPlanet } from "../store/Actions";
+import { AugmentPlanet, AttachmentCardType } from "../lib/Planet";
+import { UnitType } from "../lib/Faction";
+import Planets from '../data/planets';
+import Factions from '../data/factions';
 
 function Overview(props) {
     const [state, dispatch] = useStore();
@@ -38,6 +43,24 @@ function Overview(props) {
     };
 
     const exitGame = () => {
+        // Reset Titans homeworld
+        const homeId = Factions.find(f => f.title === "The Titans of Ul").planets[0];
+        if (state.planets.find((p) => p.id === homeId)) {
+            dispatch(
+                setPlanet(
+                    AugmentPlanet(
+                        state.faction.leaders.find(
+                            (l) => l.type === UnitType.Hero
+                        ).specialAbility.attachment,
+                        AttachmentCardType.Unit,
+                        state.planets.find(
+                            (p) => p.id === homeId // Elysium
+                        ),
+                        false
+                    )
+                )
+            );
+        }
         dispatch(resetGame());
         history.replace(".");
     };

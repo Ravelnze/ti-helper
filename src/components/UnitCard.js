@@ -9,6 +9,7 @@ import { useStore } from "../store/Store";
 import {
     appendUnitAbilities,
     removeExtraAbility,
+    setPlanet,
     setUnitAvailable,
 } from "../store/Actions";
 import { UnitType } from "../lib/Faction";
@@ -19,10 +20,11 @@ import AutoSuggestionInput from "./AutoSuggestionInput";
 
 import Abilities from "../data/abilities.json";
 import { GetUpdateableValueList, MapValuesFromType } from "../lib/Unit";
+import { AttachmentCardType, AugmentPlanet } from "../lib/Planet";
 
 function UnitCard(props) {
     const [state, dispatch] = useStore();
-    const [checked, setChecked] = useState(props.unit.available ?? false);
+    const [checked, setChecked] = useState(props.unit.available || (props.unit.specialAbility && !state.gameStarted) ? true : false);
     const [showPopover, setShowPopover] = useState(false);
     const target = useRef(null);
     const [flipped, setFlipped] = useState(false);
@@ -136,7 +138,8 @@ function UnitCard(props) {
                             <p className="mt-2">{unit.specialAbility.desc}</p>
                         ) : null}
 
-                        {updateableValuesList ? (
+                        {/* Yssaril Agent */}
+                        {updateableValuesList && state.gameStarted ? (
                             <>
                                 {props.unit.extraAbilities?.length > 0 ? (
                                     <>
@@ -190,6 +193,36 @@ function UnitCard(props) {
                                     }
                                 />
                             </>
+                        ) : null}
+
+                        {/* Titans Hero */}
+                        {props.unit.specialAbility?.attach && state.gameStarted ? (
+                            <div className="text-center">
+                                <Button
+                                    variant="secondary"
+                                    onClick={() => {
+                                        dispatch(
+                                            setUnitAvailable(props.unit, false)
+                                        );
+                                        dispatch(
+                                            setPlanet(
+                                                AugmentPlanet(
+                                                    props.unit.specialAbility
+                                                        .attachment,
+                                                    AttachmentCardType.Unit,
+                                                    state.planets.find(
+                                                        (p) =>
+                                                            p.id === 39 // Elysium
+                                                    ),
+                                                    true
+                                                )
+                                            )
+                                        );
+                                    }}
+                                >
+                                    Attach
+                                </Button>
+                            </div>
                         ) : null}
                     </Popover.Body>
                 </Popover>
