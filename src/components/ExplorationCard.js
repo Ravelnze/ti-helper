@@ -7,7 +7,11 @@ import { useState } from "react";
 import AutoSuggestionInput from "./AutoSuggestionInput";
 import { Badge } from "react-bootstrap";
 
-import { AttachmentCardType, AugmentPlanet, GetPlanetVariantColour } from "../lib/Planet";
+import {
+    AttachmentCardType,
+    AugmentPlanet,
+    GetPlanetVariantColour,
+} from "../lib/Planet";
 import {
     removeExplorationCard,
     setAttachedPlanet,
@@ -44,12 +48,15 @@ function ExplorationCard(props) {
                 {props.card.title}
             </Card.Header>
             <Card.Body className="pt-1" style={{ minWidth: "220px" }}>
-                <Card.Text
-                    className={variant.text}
-                    style={{ fontSize: "0.8rem" }}
-                >
-                    {props.card.description}
-                </Card.Text>
+                {props.card.description.split("\r\n").map((s, i) => (
+                    <Card.Text
+                        key={i}
+                        className={variant.text}
+                        style={{ fontSize: "0.8rem" }}
+                    >
+                        {s}
+                    </Card.Text>
+                ))}
             </Card.Body>
             {props.card.attach ? (
                 <Card.Footer className="text-center">

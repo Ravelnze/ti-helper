@@ -62,7 +62,9 @@ function PromissoryNoteCard(props) {
             </Card.Header>
             <Card.Body className={`text-${props.note.colour?.text ?? "light"}`}>
                 <Card.Text>{setTextColour(props.note.condition)}</Card.Text>
-                <Card.Text>{setTextColour(props.note.desc)}</Card.Text>
+                {props.note.desc.split("\r\n").map((s, i) => (
+                    <Card.Text key={i}>{setTextColour(s)}</Card.Text>
+                ))}
             </Card.Body>
             <Card.Footer className="text-center">
                 {props.note.colour || props.note.factionId ? (

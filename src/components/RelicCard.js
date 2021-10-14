@@ -9,7 +9,6 @@ function RelicCard(props) {
     const variant = GetRelicVariantColour(props.relic.category);
     const textClass = props.relic.isExhausted ? "text-dark" : variant.text;
 
-    console.log(props.relic)
     return (
         <Card bg={props.relic.isExhausted ? "light" : variant.colour}>
             {props.interactable ? (
@@ -31,12 +30,15 @@ function RelicCard(props) {
                 className="py-2 d-flex flex-column"
                 style={{ minWidth: "220px", minHeight: "120px" }}
             >
-                <Card.Text
-                    className={`${textClass} flex-grow-1`}
-                    style={{ fontSize: "0.8rem" }}
-                >
-                    {props.relic.description}
-                </Card.Text>
+                {props.relic.description.split("\r\n").map((s, i) => (
+                    <Card.Text
+                        key={i}
+                        className={`${textClass} flex-grow-1`}
+                        style={{ fontSize: "0.8rem" }}
+                    >
+                        {s}
+                    </Card.Text>
+                ))}
                 {props.count > 1 ? (
                     <Card.Text
                         className={`${textClass} text-center`}

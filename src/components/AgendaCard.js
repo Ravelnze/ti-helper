@@ -46,12 +46,24 @@ function AgendaCard(props) {
                 className="pt-1"
                 style={{ minWidth: "200px", minHeight: "80px" }}
             >
-                <Card.Text
-                    className="text-light"
-                    style={{ fontSize: "0.8rem" }}
-                >
-                    {props.agenda.for ?? props.agenda.desc}
-                </Card.Text>
+                {props.agenda.for ? (
+                    <Card.Text
+                        className="text-light"
+                        style={{ fontSize: "0.8rem" }}
+                    >
+                        {props.agenda.for}
+                    </Card.Text>
+                ) : (
+                    props.agenda.desc.split("\r\n").map((s, i) => (
+                        <Card.Text
+                            key={i}
+                            className="text-light"
+                            style={{ fontSize: "0.8rem" }}
+                        >
+                            {s}
+                        </Card.Text>
+                    ))
+                )}
             </Card.Body>
             {props.agenda.electPrimary ? (
                 <Card.Footer className="text-center">

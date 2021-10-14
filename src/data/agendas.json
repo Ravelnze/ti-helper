@@ -330,16 +330,6 @@
     },
     {
         "id": 39,
-        "title": "Political Censure",
-        "electTitle": "Player",
-        "electPrimary": "Player",
-        "effects": [{ "type": "vp", "value": "1" }],
-        "desc": "The elected player gains this card and 1 Victory Point.\r\n The elected player cannot play action cards.\r\n If the owner of this card loses this card, they lose 1 Victory Point",
-        "phase": ["Action"],
-        "pok": true
-    },
-    {
-        "id": 40,
         "title": "Representative Government",
         "for": "Players cannot exhaust planets to cast votes during the agenda phase; each player may cast 1 vote on each agenda instead. Players cannot cast additional votes",
         "against": "At the start of the next strategy phase, each player that voted \"Against\" exhausts all of their cultural planets",
@@ -347,8 +337,8 @@
         "pok": true
     },
     {
-        "id": 41,
-        "title": "Political Censure",
+        "id": 40,
+        "title": "Search Warrant",
         "electTitle": "Player",
         "electPrimary": "Player",
         "desc": "The elected player gains this card and draws 2 Secret Objectives.\r\n The owner of this card plays with their secret objectives revealed",

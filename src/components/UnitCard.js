@@ -24,7 +24,12 @@ import { AttachmentCardType, AugmentPlanet } from "../lib/Planet";
 
 function UnitCard(props) {
     const [state, dispatch] = useStore();
-    const [checked, setChecked] = useState(props.unit.available || (props.unit.specialAbility && !state.gameStarted) ? true : false);
+    const [checked, setChecked] = useState(
+        props.unit.available ||
+            (props.unit.specialAbility && !state.gameStarted)
+            ? true
+            : false
+    );
     const [showPopover, setShowPopover] = useState(false);
     const target = useRef(null);
     const [flipped, setFlipped] = useState(false);
@@ -134,9 +139,11 @@ function UnitCard(props) {
                             </>
                         ) : null}
 
-                        {unit.specialAbility ? (
-                            <p className="mt-2">{unit.specialAbility.desc}</p>
-                        ) : null}
+                        {unit.specialAbility?.desc.split("\r\n").map((s, i) => (
+                            <p key={i} className="mt-2">
+                                {s}
+                            </p>
+                        ))}
 
                         {/* Yssaril Agent */}
                         {updateableValuesList && state.gameStarted ? (
@@ -196,7 +203,8 @@ function UnitCard(props) {
                         ) : null}
 
                         {/* Titans Hero */}
-                        {props.unit.specialAbility?.attach && state.gameStarted ? (
+                        {props.unit.specialAbility?.attach &&
+                        state.gameStarted ? (
                             <div className="text-center">
                                 <Button
                                     variant="secondary"
@@ -211,8 +219,7 @@ function UnitCard(props) {
                                                         .attachment,
                                                     AttachmentCardType.Unit,
                                                     state.planets.find(
-                                                        (p) =>
-                                                            p.id === 39 // Elysium
+                                                        (p) => p.id === 39 // Elysium
                                                     ),
                                                     true
                                                 )

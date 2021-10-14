@@ -37,16 +37,14 @@ export function RemoveRelic(relics, relic) {
 }
 
 export function ExhaustRelic(relics, relic, exhaust) {
-    console.log(relics, relic)
     if (!relics[relic.id]) {
         return relics;
     }
-    console.log('blah')
+    
     const index = relics[relic.id].findIndex(
         (r) => r.instanceId === relic.instanceId
     );
     
-    console.log(index)
     if (index === -1) {
         return relics;
     }

@@ -24,7 +24,9 @@ function ActionCardCard(props) {
             </Card.Header>
             <Card.Body className="text-light pt-1">
                 <Card.Text>{props.card.timing}</Card.Text>
-                <Card.Text>{props.card.effect}</Card.Text>
+                {props.card.effect.split("\r\n").map((s, i) => (
+                    <Card.Text key={i}>{s}</Card.Text>
+                ))}
             </Card.Body>
         </Card>
     );

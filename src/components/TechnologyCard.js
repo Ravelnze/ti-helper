@@ -76,17 +76,18 @@ function TechnologyCard(props) {
                                 ) : null}
                             </>
                         ) : null}
-                        {props.tech.desc ? (
-                            <Card.Text
+                        {props.tech.desc?.split('\r\n').map((s,i) =>
+                            (<Card.Text
+                                key={i}
                                 className={
                                     props.tech.cat === Categories.Upgrade
                                         ? "mt-3"
                                         : ""
                                 }
                             >
-                                {props.tech.desc}
-                            </Card.Text>
-                        ) : null}
+                                {s}
+                            </Card.Text>)
+                        )}
                         {props.tech.abilities?.map((a, i) => {
                             return (
                                 <li key={i} className="abilities">
