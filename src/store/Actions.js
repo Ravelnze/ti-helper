@@ -53,6 +53,13 @@ export function setUnitProperties(unitType, properties) {
     };
 }
 
+export function setExtraVictoryPoints(newPoints) {
+    return {
+        type: Types.SETEXTRAVICTORYPOINTS,
+        payload: newPoints,
+    };
+}
+
 export function setTech(techIds) {
     return {
         type: Types.SETTECH,

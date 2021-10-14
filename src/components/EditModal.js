@@ -3,6 +3,7 @@ import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { useStore } from "../store/Store";
 import "./EditModal.css";
 import AutoSuggestionInput from "./AutoSuggestionInput";
@@ -17,6 +18,7 @@ import {
     addExplorationCard,
     addRelic,
     setUnitProperties,
+    setExtraVictoryPoints,
 } from "../store/Actions";
 import ScrollableCardList, { CardType } from "./ScrollableCardList";
 import "../lib/ArrayExtensions";
@@ -56,8 +58,46 @@ function EditModal(props) {
                     <Col>
                         <Accordion>
                             <Accordion.Item eventKey="0">
-                                <Accordion.Header>Units</Accordion.Header>
-
+                                <Accordion.Header>Faction</Accordion.Header>
+                                <Accordion.Body className="pb-0">
+                                    <div className="d-flex">
+                                        <div className="flex-grow-1">
+                                            <span className="m-0 align-middle">
+                                                {`Extra Victory Points ${state.extraVictoryPoints}`}
+                                            </span>
+                                        </div>
+                                        <div className="flex-shrink">
+                                            <ButtonGroup>
+                                                <Button
+                                                    variant="dark"
+                                                    onClick={() =>
+                                                        dispatch(
+                                                            setExtraVictoryPoints(
+                                                                state.extraVictoryPoints +
+                                                                    1
+                                                            )
+                                                        )
+                                                    }
+                                                >
+                                                    +
+                                                </Button>
+                                                <Button
+                                                    variant="dark"
+                                                    onClick={() =>
+                                                        dispatch(
+                                                            setExtraVictoryPoints(
+                                                                state.extraVictoryPoints -
+                                                                    1
+                                                            )
+                                                        )
+                                                    }
+                                                >
+                                                    -
+                                                </Button>
+                                            </ButtonGroup>
+                                        </div>
+                                    </div>
+                                </Accordion.Body>
                                 <Accordion.Body className="p-0">
                                     <ScrollableCardList
                                         cardList={GetSpecialUnitsAndLeaders(

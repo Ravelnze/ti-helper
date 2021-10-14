@@ -38,6 +38,7 @@ export const initialState = () => ({
     pok: true,
     gameStarted: false,
     faction: null,
+    extraVictoryPoints: 0,
     technologies: [],
     planets: [],
     legendaryPlanetAbilities: [],
@@ -113,6 +114,13 @@ function setUnitProperties(state, { payload }) {
             payload.unitType,
             payload.properties
         ),
+    };
+}
+
+function setExtraVictoryPoints(state, { payload }) {
+    return {
+        ...state,
+        extraVictoryPoints: payload,
     };
 }
 
@@ -312,7 +320,11 @@ function removeRelic(state, { payload }) {
 function exhaustRelic(state, { payload }) {
     return {
         ...state,
-        relics: ExhaustRelic({...state.relics}, payload.relic, payload.exhaust),
+        relics: ExhaustRelic(
+            { ...state.relics },
+            payload.relic,
+            payload.exhaust
+        ),
     };
 }
 
@@ -338,6 +350,7 @@ export const reducer = createReducer({
     [Types.APPENDUNITABILITY]: appendUnitAbilities,
     [Types.REMOVEEXTRAABILITY]: removeExtraAbility,
     [Types.SETUNITPROPERTIES]: setUnitProperties,
+    [Types.SETEXTRAVICTORYPOINTS]: setExtraVictoryPoints,
     [Types.SETTECH]: setTech,
     [Types.ADDTECH]: addTech,
     [Types.REMOVETECH]: removeTech,

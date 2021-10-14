@@ -26,8 +26,8 @@ import Header from "./Header";
 import { setPlanet } from "../store/Actions";
 import { AugmentPlanet, AttachmentCardType } from "../lib/Planet";
 import { UnitType } from "../lib/Faction";
-import Planets from '../data/planets';
-import Factions from '../data/factions';
+import Planets from "../data/planets";
+import Factions from "../data/factions";
 
 function Overview(props) {
     const [state, dispatch] = useStore();
@@ -44,7 +44,8 @@ function Overview(props) {
 
     const exitGame = () => {
         // Reset Titans homeworld
-        const homeId = Factions.find(f => f.title === "The Titans of Ul").planets[0];
+        const homeId = Factions.find((f) => f.title === "The Titans of Ul")
+            .planets[0];
         if (state.planets.find((p) => p.id === homeId)) {
             dispatch(
                 setPlanet(
@@ -183,7 +184,8 @@ function Overview(props) {
                                     state.agendas,
                                     state.faction
                                 )
-                            )
+                            ) +
+                            Number(state.extraVictoryPoints)
                         }
                     />
                     <ValueLabel
