@@ -99,8 +99,8 @@
             "phase": ["Action"]
         },
         "trait": "Cultural",
-        "techSpecialty": "Cybernetic",
-        "desc": "Large temperate world. Site of several pitched battles during the Twilight Wars due to valuable osmium deposits and a well-educated populace."
+        "desc": "Large temperate world. Site of several pitched battles during the Twilight Wars due to valuable osmium deposits and a well-educated populace.",
+        "pok": true
     },
     {
         "id": 13,
@@ -333,5 +333,520 @@
         "influence": 0,
         "homeFactionId": 12,
         "desc": "This elusive energy-rich planet was the desperate destination of the secret Lazax diaspora. Now, it is a technological nightmare."
+    },
+    {
+        "id": 42,
+        "title": "Fria",
+        "resource": 2,
+        "influence": 0,
+        "trait": "Hazardous",
+        "desc": "Brutally cold ice world populated only by a few scattered mining camps. Despite brutal climate, highly prized for its deposits of rare ores used in starship drives."
+    },
+    {
+        "id": 43,
+        "title": "Arnor",
+        "resource": 1,
+        "influence": 2,
+        "trait": "Industrial",
+        "desc": "Lush, green world that is renowned for some of the most fertile soil in the galaxy. Dominated by endless fields and the processing facilities of large agricultural firms."
+    },
+    {
+        "id": 44,
+        "title": "Lor",
+        "resource": 2,
+        "influence": 1,
+        "trait": "Industrial",
+        "desc": "Wreathed in vast seas of methane ice. Sea floor drilling platforms harvest rare crystals used in advance computers and energy weapons."
+    },
+    {
+        "id": 45,
+        "title": "Bereg",
+        "resource": 3,
+        "influence": 1,
+        "trait": "Hazardous",
+        "desc": "A frozen world that is inhospitable to most races. Indentured laborers risk attacks from arctic sharaks in the infamous Iodinium mines."
+    },
+    {
+        "id": 46,
+        "title": "Lirta IV",
+        "resource": 2,
+        "influence": 3,
+        "trait": "Hazardous",
+        "desc": "Covered in vast swamps and fetid bogs. Home to rare biochemical compounds unique to its marshlands used in everything from exotic foods to biogenic drugs."
+    },
+    {
+        "id": 47,
+        "title": "Gral",
+        "resource": 1,
+        "influence": 1,
+        "trait": "Industrial",
+        "techSpecialty": "Propulsion",
+        "desc": "Backwater planet with modest resources and an unassuming populace. Most noted for the reliable and affordable vehicles produced in its factories."
+    },
+    {
+        "id": 48,
+        "title": "Coorneeq",
+        "resource": 1,
+        "influence": 2,
+        "trait": "Cultural",
+        "desc": "Former garden world that has subsequently enjoyed increased industrialization. Home to the esteemed Free Worlds Academy of Military Science and Research."
+    },
+    {
+        "id": 49,
+        "title": "Resculon",
+        "resource": 2,
+        "influence": 0,
+        "trait": "Cultural",
+        "desc": "Poor in natural resources, but a nearby nexus of major trade routes has brought it increasing wealth as interstellar commerce has intensified."
+    },
+    {
+        "id": 50,
+        "title": "Dal Bootha",
+        "resource": 0,
+        "influence": 2,
+        "trait": "Cultural",
+        "desc": "A populous planet whose resources have been severely depleted. Well-educated citizenry and many universities, but dependent on foreign imports."
+    },
+    {
+        "id": 51,
+        "title": "Xxehan",
+        "resource": 1,
+        "influence": 1,
+        "trait": "Cultural",
+        "desc": "Known for genetically complex native lifeforms adapted to tainted atmosphere and biochemistry."
+    },
+    {
+        "id": 52,
+        "title": "Lazar",
+        "resource": 1,
+        "influence": 0,
+        "trait": "Industrial",
+        "techSpecialty": "Cybernetic",
+        "desc": "The only inhabited world in a forgettable system. Few native resources and only rudimentary, often underdeveloped, industries."
+    },
+    {
+        "id": 53,
+        "title": "Sakulag",
+        "resource": 2,
+        "influence": 1,
+        "trait": "Hazardous",
+        "desc": "Jungle planet plagued by dangerous predators such as the arboreal razeden. Home to many exotic biochemicals and natural pharmaceuticals."
+    },
+    {
+        "id": 54,
+        "title": "Lodor",
+        "resource": 3,
+        "influence": 1,
+        "trait": "Cultural",
+        "desc": "Wealthy planet ruled by powerful biotech consortiums. Rumored to harbor hidden caches of outlawed bacterial weapons."
+    },
+    {
+        "id": 55,
+        "title": "Mehar Xull",
+        "resource": 1,
+        "influence": 3,
+        "trait": "Hazardous",
+        "techSpecialty": "Warfare",
+        "desc": "Unstable radiation belts create hazardous living conditions but facilitate research in the electro-quantum propulsion technologies."
+    },
+    {
+        "id": 56,
+        "title": "Mellon",
+        "resource": 0,
+        "influence": 2,
+        "trait": "Cultural",
+        "desc": "Poor in natural resources but rich in exotic plant and animal life. Protected as a planetary xenological garden and lifeform preserve."
+    },
+    {
+        "id": 57,
+        "title": "Zhobat",
+        "resource": 3,
+        "influence": 1,
+        "trait": "Hazardous",
+        "desc": "Known for its highly intoxicating Zohlian whiskey and the planetary space elevator that links the surface with orbital stations and shipyards."
+    },
+    {
+        "id": 58,
+        "title": "New Albion",
+        "resource": 1,
+        "influence": 1,
+        "trait": "Industrial",
+        "techSpecialty": "Biotic",
+        "desc": "Rare atmospheric composition and biochemistry support lifeforms unlike any others in the galaxy."
+    },
+    {
+        "id": 59,
+        "title": "Starpoint",
+        "resource": 3,
+        "influence": 1,
+        "trait": "Hazardous",
+        "desc": "Large planet with eight small moons that supply a wide range of valuable resources. Acidic rains and toxic storms make it an unappealing destination for tourists."
+    },
+    {
+        "id": 60,
+        "title": "Quann",
+        "resource": 2,
+        "influence": 1,
+        "trait": "Cultural",
+        "desc": "Since the discovery of the Alpha Wormhole, this temperate planet with two continents and one large ocean has been a haven for traders and smugglers alike."
+    },
+    {
+        "id": 61,
+        "title": "Qucen'n",
+        "resource": 1,
+        "influence": 2,
+        "trait": "Industrial",
+        "desc": "After the Twilight Wars, existed for centuries as a near-utopia of scattered communal farms free from governmental interference."
+    },
+    {
+        "id": 62,
+        "title": "Rarron",
+        "resource": 0,
+        "influence": 3,
+        "trait": "Cultural",
+        "desc": "Large, populous world with three distinctive moons renowned for its biomodification clinics and cyber boutiques."
+    },
+    {
+        "id": 63,
+        "title": "Saudor",
+        "resource": 2,
+        "influence": 2,
+        "trait": "Industrial",
+        "desc": "Prosperous planet with large native population and substantial industry. Extreme axial tilt results in long day-night cycle that some races find uncomfortable."
+    },
+    {
+        "id": 64,
+        "title": "Tar'Mann",
+        "resource": 1,
+        "influence": 1,
+        "trait": "Industrial",
+        "techSpecialty": "Biotic",
+        "desc": "Small, isolated planet with small population and modest resources. Most famous for its delicious avinberries."
+    },
+    {
+        "id": 65,
+        "title": "Tequ'ran",
+        "resource": 2,
+        "influence": 0,
+        "trait": "Hazardous",
+        "desc": "Desolate planet transformed into weapons testing facility for large defense consortiums."
+    },
+    {
+        "id": 66,
+        "title": "Torkan",
+        "resource": 0,
+        "influence": 3,
+        "trait": "Cultural",
+        "desc": "Populous planet almost completely dependent on foreign imports to sustain the extravagant lifestyles of its citizens."
+    },
+    {
+        "id": 67,
+        "title": "Thibah",
+        "resource": 1,
+        "influence": 1,
+        "trait": "Industrial",
+        "techSpecialty": "Propulsion",
+        "desc": "Burdened by overpopulation and low mineral content in the planetary crust. Historically used as a staging world for deep-space exploration and trade."
+    },
+    {
+        "id": 68,
+        "title": "Vefut II",
+        "resource": 2,
+        "influence": 2,
+        "trait": "Hazardous",
+        "desc": "Massive, rocky world cursed with extreme gravity. Underground cities support advanced research in antigravity technologies."
+    },
+    {
+        "id": 69,
+        "title": "Wellon",
+        "resource": 1,
+        "influence": 2,
+        "trait": "Industrial",
+        "techSpecialty": "Cybernetic",
+        "desc": "Sky cities suspended in helium-rich atmosphere more noted for fantastic views than the small quantities of exotic elements harvested by their chemical mines."
+    },
+    {
+        "id": 70,
+        "title": "Archon Vail",
+        "resource": 1,
+        "influence": 3,
+        "trait": "Hazardous",
+        "techSpecialty": "Propulsion",
+        "desc": "A former Xxcha colony, its extremely low temperatures create exotic molecular compounds that give the world its famed violet hue. Orbital facilities use the compounds in high-energy stardrive research.",
+        "pok": true
+    },
+    {
+        "id": 71,
+        "title": "Perimeter",
+        "resource": 2,
+        "influence": 1,
+        "trait": "Industrial",
+        "desc": "Former garrison world with fond memories of the Lazax. Maintains formidable military with informal ties to the Winnu. Perpendicular rings make orbital navigation difficult.",
+        "pok": true
+    },
+    {
+        "id": 72,
+        "title": "Ang",
+        "resource": 2,
+        "influence": 0,
+        "trait": "Industrial",
+        "techSpecialty": "Warfare",
+        "desc": "High rotational speed creates extremely energized magnetosphere. Orbital taps use this to energize starship fuels and power labs developing new beam weapons.",
+        "pok": true
+    },
+    {
+        "id": 73,
+        "title": "Sem-Lore",
+        "resource": 3,
+        "influence": 2,
+        "trait": "Cultural",
+        "techSpecialty": "Cybernetic",
+        "desc": "Home to the Semanora, and heavily damaged in the Twilight Wars. Rustling warship hulks litter the rod-deserts, making it a war memorial and salvage site.",
+        "pok": true
+    },
+    {
+        "id": 74,
+        "title": "Vorhal",
+        "resource": 0,
+        "influence": 2,
+        "trait": "Cultural",
+        "techSpecialty": "Biotic",
+        "desc": "This icy world is wreathed by powerful storms, forcing inhabitants to live underground in geothermal vents. Pacifistic locals award yearly \"peace prizes\" to peacemakers across the galaxy.",
+        "pok": true
+    },
+    {
+        "id": 75,
+        "title": "Atlas",
+        "resource": 3,
+        "influence": 1,
+        "trait": "Hazardous",
+        "desc": "Heavy grav world and former Sol colony famed for squat, strong inhabitants and strategic location. Visitors need support exoskeletons to move on the surface.",
+        "pok": true
+    },
+    {
+        "id": 76,
+        "title": "Hope's End",
+        "resource": 3,
+        "influence": 0,
+        "legendaryAbility": {
+            "title": "Imperial Arms Vault",
+            "description": "You may exhaust this card at the end of your turn to place 1 mech from your reinforcements on any planet you control, or draw 1 action card",
+            "phase": ["Action"]
+        },
+        "trait": "Hazardous",
+        "desc": "Buried in the Ichal Nebula. The Lazax used the toxic wildlife and fierce aurora storms to train their troops. Even now, volatile weapon caches remain hidden beneath its sands.",
+        "pok": true
+    },
+    {
+        "id": 77,
+        "title": "Cormund",
+        "resource": 2,
+        "influence": 0,
+        "trait": "Hazardous",
+        "desc": "A remote and sparsely settled Naaz-Rokha world destroyed during early entropic field tests. Now mining corporations harvest metals from the shattered core.",
+        "pok": true
+    },
+    {
+        "id": 78,
+        "title": "Everra",
+        "resource": 3,
+        "influence": 1,
+        "trait": "Cultural",
+        "desc": "Ancient world of red seas and bare rocks. Locals live in wondrous nano-carbon cities built by a mysterious ancient race, and mine nearby nebulae for rare gases.",
+        "pok": true
+    },
+    {
+        "id": 79,
+        "title": "Jeol Ir",
+        "resource": 2,
+        "influence": 3,
+        "trait": "Industrial",
+        "desc": "Heavily industrialized world. Pollution has killed all life outside of dome cities, but twin suns provide constant power for factories and huge populace.",
+        "pok": true
+    },
+    {
+        "id": 80,
+        "title": "Accoen",
+        "resource": 2,
+        "influence": 3,
+        "trait": "Industrial",
+        "desc": "Populace lives on continent sized fungal rafts that float atop a soupy, world-spanning ocean of useful bio-compounds. Popular research site for biologists.",
+        "pok": true
+    },
+    {
+        "id": 81,
+        "title": "Kraag",
+        "resource": 2,
+        "influence": 1,
+        "trait": "Hazardous",
+        "desc": "A heavily irradiated world known only for its dust mines. Recently a massive \"tomb\" of dormant Titans was discovered in the southern hemisphere.",
+        "pok": true
+    },
+    {
+        "id": 82,
+        "title": "Siig",
+        "resource": 0,
+        "influence": 2,
+        "trait": "Hazardous",
+        "desc": "World covered in frozen, cesium-laced oceans. Archives buried deep beneath the surface use the cold to preserve relics and operate massive computers.",
+        "pok": true
+    },
+    {
+        "id": 83,
+        "title": "Ba'kal",
+        "resource": 3,
+        "influence": 2,
+        "trait": "Industrial",
+        "desc": "Dry, rocky deserts stretch from pole to pole. Shield cities protect against sandstorms while supplying nomadic harvester crawlers that mine the barrens for salt compounds.",
+        "pok": true
+    },
+    {
+        "id": 84,
+        "title": "Alio Prima",
+        "resource": 1,
+        "influence": 1,
+        "trait": "Cultural",
+        "desc": "Wet planet covered in rivers, lakes and small seas but no oceans. Dry poles provide haven from constant floods. Numerous farms famous for luxury foodstuffs.",
+        "pok": true
+    },
+    {
+        "id": 85,
+        "title": "Lisis",
+        "resource": 2,
+        "influence": 2,
+        "trait": "Industrial",
+        "desc": "Primordial world with primitive native life. Potential for terraforming led to the infamous genocide of Saar settlements by Sardakk N'orr and ongoing conflicts between them and Naalu forces.",
+        "pok": true
+    },
+    {
+        "id": 86,
+        "title": "Velnor",
+        "resource": 2,
+        "influence": 1,
+        "trait": "Industrial",
+        "techSpecialty": "Warfare",
+        "desc": "Barren world of windswept rocks and thick, murky oceans. Lack of local lifeforms allows corporations to strip-mine the surface and test orbital kinetic weapons at the poles.",
+        "pok": true
+    },
+    {
+        "id": 87,
+        "title": "Cealdri",
+        "resource": 0,
+        "influence": 2,
+        "trait": "Cultural",
+        "techSpecialty": "Cybernetic",
+        "desc": "Small cities huddle on the shores of the single ocean and avoid the arid continental interiors. Mentak ships hunt departing vessels carrying bespoke cybernetics.",
+        "pok": true
+    },
+    {
+        "id": 88,
+        "title": "Xanhact",
+        "resource": 0,
+        "influence": 1,
+        "trait": "Hazardous",
+        "desc": "Rebelled during the end of the Lazax Empire, and was bombarded to ash by a Lazax fleet as an example. Left by the Galactic Council as a memorial to Lazax tyranny.",
+        "pok": true
+    },
+    {
+        "id": 89,
+        "title": "Vega Major",
+        "resource": 2,
+        "influence": 1,
+        "trait": "Cultural",
+        "desc": "Most of the population resides in orbital habitats supporting mining operations in the planetary ring. Surface colonization limited due to oceanic macrosquid infestations.",
+        "pok": true
+    },
+    {
+        "id": 90,
+        "title": "Vega Minor",
+        "resource": 1,
+        "influence": 2,
+        "trait": "Cultural",
+        "techSpecialty": "Propulsion",
+        "desc": "Famous for extremely shallow seas covering most of the surface and for the renowned Vega Propulsion Corporation. Stilt cities host vibrant multi-species populations.",
+        "pok": true
+    },
+    {
+        "id": 91,
+        "title": "Abaddon",
+        "resource": 1,
+        "influence": 0,
+        "trait": "Cultural",
+        "desc": "A temperate planet whose low gravity allows for stunningly tall mountain ranges. Serves as a stop-over for trade routes to the nearby Vorish Cluster.",
+        "pok": true
+    },
+    {
+        "id": 92,
+        "title": "Ashtroth",
+        "resource": 2,
+        "influence": 0,
+        "trait": "Hazardous",
+        "desc": "Covered in boggy landmasses and shallow seas. Algal blooms provide rich biomass for processed foods, but create smelly (and often toxic) offgassing.",
+        "pok": true
+    },
+    {
+        "id": 93,
+        "title": "Loki",
+        "resource": 1,
+        "influence": 2,
+        "trait": "Cultural",
+        "desc": "Cold and wracked with violent storms, Loki still hosts several Yssaril and human colonies, some of which have engaged in escalating shadow-conflicts.",
+        "pok": true
+    },
+    {
+        "id": 94,
+        "title": "Rigel I",
+        "resource": 0,
+        "influence": 1,
+        "trait": "Hazardous",
+        "desc": "Hot, innermost world of the Rigel system. Cities and native life cluster inland from the heavily alkaline oceans.",
+        "pok": true
+    },
+    {
+        "id": 95,
+        "title": "Rigel II",
+        "resource": 1,
+        "influence": 2,
+        "trait": "Industrial",
+        "desc": "Temperate world with expansive oceans. Covered in estates and resorts for the system's elite, with extensive fisheries that feed much of the rest of the system.",
+        "pok": true
+    },
+    {
+        "id": 96,
+        "title": "Rigel III",
+        "resource": 1,
+        "influence": 1,
+        "trait": "Industrial",
+        "techSpecialty": "Biotic",
+        "desc": "Outermost world of the Rigel system, and extensively settled despite cooler climates. Boasts a diverse range of industries and research institutions.",
+        "pok": true
+    },
+    {
+        "id": 97,
+        "title": "Mallice",
+        "resource": 0,
+        "influence": 3,
+        "legendaryAbility": {
+            "title": "Exterrix Headquarters",
+            "description": "You may exhaust this card at the end of your turn to gain 2 trade goods or convert all of your commodities into trade goods",
+            "phase": ["Action"]
+        },
+        "trait": "Cultural",
+        "desc": "Trapped in a space believed to be beyond our universe, a shimmering world of strange energies and disconcerting warping of physical laws sitting at the heart of a strategically vital womhole nexus.",
+        "pok": true
+    },
+    {
+        "id": 98,
+        "title": "Mirage",
+        "resource": 1,
+        "influence": 2,
+        "legendaryAbility": {
+            "title": "Mirage Flight Academy",
+            "description": "You may exhaust this card at the end of your turn to place up to 2 fighters from your reinforcements in any system that contains 1 or more of your ships",
+            "phase": ["Action"]
+        },
+        "trait": "Cultural",
+        "desc": "Exists on no known charts and appears deserted to those who stumble across it. However, secretive local live in cloaked cities heavily defended by swarms of starfighters.",
+        "pok": true
     }
 ]
