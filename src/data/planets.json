@@ -848,5 +848,12 @@
         "trait": "Cultural",
         "desc": "Exists on no known charts and appears deserted to those who stumble across it. However, secretive local live in cloaked cities heavily defended by swarms of starfighters.",
         "pok": true
+    },
+    {
+        "id": 99,
+        "title": "Mecatol Rex",
+        "resource": 1,
+        "influence": 6,
+        "desc": "Once a splendid place, now a sad devastated wasteland. Only the radiation-shielded Mecatol city, the seat of the powerful Galactic Council, remains habitable."
     }
 ]
