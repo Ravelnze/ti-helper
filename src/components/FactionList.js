@@ -1,14 +1,18 @@
-import { setFaction, setTech } from "../store/Actions";
+import { setFaction, setLookupFaction, setTech } from "../store/Actions";
 import { useStore } from "../store/Store";
 import Factions from "../data/factions.json";
 import AutoSuggestionInput from "./AutoSuggestionInput";
 
-function FactionList() {
+function FactionList(props) {
     const [state, dispatch] = useStore();
 
-    const factionList = state.pok
+    let factionList = state.pok
         ? Factions
         : Factions.filter((f) => f.pok !== true);
+
+    if (state.faction) {
+        factionList = factionList.filter((f) => f.id !== state.faction.id);
+    }
 
     factionList.sort((a, b) => {
         const aTitleParts = a.title.split("The ");
@@ -24,10 +28,14 @@ function FactionList() {
         <AutoSuggestionInput
             items={factionList}
             setValue={(item) => {
-                dispatch(setFaction(item));
-                dispatch(setTech(item.tech));
+                if (props.isNewGame) {
+                    dispatch(setFaction(item));
+                    dispatch(setTech(item.tech));
+                } else {
+                    dispatch(setLookupFaction(item));
+                }
             }}
-            placeholder="Choose your Faction..."
+            placeholder={props.searchPlaceholder}
         />
     );
 }

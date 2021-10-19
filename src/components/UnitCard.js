@@ -26,7 +26,7 @@ function UnitCard(props) {
     const [state, dispatch] = useStore();
     const [checked, setChecked] = useState(
         props.unit.available ||
-            (props.unit.specialAbility && !state.gameStarted)
+            (props.unit.specialAbility && (!state.gameStarted || props.lookup))
             ? true
             : false
     );

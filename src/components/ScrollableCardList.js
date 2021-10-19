@@ -101,6 +101,7 @@ function ScrollableCardList(props) {
                             interactable={props.interactable}
                             special
                             flippable={obj.flippable}
+                            lookup={props.lookup}
                         />
                     </Col>
                 ));

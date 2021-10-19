@@ -255,3 +255,10 @@ export function exhaustRelic(relic, exhaust) {
         payload: { relic, exhaust },
     };
 }
+
+export function setLookupFaction(faction) {
+    return {
+        type: Types.SETLOOKUPFACTION,
+        payload: faction,
+    };
+}

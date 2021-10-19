@@ -11,6 +11,7 @@ import {
     faSatelliteDish,
     faChess,
     faRocket,
+    faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 import PhaseTabs from "./PhaseTabs";
@@ -18,7 +19,7 @@ import PlannerContainer from "./PlannerContainer";
 import EditModal from "./EditModal";
 import { useStore } from "../store/Store";
 import getLogoByKey from "../lib/Logos";
-import SimulateContainer from "./SimulateContainer";
+import InfoContainer from "./InfoContainer";
 import NavIcon from "./NavIcon";
 import Phase from "../lib/Phase";
 import { setCombatTab, setGameStarted, setPhaseTab } from "../store/Actions";
@@ -29,7 +30,7 @@ function GameContainer() {
 
     useEffect(() => {
         dispatch(setGameStarted(true));
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }, []);
 
     const [show, setShow] = useState(false);
@@ -88,8 +89,8 @@ function GameContainer() {
                     <Route path={`${match.path}/plan`}>
                         <PlannerContainer showEditModal={() => showModal()} />
                     </Route>
-                    <Route path={`${match.path}/simulate`}>
-                        <SimulateContainer showEditModal={() => showModal()} />
+                    <Route path={`${match.path}/info`}>
+                        <InfoContainer showEditModal={() => showModal()} />
                     </Route>
                     <Route path={`${match.path}`}>
                         <Overview showEditModal={() => showModal()} />
@@ -118,10 +119,10 @@ function GameContainer() {
                         </NavItem>
                         <NavItem>
                             <Link className="nav-link py-0" to={`${match.url}`}>
-                                    <Image
-                                        src={getLogoByKey(state.faction.logo)}
-                                        height="40px"
-                                    />
+                                <Image
+                                    src={getLogoByKey(state.faction.logo)}
+                                    height="40px"
+                                />
                             </Link>
                         </NavItem>
                         <NavItem>
@@ -130,11 +131,8 @@ function GameContainer() {
                             </Link>
                         </NavItem>
                         <NavItem>
-                            <Link
-                                className="nav-link"
-                                to={`${match.url}/simulate`}
-                            >
-                                <NavIcon title="Simulate" icon={faChess} />
+                            <Link className="nav-link" to={`${match.url}/info`}>
+                                <NavIcon title="Info" icon={faInfoCircle} />
                             </Link>
                         </NavItem>
                     </div>

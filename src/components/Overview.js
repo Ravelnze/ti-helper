@@ -26,7 +26,6 @@ import Header from "./Header";
 import { setPlanet } from "../store/Actions";
 import { AugmentPlanet, AttachmentCardType } from "../lib/Planet";
 import { UnitType } from "../lib/Faction";
-import Planets from "../data/planets";
 import Factions from "../data/factions";
 
 function Overview(props) {
@@ -97,7 +96,7 @@ function Overview(props) {
                                 bg={variant.colour}
                                 className={`text-${variant.text} me-1`}
                             >{`${cat} ${
-                                state.technologies.filter((t) => t.cat === cat)
+                                state.technologies.filter((t) => t.cat === cat && !t.replacedBy)
                                     .length
                             }`}</Badge>
                         );

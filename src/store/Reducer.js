@@ -54,6 +54,7 @@ export const initialState = () => ({
     totalInfluence: 0,
     phaseTab: null,
     combatTab: null,
+    lookupFaction: null,
 });
 
 // Good guide on why the store is laid out this way
@@ -328,6 +329,13 @@ function exhaustRelic(state, { payload }) {
     };
 }
 
+function setLookupFaction(state, { payload }) {
+    return {
+        ...state,
+        lookupFaction: payload,
+    };
+}
+
 // #endregion
 
 const createReducer = (handlers) => (state, action) => {
@@ -380,4 +388,5 @@ export const reducer = createReducer({
     [Types.ADDRELIC]: addRelic,
     [Types.REMOVERELIC]: removeRelic,
     [Types.EXHAUSTRELIC]: exhaustRelic,
+    [Types.SETLOOKUPFACTION]: setLookupFaction,
 });
