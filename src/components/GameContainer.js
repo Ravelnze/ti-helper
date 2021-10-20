@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Route, Link, useRouteMatch } from "react-router-dom";
+import { Route, Link, useRouteMatch, useLocation } from "react-router-dom";
 import { AnimatedSwitch as Switch } from "react-router-transition";
 import Overview from "./Overview";
 import Nav from "react-bootstrap/Nav";
@@ -23,10 +23,12 @@ import InfoContainer from "./InfoContainer";
 import NavIcon from "./NavIcon";
 import Phase from "../lib/Phase";
 import { setCombatTab, setGameStarted, setPhaseTab } from "../store/Actions";
+import './GameContainer.css'
 
-function GameContainer() {
+function GameContainer(props) {
     const [state, dispatch] = useStore();
     let match = useRouteMatch();
+    let location = useLocation();
 
     useEffect(() => {
         dispatch(setGameStarted(true));
@@ -43,6 +45,14 @@ function GameContainer() {
         setShow(false);
     };
 
+    const route = {
+        phase: "phase",
+        combat: "combat",
+        overview: "",
+        plan: "plan",
+        info: "info",
+    };
+
     const phaseTabs = [
         { title: Phase.Strategy, phase: Phase.Strategy },
         { title: Phase.Action, phase: Phase.Action },
@@ -55,6 +65,11 @@ function GameContainer() {
         { title: Phase.GroundCombat.split("C")[0], phase: Phase.GroundCombat },
     ];
 
+    const activeClass = (route) => {
+        var isActive = location.pathname === (route ? `${match.path}/${route}`: match.path);
+        return `flex-grow-1 text-center pt-1 pb-2 ${isActive ? "nav-active" : ""}`;
+    }
+
     return (
         <>
             <Container>
@@ -64,7 +79,7 @@ function GameContainer() {
                     atActive={{ opacity: 1 }}
                     className="switch-wrapper"
                 >
-                    <Route path={`${match.path}/phase`}>
+                    <Route path={`${match.path}/${route.phase}`}>
                         <PhaseTabs
                             key="phase-tab"
                             tabs={phaseTabs}
@@ -75,7 +90,7 @@ function GameContainer() {
                             activeKey={state.phaseTab}
                         />
                     </Route>
-                    <Route path={`${match.path}/combat`}>
+                    <Route path={`${match.path}/${route.combat}`}>
                         <PhaseTabs
                             key="combat-tab"
                             tabs={combatTabs}
@@ -86,10 +101,10 @@ function GameContainer() {
                             activeKey={state.combatTab}
                         />
                     </Route>
-                    <Route path={`${match.path}/plan`}>
+                    <Route path={`${match.path}/${route.plan}`}>
                         <PlannerContainer showEditModal={() => showModal()} />
                     </Route>
-                    <Route path={`${match.path}/info`}>
+                    <Route path={`${match.path}/${route.info}`}>
                         <InfoContainer showEditModal={() => showModal()} />
                     </Route>
                     <Route path={`${match.path}`}>
@@ -98,43 +113,57 @@ function GameContainer() {
                 </Switch>
             </Container>
 
-            <Navbar bg="dark" variant="dark" fixed="bottom">
+            <Navbar
+                bg="dark"
+                variant="dark"
+                fixed="bottom"
+                className="pt-0 pb-0"
+            >
                 <Nav className="w-100">
                     <div className="d-flex flex-row justify-content-around w-100">
-                        <NavItem>
+                        <Nav.Item className={activeClass(route.phase)}>
                             <Link
                                 className="nav-link"
-                                to={`${match.url}/phase`}
+                                to={`${match.url}/${route.phase}`}
                             >
-                                <NavIcon title="Phase" icon={faSatelliteDish} />
+                                <NavIcon icon={faSatelliteDish} />
                             </Link>
-                        </NavItem>
-                        <NavItem>
+                        </Nav.Item>
+                        <Nav.Item className={activeClass(route.combat)}>
                             <Link
                                 className="nav-link"
-                                to={`${match.url}/combat`}
+                                to={`${match.url}/${route.combat}`}
                             >
-                                <NavIcon title="Combat" icon={faRocket} />
+                                <NavIcon icon={faRocket} />
                             </Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link className="nav-link py-0" to={`${match.url}`}>
+                        </Nav.Item>
+                        <Nav.Item className={activeClass()}>
+                            <Link
+                                className="nav-link pt-0"
+                                to={`${match.url}`}
+                            >
                                 <Image
                                     src={getLogoByKey(state.faction.logo)}
                                     height="40px"
                                 />
                             </Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link className="nav-link" to={`${match.url}/plan`}>
-                                <NavIcon title="Plan" icon={faChess} />
+                        </Nav.Item>
+                        <Nav.Item className={activeClass(route.plan)}>
+                            <Link
+                                className="nav-link"
+                                to={`${match.url}/${route.plan}`}
+                            >
+                                <NavIcon icon={faChess} />
                             </Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link className="nav-link" to={`${match.url}/info`}>
-                                <NavIcon title="Info" icon={faInfoCircle} />
+                        </Nav.Item>
+                        <Nav.Item className={activeClass(route.info)}>
+                            <Link
+                                className="nav-link"
+                                to={`${match.url}/${route.info}`}
+                            >
+                                <NavIcon icon={faInfoCircle} />
                             </Link>
-                        </NavItem>
+                        </Nav.Item>
                     </div>
                 </Nav>
             </Navbar>

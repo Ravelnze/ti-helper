@@ -1,0 +1,19 @@
+[
+    {
+        "title": "Living Rules Reference",
+        "pokUrl": "https://images-cdn.fantasyflightgames.com/filer_public/51/55/51552c7f-c05c-445b-84bf-4b073456d008/ti10_pok_living_rules_reference_20_web.pdf",
+        "defaultUrl": "https://images-cdn.fantasyflightgames.com/filer_public/da/df/dadf9f07-78f3-43ac-9cce-dd6b55b24ec2/ti4_living_rules_reference_v1_3_web.pdf"
+    },
+    {
+        "title": "Fandom Wiki",
+        "defaultUrl": "https://twilight-imperium.fandom.com/wiki/Twilight_Imperium_Wiki#Fourth_Edition"
+    },
+    {
+        "title": "/r/TwilightImperium",
+        "defaultUrl": "https://www.reddit.com/r/twilightimperium/"
+    },
+    {
+        "title": "Battle Calculator",
+        "defaultUrl": "https://ti4battle.com/"
+    }
+]

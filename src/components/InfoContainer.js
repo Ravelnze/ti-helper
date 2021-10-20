@@ -3,14 +3,13 @@ import Tab from "react-bootstrap/Tab";
 import Header from "./Header";
 import { useStore } from "../store/Store";
 import FactionInfo from "./FactionInfo";
-import "./InfoContainer.css";
-import Button from "react-bootstrap/Button";
+import LinksContainer from "./LinksContainer";
 
 function InfoContainer(props) {
     const [state, dispatch] = useStore();
 
     const Factions = "Faction Lookup";
-    const Rules = "Rules";
+    const Links = "Links";
 
     return (
         <>
@@ -23,7 +22,8 @@ function InfoContainer(props) {
                 variant="pills"
                 defaultActiveKey={props.activeKey}
                 id={props.id}
-                className="mt-2 justify-content-center"
+                className="mt-2 justify-content-center sticky-top"
+                style={{backgroundColor: "rgba(33,37,41, 0.9)", marginLeft: "-12px", marginRight: "-12px"}}
             >
                 <Tab
                     key={Factions}
@@ -38,29 +38,12 @@ function InfoContainer(props) {
                     />
                 </Tab>
                 <Tab
-                    key={Rules}
-                    eventKey={Rules}
-                    title={Rules}
+                    key={Links}
+                    eventKey={Links}
+                    title={Links}
                     className="pt-2"
                 >
-                    <a
-                        target="_blank"
-                        href={
-                            state.pok
-                                ? "https://images-cdn.fantasyflightgames.com/filer_public/51/55/51552c7f-c05c-445b-84bf-4b073456d008/ti10_pok_living_rules_reference_20_web.pdf"
-                                : "https://images-cdn.fantasyflightgames.com/filer_public/da/df/dadf9f07-78f3-43ac-9cce-dd6b55b24ec2/ti4_living_rules_reference_v1_3_web.pdf"
-                        }
-                    >
-                        <Button variant="dark" className="link-button">Living Rules Reference</Button>
-                    </a>
-                    <a
-                        target="_blank"
-                        href={
-                                "https://twilight-imperium.fandom.com/wiki/Twilight_Imperium_Wiki#Fourth_Edition"
-                        }
-                    >
-                        <Button variant="dark" className="link-button">Wiki</Button>
-                    </a>
+                    <LinksContainer pok={state.pok} />
                 </Tab>
             </Tabs>
         </>

@@ -1,7 +1,6 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import "./ScrollableCardList.css";
 import PlanetCard from "./PlanetCard";
 import TechnologyCard from "./TechnologyCard";
 import ObjectiveCard from "./ObjectiveCard";
@@ -140,7 +139,10 @@ function ScrollableCardList(props) {
     }
 
     return (
-        <Container className="pt-3 pb-2 px-1 m-0 scrollable">
+        <Container
+            className="pt-3 pb-2 px-1 m-0"
+            style={{ overflowX: "scroll" }}
+        >
             <Row className="d-flex flex-row flex-nowrap">
                 {renderCardList()}
             </Row>
