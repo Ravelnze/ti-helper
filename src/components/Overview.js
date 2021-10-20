@@ -68,7 +68,7 @@ function Overview(props) {
     return (
         <>
             <Header
-                title="Overview"
+                title={state.faction.title}
                 showEditModal={props.showEditModal}
                 left={
                     <CloseButton
