@@ -72,3 +72,7 @@ ul.nav-pills > li.nav-item > button.nav-link {
     padding-bottom: 100px;
     width: 100%;
 }
+
+.popover {
+    z-index: 1010!important;
+}
