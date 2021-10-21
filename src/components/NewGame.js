@@ -37,6 +37,7 @@ function NewGame() {
                             label="Prophecy of Kings"
                             checked={state.pok}
                             onChange={() => dispatch(setPok(!state.pok))}
+                            type="switch"
                         />
                     </Col>
                 </Row>

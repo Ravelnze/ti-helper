@@ -74,5 +74,9 @@ ul.nav-pills > li.nav-item > button.nav-link {
 }
 
 .popover {
-    z-index: 1010!important;
+    z-index: 1010 !important;
+}
+
+.form-check-label {
+    width: 100%;
 }
