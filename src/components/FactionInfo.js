@@ -1,6 +1,7 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 import DividerText from "./DividerText";
 import UnitList from "./UnitList";
 import ValueLabel from "./ValueLabel";
@@ -19,6 +20,7 @@ import {
     removeLookupFaction,
 } from "../store/Actions";
 import { useStore } from "../store/Store";
+import GetLogoByKey from "../lib/Logos";
 
 function FactionInfo(props) {
     const [state, dispatch] = useStore();
@@ -78,9 +80,7 @@ function FactionInfo(props) {
                     <Col className="text-center">
                         {props.faction ? (
                             <Button
-                                variant={
-                                    removeFaction ? "danger" : "success"
-                                }
+                                variant={removeFaction ? "danger" : "success"}
                                 className="w-100"
                                 onClick={() => {
                                     if (removeFaction) {
@@ -108,7 +108,15 @@ function FactionInfo(props) {
                                         dispatch(setLookupFaction(lf))
                                     }
                                 >
-                                    {lf.title}
+                                    <div className="d-flex">
+                                        <div className="flex-grow-1">{lf.title}</div>
+                                        <div>
+                                            <Image
+                                                height="25px"
+                                                src={GetLogoByKey(lf.logo)}
+                                            />
+                                        </div>
+                                    </div>
                                 </Button>
                             ))
                         )}
