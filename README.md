@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Twilight Imperium 4 Helper
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an app designed to assist while playing the 4th edition of the board game Twilight Imperium. The inspiration for this app came from a particular issue experienced in my play group where people will often miss or forget about a card, technology, ability, etc. until one or more turns later and the famous "Ugh... if only I'd remembered to use 'x' this game would be completely different!!" line comes out.
 
-## Available Scripts
+The premise of this app is to allow each player to input details about their game such as the faction they are playing, their planets, technology, any active laws (agendas), action cards, etc. and choose different game phases or combat round categories where all relevant information will be displayed.
 
-In the project directory, you can run:
+While the app still works on bigger screens, it is designed to be viewed on mobile or tablet ideally using the "Add to homescreen" share option on iOS or the Android equivalent. Give it a try [here](https://ti.ploogencraft.com/)! 
 
-### `yarn start`
+Hopefully it is fairly self explanatory but here is a brief overview of the flow: pick your faction and start the game, then choose the edit icon (notepad and pen) in the top right to start adding game components. Close the modal when done adding and choose various phases using the bottom navigation and tabs on screen when done. Rinse and repeat editing and viewing until you are the ruler of the galaxy!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Find a bug? Feel free to open an issue or better yet, submit a pull request :)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Data
+All data and images have been borrowed from the [Fandom Wiki](https://twilight-imperium.fandom.com/wiki/Twilight_Imperium_Wiki) for this project, a huge thanks to everyone who has contributed there! 
 
-### `yarn test`
+Some fields have been added to the data by myself for the purpose of creating this app, such as tagging all relevant components with their phase.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If there are errors in the game data feel free to open an issue or pull request to fix them. All game data is under the `src/data` directory and is in json format.
 
-### `yarn build`
+## Technical Details
+This project is written in javascript using the [React framework](https://reactjs.org/), initialised with [Create React App](https://create-react-app.dev/) and under the hood uses a service worker to turn the app into a basic implementation of a PWA (Progressive Web App) which preloads all static files and allows offline capability. This basic implementation is a bit yucky with updates, if there is an update detected it will automatically force reload the user session which results in a flicker on the page however all state data is stored in the browsers local storage (there is nothing sensitive to worry about) and will resume directly after the refresh. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This does however make for a nice experience on mobile using it as an 'app' by adding to homescreen, especially with the inclusion of some links in the information page which open as full screen pages.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To run the project, first install all dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `yarn eject`
+Then start the development server:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm run start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Open [http://localhost:3000](http://localhost:3000) and get hacking!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Build
+There is a pipeline setup under Actions to automatically build and deploy the project when commits are made to the master branch in the github repository, this is not configurable and will only deploy to the specified S3 bucket.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Future Plans
+I intend to add some more functionality to this app including the following:
+- Technology planner
+- Build planner
+- Turn planner
+- Possible backend with multi-player capability/integration, eg. invite others to join a game, so everyone can easily view all public information.
 
-## Learn More
+I am open to suggestions/feedback for improvements or changes to streamline the app.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Hopefully this app helps some of you out there with your conquest of the galaxy.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+PAX MAGNIFICA BELLUM GLORIOSUM!
