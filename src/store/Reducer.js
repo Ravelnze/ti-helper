@@ -55,6 +55,7 @@ export const initialState = () => ({
     phaseTab: null,
     combatTab: null,
     lookupFaction: null,
+    lookupFactionList: [],
 });
 
 // Good guide on why the store is laid out this way
@@ -336,6 +337,22 @@ function setLookupFaction(state, { payload }) {
     };
 }
 
+function addLookupFaction(state, { payload }) {
+    return {
+        ...state,
+        lookupFactionList: [...state.lookupFactionList, payload].sortFactionTitles(),
+    };
+}
+
+function removeLookupFaction(state, { payload }) {
+    return {
+        ...state,
+        lookupFactionList: state.lookupFactionList.filter(
+            (lf) => lf.id !== payload.id
+        ),
+    };
+}
+
 // #endregion
 
 const createReducer = (handlers) => (state, action) => {
@@ -389,4 +406,6 @@ export const reducer = createReducer({
     [Types.REMOVERELIC]: removeRelic,
     [Types.EXHAUSTRELIC]: exhaustRelic,
     [Types.SETLOOKUPFACTION]: setLookupFaction,
+    [Types.ADDLOOKUPFACTION]: addLookupFaction,
+    [Types.REMOVELOOKUPFACTION]: removeLookupFaction,
 });

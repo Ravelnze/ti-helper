@@ -14,15 +14,7 @@ function FactionList(props) {
         factionList = factionList.filter((f) => f.id !== state.faction.id);
     }
 
-    factionList.sort((a, b) => {
-        const aTitleParts = a.title.split("The ");
-        const aTitle = aTitleParts.length > 1 ? aTitleParts[1] : a.title;
-
-        const bTitleParts = b.title.split("The ");
-        const bTitle = bTitleParts.length > 1 ? bTitleParts[1] : b.title;
-
-        return aTitle > bTitle;
-    });
+    factionList.sortFactionTitles();
 
     return (
         <AutoSuggestionInput

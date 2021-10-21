@@ -262,3 +262,17 @@ export function setLookupFaction(faction) {
         payload: faction,
     };
 }
+
+export function addLookupFaction(faction) {
+    return {
+        type: Types.ADDLOOKUPFACTION,
+        payload: faction,
+    };
+}
+
+export function removeLookupFaction(faction) {
+    return {
+        type: Types.REMOVELOOKUPFACTION,
+        payload: faction,
+    };
+}

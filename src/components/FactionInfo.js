@@ -13,7 +13,11 @@ import { setFaction, setTech } from "../store/Actions";
 import Technologies from "../data/technologies.json";
 import PromissoryNotes from "../data/promissoryNotes.json";
 import Planets from "../data/planets.json";
-import { setLookupFaction } from "../store/Actions";
+import {
+    setLookupFaction,
+    addLookupFaction,
+    removeLookupFaction,
+} from "../store/Actions";
 import { useStore } from "../store/Store";
 
 function FactionInfo(props) {
@@ -33,6 +37,9 @@ function FactionInfo(props) {
         (p) => p.homeFactionId && p.homeFactionId === props.faction?.id
     );
     const startingTech = props.technologies.filter((t) => !t.replacedBy);
+    const removeFaction = state.lookupFactionList
+        .map((f) => f.id)
+        .includes(props.faction?.id);
 
     return (
         <>
@@ -60,8 +67,54 @@ function FactionInfo(props) {
                     </Col>
                 </Row>
             ) : (
-                <FactionList isNewGame={props.isNewGame} searchPlaceholder={props.searchPlaceholder} />
+                <FactionList
+                    isNewGame={props.isNewGame}
+                    searchPlaceholder={props.searchPlaceholder}
+                />
             )}
+
+            {!props.isNewGame ? (
+                <Row>
+                    <Col className="text-center">
+                        {props.faction ? (
+                            <Button
+                                variant={
+                                    removeFaction ? "danger" : "success"
+                                }
+                                className="w-100"
+                                onClick={() => {
+                                    if (removeFaction) {
+                                        dispatch(
+                                            removeLookupFaction(props.faction)
+                                        );
+                                    } else {
+                                        dispatch(
+                                            addLookupFaction(props.faction)
+                                        );
+                                    }
+                                }}
+                            >
+                                {removeFaction
+                                    ? "Remove Faction From Game"
+                                    : "Add Faction To Game"}
+                            </Button>
+                        ) : (
+                            state.lookupFactionList.map((lf, i) => (
+                                <Button
+                                    key={i}
+                                    variant="dark"
+                                    className="w-100 mt-2"
+                                    onClick={() =>
+                                        dispatch(setLookupFaction(lf))
+                                    }
+                                >
+                                    {lf.title}
+                                </Button>
+                            ))
+                        )}
+                    </Col>
+                </Row>
+            ) : null}
 
             {abilities?.length > 0 ? (
                 <Row>

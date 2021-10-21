@@ -19,7 +19,8 @@ function LinksContainer(props) {
                 >
                     <Button
                         variant="dark"
-                        style={{ marginBottom: "0.5rem", width: "100%" }}
+                        className="w-100"
+                        style={{ marginBottom: "0.5rem" }}
                     >
                         {link.title}
                     </Button>

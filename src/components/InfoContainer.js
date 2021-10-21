@@ -23,7 +23,11 @@ function InfoContainer(props) {
                 defaultActiveKey={props.activeKey}
                 id={props.id}
                 className="mt-2 justify-content-center sticky-top"
-                style={{backgroundColor: "rgba(33,37,41, 0.9)", marginLeft: "-12px", marginRight: "-12px"}}
+                style={{
+                    backgroundColor: "rgba(33,37,41, 0.9)",
+                    marginLeft: "-12px",
+                    marginRight: "-12px",
+                }}
             >
                 <Tab
                     key={Factions}
