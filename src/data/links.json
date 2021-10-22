@@ -15,5 +15,9 @@
     {
         "title": "Battle Calculator",
         "defaultUrl": "https://ti4battle.com/"
+    },
+    {
+        "title": "Map Generator",
+        "defaultUrl": "https://keeganw.github.io/ti4/"
     }
 ]
