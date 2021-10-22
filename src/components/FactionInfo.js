@@ -99,26 +99,33 @@ function FactionInfo(props) {
                                     : "Add Faction To Game"}
                             </Button>
                         ) : (
-                            state.lookupFactionList.map((lf, i) => (
-                                <Button
-                                    key={i}
-                                    variant="dark"
-                                    className="w-100 mt-2"
-                                    onClick={() =>
-                                        dispatch(setLookupFaction(lf))
-                                    }
-                                >
-                                    <div className="d-flex">
-                                        <div className="flex-grow-1">{lf.title}</div>
-                                        <div>
-                                            <Image
-                                                height="25px"
-                                                src={GetLogoByKey(lf.logo)}
-                                            />
+                            <div>
+                                {state.lookupFactionList.length > 0 ? (
+                                    <DividerText title="Factions In Game" />
+                                ) : null}
+                                {state.lookupFactionList.map((lf, i) => (
+                                    <Button
+                                        key={i}
+                                        variant="dark"
+                                        className="w-100 mt-2"
+                                        onClick={() =>
+                                            dispatch(setLookupFaction(lf))
+                                        }
+                                    >
+                                        <div className="d-flex">
+                                            <div className="flex-grow-1">
+                                                {lf.title}
+                                            </div>
+                                            <div>
+                                                <Image
+                                                    height="25px"
+                                                    src={GetLogoByKey(lf.logo)}
+                                                />
+                                            </div>
                                         </div>
-                                    </div>
-                                </Button>
-                            ))
+                                    </Button>
+                                ))}
+                            </div>
                         )}
                     </Col>
                 </Row>

@@ -139,6 +139,12 @@ function UnitCard(props) {
                             </>
                         ) : null}
 
+                        {unit.unlock ? (
+                            <p>
+                                <strong>Unlock</strong>: {unit.unlock}
+                            </p>
+                        ) : null}
+
                         {unit.specialAbility?.desc.split("\r\n").map((s, i) => (
                             <p key={i} className="mt-2">
                                 {s}
