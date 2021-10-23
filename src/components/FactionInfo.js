@@ -231,16 +231,6 @@ function FactionInfo(props) {
                     </Col>
                 </Row>
             ) : null}
-
-            {props.faction && props.isNewGame ? (
-                <Row className="mt-2">
-                    <Col>
-                        <Link to="/game" className="float-end">
-                            <Button variant="success">Start Game</Button>
-                        </Link>
-                    </Col>
-                </Row>
-            ) : null}
         </>
     );
 }
