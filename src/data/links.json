@@ -19,5 +19,9 @@
     {
         "title": "Map Generator",
         "defaultUrl": "https://keeganw.github.io/ti4/"
+    },
+    {
+        "title": "Rule Clarifications",
+        "defaultUrl": "https://www.tirules.com/"
     }
 ]
