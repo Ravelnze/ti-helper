@@ -34,12 +34,11 @@ function NewGame() {
                 <Row>
                     <Col className="mb-2">
                         <Form.Check
-                            type="checkbox"
+                            type="switch"
                             style={{ fontSize: "1.2rem" }}
                             label="Prophecy of Kings"
                             checked={state.pok}
                             onChange={() => dispatch(setPok(!state.pok))}
-                            type="switch"
                         />
                     </Col>
                 </Row>

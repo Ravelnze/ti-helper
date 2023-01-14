@@ -1,5 +1,6 @@
 import Autosuggest from "react-autosuggest";
 import { useState } from "react";
+import GetLogoByKey from "../lib/Logos";
 import "./AutoSuggestionInput.css";
 
 function AutoSuggestionInput(props) {
@@ -24,7 +25,10 @@ function AutoSuggestionInput(props) {
     };
 
     const renderSuggestion = (suggestion, index) => (
-        <div key={index}>{suggestion.title}</div>
+        <div key={index}>
+            {suggestion.logo ? <img width="20px" src={GetLogoByKey(suggestion.logo)} /> : ""}
+            <> {suggestion.title}</>
+        </div>
     );
 
     const onSuggestionsFetchRequested = ({ value }) =>
