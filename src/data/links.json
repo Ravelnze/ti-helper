@@ -23,5 +23,9 @@
     {
         "title": "Rule Clarifications",
         "defaultUrl": "https://www.tirules.com/"
+    },
+    {
+        "title": "Milty Draft Generator",
+        "defaultUrl": "https://milty.shenanigans.be/"
     }
 ]
