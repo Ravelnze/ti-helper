@@ -1,0 +1,18 @@
+.faction-image-button {
+    border-color: rgba(0, 0, 0, 0);
+    border: 0 !important;
+    padding: 0 !important;
+    margin-top: -1px !important;
+    height: 140px;
+    width: 140px;
+    background-repeat: no-repeat;
+    background-position: 50% 75%;
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    background-color: transparent !important;
+    background-size: contain;
+}
+
+.faction-badge {
+    width: 140px;
+}

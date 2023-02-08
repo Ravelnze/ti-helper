@@ -1,7 +1,7 @@
-import { setFaction, setLookupFaction, setTech } from "../store/Actions";
 import { useStore } from "../store/Store";
 import Factions from "../data/factions.json";
-import AutoSuggestionInput from "./AutoSuggestionInput";
+import FactionCard from "./FactionCard";
+import { Col, Row } from "react-bootstrap";
 
 function FactionList(props) {
     const [state, dispatch] = useStore();
@@ -11,24 +11,44 @@ function FactionList(props) {
         : Factions.filter((f) => f.pok !== true);
 
     if (state.faction) {
-        factionList = factionList.filter((f) => f.id !== state.faction.id);
+        factionList = factionList.filter(
+            (f) =>
+                f.id !== state.faction.id &&
+                !state.lookupFactionList.map((a) => a.id).includes(f.id)
+        );
     }
 
     factionList.sortFactionTitles();
 
+    let factions = [];
+    // skip every second one and push a new chunk
+    for (let i = 0; i < factionList.length; i += 2) {
+        const chunk = factionList.slice(i, i + 2);
+        factions.push(chunk);
+    }
+
     return (
-        <AutoSuggestionInput
-            items={factionList}
-            setValue={(item) => {
-                if (props.isNewGame) {
-                    dispatch(setFaction(item));
-                    dispatch(setTech(item.tech));
-                } else {
-                    dispatch(setLookupFaction(item));
-                }
-            }}
-            placeholder={props.searchPlaceholder}
-        />
+        <Row className="mx-auto">
+            <Col>
+                {factions.map((faction, i) => {
+                    return (
+                        <Row key={i} className="mb-4">
+                            {faction.map((f) => {
+                                return (
+                                    <Col key={f.id}>
+                                        <FactionCard
+                                            isNewGame={props.isNewGame}
+                                            faction={f}
+                                        ></FactionCard>
+                                    </Col>
+                                );
+                            })}
+                        </Row>
+                    );
+                })}
+                ;
+            </Col>
+        </Row>
     );
 }
 

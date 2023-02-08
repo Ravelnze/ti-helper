@@ -26,7 +26,7 @@ function NewGame() {
         <Container className="mb-5">
             <Row>
                 <Col>
-                    <DividerText title="New Game" lg />
+                    <DividerText title="New Game" sub="choose a faction and hit 'Start Game' to begin" lg />
                 </Col>
             </Row>
 

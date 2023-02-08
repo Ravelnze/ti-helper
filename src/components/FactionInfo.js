@@ -45,36 +45,6 @@ function FactionInfo(props) {
 
     return (
         <>
-            {props.faction ? (
-                <Row>
-                    <Col>
-                        <div
-                            className="text-center pointer"
-                            onClick={() => {
-                                if (props.isNewGame) {
-                                    dispatch(setFaction(null));
-                                    dispatch(setTech([]));
-                                } else {
-                                    dispatch(setLookupFaction(null));
-                                }
-                            }}
-                        >
-                            <h4 className="text-center mb-0">
-                                {props.faction.title}
-                            </h4>
-                            <sub style={{ color: "gray", top: "-7px" }}>
-                                tap to change
-                            </sub>
-                        </div>
-                    </Col>
-                </Row>
-            ) : (
-                <FactionList
-                    isNewGame={props.isNewGame}
-                    searchPlaceholder={props.searchPlaceholder}
-                />
-            )}
-
             {!props.isNewGame ? (
                 <Row>
                     <Col className="text-center">
@@ -99,7 +69,7 @@ function FactionInfo(props) {
                                     : "Add Faction To Game"}
                             </Button>
                         ) : (
-                            <div>
+                            <div className="mb-5">
                                 {state.lookupFactionList.length > 0 ? (
                                     <DividerText title="Factions In Game" />
                                 ) : null}
@@ -130,6 +100,35 @@ function FactionInfo(props) {
                     </Col>
                 </Row>
             ) : null}
+
+            {props.faction ? (
+                <Row>
+                    <Col>
+                        <div
+                            className="text-center pointer"
+                            onClick={() => {
+                                if (props.isNewGame) {
+                                    dispatch(setFaction(null));
+                                    dispatch(setTech([]));
+                                } else {
+                                    dispatch(setLookupFaction(null));
+                                }
+                            }}
+                        >
+                            <h4 className="text-center mb-0">
+                                {props.faction.title}
+                            </h4>
+                            <sub style={{ color: "gray", top: "-7px" }}>
+                                tap to change
+                            </sub>
+                        </div>
+                    </Col>
+                </Row>
+            ) : (
+                <FactionList
+                    isNewGame={props.isNewGame}
+                />
+            )}
 
             {abilities?.length > 0 ? (
                 <Row>

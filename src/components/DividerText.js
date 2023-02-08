@@ -1,8 +1,18 @@
 function DividerText(props) {
     return props.lg ? (
-        <h3 className="text-center mt-3">{props.title}</h3>
+        <div className="text-center">
+            <h3 className="mt-3">{props.title}</h3>
+            {props.sub ? (
+                <sub style={{ color: "gray", top: "-7px" }}>{props.sub}</sub>
+            ) : null}
+        </div>
     ) : (
-        <h5 className="text-center mt-3">{props.title}</h5>
+        <div className="text-center">
+            <h5 className="mt-3">{props.title}</h5>
+            {props.sub ? (
+                <sub style={{ color: "gray", top: "-7px" }}>{props.sub}</sub>
+            ) : null}
+        </div>
     );
 }
 
