@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CloseButton from "react-bootstrap/CloseButton";
@@ -64,6 +64,10 @@ function Overview(props) {
         dispatch(resetGame());
         history.replace(".");
     };
+
+    useEffect(() => {
+        window.scrollTo({top: 0, left: 0, behavior: "instant"});
+    })
 
     return (
         <>

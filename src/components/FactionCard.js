@@ -9,6 +9,10 @@ function FactionCard(props) {
     const [state, dispatch] = useStore();
     const target = useRef(null);
 
+    function scrollTop() {
+        window.scrollTo({top: 0, left: 0, behavior: "instant"});
+    }
+
     return (
         <>
             <Button
@@ -18,8 +22,10 @@ function FactionCard(props) {
                     if (props.isNewGame) {
                         dispatch(setFaction(props.faction));
                         dispatch(setTech(props.faction.tech));
+                        scrollTop();
                     } else {
                         dispatch(setLookupFaction(props.faction));
+                        scrollTop();
                     }
                 }}
                 style={{

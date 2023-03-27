@@ -2,8 +2,13 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import Header from "./Header";
 import PhaseContainer from "./PhaseContainer";
+import { useEffect } from "react";
 
 function PhaseTabs(props) {
+    useEffect(() => {
+        window.scrollTo({top: 0, left: 0, behavior: "instant"});
+    })
+    
     return (
         <div>
             <Header title={props.title} showEditModal={props.showEditModal} />
