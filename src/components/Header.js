@@ -11,19 +11,21 @@ function Header(props) {
                 {props.left}
             </Col>
             <Col>
-                <DividerText title={props.title} lg />
+                <DividerText title={props.title} sub={props.sub} lg />
             </Col>
             <Col xs={2}>
-                <a
-                    className="float-end mt-3 pointer"
-                    onClick={props.showEditModal}
-                >
-                    <FontAwesomeIcon
-                        size="lg"
-                        icon={faEdit}
-                        color="rgba(255, 255, 255, 0.8)"
-                    />
-                </a>
+                {props.editModalVisible === false ? null : (
+                    <a
+                        className="float-end mt-3 pointer"
+                        onClick={props.showEditModal}
+                    >
+                        <FontAwesomeIcon
+                            size="lg"
+                            icon={faEdit}
+                            color="rgba(255, 255, 255, 0.8)"
+                        />
+                    </a>)
+                }
             </Col>
         </Row>
     );

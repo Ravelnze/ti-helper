@@ -349,6 +349,7 @@
     },
     {
         "id": 42,
+        "replacement": 82,
         "title": "Make an Example of Their World",
         "condition": "Use BOMBARDMENT to destroy the last of a player's ground forces on a planet.",
         "points": 1,
@@ -365,6 +366,7 @@
     },
     {
         "id": 44,
+        "replacement": 83,
         "title": "Turn Their Fleets to Dust",
         "condition": "Use SPACE CANNON to destroy the last of a player's ships in a system.",
         "points": 1,
@@ -426,6 +428,7 @@
     },
     {
         "id": 51,
+        "replacement": 81,
         "title": "Fight With Precision",
         "condition": "Use ANTI-FIGHTER BARRAGE to destroy the last of a player's fighters in a system.",
         "points": 1,
@@ -678,5 +681,36 @@
         "cat": "Secret",
         "phase": ["Agenda"],
         "pok": true
+    },
+    {
+        "id": 81,
+        "replaces": 51,
+        "codex": [3],
+        "title": "Fight With Precision Ω",
+        "condition": "Destroy the last of a player's fighters in the active system during the anti-fighter barrage step.",
+        "points": 1,
+        "cat": "Secret",
+        "phase": ["SpaceCombat"],
+        "pok": true
+    },
+    {
+        "id": 82,
+        "replaces": 42,
+        "codex": [3],
+        "title": "Make an Example of Their World Ω",
+        "condition": "Destroy the last of a player's ground forces on a planet during the bombardment step.",
+        "points": 1,
+        "cat": "Secret",
+        "phase": ["Action", "GroundCombat"]
+    },
+    {
+        "id": 83,
+        "replaces": 44,
+        "codex": [3],
+        "title": "Turn Their Fleets to Dust Ω",
+        "condition": "Destroy the last of a player's non-fighter ships in the active system during the space cannon offense step.",
+        "points": 1,
+        "cat": "Secret",
+        "phase": ["Action", "SpaceCombat"]
     }
 ]

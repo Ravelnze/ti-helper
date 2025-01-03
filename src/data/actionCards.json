@@ -547,5 +547,141 @@
         "effect": "Hits from this roll are produced against all ships (not just fighters).",
         "phase": ["SpaceCombat"],
         "pok": true
+    },
+    {
+        "id": 76,
+        "title": "Blitz",
+        "timing": "At the start of an invasion",
+        "effect": "Each of your non-fighter ships in the active system that do not have BOMBARDMENT gain BOMBARDMENT 6 until the end of the invasion",
+        "phase": ["GroundCombat"],
+        "codex": [1]
+    },
+    {
+        "id": 77,
+        "title": "Counterstroke",
+        "timing": "After a player activates a system that contains 1 of your command tokens",
+        "effect": "Return that command token to your tactic pool",
+        "phase": ["Action"],
+        "codex": [1]
+    },
+    {
+        "id": 78,
+        "title": "Fighter Conscription",
+        "timing": "As an Action",
+        "effect": "Place 1 fighter from your reinforcements in each system that contains 1 or more of your space docks or units that have capacity; they cannot be placed in systems that contain other players' ships",
+        "phase": ["Action"],
+        "codex": [1]
+    },
+    {
+        "id": 79,
+        "title": "Forward Supply Base",
+        "timing": "After another player activates a system that contains your units",
+        "effect": "Gain 3 trade goods. Then, choose another player to gain 1 trade good",
+        "phase": ["Action"],
+        "codex": [1]
+    },
+    {
+        "id": 80,
+        "title": "Ghost Squad",
+        "timing": "After a player commits units to land on a planet you control",
+        "effect": "Move any number of ground forces from any planet you control in the active system to any other planet you control in the active system",
+        "phase": ["GroundCombat"],
+        "codex": [1]
+    },
+    {
+        "id": 81,
+        "title": "Hack Election",
+        "timing": "After an agenda is revealed",
+        "effect": "During this agenda, voting begins with the player to the right of the speaker and continues counterclockwise",
+        "phase": ["Agenda"],
+        "codex": [1]
+    },
+    {
+        "id": 82,
+        "title": "Harness Energy",
+        "timing": "After you activate an anomaly",
+        "effect": "Replenish your commodities",
+        "phase": ["Action"],
+        "codex": [1]
+    },
+    {
+        "id": 83,
+        "title": "Impersonation",
+        "timing": "As an Action",
+        "effect": "Spend 3 influence to draw 1 secret objective",
+        "phase": ["Action"],
+        "codex": [1]
+    },
+    {
+        "id": 84,
+        "title": "Insider Information",
+        "timing": "After an agenda is revealed",
+        "effect": "Look at the top card of the agenda deck",
+        "phase": ["Agenda"],
+        "codex": [1]
+    },
+    {
+        "id": 85,
+        "title": "Master Plan",
+        "timing": "After you perform an action",
+        "effect": "You may perform an additional action this turn",
+        "phase": ["Action"],
+        "codex": [1]
+    },
+    {
+        "id": 86,
+        "title": "Plagiarize",
+        "timing": "As an Action",
+        "effect": "Spend 5 influence and choose a non-faction technology owned by 1 of your neighbours; gain that technology",
+        "phase": ["Action"],
+        "codex": [1]
+    },
+    {
+        "id": 87,
+        "title": "Rally",
+        "timing": "After you activate a system that contains another player's ships",
+        "effect": "Place 2 command tokens from your reinforcements in your fleet pool",
+        "phase": ["Action"],
+        "codex": [1]
+    },
+    {
+        "id": 88,
+        "title": "Reflective Shielding",
+        "timing": "When one of your ships uses SUSTAIN DAMAGE during combat",
+        "effect": "Produce 2 hits against your opponent's ships in the active system",
+        "phase": ["SpaceCombat"],
+        "codex": [1]
+    },
+    {
+        "id": 89,
+        "title": "Sanction",
+        "timing": "After an agenda is revealed",
+        "effect": "You cannot vote on this agenda. Predict aloud an outcome of this agenda. If your prediction is correct, each player that voted for that outcome returns 1 command token from their fleet supply to their reinforcements",
+        "phase": ["Agenda"],
+        "codex": [1]
+    },
+    {
+        "id": 90,
+        "title": "Scramble Frequency",
+        "timing": "After another player makes a BOMBARDMENT, SPACE CANNON or ANTI-FIGHTER BARRAGE roll",
+        "effect": "That player re-rolls all of their dice",
+        "phase": ["Action", "SpaceCombat"],
+        "codex": [1]
+    },
+    {
+        "id": 91,
+        "title": "Solar Flare",
+        "timing": "After you activate a system",
+        "effect": "During this movement, other players cannot use SPACE CANNON against your ships",
+        "phase": ["Action"],
+        "codex": [1]
+    },
+    {
+        "id": 92,
+        "title": "War Machine",
+        "timing": "When 1 or more of your units use PRODUCTION",
+        "effect": "Apply +4 to the total Production value of your units and reduce the combined cost of the produced units by 1",
+        "phase": ["Action"],
+        "codex": [1]
     }
 ]

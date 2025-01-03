@@ -37,6 +37,7 @@
     },
     {
         "id": 6,
+        "replacement": 31,
         "title": "Stymie",
         "condition": "ACTION: Place this card face up in your play area.",
         "desc": "While this card is in your play area, the Arborec player cannot produce units in or adjacent to non-home systems that contain 1 or more of your units.\r\nIf you activate a system that contains 1 or more of the Arborec player's units, return this card to the Arborec player.",
@@ -49,10 +50,12 @@
         "condition": "When 1 or more of your units make a roll for a unit ability",
         "desc": "Choose 1 of those units to roll 1 additional die\r\n Then, return this card to the Argent player",
         "phase": ["Action"],
-        "factionId": 20
+        "factionId": 20,
+        "pok": true
     },
     {
         "id": 8,
+        "replacement": 32,
         "title": "War Funding",
         "condition": "At the start of a round of space combat",
         "desc": "The Letnev player loses 2 trade goods. During this combat round, reroll any number of your dice.\r\n Then, return this card to the Letnev player.",
@@ -89,7 +92,8 @@
         "condition": "ACTION: Place this card face up in your play area",
         "desc": "When you give a number of commodities to the Empyrean player equal to your maximum commodity value, you each gain 1 trade good.\r\n If you activate a system that contains 1 or more of the Empyrean player's units, return this card to the Empyrean player.",
         "phase": ["Action"],
-        "factionId": 2
+        "factionId": 2,
+        "pok": true
     },
     {
         "id": 13,
@@ -97,7 +101,8 @@
         "condition": "ACTION: Place this card face up in your play area",
         "desc": "When you and the Empyrean player cast votes for the same outcome, cast 4 additional votes for that outcome.\r\n If you activate a system that contains 1 or more of the Empyrean player's units, return this card to the Empyrean player.",
         "phase": ["Action"],
-        "factionId": 2
+        "factionId": 2,
+        "pok": true
     },
     {
         "id": 14,
@@ -117,6 +122,7 @@
     },
     {
         "id": 16,
+        "replacement": 33,
         "title": "Cybernetic Enhancements",
         "condition": "At the start of your turn",
         "desc": "Remove 1 token from the L1Z1X player's strategy pool and return it to their reinforcements. Then, place 1 command token from your reinforcements in your strategy pool.\r\n Then, return this card to the L1Z1X player.",
@@ -129,7 +135,8 @@
         "condition": "At the start of the strategy phase",
         "desc": "Choose 1 non-home system that contains your units; each other player who has a token on the Mahact player's command sheet places a token from their reinforcements in that system\r\n Then, return this card to the Mahact player .",
         "phase": ["Strategy"],
-        "factionId": 21
+        "factionId": 21,
+        "pok": true
     },
     {
         "id": 18,
@@ -153,7 +160,8 @@
         "condition": "ACTION: Purge 2 of your relic fragments of the same type to gain 1 relic",
         "desc": "Then, return this card to the Naaz-Rokha player.",
         "phase": ["Action"],
-        "factionId": 22
+        "factionId": 22,
+        "pok": true
     },
     {
         "id": 21,
@@ -169,7 +177,8 @@
         "condition": "At the start of a space combat against a player other than the Nomad",
         "desc": "During this combat, treat 1 of your non-fighter ships as if it has the SUSTAIN DAMAGE ability, combat value, and ANTI-FIGHTER BARRAGE value of the Nomad's flagship\r\n Return this card to the Nomad player at the end of this combat.",
         "phase": ["SpaceCombat"],
-        "factionId": 6
+        "factionId": 6,
+        "pok": true
     },
     {
         "id": 23,
@@ -200,7 +209,8 @@
                 "image": "terraform"
             }
         ],
-        "factionId": 23
+        "factionId": 23,
+        "pok": true
     },
     {
         "id": 25,
@@ -216,10 +226,12 @@
         "condition": "After you activate a system",
         "desc": "Your ships do not roll for gravity rifts during this movement; apply an additional +1 to the move values of your ships that would move out of or through a gravity rift instead\r\n Then, return this card to the Vuil'raith player.",
         "phase": ["Action"],
-        "factionId": 24
+        "factionId": 24,
+        "pok": true
     },
     {
         "id": 27,
+        "replacement": 34,
         "title": "Acquiescence",
         "condition": "At the end of the strategy phase",
         "desc": "Exchange 1 of your strategy cards with a strategy card that was chosen by the Winnu player.\r\n Then, return this card to the Winnu player.",
@@ -236,6 +248,7 @@
     },
     {
         "id": 29,
+        "replacement": 35,
         "title": "Greyfire Mutagen",
         "condition": "After a system is activated",
         "desc": "The Yin player cannot use faction abilities or faction technology during this tactical action.\r\n Then, return this card to the Yin player.",
@@ -249,5 +262,64 @@
         "desc": "Look at the Yssaril player's hand of action cards.  Choose 1 of those cards and add it to your hand.\r\n Then, return this card to the Yssaril player.",
         "phase": ["Action"],
         "factionId": 19
+    },
+    {
+        "id": 31,
+        "replaces": 6,
+        "codex": [1],
+        "title": "Stymie Ω",
+        "condition": "After another player moves ships into a system that contains 1 or more of your units",
+        "desc": "You may place 1 command token from that player's reinforcements in any non-home system.\r\nThen, return this card to the Arborec player.",
+        "phase": ["Action"],
+        "factionId": 3
+    },
+    {
+        "id": 32,
+        "replaces": 8,
+        "codex": [1],
+        "title": "War Funding Ω",
+        "condition": "After you and your opponent roll dice during space combat",
+        "desc": "You may reroll all of your opponent's dice.\r\nYou may reroll any number of your dice.\r\nThen, return this card to the Letnev player.",
+        "phase": ["SpaceCombat"],
+        "factionId": 8
+    },
+    {
+        "id": 33,
+        "replaces": 16,
+        "codex": [1],
+        "title": "Cybernetic Enhancements Ω",
+        "condition": "When you gain command tokens during the status phase",
+        "desc": "Gain 1 additional command token.\r\nThen, return this card to the L1Z1X player.",
+        "phase": ["Status"],
+        "factionId": 12
+    },
+    {
+        "id": 34,
+        "replaces": 27,
+        "codex": [1],
+        "title": "Acquiescence Ω",
+        "condition": "When the Winnu player resolves a strategic action",
+        "desc": "You do not have to spend or place a command token to resolve the secondary ability of that strategy card.\r\nThen, return this card to the Winnu player.",
+        "phase": ["Action"],
+        "factionId": 16
+    },
+    {
+        "id": 35,
+        "replaces": 29,
+        "codex": [1],
+        "title": "Greyfire Mutagen Ω",
+        "condition": "At the start of a ground combat against 2 or more ground forces that are not controlled by the Yin player",
+        "desc": "Replace 1 of your opponent's infantry with 1 infantry from your reinforcements.\r\nThen, return this card to the Yin player.",
+        "phase": ["GroundCombat"],
+        "factionId": 18
+    },
+    {
+        "id": 36,
+        "codex": [3],
+        "title": "Keleres Rider",
+        "condition": "After an agenda is revealed",
+        "desc": "You cannot vote on this agenda. Predict aloud an outcome of this agenda. If your prediction is correct, draw 1 action card and gain 2 trade goods.\r\nThen, return this card to the Keleres player.",
+        "phase": ["Agenda"],
+        "factionId": 25
     }
 ]

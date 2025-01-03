@@ -23,6 +23,8 @@ import {
 import ScrollableCardList, { CardType } from "./ScrollableCardList";
 import "../lib/ArrayExtensions";
 import { GetSpecialUnitsAndLeaders, UnitType } from "../lib/Faction";
+import { ReplaceCodexTechnologies } from "../lib/Technology";
+import { Codex } from "../lib/Codices";
 
 // data
 import Planets from "../data/planets.json";
@@ -37,10 +39,40 @@ import Relics from "../data/relics.json";
 function EditModal(props) {
     const [state, dispatch] = useStore();
 
-    function pokFilter(items) {
-        return state.pok
-            ? items.filter((a) => a.pok !== false)
-            : items.filter((a) => a.pok !== true);
+    function ruleFilter(items) {
+
+        function replaceCodex(codexId, items) {
+            if (state.codex.includes(codexId)) {
+                items.forEach(i => {
+                    if (i.codex?.includes(codexId)) {
+                        items = items.filter((e) => e.id !== i.replaces)
+                    }
+                });
+
+                return items;
+            }
+            else {
+                return items.filter(i => !i.replaces);
+            }
+        }
+
+        items = state.pok
+            ? items.filter((i) => i.pok !== false)
+            : items.filter((i) => i.pok !== true);
+
+        items = !state.codex.includes(Codex.Ordinian)
+            ? items.filter((a) => !a.codex?.includes(Codex.Ordinian))
+            : replaceCodex(Codex.Ordinian, items);
+
+        items = !state.codex.includes(Codex.Affinity)
+            ? items.filter((a) => !a.codex?.includes(Codex.Affinity))
+            : replaceCodex(Codex.Affinity, items);
+
+        items = !state.codex.includes(Codex.Vigil)
+            ? items.filter((a) => !a.codex?.includes(Codex.Vigil))
+            : replaceCodex(Codex.Vigil, items);
+
+        return items;
     }
 
     return (
@@ -74,7 +106,7 @@ function EditModal(props) {
                                                         dispatch(
                                                             setExtraVictoryPoints(
                                                                 state.extraVictoryPoints +
-                                                                    1
+                                                                1
                                                             )
                                                         )
                                                     }
@@ -87,7 +119,7 @@ function EditModal(props) {
                                                         dispatch(
                                                             setExtraVictoryPoints(
                                                                 state.extraVictoryPoints -
-                                                                    1
+                                                                1
                                                             )
                                                         )
                                                     }
@@ -116,7 +148,7 @@ function EditModal(props) {
                                     <Row className="px-3">
                                         <Col className="p-0">
                                             <AutoSuggestionInput
-                                                items={pokFilter(
+                                                items={ruleFilter(
                                                     Planets
                                                 ).exclude(state.planets)}
                                                 setValue={(planet) =>
@@ -171,36 +203,38 @@ function EditModal(props) {
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
-                                                items={pokFilter(
-                                                    Technology
-                                                ).exclude(
-                                                    // exclude existing technologies,
-                                                    state.technologies.concat(
-                                                        Technology.filter(
-                                                            (t) =>
-                                                                // previously replaced technologies,
-                                                                state.technologies
-                                                                    .map(
-                                                                        (st) =>
-                                                                            st.id
-                                                                    )
-                                                                    .includes(
-                                                                        t.replacedBy
+                                                items={ReplaceCodexTechnologies(
+                                                    ruleFilter(
+                                                        Technology
+                                                    ).exclude(
+                                                        // exclude existing technologies,
+                                                        state.technologies.concat(
+                                                            Technology.filter(
+                                                                (t) =>
+                                                                    // previously replaced technologies,
+                                                                    state.technologies
+                                                                        .map(
+                                                                            (st) =>
+                                                                                st.id
+                                                                        )
+                                                                        .includes(
+                                                                            t.replacedBy
+                                                                        ) ||
+                                                                    // techs with different upgrades
+                                                                    t.excludeFactions?.includes(
+                                                                        state
+                                                                            .faction
+                                                                            .id
                                                                     ) ||
-                                                                // techs with different upgrades
-                                                                t.excludeFactions?.includes(
-                                                                    state
-                                                                        .faction
-                                                                        .id
-                                                                ) ||
-                                                                // and techs from other factions
-                                                                (t.factionId &&
-                                                                    t.factionId !==
+                                                                    // and techs from other factions
+                                                                    (t.factionId &&
+                                                                        t.factionId !==
                                                                         state
                                                                             .faction
                                                                             .id)
+                                                            )
                                                         )
-                                                    )
+                                                    ), state
                                                 )}
                                                 setValue={(tech) => {
                                                     dispatch(addTech(tech));
@@ -236,7 +270,7 @@ function EditModal(props) {
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
-                                                items={pokFilter(
+                                                items={ruleFilter(
                                                     Objectives
                                                 ).exclude(state.objectives)}
                                                 setValue={(objective) =>
@@ -268,7 +302,7 @@ function EditModal(props) {
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
-                                                items={pokFilter(ActionCards)}
+                                                items={ruleFilter(ActionCards)}
                                                 setValue={(actionCard) =>
                                                     dispatch(
                                                         addActionCard(
@@ -300,7 +334,7 @@ function EditModal(props) {
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
-                                                items={pokFilter(
+                                                items={ruleFilter(
                                                     Agendas
                                                 ).exclude(state.agendas)}
                                                 setValue={(agenda) =>
@@ -330,7 +364,7 @@ function EditModal(props) {
                                     <Row>
                                         <Col>
                                             <AutoSuggestionInput
-                                                items={pokFilter(
+                                                items={ruleFilter(
                                                     PromissoryNotes
                                                 )}
                                                 setValue={(note) =>

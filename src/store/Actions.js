@@ -228,9 +228,16 @@ export function removeExplorationCard(card) {
     };
 }
 
-export function setAttachedPlanet(card, planet) {
+export function setAttachedPlanetExploration(cardType, planet) {
     return {
-        type: Types.SETATTACHEDPLANET,
+        type: Types.SETATTACHEDPLANETEXPLORATION,
+        payload: { cardType, planet },
+    };
+}
+
+export function setAttachedPlanetRelic(card, planet) {
+    return {
+        type: Types.SETATTACHEDPLANETRELIC,
         payload: { card, planet },
     };
 }
@@ -274,5 +281,26 @@ export function removeLookupFaction(faction) {
     return {
         type: Types.REMOVELOOKUPFACTION,
         payload: faction,
+    };
+}
+
+export function setCodex(codexId) {
+    return {
+        type: Types.SETCODEX,
+        payload: codexId,
+    };
+}
+
+export function removeCodex(codexId) {
+    return {
+        type: Types.REMOVECODEX,
+        payload: codexId
+    };
+}
+
+export function setStartingFaction(factionId, chosen) {
+    return {
+        type: Types.SETSTARTINGFACTION,
+        payload: {factionId, chosen}
     };
 }

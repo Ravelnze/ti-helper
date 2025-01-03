@@ -1,5 +1,5 @@
 import { AddTech, RemoveTech, SetTech } from "../lib/Technology";
-import { SetFaction, SetUnitAvailable } from "../lib/Faction";
+import { SetFaction, SetStartingFaction, SetUnitAvailable } from "../lib/Faction";
 import applyMiddleware from "./Middleware";
 import * as Types from "./Types";
 import {
@@ -25,14 +25,15 @@ import {
 import {
     AddExplorationCard,
     RemoveExplorationCard,
-    SetAttachedPlanet,
+    SetAttachedPlanetExploration,
 } from "../lib/Exploration";
-import { AddRelic, ExhaustRelic, RemoveRelic } from "../lib/Relic";
+import { AddRelic, ExhaustRelic, RemoveRelic, SetAttachedPlanetRelic } from "../lib/Relic";
 import {
     AppendUnitAbilities,
     RemoveExtraAbility,
     UpdateUnitProperies,
 } from "../lib/Unit";
+import { AddCodex, RemoveCodex } from "../lib/Codices";
 
 export const initialState = () => ({
     pok: true,
@@ -56,6 +57,7 @@ export const initialState = () => ({
     combatTab: null,
     lookupFaction: null,
     lookupFactionList: [],
+    codex: [],
 });
 
 // Good guide on why the store is laid out this way
@@ -294,11 +296,22 @@ function removeExplorationCard(state, { payload }) {
     };
 }
 
-function setAttachedPlanet(state, { payload }) {
+function setAttachedPlanetExploration(state, { payload }) {
     return {
         ...state,
-        explorationCards: SetAttachedPlanet(
+        explorationCards: SetAttachedPlanetExploration(
             state,
+            payload.cardType,
+            payload.planet
+        ),
+    };
+}
+
+function setAttachedPlanetRelic(state, { payload }) {
+    return {
+        ...state,
+        relics: SetAttachedPlanetRelic(
+            { ...state.relics },
             payload.card,
             payload.planet
         ),
@@ -353,6 +366,23 @@ function removeLookupFaction(state, { payload }) {
     };
 }
 
+function setCodex(state, { payload }) {
+    return {
+        ...state,
+        codex: AddCodex(state.codex, payload)
+    }
+}
+
+function removeCodex(state, { payload }) {
+    return {
+        ...state,
+        codex: RemoveCodex(state.codex, payload)
+    }
+}
+
+function setStartingFaction(state, { payload }) {
+    return SetStartingFaction(state, payload);
+}
 // #endregion
 
 const createReducer = (handlers) => (state, action) => {
@@ -401,11 +431,15 @@ export const reducer = createReducer({
     [Types.SETPROMISSORYATTACHED]: setPromissoryAttached,
     [Types.ADDEXPLORATIONCARD]: addExplorationCard,
     [Types.REMOVEEXPLORATIONCARD]: removeExplorationCard,
-    [Types.SETATTACHEDPLANET]: setAttachedPlanet,
+    [Types.SETATTACHEDPLANETEXPLORATION]: setAttachedPlanetExploration,
+    [Types.SETATTACHEDPLANETRELIC]: setAttachedPlanetRelic,
     [Types.ADDRELIC]: addRelic,
     [Types.REMOVERELIC]: removeRelic,
     [Types.EXHAUSTRELIC]: exhaustRelic,
     [Types.SETLOOKUPFACTION]: setLookupFaction,
     [Types.ADDLOOKUPFACTION]: addLookupFaction,
     [Types.REMOVELOOKUPFACTION]: removeLookupFaction,
+    [Types.SETCODEX]: setCodex,
+    [Types.REMOVECODEX]: removeCodex,
+    [Types.SETSTARTINGFACTION]: setStartingFaction
 });

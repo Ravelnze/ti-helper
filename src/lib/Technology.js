@@ -1,4 +1,5 @@
 import Technologies from "../data/technologies.json";
+import { Codex } from "./Codices";
 
 export const Categories = {
     Cybernetic: "Cybernetic",
@@ -49,4 +50,24 @@ export function GetTechnologiesForPhase(technologies, phase) {
     return technologies.filter((t) =>
         t.phase.some((p) => ["Any", phase].includes(p))
     );
+}
+
+export function ReplaceCodexTechnologyIds(ids, state) {
+    let technologies = Technologies.filter((t) => ids.includes(t.id))
+    if (state.codex.includes(Codex.Ordinian)) {
+        technologies.forEach(tech => {
+            if (tech.codex?.includes(Codex.Ordinian)) {
+                technologies = technologies.filter((t) => t.id !== tech.replaces);
+            }
+        });
+    
+        return technologies.map((t) => t.id);
+    }
+
+    return technologies.filter((t) => !t.replaces).map((t) => t.id);
+}
+
+export function ReplaceCodexTechnologies(technologies, state) {
+    let filteredIds = ReplaceCodexTechnologyIds(technologies.map(t => t.id), state);
+    return Technologies.filter((t) => filteredIds.includes(t.id));
 }

@@ -6,7 +6,7 @@ import FactionInfo from "./FactionInfo";
 import LinksContainer from "./LinksContainer";
 
 function InfoContainer(props) {
-    const [state, dispatch] = useStore();
+    const [state, ] = useStore();
 
     const Factions = "Faction Lookup";
     const Links = "Links";

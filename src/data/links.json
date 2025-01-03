@@ -5,27 +5,27 @@
         "defaultUrl": "https://images-cdn.fantasyflightgames.com/filer_public/da/df/dadf9f07-78f3-43ac-9cce-dd6b55b24ec2/ti4_living_rules_reference_v1_3_web.pdf"
     },
     {
-        "title": "Fandom Wiki",
-        "defaultUrl": "https://twilight-imperium.fandom.com/wiki/Twilight_Imperium_Wiki#Fourth_Edition"
-    },
-    {
-        "title": "/r/TwilightImperium",
-        "defaultUrl": "https://www.reddit.com/r/twilightimperium/"
-    },
-    {
-        "title": "Battle Calculator",
-        "defaultUrl": "https://ti4battle.com/"
-    },
-    {
-        "title": "Map Generator",
-        "defaultUrl": "https://keeganw.github.io/ti4/"
-    },
-    {
         "title": "Rule Clarifications",
         "defaultUrl": "https://www.tirules.com/"
     },
     {
         "title": "Milty Draft Generator",
         "defaultUrl": "https://milty.shenanigans.be/"
+    },
+    {
+        "title": "Map Generator",
+        "defaultUrl": "https://keeganw.github.io/ti4/"
+    },
+    {
+        "title": "Battle Calculator",
+        "defaultUrl": "https://ti4battle.com/"
+    },
+    {
+        "title": "Twilight Imperium Wiki",
+        "defaultUrl": "https://twilight-imperium.fandom.com/wiki/Twilight_Imperium_Wiki#Fourth_Edition"
+    },
+    {
+        "title": "/r/TwilightImperium",
+        "defaultUrl": "https://www.reddit.com/r/twilightimperium/"
     }
 ]

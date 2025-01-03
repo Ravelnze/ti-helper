@@ -3,6 +3,14 @@ import { exhaustRelic, removeRelic } from "../store/Actions";
 import RemoveButton from "./RemoveButton";
 import Card from "react-bootstrap/Card";
 import { GetRelicVariantColour } from "../lib/Relic";
+import {
+    AttachmentCardType,
+    AugmentPlanet,
+} from "../lib/Planet";
+import {
+    setPlanet,
+} from "../store/Actions";
+import PlanetAttachment from "./PlanetAttachment";
 
 function RelicCard(props) {
     const [state, dispatch] = useStore();
@@ -13,7 +21,21 @@ function RelicCard(props) {
         <Card bg={props.relic.isExhausted ? "light" : variant.colour}>
             {props.interactable ? (
                 <RemoveButton
-                    onClick={() => dispatch(removeRelic(props.relic))}
+                    onClick={() => {
+                        if (props.relic.attachedPlanet) {
+                            dispatch(
+                                setPlanet(
+                                    AugmentPlanet(
+                                        props.relic,
+                                        AttachmentCardType.Relic,
+                                        props.relic.attachedPlanet,
+                                        false
+                                    )
+                                )
+                            );
+                        }
+                        dispatch(removeRelic(props.relic));
+                    }}
                 />
             ) : null}
             <Card.Header className={`text-center ${textClass}`}>
@@ -48,6 +70,15 @@ function RelicCard(props) {
                     </Card.Text>
                 ) : null}
             </Card.Body>
+            <PlanetAttachment 
+                interactable={props.interactable} 
+                cardType={AttachmentCardType.Relic} 
+                card={props.relic} 
+                planets={state.planets.filter(
+                    (p) => !p.legendaryAbility && !p.homeFactionId
+                )}
+                variant
+            />
         </Card>
     );
 }

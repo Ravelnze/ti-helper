@@ -91,7 +91,7 @@ function Overview(props) {
             </Row>
             <Row>
                 <Col className="text-center">
-                    {Object.entries(Categories).map(([key, cat], i) => {
+                    {Object.entries(Categories).map(([, cat], i) => {
                         const variant = GetTechVariantColour(cat);
                         return (
                             <Badge

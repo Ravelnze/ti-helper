@@ -3,7 +3,6 @@ import { Route, Link, useRouteMatch, useLocation } from "react-router-dom";
 import { AnimatedSwitch as Switch } from "react-router-transition";
 import Overview from "./Overview";
 import Nav from "react-bootstrap/Nav";
-import NavItem from "react-bootstrap/NavItem";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";

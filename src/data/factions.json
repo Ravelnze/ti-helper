@@ -221,7 +221,7 @@
     {
         "id": 3,
         "title": "The Arborec",
-        "tech": [2, 23],
+        "tech": [2, 23, 98],
         "planets": [7],
         "units": [
             {
@@ -280,7 +280,7 @@
             "abilities": [{ "id": 3 }, { "id": 4, "value": 2 }, { "id": 6 }],
             "specialAbility": {
                 "desc": "DEPLOY: When you would use your MITOSIS faction ability you may replace 1 of your infantry with 1 mech from your reinforcements instead.",
-                "phase": ["Action"]
+                "phase": ["Action", "Status"]
             },
             "logo": "mech",
             "available": false
@@ -1480,6 +1480,19 @@
             "logo": "mech",
             "available": false
         },
+        "alt-mech": {
+            "title": "Iconoclast Ω",
+            "cost": 2,
+            "combat": 6,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "Other players cannot use ANTI-FIGHTER BARRAGE against your units in this system.",
+                "phase": ["SpaceCombat"]
+            },
+            "logo": "mech",
+            "available": false,
+            "codex": [3]
+        },
         "leaders": [
             {
                 "type": "Agent",
@@ -1493,6 +1506,18 @@
                 "available": true
             },
             {
+                "type": "Agent",
+                "title": "Z'eu Ω",
+                "unlock": "At Game Start",
+                "specialAbility": {
+                    "desc": "ACTION: Exhaust this card and choose a player; that player may perform a tactical action in a non-home system without placing a command token; that system still counts as being activated.",
+                    "phase": ["Action"]
+                },
+                "logo": "naaluAgent",
+                "available": true,
+                "codex": [3]
+            },
+            {
                 "type": "Commander",
                 "title": "M'aban",
                 "unlock": "Have 12 fighters on the game board",
@@ -1502,6 +1527,18 @@
                 },
                 "logo": "naaluCommander",
                 "available": false
+            },
+            {
+                "type": "Commander",
+                "title": "M'aban Ω",
+                "unlock": "Have ground units in or adjacent to the Mexatol Rex system",
+                "specialAbility": {
+                    "desc": " At any time: You may look at your neighbours' hand of promissory notes and the top and bottom card of the agenda deck.",
+                    "phase": ["Strategy", "Action", "GroundCombat", "SpaceCombat", "Status", "Agenda"]
+                },
+                "logo": "naaluCommander",
+                "available": false,
+                "codex": [3]
             },
             {
                 "type": "Hero",
@@ -1849,6 +1886,18 @@
                 },
                 "logo": "xxchaHero",
                 "available": false
+            },
+            {
+                "type": "Hero",
+                "title": "Xxekir Grom Ω",
+                "unlock": "Have 3 Scored Objectives",
+                "specialAbility": {
+                    "desc": "When you exhaust planets, combine the values of their resources and influence. Treat the combined value as if it were both resources and influence.",
+                    "phase": ["Agenda", "Action", "Status"]
+                },
+                "logo": "xxchaHero",
+                "available": false,
+                "codex": [3]
             }
         ]
     },
@@ -1933,6 +1982,18 @@
                 "available": true
             },
             {
+                "type": "Agent",
+                "title": "Brother Milor Ω",
+                "unlock": "At Game Start",
+                "specialAbility": {
+                    "desc": "After a player's unit is destroyed: You may exhaust this card to allow that player to place 2 fighters in the destroyed unit's system if it was a ship, or 2 infantry on its planet if it was a ground force.",
+                    "phase": ["Action", "SpaceCombat", "GroundCombat"]
+                },
+                "logo": "yinAgent",
+                "available": true,
+                "codex": [3]
+            },
+            {
                 "type": "Commander",
                 "title": "Brother Omar",
                 "unlock": "Use your INDOCTRINATION faction ability",
@@ -1944,6 +2005,18 @@
                 "available": false
             },
             {
+                "type": "Commander",
+                "title": "Brother Omar Ω",
+                "unlock": "Use one of your faction abilities",
+                "specialAbility": {
+                    "desc": "This card satisfies a green technology prerequisite. When you research a technology owned by another player, you may return 1 of your infantry to reinforcements to ignore its prerequisites.",
+                    "phase": ["Action"]
+                },
+                "logo": "yinCommander",
+                "available": false,
+                "codex": [3]
+            },
+            {
                 "type": "Hero",
                 "title": "Dannel of the Tenth",
                 "unlock": "Have 3 Scored Objectives",
@@ -1953,6 +2026,18 @@
                 },
                 "logo": "yinHero",
                 "available": false
+            },
+            {
+                "type": "Hero",
+                "title": "Dannel of the Tenth Ω",
+                "unlock": "Have 3 Scored Objectives",
+                "specialAbility": {
+                    "desc": "ACTION: Commit up to 3 infantry from your reinforcements to any non-home planets and resolve invasions on those planets; players cannot use SPACE CANNON against those units. Then, purge this card.",
+                    "phase": ["Action"]
+                },
+                "logo": "yinHero",
+                "available": false,
+                "codex": [3]
             }
         ]
     },
@@ -2669,6 +2754,146 @@
                 },
                 "logo": "cabalHero",
                 "available": false
+            }
+        ]
+    },
+    {
+        "id": 25,
+        "title": "The Council Keleres",
+        "pok": true,
+        "codex": [3],
+        "tech": [1, 2, 3, 4, 5, 6, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 98],
+        "chooseTech": true,
+        "chooseTechDesc": "Choose 2 non-faction technologies owned by other players",
+        "planets": [23 ,28, 29, 33, 34, 35],
+        "chooseFaction": true,
+        "factionIds": [13, 17, 20],
+        "units": [
+            {
+                "id": 1,
+                "count": 2
+            },
+            {
+                "id": 2,
+                "count": 1
+            },
+            {
+                "id": 5,
+                "count": 2
+            },
+            {
+                "id": 8,
+                "count": 2
+            },
+            {
+                "id": 10,
+                "count": 1
+            }
+        ],
+        "commodities": 2,
+        "logo": "keleres",
+        "abilities": [
+            {
+                "title": "THE TRIBUNII",
+                "description": "During setup, choose an unplayed faction from among the Mentak, the Xxcha and The Argent Flight; take that faction's home system, command tokens and control markers. Additionally, take the Keleres Hero that corresponds to that faction.",
+                "phase": ["Setup"]
+            },
+            {
+                "title": "COUNCIL PATRONAGE",
+                "description": "Replenish your commodities at the start of the strategy phase, then gain 1 trade good.",
+                "phase": ["Strategy"]
+            },
+            {
+                "title": "LAW'S ORDER",
+                "description": "You may spend 1 influence at the start of your turn to treat all laws as blank until the end of your turn.",
+                "phase": ["Action"]
+            }
+        ],
+        "flagship": {
+            "title": "Artemiris",
+            "cost": 8,
+            "combat": 7,
+            "rolls": 2,
+            "move": 1,
+            "capacity": 6,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "Other players must spend 2 influence to activate the system that contains this ship.",
+                "phase": ["Action"]
+            },
+            "logo": "flagship",
+            "available": false
+        },
+        "mech": {
+            "title": "Omniopiares",
+            "cost": 2,
+            "combat": 6,
+            "abilities": [{ "id": 6 }],
+            "specialAbility": {
+                "desc": "Other players must spend 1 influence to commit ground forces to the planet that contains this unit.",
+                "phase": ["GroundCombat"]
+            },
+            "logo": "mech",
+            "available": false
+        },
+        "leaders": [
+            {
+                "type": "Agent",
+                "title": "Xander Alexin Victori III",
+                "unlock": "At Game Start",
+                "specialAbility": {
+                    "desc": "At any time:\r\nYou may exhaust this card to allow any player to spend commodities as if they were trade goods",
+                    "phase": ["Action", "Strategy", "Status", "Agenda"]
+                },
+                "logo": "keleresAgent",
+                "available": true
+            },
+            {
+                "type": "Commander",
+                "title": "Suffi An",
+                "unlock": "Spend 1 trade good after you play an action card that has a component action",
+                "specialAbility": {
+                    "desc": "After you perform a component action:\r\nYou may perform an additional action.",
+                    "phase": ["Action"]
+                },
+                "logo": "keleresCommander",
+                "available": false
+            },
+            {
+                "type": "Hero",
+                "title": "Kuuasi Aun Jalatai",
+                "unlock": "Have 3 Scored Objectives",
+                "specialAbility": {
+                    "desc": "At the start of a round of space combat in a system that contains a planet you control: Place your flagship and up to a total of 2 cruisers and/or destroyers from your reinforcements in the active system.\r\nThen, purge this card.",
+                    "phase": ["SpaceCombat"]
+                },
+                "logo": "keleresHeroArgent",
+                "available": false,
+                "factionId": 20
+            },
+            {
+                "type": "Hero",
+                "title": "Odlynn Myrr",
+                "unlock": "Have 3 Scored Objectives",
+                "specialAbility": {
+                    "desc": "After an agenda is revealed:\r\nYou may cast up to 6 additional votes on this agenda. Predict aloud an outcome for this agenda. For each player that votes for another outcome, gain 1 trade good and 1 command token.\r\nThen, purge this card. ",
+                    "phase": ["Agenda"]
+                },
+                "logo": "keleresHeroXxcha",
+                "available": false,
+                "factionId": 17
+            },
+            {
+                "type": "Hero",
+                "title": "Harka Leeds",
+                "unlock": "Have 3 Scored Objectives",
+                "specialAbility": {
+                    "desc": "ACTION: Reveal cards from the action card deck until you reveal 3 action cards that have component actions. Draw those cards and shuffle the rest back into the action card deck.\r\nThen, purge this card.",
+                    "phase": ["Action"]
+                },
+                "logo": "keleresHeroMentak",
+                "available": false,
+                "factionId": 13
             }
         ]
     }

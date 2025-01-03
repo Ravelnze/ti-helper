@@ -8,8 +8,7 @@ import ValueLabel from "./ValueLabel";
 import { GetSpecialUnitsAndLeaders } from "../lib/Faction";
 import ScrollableCardList, { CardType } from "./ScrollableCardList";
 import FactionList from "./FactionList";
-import { Link } from "react-router-dom";
-import { setFaction, setTech } from "../store/Actions";
+import { setFaction, setStartingFaction, setTech } from "../store/Actions";
 
 import Technologies from "../data/technologies.json";
 import PromissoryNotes from "../data/promissoryNotes.json";
@@ -21,6 +20,11 @@ import {
 } from "../store/Actions";
 import { useStore } from "../store/Store";
 import GetLogoByKey from "../lib/Logos";
+import { Codex } from "../lib/Codices";
+import { ReplaceCodexTechnologies } from "../lib/Technology";
+import { GetPlanetsByIds } from "../lib/Planet";
+
+const keleresFactionId = 25;
 
 function FactionInfo(props) {
     const [state, dispatch] = useStore();
@@ -34,14 +38,16 @@ function FactionInfo(props) {
         : null;
     const promissoryNotes = PromissoryNotes.filter(
         (p) => p.factionId && p.factionId === props.faction?.id
+    ).filter(
+        (p) => state.codex.includes(Codex.Ordinian) && props.faction.id !== keleresFactionId ? p.replaces : !p.replaces
     );
-    const planets = Planets.filter(
-        (p) => p.homeFactionId && p.homeFactionId === props.faction?.id
-    );
-    const startingTech = props.technologies.filter((t) => !t.replacedBy);
+    const startingTech = ReplaceCodexTechnologies(props.technologies.filter(
+        (t) => !t.replacedBy
+    ), state);
     const removeFaction = state.lookupFactionList
         .map((f) => f.id)
         .includes(props.faction?.id);
+    const planets = !props.isNewGame ? GetPlanetsByIds(Planets, props.faction?.planets) : state.planets;
 
     return (
         <>
@@ -110,6 +116,7 @@ function FactionInfo(props) {
                                 if (props.isNewGame) {
                                     dispatch(setFaction(null));
                                     dispatch(setTech([]));
+                                    dispatch(setStartingFaction(null, false))
                                 } else {
                                     dispatch(setLookupFaction(null));
                                 }
@@ -129,6 +136,23 @@ function FactionInfo(props) {
                     isNewGame={props.isNewGame}
                 />
             )}
+
+            {props.faction && props.faction.chooseFaction && !state.keleresFactionChosen && props.isNewGame ? (
+                <Row>
+                    <Col>
+                        <DividerText title="Faction Selection" />
+                        <div className="text-center">
+                            <sub className="text-light">
+                                Choose from the following factions to set home planets and hero
+                            </sub>
+                        </div>
+                        <FactionList
+                            factionList={props.faction.factionIds}
+                            chooseFaction={props.faction.chooseFaction}
+                        />
+                    </Col>
+                </Row>
+            ) : null}
 
             {abilities?.length > 0 ? (
                 <Row>
@@ -171,9 +195,8 @@ function FactionInfo(props) {
                 <Row>
                     <Col>
                         <DividerText
-                            title={`Faction Promissory Note${
-                                promissoryNotes.length === 1 ? "" : "s"
-                            }`}
+                            title={`Faction Promissory Note${promissoryNotes.length === 1 ? "" : "s"
+                                }`}
                         />
                         <ScrollableCardList
                             cardType={CardType.PromissoryNote}

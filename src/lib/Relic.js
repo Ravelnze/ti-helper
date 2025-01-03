@@ -88,3 +88,21 @@ export function GetRelicsForPhase(relics, phase) {
 
     return phaseRelics;
 }
+
+export function SetAttachedPlanetRelic(relics, relic, planet) {
+    if (!relics[relic.id]) {
+        return relics;
+    }
+
+    const index = relics[relic.id].findIndex(
+        (r) => r.instanceId === relic.instanceId
+    );
+
+    if (index === -1) {
+        return relics;
+    }
+
+    relics[relic.id][index].attachedPlanet = planet;
+
+    return relics;
+}

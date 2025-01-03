@@ -13,7 +13,8 @@ const AttachType = {
     techSpecialty: "techSpecialty",
     terraform: "terraform",
     geoform: "geoform",
-    ability: "ability"
+    ability: "ability",
+    legendary: "legendary"
 };
 
 export const AttachmentCardType = {
@@ -21,6 +22,7 @@ export const AttachmentCardType = {
     Agenda: "Agenda",
     Promissory: "Promissory",
     Unit: "Unit",
+    Relic: "Relic"
 };
 
 export function GetPlanetVariantColour(trait) {
@@ -49,9 +51,9 @@ export function UpdateResources(planets) {
         availableResources:
             planets.length > 0
                 ? planets
-                      .filter((p) => !p.isExhausted)
-                      .map((p) => p.resource)
-                      .reduce((a, b) => a + b, 0)
+                    .filter((p) => !p.isExhausted)
+                    .map((p) => p.resource)
+                    .reduce((a, b) => a + b, 0)
                 : 0,
         totalResources:
             planets.length > 0
@@ -65,9 +67,9 @@ export function UpdateInfluence(planets) {
         availableInfluence:
             planets.length > 0
                 ? planets
-                      .filter((p) => !p.isExhausted)
-                      .map((p) => p.influence)
-                      .reduce((a, b) => a + b, 0)
+                    .filter((p) => !p.isExhausted)
+                    .map((p) => p.influence)
+                    .reduce((a, b) => a + b, 0)
                 : 0,
         totalInfluence:
             planets.length > 0
@@ -77,7 +79,7 @@ export function UpdateInfluence(planets) {
 }
 
 export function AddPlanet(state, planet) {
-    const newPlanet = {...planet};
+    const newPlanet = { ...planet };
     newPlanet.attachments = [];
     newPlanet.extraIcons = [];
     const planets = [...state.planets, newPlanet];
@@ -274,6 +276,16 @@ export function AugmentPlanet(
                     planet.abilities.filter(a => a.id !== attachment.value.id);
                 }
                 break;
+            case AttachType.legendary: // Nano-forge relic
+                if (attaching) {
+                    planet.legendaryAbility = { phase: [] };
+                    planet.extraIcons.push(attachment.image);
+                }
+                else {
+                    planet.legendaryAbility = null;
+                    planet.extraIcons = planet.extraIcons.filter((ei) => ei !== attachment.image);
+                }
+                break;
             case AttachType.vp:
             case AttachType.dmz:
             case AttachType.terraform: // Titans promissory
@@ -302,4 +314,13 @@ export function AugmentPlanet(
     });
 
     return planet;
+}
+
+export function GetPlanetsByIds(planetsList, planetIds) {
+    const planets = [];
+    planetIds?.forEach(id => {
+        const planet = planetsList.find(p => p.id === id);
+        planets.push(planet);
+    });
+    return planets;
 }

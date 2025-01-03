@@ -6,8 +6,8 @@ export function RemoveExplorationCard(explorationCards, card) {
     return explorationCards.filter((ec) => ec.id !== card.id);
 }
 
-export function SetAttachedPlanet(state, card, planet) {
-    const index = state.explorationCards.findIndex((ec) => ec.id === card.id);
+export function SetAttachedPlanetExploration(state, cardType, planet) {
+    const index = state.explorationCards.findIndex((ec) => ec.id === cardType.id);
     if (index === -1) return; // card doesn't exist
 
     const explorationCards = [...state.explorationCards];

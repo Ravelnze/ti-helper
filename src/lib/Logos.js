@@ -45,6 +45,7 @@ import titans from "../assets/images/logos/Titans.png";
 import terraform from "../assets/images/logos/TitansPromissoryToken.png";
 import geoform from "../assets/images/logos/TitansHeroToken.png";
 import cabal from "../assets/images/logos/Cabal.png";
+import keleres from "../assets/images/logos/KeleresFactionSymbol.png"
 
 // leaders
 import arborecAgent from "../assets/images/logos/ArborecAgentP.png";
@@ -121,6 +122,11 @@ import titansHero from "../assets/images/logos/TitansHeroP.png";
 import cabalAgent from "../assets/images/logos/CabalAgentP.png";
 import cabalCommander from "../assets/images/logos/CabalCommanderP.png";
 import cabalHero from "../assets/images/logos/CabalHeroP.png";
+import keleresAgent from "../assets/images/logos/KeleresAgentPortrait.png"
+import keleresCommander from "../assets/images/logos/KeleresCommanderPortrait.png"
+import keleresHeroArgent from "../assets/images/logos/KeleresHeroArgentPortrait.png"
+import keleresHeroXxcha from "../assets/images/logos/KeleresHeroXxchaPortrait.png"
+import keleresHeroMentak from "../assets/images/logos/KeleresHeroMentakPortrait.png"
 
 // exploration
 import crown from "../assets/images/logos/CrownSymbol.png";
@@ -169,6 +175,7 @@ export const logos = {
     naaz,
     titans,
     cabal,
+    keleres,
 
     arborecAgent,
     arborecCommander,
@@ -244,6 +251,11 @@ export const logos = {
     cabalAgent,
     cabalCommander,
     cabalHero,
+    keleresAgent,
+    keleresCommander,
+    keleresHeroArgent,
+    keleresHeroMentak,
+    keleresHeroXxcha,
 
     crown,
     dmz,

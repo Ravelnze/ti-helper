@@ -855,5 +855,18 @@
         "resource": 1,
         "influence": 6,
         "desc": "Once a splendid place, now a sad devastated wasteland. Only the radiation-shielded Mecatol city, the seat of the powerful Galactic Council, remains habitable."
+    },
+    {
+        "id": 100,
+        "title": "Custodia Vigilia",
+        "resource": 2,
+        "influence": 3,
+        "legendaryAbility": {
+            "title": "Custodia Vigilia",
+            "description": "While you control Mecatol Rex, it gains SPACE CANNON 5 and PRODUCTION 3.\r\nGain 2 command tokens when another player scores Victory Points using imperial.",
+            "phase": ["Action"]
+        },
+        "desc": "Custodia Vigilia. The fully realized seat of the Keleres. A veritable fortress in the heart of Mecatol City. Ten thousand people come and go daily, and the Keleres see them all.",
+        "codex": [3]
     }
 ]

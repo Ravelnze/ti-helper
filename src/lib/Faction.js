@@ -1,5 +1,6 @@
 import Planets from "../data/planets.json";
-import { UpdateInfluence, UpdateResources } from "./Planet";
+import Factions from '../data/factions.json';
+import { GetPlanetsByIds, UpdateInfluence, UpdateResources } from "./Planet";
 
 export const UnitType = {
     Flagship: "Flagship",
@@ -91,4 +92,31 @@ export function SetUnitAvailable(faction, unit, available) {
     }
 
     return faction;
+}
+
+export function SetStartingFaction(state, {factionId, chosen}) {
+    if (chosen) {
+        const hero = state.faction.leaders.filter((l) => l.factionId === factionId);
+        const leaders = state.faction.leaders.filter((l) => [UnitType.Agent, UnitType.Commander].includes(l.type)).concat(hero)
+    
+        const planetIds = Factions.find((f) => f.id === factionId).planets;
+        const planets = GetPlanetsByIds(Planets, planetIds);
+    
+        const faction = state.faction;
+        faction.leaders = leaders;
+
+        return {
+            ...state,
+            planets: planets,
+            faction: faction,
+            keleresFactionChosen: true,
+            ...UpdateResources(planets),
+            ...UpdateInfluence(planets),
+        }
+    }
+
+    return {
+        ...state,
+        keleresFactionChosen: false
+    }
 }

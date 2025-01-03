@@ -2,20 +2,31 @@ import { useStore } from "../store/Store";
 import Factions from "../data/factions.json";
 import FactionCard from "./FactionCard";
 import { Col, Row } from "react-bootstrap";
+import { Codex } from "../lib/Codices";
 
 function FactionList(props) {
-    const [state, dispatch] = useStore();
+    const [state, ] = useStore();
 
-    let factionList = state.pok
-        ? Factions
-        : Factions.filter((f) => f.pok !== true);
+    let factionList = [];
 
-    if (state.faction) {
-        factionList = factionList.filter(
-            (f) =>
-                f.id !== state.faction.id &&
-                !state.lookupFactionList.map((a) => a.id).includes(f.id)
-        );
+    if (!props.factionList) {
+        factionList = !state.pok 
+            ? Factions.filter(f => !f.pok)
+            : Factions;
+
+        factionList = !state.codex.includes(Codex.Vigil)
+            ? factionList.filter(f => !f.codex?.includes(Codex.Vigil))
+            : factionList;
+
+        if (state.faction) {
+            factionList = factionList.filter(
+                (f) =>
+                    f.id !== state.faction.id &&
+                    !state.lookupFactionList.map((a) => a.id).includes(f.id)
+            );
+        }
+    } else {
+        factionList = Factions.filter((f) => props.factionList.includes(f.id))
     }
 
     factionList.sortFactionTitles();
@@ -27,6 +38,9 @@ function FactionList(props) {
         factions.push(chunk);
     }
 
+    // Deep copy the factions array
+    factions = JSON.parse(JSON.stringify(factions));
+    
     return (
         <Row className="mx-auto">
             <Col>
@@ -39,6 +53,7 @@ function FactionList(props) {
                                         <FactionCard
                                             isNewGame={props.isNewGame}
                                             faction={f}
+                                            chooseFaction={props.chooseFaction}
                                         ></FactionCard>
                                     </Col>
                                 );

@@ -93,5 +93,47 @@
         "multiple": true,
         "category": "Frontier",
         "phase": ["Action", "Agenda"]
+    },
+    {
+        "id": 15,
+        "title": "Dynamis Core",
+        "description": "While this card is in your play area, your commodity value is increased by 2.\r\nACTION: Purge this card to gain trade goods equal to your printed commodity value +2. ",
+        "codex": [2],
+        "effects": [
+            {
+                "type": "commodity",
+                "value": 2
+            }
+        ],
+        "phase": ["Action"]
+    },
+    {
+        "id": 16,
+        "title": "JR-XS455-O",
+        "description": "ACTION: Exhaust this agent and choose a player; that player may spend 3 resources to place a structure on a planet they control. If they do not, they gain 1 trade good.",
+        "codex": [2],
+        "phase": ["Action"]
+    },
+    {
+        "id": 17,
+        "title": "Nano-Forge",
+        "description": "ACTION: Attach this card to a non-legendary, non-home planet you control; its resource and influence values are increased by 2 and it is a legendary planet.",
+        "codex": [2],
+        "attach": true,
+        "effects": [
+            {
+                "type": "influence",
+                "value": 2
+            },
+            {
+                "type": "resource",
+                "value": 2
+            },
+            {
+                "type": "legendary",
+                "image": "legendary"
+            }
+        ],
+        "phase": []
     }
 ]
