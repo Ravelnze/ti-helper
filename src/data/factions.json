@@ -1480,7 +1480,7 @@
             "logo": "mech",
             "available": false
         },
-        "alt-mech": {
+        "altMech": {
             "title": "Iconoclast Ω",
             "cost": 2,
             "combat": 6,

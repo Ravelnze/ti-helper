@@ -52,9 +52,9 @@ export function GetTechnologiesForPhase(technologies, phase) {
     );
 }
 
-export function ReplaceCodexTechnologyIds(ids, state) {
+export function ReplaceCodexTechnologyIds(ids, codex) {
     let technologies = Technologies.filter((t) => ids.includes(t.id))
-    if (state.codex.includes(Codex.Ordinian)) {
+    if (codex.includes(Codex.Ordinian)) {
         technologies.forEach(tech => {
             if (tech.codex?.includes(Codex.Ordinian)) {
                 technologies = technologies.filter((t) => t.id !== tech.replaces);
@@ -67,7 +67,7 @@ export function ReplaceCodexTechnologyIds(ids, state) {
     return technologies.filter((t) => !t.replaces).map((t) => t.id);
 }
 
-export function ReplaceCodexTechnologies(technologies, state) {
-    let filteredIds = ReplaceCodexTechnologyIds(technologies.map(t => t.id), state);
+export function ReplaceCodexTechnologies(technologies, codex) {
+    let filteredIds = ReplaceCodexTechnologyIds(technologies.map(t => t.id), codex);
     return Technologies.filter((t) => filteredIds.includes(t.id));
 }

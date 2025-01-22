@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { Codex } from "./Codices";
 
 export function AddPromissory(notes, note) {
     note.instanceId = uuidv4();
@@ -31,4 +32,17 @@ export function SetAttachment(notes, note, attachment) {
 
     notes[index].attached = attachment;
     return notes;
+}
+
+export function ReplaceCodexPromissories(promissoryNotes, codex) {
+    promissoryNotes.forEach(pn => {
+        if (codex.includes(Codex.Ordinian) && pn.replaces) {
+            promissoryNotes = promissoryNotes.filter(p => !(p.id === pn.replaces));
+        }
+        else if (!codex.includes(Codex.Ordinian)) {
+            promissoryNotes = promissoryNotes.filter(p => !p.codex)
+        }
+    });
+
+    return promissoryNotes;
 }

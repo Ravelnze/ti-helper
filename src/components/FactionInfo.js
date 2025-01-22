@@ -23,30 +23,33 @@ import GetLogoByKey from "../lib/Logos";
 import { Codex } from "../lib/Codices";
 import { ReplaceCodexTechnologies } from "../lib/Technology";
 import { GetPlanetsByIds } from "../lib/Planet";
-
-const keleresFactionId = 25;
+import { ReplaceCodexPromissories } from "../lib/PromissoryNote";
 
 function FactionInfo(props) {
     const [state, dispatch] = useStore();
 
-    const abilities = props.faction?.abilities;
-    const factionTech = Technologies.filter(
+    const abilities = props.faction?.abilities.filter(a => a.title === a.title.toUpperCase());
+
+    const factionTech = ReplaceCodexTechnologies(Technologies.filter(
         (t) => t.factionId && t.factionId === props.faction?.id
-    );
+    ), state.codex);
+
     const specialUnits = props.faction
-        ? GetSpecialUnitsAndLeaders(props.faction, state.pok)
+        ? GetSpecialUnitsAndLeaders(props.faction, state.pok, state.codex.includes(Codex.Vigil))
         : null;
-    const promissoryNotes = PromissoryNotes.filter(
+
+    const promissoryNotes = ReplaceCodexPromissories(PromissoryNotes.filter(
         (p) => p.factionId && p.factionId === props.faction?.id
-    ).filter(
-        (p) => state.codex.includes(Codex.Ordinian) && props.faction.id !== keleresFactionId ? p.replaces : !p.replaces
-    );
+    ), state.codex)
+
     const startingTech = ReplaceCodexTechnologies(props.technologies.filter(
         (t) => !t.replacedBy
-    ), state);
+    ), state.codex);
+
     const removeFaction = state.lookupFactionList
         .map((f) => f.id)
         .includes(props.faction?.id);
+
     const planets = !props.isNewGame ? GetPlanetsByIds(Planets, props.faction?.planets) : state.planets;
 
     return (
@@ -158,9 +161,11 @@ function FactionInfo(props) {
                 <Row>
                     <Col className="ps-4">
                         {abilities.map((a, i) => (
-                            <li key={i} className="text-light">
+                            <p key={i} className="text-light mb-3">
+                                <strong>{a.title}</strong>
+                                <br />
                                 {a.description}
-                            </li>
+                            </p>
                         ))}
                     </Col>
                 </Row>

@@ -1,6 +1,7 @@
 import Planets from "../data/planets.json";
 import Factions from '../data/factions.json';
 import { GetPlanetsByIds, UpdateInfluence, UpdateResources } from "./Planet";
+import { Codex } from "./Codices";
 
 export const UnitType = {
     Flagship: "Flagship",
@@ -40,7 +41,7 @@ export function SetFaction(state, faction) {
     };
 }
 
-export function GetSpecialUnitsAndLeaders(faction, pok) {
+export function GetSpecialUnitsAndLeaders(faction, pok, codex) {
     const unitList = [];
     const flagship = faction.flagship;
     flagship.type = UnitType.Flagship;
@@ -50,20 +51,31 @@ export function GetSpecialUnitsAndLeaders(faction, pok) {
         return unitList;
     }
 
-    const mech = faction.mech;
+    const mech = codex && faction.altMech ? faction.altMech : faction.mech;
     mech.type = UnitType.Mech;
     unitList.push(mech);
 
     const leaders = faction.leaders;
     leaders.forEach((leader) => {
-        unitList.push(leader);
+        if (codex && leader.codex && leader.codex.includes(Codex.Vigil)) {
+            const index = unitList.findIndex(l => l.type === leader.type);
+            if (index) {
+                unitList[index] = leader;
+            }
+            else {
+                unitList.push(leader);
+            }
+        }
+        else if (!leader.codex && !unitList.map(l => l.type).includes(leader.type)) {
+            unitList.push(leader);
+        }
     });
 
     return unitList;
 }
 
-export function GetSpecialUnitsAndLeadersForPhase(faction, phase, pok) {
-    return GetSpecialUnitsAndLeaders(faction, pok).filter((u) =>
+export function GetSpecialUnitsAndLeadersForPhase(faction, phase, pok, codex) {
+    return GetSpecialUnitsAndLeaders(faction, pok, codex).filter((u) =>
         u.specialAbility.phase.some((p) => ["Any", phase].includes(p))
     );
 }

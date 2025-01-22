@@ -21,7 +21,7 @@ function FactionCard(props) {
                 onClick={() => {
                     if (props.isNewGame) {
                         dispatch(setFaction(props.faction));
-                        dispatch(setTech(ReplaceCodexTechnologyIds(props.faction.tech, state)));
+                        dispatch(setTech(ReplaceCodexTechnologyIds(props.faction.tech, state.codex)));
                         scrollTop();
                     } else if (props.chooseFaction) {
                         dispatch(setStartingFaction(props.faction.id, true));

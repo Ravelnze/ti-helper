@@ -23,18 +23,6 @@ function TechnologyCard(props) {
             ) : null}
             <Card.Header className="text-center technology-card-header">
                 {props.tech.title}
-                {props.tech.factionId ? (
-                    <span className="float-end">
-                        <Image
-                            width="15px"
-                            src={GetLogoByKey(
-                                Factions.find(
-                                    (f) => f.id === props.tech.factionId
-                                ).logo
-                            )}
-                        />
-                    </span>
-                ) : null}
                 {props.tech.subTitle ? (
                     <p className="mb-0" style={{ fontSize: "0.8rem" }}>
                         {props.tech.subTitle}
@@ -76,17 +64,17 @@ function TechnologyCard(props) {
                                 ) : null}
                             </>
                         ) : null}
-                        {props.tech.desc?.split('\r\n').map((s,i) =>
-                            (<Card.Text
-                                key={i}
-                                className={
-                                    props.tech.cat === Categories.Upgrade
-                                        ? "mt-3"
-                                        : ""
-                                }
-                            >
-                                {s}
-                            </Card.Text>)
+                        {props.tech.desc?.split('\r\n').map((s, i) =>
+                        (<Card.Text
+                            key={i}
+                            className={
+                                props.tech.cat === Categories.Upgrade
+                                    ? "mt-3"
+                                    : ""
+                            }
+                        >
+                            {s}
+                        </Card.Text>)
                         )}
                         {props.tech.abilities?.map((a, i) => {
                             return (
@@ -110,6 +98,18 @@ function TechnologyCard(props) {
                                     src={GetLogoByKey(r)}
                                 />
                             ))}
+                            {props.tech.factionId ? (
+                                <span className="float-end">
+                                    <Image
+                                        width="15px"
+                                        src={GetLogoByKey(
+                                            Factions.find(
+                                                (f) => f.id === props.tech.factionId
+                                            ).logo
+                                        )}
+                                    />
+                                </span>
+                            ) : null}
                         </Card.Footer>
                     ) : null}
                 </>

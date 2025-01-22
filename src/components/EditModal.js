@@ -234,7 +234,7 @@ function EditModal(props) {
                                                                             .id)
                                                             )
                                                         )
-                                                    ), state
+                                                    ), state.codex
                                                 )}
                                                 setValue={(tech) => {
                                                     dispatch(addTech(tech));
