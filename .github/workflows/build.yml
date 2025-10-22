@@ -30,7 +30,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ github.repository_owner }}/ti-helper:latest
+          context: .
+          tags: ghcr.io/${{ github.repository_owner }}/ti-helper:latest
 
   deploy:
     runs-on: ubuntu-latest
