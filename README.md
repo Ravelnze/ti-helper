@@ -4,7 +4,7 @@ This project is an app designed to assist while playing the 4th edition of the b
 
 The premise of this app is to allow each player to input details about their game such as the faction they are playing, their planets, technology, any active laws (agendas), action cards, etc. and choose different game phases or combat round categories where all relevant information will be displayed.
 
-While the app still works on bigger screens, it is designed to be viewed on mobile or tablet ideally using the "Add to homescreen" share option on iOS or the Android equivalent. Give it a try [here](https://ti.ploogencraft.com/)! 
+While the app still works on bigger screens, it is designed to be viewed on mobile or tablet ideally using the "Add to homescreen" share option on iOS or the Android equivalent. Give it a try [here](https://ti.ravels.net/)! 
 
 Hopefully it is fairly self explanatory but here is a brief overview of the flow: pick your faction and start the game, then choose the edit icon (notepad and pen) in the top right to start adding game components. Close the modal when done adding and choose various phases using the bottom navigation and tabs on screen when done. Rinse and repeat editing and viewing until you are the ruler of the galaxy!
 
