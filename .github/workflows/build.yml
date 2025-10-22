@@ -5,11 +5,17 @@ on:
     branches:
       - master
 
+env:
+  OWNER: ${{ github.repository_owner }}
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set lowercase owner
+        run: echo "OWNER_LC=${OWNER,,}" >> $GITHUB_ENV
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -31,7 +37,7 @@ jobs:
         with:
           push: true
           context: .
-          tags: ghcr.io/${{ github.repository_owner.toLowerCase() }}/ti-helper:latest
+          tags: ghcr.io/${{ env.OWNER_LC }}/ti-helper:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,7 +54,7 @@ jobs:
           script: |
             echo "Logging into GHCR..."
             echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-            docker pull ghcr.io/${{ github.repository_owner.toLowerCase() }}/ti-helper:latest
+            docker pull ghcr.io/${{ env.OWNER_LC }}/ti-helper:latest
             docker stop ti-helper || true
             docker rm ti-helper || true
-            docker run -d --name ti-helper -p 13380:80 ghcr.io/${{ github.repository_owner.toLowerCase() }}/ti-helper:latest
+            docker run -d --name ti-helper -p 13380:80 ghcr.io/${{ env.OWNER_LC }}/ti-helper:latest
